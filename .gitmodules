@@ -1,0 +1,3 @@
+[submodule "Submodule/Framework"]
+	path = Submodule/Framework
+	url = https://github.com/WorkplaceX/Framework.git
