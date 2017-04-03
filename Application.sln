@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "UniversalExpress", "Submodule\UniversalExpress\UniversalExpress.njsproj", "{65F95D4D-36AD-4330-A7A6-BCE1011DEA88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Submodule\Build\Build.csproj", "{D1290BF4-0F84-469C-A28A-CF315DE8C5AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Build\Build.csproj", "{D1290BF4-0F84-469C-A28A-CF315DE8C5AD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "Submodule\UnitTest\UnitTest.csproj", "{68FA5CD3-DF11-4C6E-9A79-50F51EED109C}"
 EndProject
