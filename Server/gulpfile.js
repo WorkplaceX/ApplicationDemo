@@ -6,7 +6,7 @@ var clean = require('gulp-clean');
 
 // npm run gulp (../Universal/)
 gulp.task('universal', shell.task([
-  'cd.. & cd Universal & npm run gulp'
+  'cd.. & cd Submodule/Universal & npm run gulp'
 ]))
 
 gulp.task('clean', function () {
@@ -15,27 +15,27 @@ gulp.task('clean', function () {
 })
 
 gulp.task('cleanExpress', function () {
-    return gulp.src('../UniversalExpress/Universal/')
+    return gulp.src('../Submodule/UniversalExpress/Universal/')
         .pipe(clean({ force: true }))
 })
 
 // Copy file
 gulp.task('copy', function () {
     return es.concat(
-        gulp.src('../Universal/publish/**/*.*')
+        gulp.src('../Submodule/Universal/publish/**/*.*')
             .pipe(gulp.dest('./Universal/')),
-        gulp.src('../Client/*.html')
+        gulp.src('../Submodule/Client/*.html')
             .pipe(gulp.dest('./Universal/')),
-        gulp.src('../Client/*.css')
+        gulp.src('../Submodule/Client/*.css')
             .pipe(gulp.dest('./Universal/')),
-        gulp.src('../Client/*.js')
+        gulp.src('../Submodule/Client/*.js')
             .pipe(gulp.dest('./Universal/')),
-        gulp.src('../Client/dist/**/*.js')
+        gulp.src('../Submodule/Client/dist/**/*.js')
             .pipe(gulp.dest('./Universal/dist/')),
-        gulp.src('../Universal/publish/**/*.*')
-            .pipe(gulp.dest('../UniversalExpress/Universal/')),
-        gulp.src('../Client/node_modules/bootstrap/dist/css/bootstrap.min.css')
-            .pipe(gulp.dest('../Server/wwwroot/node_modules/bootstrap/dist/css/'))
+        gulp.src('../Submodule/Universal/publish/**/*.*')
+            .pipe(gulp.dest('../Submodule/UniversalExpress/Universal/')),
+        gulp.src('../Submodule/Client/node_modules/bootstrap/dist/css/bootstrap.min.css')
+            .pipe(gulp.dest('./wwwroot/node_modules/bootstrap/dist/css/'))
     );
 })
 
