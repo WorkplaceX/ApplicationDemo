@@ -8,8 +8,8 @@
 
     public class WebController : Controller
     {
-        // const string path = "/web/"; // Run with root debug page.
-        const string path = "/"; // Run direct.
+        const string path = "/web/"; // Run with root debug page.
+        // const string path = "/"; // Run direct.
 
         [Route(path + "{*uri}")]
         public async Task<IActionResult> Web()
