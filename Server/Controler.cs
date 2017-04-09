@@ -8,14 +8,11 @@
 
     public class WebController : Controller
     {
-        const string path = "/web/"; // Run with root debug page.
-        // const string path = "/"; // Run direct.
-
-        [Route(path + "{*uri}")]
+        [Route(Startup.PathController + "{*uri}")]
         public async Task<IActionResult> Web()
         {
             // Html
-            if (HttpContext.Request.Path == path)
+            if (HttpContext.Request.Path == Startup.PathController)
             {
                 JsonApplication jsonApplicationOut = new Application.ApplicationX().Process(null, HttpContext.Request.Path);
                 string htmlUniversal = null;
@@ -24,7 +21,7 @@
                 return Content(htmlUniversal, "text/html");
             }
             // Json API
-            if (HttpContext.Request.Path == path + "Application.json")
+            if (HttpContext.Request.Path == Startup.PathController + "Application.json")
             {
                 string jsonInText = Util.StreamToString(Request.Body);
                 JsonApplication jsonApplicationIn = Framework.Server.Json.Util.Deserialize<JsonApplication>(jsonInText);

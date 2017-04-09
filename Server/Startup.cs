@@ -20,24 +20,23 @@ namespace Server
             services.AddMvc();
         }
 
+        private static bool debugIsException = true; // Enable exception page. // If running on IIS make sure web.config contains: arguments="Server.dll" if you get HTTP Error 502.5 - Process Failure
+
+        public const string PathController = "/"; // "/web/"; // Enable debug mode.
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            bool isDebug = true; // See also Controller.cs line 11. And if running on IIS make sure web.config contains: arguments="Server.dll" if you get HTTP Error 502.5 - Process Failure
-
             loggerFactory.AddConsole();
 
-            if (isDebug)
+            if (debugIsException)
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseStaticFiles(); // Enable access to files in folder wwwwroot.
 
-            // if (isDebug == false)
-            {
-                app.UseMvc(); // Enable WebController.
-            }
+            app.UseMvc(); // Enable WebController.
 
             app.Run(async (context) =>
             {
