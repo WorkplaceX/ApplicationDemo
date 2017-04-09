@@ -34,7 +34,7 @@ namespace Server
 
             app.UseStaticFiles(); // Enable access to files in folder wwwwroot.
 
-            if (isDebug == false)
+            // if (isDebug == false)
             {
                 app.UseMvc(); // Enable WebController.
             }
