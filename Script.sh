@@ -690,4 +690,4 @@ dotnet --version
 cd Build
 dotnet restore
 dotnet build
-dotnet run
+dotnet run 01 $ConnectionString
