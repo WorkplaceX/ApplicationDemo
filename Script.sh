@@ -687,3 +687,7 @@ fi
 say "Installation finished successfully."
 
 dotnet --version
+cd Build
+dotnet restore
+dotnet build
+dotnet run
