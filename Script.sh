@@ -1,3 +1,3 @@
 echo "Hello"
-sudo apt-get install dotnet-dev-1.0.1
+./dotnet-install.sh
 echo "H2"
