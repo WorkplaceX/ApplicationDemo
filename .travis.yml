@@ -4,4 +4,4 @@ sudo: required
 
 install: ./Script.sh
 
-script: ./build.sh
+script: ./Build.sh
