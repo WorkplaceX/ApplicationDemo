@@ -1,5 +1,5 @@
 cd Build
-dotnet restore
-dotnet build
-dotnet run 01 $ConnectionString
-dotnet run 02
+/home/travis/.dotnet restore
+/home/travis/.dotnet build
+/home/travis/.dotnet run 01 $ConnectionString
+/home/travis/.dotnet run 02
