@@ -10,7 +10,10 @@
 
         public override void RunSql()
         {
-            Airport.Script.Run();
+            if (Framework.Util.IsLinux == false)
+            {
+                Airport.Script.Run();
+            }
             base.RunSql();
         }
     }
