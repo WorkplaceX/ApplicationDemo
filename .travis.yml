@@ -1,0 +1,7 @@
+language: ruby
+dist: trusty
+sudo: required
+
+install: ./Install.sh
+
+script: ./Build.sh
