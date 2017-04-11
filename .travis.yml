@@ -2,6 +2,6 @@ language: ruby
 dist: trusty
 sudo: required
 
-install: ./Script.sh
+install: ./Install.sh
 
 script: ./Build.sh
