@@ -3,3 +3,5 @@ dist: trusty
 sudo: required
 
 install: ./Script.sh
+
+script: ./build.sh
