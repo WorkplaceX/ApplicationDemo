@@ -6,7 +6,7 @@ var clean = require('gulp-clean');
 
 // npm run gulp (../Universal/)
 gulp.task('universal', shell.task([
-  'cd .. & cd Submodule/Universal & npm run gulp'
+  'echo $(pwd) & cd .. & cd Submodule/Universal & npm run gulp'
 ]))
 
 gulp.task('clean', function () {
