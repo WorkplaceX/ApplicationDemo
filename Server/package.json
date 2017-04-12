@@ -1,7 +1,7 @@
 {
   "scripts": {
     "gulp": "gulp",
-    "installAll": "cd.. && cd Client && npm install && cd.. && cd Universal && npm install && cd.. && cd Server"
+    "installAll": "cd .. && cd Client && npm install && cd .. && cd Universal && npm install && cd .. && cd Server"
   },
   "devDependencies": {
     "event-stream": "^3.3.4",
