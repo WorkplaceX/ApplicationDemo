@@ -22,6 +22,8 @@ namespace Build
                 Console.Error.WriteLine(e.Message);
                 Environment.Exit(-1);
             }
+            Console.Error.WriteLine("Error2!");
+            Environment.Exit(1);
         }
     }
 }
