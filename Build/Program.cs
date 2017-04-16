@@ -1,5 +1,4 @@
 ﻿using Framework.Build;
-using System;
 
 namespace Build
 {
@@ -7,23 +6,13 @@ namespace Build
     {
         public static void Main(string[] args)
         {
-            try
+            do
             {
-                do
-                {
-                    Util.Log("");
-                    Util.Log("Build Command");
-                    Util.MethodExecute(new Script(args));
-                }
-                while (args.Length == 0); // Loop only if started without command line arguments.
+                Util.Log("");
+                Util.Log("Build Command");
+                Util.MethodExecute(new Script(args));
             }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                Environment.Exit(-1);
-            }
-            Console.Error.WriteLine("Error2!");
-            Environment.Exit(1);
+            while (args.Length == 0); // Loop only if started without command line arguments.
         }
     }
 }
