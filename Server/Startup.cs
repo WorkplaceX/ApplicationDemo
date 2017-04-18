@@ -22,7 +22,7 @@ namespace Server
 
         private static bool debugIsException = true; // Enable exception page. // If running on IIS make sure web.config contains: arguments="Server.dll" if you get HTTP Error 502.5 - Process Failure
 
-        public const string RoutePath = "/web/"; // "/web/"; // Enable debug mode.
+        public const string RoutePath = "/"; // "/web/"; // Enable debug mode.
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

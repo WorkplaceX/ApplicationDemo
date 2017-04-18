@@ -14,6 +14,8 @@
             //
             new GridKeyboard(result, "GridKeyboard");
             var container = new LayoutContainer(result, "Container");
+            var rowLogo = new LayoutRow(container, "RowLogo");
+            var literalLogo = new Literal(rowLogo, "<img src='Logo.png' />");
             var rowHeader = new LayoutRow(container, "Header");
             var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1");
             new GridField(cellHeader1, "Field", null, null, null);
@@ -23,8 +25,10 @@
             var cellContent2 = new LayoutCell(rowContent, "ContentCell2");
             new Grid(cellContent2, "Detail", "Detail");
             var rowFooter = new LayoutRow(container, "Footer");
-            var cellFooter = new LayoutCell(rowFooter, "FooterCell1");
-            var button = new Button(cellFooter, "Hello");
+            var cellFooter1 = new LayoutCell(rowFooter, "FooterCell1");
+            var literal = new Literal(cellFooter1, "Hello <b>Literal</b>");
+            var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1");
+            var button = new Button(cellFooter2, "Hello");
             //
             var gridData = new GridData();
             gridData.LoadToJsonGrid("Master", typeof(Database.dbo.TableName));
