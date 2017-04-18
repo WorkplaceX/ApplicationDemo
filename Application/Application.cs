@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Collections.Generic;
 
-    public class ApplicationX : ApplicationBase
+    public class BusinessApplication : ApplicationBase
     {
         protected override JsonApplication JsonApplicationCreate()
         {
@@ -41,11 +41,11 @@
             {
                 if (gridRow.IsClick)
                 {
-                    var list = jsonApplicationOut.GridData.LoadFromJson("Master", typeof(ApplicationX)).Cast<Database.dbo.TableName>();
+                    var list = jsonApplicationOut.GridData.LoadFromJson("Master", typeof(BusinessApplication)).Cast<Database.dbo.TableName>();
                     string tableName = list.ElementAt(int.Parse(gridRow.Index)).TableName2;
                     // string tableName = jsonApplicationOut.GridData.CellList["Master"]["TableName2"][gridRow.Index].V as string;
                     tableName = tableName.Substring(tableName.IndexOf(".") + 1);
-                    Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationX));
+                    Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(BusinessApplication));
                     jsonApplicationOut.GridData.LoadToJsonGrid("Detail", typeRow);
                 }
             }
