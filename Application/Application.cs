@@ -13,21 +13,24 @@
             result.Session = Guid.NewGuid();
             //
             new GridKeyboard(result, "GridKeyboard");
-            var container = new LayoutContainer(result, "Container");
-            var rowLogo = new LayoutRow(container, "RowLogo");
-            var literalLogo = new Literal(rowLogo, "<img src='Logo.png' />");
-            var rowHeader = new LayoutRow(container, "Header");
-            var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1");
+            var container = new LayoutContainer(result, "Container") { Class = "co" };
+            var rowLogo = new LayoutRow(container, "RowLogo") { Class = "r" };
+            var literalLogo = new Literal(rowLogo, "Logo");
+            literalLogo.Html = "<img src='Logo.png' />";
+            var rowHeader = new LayoutRow(container, "Header") { Class = "r" };
+            var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1") { Class = "c" };
             new GridField(cellHeader1, "Field", null, null, null);
             var rowContent = new LayoutRow(container, "Content");
-            var cellContent1 = new LayoutCell(rowContent, "ContentCell1");
-            new Grid(cellContent1, "Master", "Master");
-            var cellContent2 = new LayoutCell(rowContent, "ContentCell2");
-            new Grid(cellContent2, "Detail", "Detail");
+            var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { Class = "c" };
+            var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { Class = "c2" };
+            new Grid(cellContent2, "Master", "Master");
+            new Grid(cellContent1, "Detail", "Detail");
             var rowFooter = new LayoutRow(container, "Footer");
-            var cellFooter1 = new LayoutCell(rowFooter, "FooterCell1");
-            var literal = new Literal(cellFooter1, "Hello <b>Literal</b>");
-            var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1");
+            var cellFooter1 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
+            var literal = new Literal(cellFooter1, "Literal");
+            literal.Html = "Hello <b>Literal</b>";
+            literal.Class = "y";
+            var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
             var button = new Button(cellFooter2, "Hello");
             //
             var gridData = new GridData();
