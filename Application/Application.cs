@@ -20,6 +20,8 @@
             var rowHeader = new LayoutRow(container, "Header") { Class = "r" };
             var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1") { Class = "c" };
             new GridField(cellHeader1, "Field", null, null, null);
+            var cellHeader2 = new LayoutCell(rowHeader, "HeaderCell2") { Class = "c" };
+            new Grid(cellHeader2, "Lookup", "Lookup");
             var rowContent = new LayoutRow(container, "Content");
             var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { Class = "c" };
             var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { Class = "c2" };
@@ -34,10 +36,10 @@
             var button = new Button(cellFooter2, "Hello");
             //
             var gridData = new GridData();
+            result.GridData = gridData;
             gridData.LoadToJsonGrid("Master", typeof(Database.dbo.TableName));
             gridData.ColumnList["Master"].Where(item => item.FieldName == "TableName2").First().IsUpdate = true;
             gridData.LoadToJsonGrid("Detail", typeof(Database.dbo.AirportDisplay));
-            result.GridData = gridData;
             //
             return result;
         }
