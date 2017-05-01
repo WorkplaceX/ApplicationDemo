@@ -21,7 +21,7 @@
             var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1") { Class = "c" };
             new GridField(cellHeader1, "Field", null, null, null);
             var cellHeader2 = new LayoutCell(rowHeader, "HeaderCell2") { Class = "c" };
-            new Grid(cellHeader2, "Lookup", "Lookup");
+            new Grid(cellHeader2, "LookUp", "LookUp");
             var rowContent = new LayoutRow(container, "Content");
             var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { Class = "c" };
             var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { Class = "c2" };
@@ -37,9 +37,9 @@
             //
             var gridData = new GridData();
             result.GridData = gridData;
-            gridData.LoadToJsonGrid("Master", typeof(Database.dbo.TableName));
+            Util.GridToJson(result, "Master", typeof(Database.dbo.TableName));
             gridData.ColumnList["Master"].Where(item => item.FieldName == "TableName2").First().IsUpdate = true;
-            gridData.LoadToJsonGrid("Detail", typeof(Database.dbo.AirportDisplay));
+            Util.GridToJson(result, "Detail", typeof(Database.dbo.AirportDisplay));
             //
             return result;
         }
@@ -50,12 +50,12 @@
             {
                 if (gridRow.IsClick)
                 {
-                    var list = jsonApplicationOut.GridData.LoadFromJson("Master", typeof(BusinessApplication)).Cast<Database.dbo.TableName>();
+                    var list = Util.GridFromJson(jsonApplicationOut, "Master", typeof(BusinessApplication)).RowList.Cast<Database.dbo.TableName>();
                     string tableName = list.ElementAt(int.Parse(gridRow.Index)).TableName2;
                     // string tableName = jsonApplicationOut.GridData.CellList["Master"]["TableName2"][gridRow.Index].V as string;
                     tableName = tableName.Substring(tableName.IndexOf(".") + 1);
                     Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(BusinessApplication));
-                    jsonApplicationOut.GridData.LoadToJsonGrid("Detail", typeRow);
+                    Util.GridToJson(jsonApplicationOut, "Detail", typeRow);
                 }
             }
         }
