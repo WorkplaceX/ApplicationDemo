@@ -25,8 +25,8 @@
             var rowContent = new LayoutRow(container, "Content");
             var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { Class = "c" };
             var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { Class = "c2" };
-            new Grid(cellContent2, "Master", "Master");
-            new Grid(cellContent1, "Detail", "Detail");
+            new Grid(cellContent1, "Master", "Master");
+            new Grid(cellContent2, "Detail", "Detail");
             var rowFooter = new LayoutRow(container, "Footer");
             var cellFooter1 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
             var literal = new Literal(cellFooter1, "Literal");
@@ -39,23 +39,32 @@
             result.GridData = gridData;
             Util.GridToJson(result, "Master", typeof(Database.dbo.TableName));
             gridData.ColumnList["Master"].Where(item => item.FieldName == "TableName2").First().IsUpdate = true;
-            Util.GridToJson(result, "Detail", typeof(Database.dbo.AirportDisplay));
             //
             return result;
         }
 
-        protected override void ProcessGridIsClick(JsonApplication jsonApplicationOut)
+        protected override void ProcessInit()
         {
-            foreach (GridRow gridRow in jsonApplicationOut.GridData.RowList["Master"])
+            base.ProcessInit();
+            ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridRowFirstIsClick());
+            ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridMasterIsClick());
+        }
+    }
+
+    public class ProcessGridMasterIsClick : ProcessBase
+    {
+        protected override void ProcessEnd(JsonApplication jsonApplication)
+        {
+            foreach (GridRow gridRow in jsonApplication.GridData.RowList["Master"])
             {
                 if (gridRow.IsClick)
                 {
-                    var list = Util.GridFromJson(jsonApplicationOut, "Master", typeof(BusinessApplication)).RowList.Cast<Database.dbo.TableName>();
+                    var list = Util.GridFromJson(jsonApplication, "Master", typeof(BusinessApplication)).RowList.Cast<Database.dbo.TableName>();
                     string tableName = list.ElementAt(int.Parse(gridRow.Index)).TableName2;
                     // string tableName = jsonApplicationOut.GridData.CellList["Master"]["TableName2"][gridRow.Index].V as string;
                     tableName = tableName.Substring(tableName.IndexOf(".") + 1);
                     Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(BusinessApplication));
-                    Util.GridToJson(jsonApplicationOut, "Detail", typeRow);
+                    Util.GridToJson(jsonApplication, "Detail", typeRow);
                 }
             }
         }
