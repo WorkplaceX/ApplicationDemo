@@ -22,6 +22,10 @@
             new GridField(cellHeader1, "Field", null, null, null);
             var cellHeader2 = new LayoutCell(rowHeader, "HeaderCell2") { Class = "c" };
             new Grid(cellHeader2, "LookUp", "LookUp");
+            var rowHeader2 = new LayoutRow(container, "Header") { Class = "r" };
+            var cellHeader3 = new LayoutCell(rowHeader, "HeaderCell3") { Class = "c" };
+            var gridSaveState = new Label(cellHeader3, "GridSaveState");
+            new Label(gridSaveState, "GridSaveState");
             var rowContent = new LayoutRow(container, "Content");
             var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { Class = "c" };
             var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { Class = "c2" };
