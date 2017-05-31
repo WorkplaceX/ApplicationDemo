@@ -12,7 +12,7 @@
         }
     }
 
-    public partial class TableName_TableName2 : Cell<TableName>
+    public partial class TableName_TableName2
     {
         protected override void LookUp(out Type typeRow, out List<Row> rowList)
         {
