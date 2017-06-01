@@ -50,13 +50,19 @@
         protected override void ProcessInit()
         {
             base.ProcessInit();
-            ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridRowFirstIsClick());
-            ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridMasterIsClick());
+            ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridRowFirstIsClick(this));
+            ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridMasterIsClick(this));
         }
     }
 
     public class ProcessGridMasterIsClick : ProcessBase
     {
+        public ProcessGridMasterIsClick(BusinessApplicationBase businessApplication) :
+            base(businessApplication)
+        {
+
+        }
+
         protected override void ProcessEnd(JsonApplication jsonApplication)
         {
             foreach (GridRow gridRow in jsonApplication.GridData.RowList["Master"])
