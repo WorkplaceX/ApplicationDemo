@@ -4,8 +4,9 @@
     using System;
     using System.Linq;
     using System.Collections.Generic;
+    using Framework.Server.Application.Json;
 
-    public class BusinessApplication : ApplicationBase
+    public class BusinessApplication : BusinessApplicationBase
     {
         protected override JsonApplication JsonApplicationCreate()
         {
