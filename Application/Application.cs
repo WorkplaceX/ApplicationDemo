@@ -6,11 +6,11 @@
     using System.Collections.Generic;
     using Framework.Server.Application.Json;
 
-    public class BusinessApplication : BusinessApplicationBase
+    public class ApplicationServer : ApplicationServerBase
     {
-        protected override JsonApplication JsonApplicationCreate()
+        protected override ApplicationJson applicationJsonCreate()
         {
-            JsonApplication result = new JsonApplication();
+            ApplicationJson result = new ApplicationJson();
             result.Session = Guid.NewGuid();
             //
             new GridKeyboard(result, "GridKeyboard");
@@ -39,10 +39,10 @@
             var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
             var button = new Button(cellFooter2, "Hello");
             //
-            var gridData = new GridData();
-            result.GridData = gridData;
+            var gridDataJson = new GridDataJson();
+            result.GridDataJson = gridDataJson;
             Util.GridToJson(result, "Master", typeof(Database.dbo.TableName));
-            gridData.ColumnList["Master"].Where(item => item.FieldName == "TableName2").First().IsUpdate = true;
+            gridDataJson.ColumnList["Master"].Where(item => item.FieldName == "TableName2").First().IsUpdate = true;
             //
             return result;
         }
@@ -57,24 +57,24 @@
 
     public class ProcessGridMasterIsClick : ProcessBase
     {
-        public ProcessGridMasterIsClick(BusinessApplicationBase businessApplication) :
-            base(businessApplication)
+        public ProcessGridMasterIsClick(ApplicationServerBase applicationServer) :
+            base(applicationServer)
         {
 
         }
 
-        protected override void ProcessEnd(JsonApplication jsonApplication)
+        protected override void ProcessEnd(ApplicationJson applicationJson)
         {
-            foreach (GridRow gridRow in jsonApplication.GridData.RowList["Master"])
+            foreach (GridRow gridRow in applicationJson.GridDataJson.RowList["Master"])
             {
                 if (gridRow.IsClick)
                 {
-                    var list = Util.GridFromJson(jsonApplication, "Master", typeof(BusinessApplication)).RowList.Cast<Database.dbo.TableName>();
+                    var list = Util.GridFromJson(applicationJson, "Master", typeof(ApplicationServer)).RowList.Cast<Database.dbo.TableName>();
                     string tableName = list.ElementAt(int.Parse(gridRow.Index)).TableName2;
-                    // string tableName = jsonApplicationOut.GridData.CellList["Master"]["TableName2"][gridRow.Index].V as string;
+                    // string tableName = applicationJsonOut.GridData.CellList["Master"]["TableName2"][gridRow.Index].V as string;
                     tableName = tableName.Substring(tableName.IndexOf(".") + 1);
-                    Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(BusinessApplication));
-                    Util.GridToJson(jsonApplication, "Detail", typeRow);
+                    Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
+                    Util.GridToJson(applicationJson, "Detail", typeRow);
                 }
             }
         }
