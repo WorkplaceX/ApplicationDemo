@@ -8,13 +8,10 @@
 
     public class ApplicationServer : ApplicationServerBase
     {
-        protected override ApplicationJson applicationJsonCreate()
+        protected override void ApplicationJsonInit(ApplicationJson applicationJson)
         {
-            ApplicationJson result = new ApplicationJson();
-            result.Session = Guid.NewGuid();
-            //
-            new GridKeyboard(result, "GridKeyboard");
-            var container = new LayoutContainer(result, "Container") { Class = "co" };
+            new GridKeyboard(applicationJson, "GridKeyboard");
+            var container = new LayoutContainer(applicationJson, "Container") { Class = "co" };
             var rowLogo = new LayoutRow(container, "RowLogo") { Class = "r" };
             var literalLogo = new Literal(rowLogo, "Logo");
             literalLogo.Html = "<img src='Logo.png' />";
@@ -40,11 +37,9 @@
             var button = new Button(cellFooter2, "Hello");
             //
             var gridDataJson = new GridDataJson();
-            result.GridDataJson = gridDataJson;
-            Util.GridToJson(result, "Master", typeof(Database.dbo.TableName));
+            applicationJson.GridDataJson = gridDataJson;
+            Util.GridToJson(applicationJson, "Master", typeof(Database.dbo.TableName));
             gridDataJson.ColumnList["Master"].Where(item => item.FieldName == "TableName2").First().IsUpdate = true;
-            //
-            return result;
         }
 
         protected override void ProcessInit()
