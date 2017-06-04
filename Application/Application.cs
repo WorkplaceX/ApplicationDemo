@@ -38,8 +38,9 @@
             //
             var gridDataJson = new GridDataJson();
             applicationJson.GridDataJson = gridDataJson;
-            Util.GridToJson(applicationJson, "Master", typeof(Database.dbo.TableName));
-            gridDataJson.ColumnList["Master"].Where(item => item.FieldName == "TableName2").First().IsUpdate = true;
+            GridDataServer gridDataServer = new GridDataServer();
+            gridDataServer.LoadDatabase("Master", typeof(Database.dbo.TableName));
+            gridDataServer.SaveJson(applicationJson);
         }
 
         protected override void ProcessInit()
@@ -64,12 +65,16 @@
             {
                 if (gridRow.IsClick)
                 {
-                    var list = Util.GridFromJson(applicationJson, "Master", typeof(ApplicationServer)).RowList.Cast<Database.dbo.TableName>();
-                    string tableName = list.ElementAt(int.Parse(gridRow.Index)).TableName2;
-                    // string tableName = applicationJsonOut.GridData.CellList["Master"]["TableName2"][gridRow.Index].V as string;
+                    GridDataServer gridDataServer = new GridDataServer();
+                    gridDataServer.LoadJson(applicationJson, "Master", typeof(ApplicationServer));
+                    var row = gridDataServer.RowGet("Master", gridRow.Index).Row as Database.dbo.TableName;
+                    string tableName = row.TableName2;
                     tableName = tableName.Substring(tableName.IndexOf(".") + 1);
+                    //
                     Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
-                    Util.GridToJson(applicationJson, "Detail", typeRow);
+                    gridDataServer = new GridDataServer();
+                    gridDataServer.LoadDatabase("Detail", typeRow);
+                    gridDataServer.SaveJson(applicationJson);
                 }
             }
         }
