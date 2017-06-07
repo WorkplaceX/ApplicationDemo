@@ -69,12 +69,15 @@
                     gridDataServer.LoadJson(applicationJson, "Master", typeof(ApplicationServer));
                     var row = gridDataServer.RowGet("Master", gridRow.Index).Row as Database.dbo.TableName;
                     string tableName = row.TableName2;
-                    tableName = tableName.Substring(tableName.IndexOf(".") + 1);
-                    //
-                    Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
-                    gridDataServer = new GridDataServer();
-                    gridDataServer.LoadDatabase("Detail", null, false, typeRow);
-                    gridDataServer.SaveJson(applicationJson);
+                    if (tableName != null && tableName.IndexOf(".") != -1)
+                    {
+                        tableName = tableName.Substring(tableName.IndexOf(".") + 1);
+                        //
+                        Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
+                        gridDataServer = new GridDataServer();
+                        gridDataServer.LoadDatabase("Detail", null, false, typeRow);
+                        gridDataServer.SaveJson(applicationJson);
+                    }
                 }
             }
         }
