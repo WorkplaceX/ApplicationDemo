@@ -39,7 +39,7 @@
             var gridDataJson = new GridDataJson();
             applicationJson.GridDataJson = gridDataJson;
             GridDataServer gridDataServer = new GridDataServer();
-            gridDataServer.LoadDatabase("Master", typeof(Database.dbo.TableName));
+            gridDataServer.LoadDatabase("Master", null, false, typeof(Database.dbo.TableName));
             gridDataServer.SaveJson(applicationJson);
         }
 
@@ -73,7 +73,7 @@
                     //
                     Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
                     gridDataServer = new GridDataServer();
-                    gridDataServer.LoadDatabase("Detail", typeRow);
+                    gridDataServer.LoadDatabase("Detail", null, false, typeRow);
                     gridDataServer.SaveJson(applicationJson);
                 }
             }
