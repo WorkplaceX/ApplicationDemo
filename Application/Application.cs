@@ -39,7 +39,7 @@
             var gridDataJson = new GridDataJson();
             applicationJson.GridDataJson = gridDataJson;
             GridDataServer gridDataServer = new GridDataServer();
-            gridDataServer.LoadDatabase("Master", null, false, typeof(Database.dbo.TableName));
+            gridDataServer.LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
             gridDataServer.SaveJson(applicationJson);
         }
 
@@ -65,18 +65,21 @@
             {
                 if (gridRow.IsClick)
                 {
-                    GridDataServer gridDataServer = new GridDataServer();
-                    gridDataServer.LoadJson(applicationJson, "Master", typeof(ApplicationServer));
-                    var row = gridDataServer.RowGet("Master", gridRow.Index).Row as Database.dbo.TableName;
-                    string tableName = row.TableName2;
-                    if (tableName != null && tableName.IndexOf(".") != -1)
+                    if (Util.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
                     {
-                        tableName = tableName.Substring(tableName.IndexOf(".") + 1);
-                        //
-                        Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
-                        gridDataServer = new GridDataServer();
-                        gridDataServer.LoadDatabase("Detail", null, false, typeRow);
-                        gridDataServer.SaveJson(applicationJson);
+                        GridDataServer gridDataServer = new GridDataServer();
+                        gridDataServer.LoadJson(applicationJson, "Master", typeof(ApplicationServer));
+                        var row = gridDataServer.RowGet("Master", gridRow.Index).Row as Database.dbo.TableName;
+                        string tableName = row.TableName2;
+                        if (tableName != null && tableName.IndexOf(".") != -1)
+                        {
+                            tableName = tableName.Substring(tableName.IndexOf(".") + 1);
+                            //
+                            Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
+                            gridDataServer = new GridDataServer();
+                            gridDataServer.LoadDatabase("Detail", null, null, false, typeRow);
+                            gridDataServer.SaveJson(applicationJson);
+                        }
                     }
                 }
             }
