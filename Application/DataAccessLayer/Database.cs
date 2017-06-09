@@ -22,3 +22,32 @@
     }
 
 }
+
+namespace Database
+{
+    using System;
+    using System.Collections.Generic;
+    using Framework.Server.DataAccessLayer;
+
+    [SqlName("MessageBox")]
+    public class MessageBox : Row
+    {
+        [SqlName("Text")]
+        [TypeCell(typeof(TableName_Text))]
+        public string Text { get; set; }
+
+        [SqlName("ButtonYes")]
+        [TypeCell(typeof(TableName_ButtonYes))]
+        public string ButtonYes { get; set; }
+
+        [SqlName("ButtonNo")]
+        [TypeCell(typeof(TableName_ButtonNo))]
+        public string ButtonNo { get; set; }
+    }
+
+    public class TableName_Text : Cell<MessageBox> { }
+
+    public class TableName_ButtonYes : Cell<MessageBox> { }
+
+    public class TableName_ButtonNo : Cell<MessageBox> { }
+}

@@ -10,6 +10,8 @@
     {
         protected override void ApplicationJsonInit(ApplicationJson applicationJson)
         {
+            applicationJson.GridDataJson = new GridDataJson();
+            //
             new GridKeyboard(applicationJson, "GridKeyboard");
             var container = new LayoutContainer(applicationJson, "Container") { Class = "co" };
             var rowLogo = new LayoutRow(container, "RowLogo") { Class = "r" };
@@ -36,10 +38,29 @@
             var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
             var button = new Button(cellFooter2, "Hello");
             //
-            var gridDataJson = new GridDataJson();
-            applicationJson.GridDataJson = gridDataJson;
+            MessageBoxInit(applicationJson);
+            //
             GridDataServer gridDataServer = new GridDataServer();
             gridDataServer.LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
+            gridDataServer.SaveJson(applicationJson);
+        }
+
+        private void MessageBoxInit(ApplicationJson applicationJson)
+        {
+            var container = new LayoutContainer(applicationJson, "Container");
+            // var row = new LayoutRow(container, "Row");
+            // var cell = new LayoutCell(row, "Cell1");
+            Grid grid = new Grid(applicationJson, "MessageBox", "MessageBox");
+            new GridField(applicationJson, "GridField", "MessageBox", "Text", "1");
+            new GridField(applicationJson, "GridField", "MessageBox", "ButtonYes", "1");
+            // grid.IsHide = true;
+            //
+            GridDataServer gridDataServer = new GridDataServer();
+            Database.MessageBox messageBox = new Database.MessageBox();
+            messageBox.Text = "Delete record?";
+            messageBox.ButtonYes = "Yes";
+            messageBox.ButtonNo = "No";
+            gridDataServer.LoadRow("MessageBox", messageBox);
             gridDataServer.SaveJson(applicationJson);
         }
 
