@@ -21,6 +21,10 @@
         }
     }
 
+    public partial class ImportName : Row
+    {
+        public string ButtonDelete { get; set; }
+    }
 }
 
 namespace Database
