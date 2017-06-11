@@ -23,7 +23,16 @@
 
     public partial class ImportName : Row
     {
+        [TypeCell(typeof(ImportName_ButtonDelete))]
         public string ButtonDelete { get; set; }
+    }
+
+    public partial class ImportName_ButtonDelete : Cell<ImportName>
+    {
+        protected override void CellProcessButtonIsClick()
+        {
+            var d = this.Row;
+        }
     }
 }
 

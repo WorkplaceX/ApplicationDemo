@@ -90,7 +90,7 @@
                     {
                         GridDataServer gridDataServer = new GridDataServer();
                         gridDataServer.LoadJson(applicationJson, "Master", typeof(ApplicationServer));
-                        var row = gridDataServer.RowGet("Master", gridRow.Index).Row as Database.dbo.TableName;
+                        var row = gridDataServer.Row("Master", gridRow.Index) as Database.dbo.TableName;
                         string tableName = row.TableName2;
                         if (tableName != null && tableName.IndexOf(".") != -1)
                         {
