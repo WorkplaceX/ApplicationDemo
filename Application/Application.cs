@@ -70,6 +70,11 @@
             ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridRowFirstIsClick(this));
             ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridMasterIsClick(this));
         }
+
+        protected override Type TypePageServerMain()
+        {
+            return typeof(PageServerMain);
+        }
     }
 
     public class ProcessGridMasterIsClick : ProcessBase
@@ -103,6 +108,104 @@
                         }
                     }
                 }
+            }
+        }
+    }
+
+    public class PageServerMain : PageServer
+    {
+        protected override void ProcessApplicationJsonInit()
+        {
+            new Button(ApplicationJson, "Delete") { TypeNamePage = TypeNamePageServer() };
+        }
+
+
+        protected override void ProcessPage()
+        {
+            bool isClick = false;
+            foreach (Component component in ApplicationJson.List)
+            {
+                Button button = component as Button;
+                if (button != null)
+                {
+                    if (button.TypeNamePage == TypeNamePageServer() && button.IsClick)
+                    {
+                        isClick = true;
+                        break;
+                    }
+                }
+            }
+            if (isClick)
+            {
+                var messageBox = ApplicationServer.PageServer<PageServerMessageBox>();
+                messageBox.Init(GetType());
+                messageBox.Process();
+            }
+        }
+    }
+
+    public class PageServerMessageBox : PageServer
+    {
+        public void Init(Type typePageServerReturn)
+        {
+            ReturnTypeNamePageServer = Framework.Util.TypeToTypeName(typePageServerReturn);
+            Show();
+        }
+
+        protected override void ProcessApplicationJsonInit()
+        {
+            new Label(ApplicationJson, "Delete item?") { TypeNamePage = TypeNamePageServer() };
+            new Button(ApplicationJson, "Yes") { TypeNamePage = TypeNamePageServer() };
+            new Button(ApplicationJson, "No") { TypeNamePage = TypeNamePageServer() };
+            Show();
+        }
+
+        protected override void ProcessPage()
+        {
+            bool isClick = false;
+            string text = null;
+            foreach (Component component in ApplicationJson.List)
+            {
+                Button button = component as Button;
+                if (button != null)
+                {
+                    if (button.TypeNamePage == TypeNamePageServer() && button.IsClick)
+                    {
+                        text = button.Text;
+                        isClick = true;
+                        break;
+                    }
+                }
+            }
+            if (isClick)
+            {
+                ReturnText = text;
+                Type typePageServer = Framework.Util.TypeFromTypeName(ReturnTypeNamePageServer, ApplicationServer.GetType());
+                ApplicationServer.PageServer(typePageServer).Show();
+            }
+        }
+
+        public string ReturnTypeNamePageServer
+        {
+            get
+            {
+                return StateGet<string>(nameof(ReturnTypeNamePageServer));
+            }
+            set
+            {
+                StateSet(nameof(ReturnTypeNamePageServer), value);
+            }
+        }
+
+        public string ReturnText
+        {
+            get
+            {
+                return StateGet<string>(nameof(ReturnText));
+            }
+            set
+            {
+                StateSet(nameof(ReturnText), value);
             }
         }
     }
