@@ -10,9 +10,10 @@
         protected override void ProcessInit()
         {
             base.ProcessInit();
+            ProcessList.AddBefore<ProcessGridMasterIsClick2, ProcessGridIsClickFalse>();
         }
 
-        protected override void ProcessApplicationJsonInit()
+        protected override void ApplicationJsonInit()
         {
             ApplicationJson.GridDataJson = new GridDataJson();
             //
@@ -63,15 +64,15 @@
             }
             if (isClick && name == "Close")
             {
-                Application.PageRemove<PageDatabaseBrowse>();
-                Application.Page<PageMain>().Show();
+                Application.PageRemove(GetType());
+                Application.PageShow<PageMain>();
             }
         }
     }
 
     public class PageMain : Page
     {
-        protected override void ProcessApplicationJsonInit()
+        protected override void ApplicationJsonInit()
         {
             new Button(ApplicationJson, "Delete") { TypePage = TypePage(), Name = "D" };
             new Button(ApplicationJson, "Browse") { TypePage = TypePage(), Name = "B" };
@@ -97,15 +98,11 @@
             }
             if (isClick && name == "D")
             {
-                var messageBox = Application.Page<PageMessageBox>();
-                messageBox.Init(GetType());
-                messageBox.Process();
+                Application.PageShow<PageMessageBox>().Init(GetType());
             }
             if (isClick && name == "B")
             {
-                var page = Application.Page<PageDatabaseBrowse>();
-                page.Show();
-                page.Process();
+                Application.PageShow<PageDatabaseBrowse>();
             }
         }
     }
@@ -115,15 +112,13 @@
         public void Init(Type typePageReturn)
         {
             ReturnTypePage = Framework.Util.TypeToString(typePageReturn);
-            Show();
         }
 
-        protected override void ProcessApplicationJsonInit()
+        protected override void ApplicationJsonInit()
         {
             new Label(ApplicationJson, "Delete item?") { TypePage = TypePage() };
             new Button(ApplicationJson, "Yes") { TypePage = TypePage() };
             new Button(ApplicationJson, "No") { TypePage = TypePage() };
-            Show();
         }
 
         protected override void ProcessPage()
@@ -147,7 +142,8 @@
             {
                 ReturnText = text;
                 Type typePage = Framework.Util.TypeFromString(ReturnTypePage, Application.GetType());
-                Application.Page(typePage).Show();
+                Application.PageRemove(GetType());
+                Application.PageShow(typePage);
             }
         }
 
@@ -172,6 +168,33 @@
             set
             {
                 StateSet(nameof(ReturnText), value);
+            }
+        }
+    }
+
+    public class ProcessGridMasterIsClick2 : Process2Base<PageGrid>
+    {
+        protected override void Process()
+        {
+            foreach (GridRow gridRow in ApplicationJson.GridDataJson.RowList["Master"])
+            {
+                if (gridRow.IsClick)
+                {
+                    if (Util.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
+                    {
+                        GridData gridData = Page.GridData();
+                        var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
+                        string tableName = row.TableName2;
+                        if (tableName != null && tableName.IndexOf(".") != -1)
+                        {
+                            tableName = tableName.Substring(tableName.IndexOf(".") + 1);
+                            //
+                            Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(Application));
+                            gridData.LoadDatabase("Detail", null, null, false, typeRow);
+                            gridData.SaveJson(ApplicationJson);
+                        }
+                    }
+                }
             }
         }
     }
