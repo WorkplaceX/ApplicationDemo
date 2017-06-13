@@ -5,7 +5,7 @@
     using System;
     using System.Linq;
 
-    public class PageServerDatabaseBrowse : PageServerGridData
+    public class PageDatabaseBrowse : PageGrid
     {
         protected override void ProcessInit()
         {
@@ -17,8 +17,8 @@
             ApplicationJson.GridDataJson = new GridDataJson();
             //
             new GridKeyboard(ApplicationJson, "GridKeyboard");
-            new Button(ApplicationJson, "Close") { Name = "Close", TypeNamePageServer = TypeNamePageServer() };
-            var container = new LayoutContainer(ApplicationJson, "Container") { Class = "co", TypeNamePageServer = TypeNamePageServer() };
+            new Button(ApplicationJson, "Close") { Name = "Close", TypePage = TypePage() };
+            var container = new LayoutContainer(ApplicationJson, "Container") { Class = "co", TypePage = TypePage() };
             var rowLogo = new LayoutRow(container, "RowLogo") { Class = "r" };
             var literalLogo = new Literal(rowLogo, "Logo");
             literalLogo.Html = "<img src='Logo.png' />";
@@ -43,9 +43,9 @@
             var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
             var button = new Button(cellFooter2, "Hello");
             //
-            GridDataServer gridDataServer = new GridDataServer();
-            gridDataServer.LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
-            gridDataServer.SaveJson(ApplicationJson);
+            GridData gridData = new GridData();
+            gridData.LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
+            gridData.SaveJson(ApplicationJson);
         }
 
         protected override void ProcessPage()
@@ -63,18 +63,18 @@
             }
             if (isClick && name == "Close")
             {
-                ApplicationServer.PageServerRemove<PageServerDatabaseBrowse>();
-                ApplicationServer.PageServer<PageServerMain>().Show();
+                Application.PageRemove<PageDatabaseBrowse>();
+                Application.Page<PageMain>().Show();
             }
         }
     }
 
-    public class PageServerMain : PageServer
+    public class PageMain : Page
     {
         protected override void ProcessApplicationJsonInit()
         {
-            new Button(ApplicationJson, "Delete") { TypeNamePageServer = TypeNamePageServer(), Name = "D" };
-            new Button(ApplicationJson, "Browse") { TypeNamePageServer = TypeNamePageServer(), Name = "B" };
+            new Button(ApplicationJson, "Delete") { TypePage = TypePage(), Name = "D" };
+            new Button(ApplicationJson, "Browse") { TypePage = TypePage(), Name = "B" };
         }
 
 
@@ -87,7 +87,7 @@
                 Button button = component as Button;
                 if (button != null)
                 {
-                    if (button.TypeNamePageServer == TypeNamePageServer() && button.IsClick)
+                    if (button.TypePage == TypePage() && button.IsClick)
                     {
                         isClick = true;
                         name = button.Name;
@@ -97,32 +97,32 @@
             }
             if (isClick && name == "D")
             {
-                var messageBox = ApplicationServer.PageServer<PageServerMessageBox>();
+                var messageBox = Application.Page<PageMessageBox>();
                 messageBox.Init(GetType());
                 messageBox.Process();
             }
             if (isClick && name == "B")
             {
-                var page = ApplicationServer.PageServer<PageServerDatabaseBrowse>();
+                var page = Application.Page<PageDatabaseBrowse>();
                 page.Show();
                 page.Process();
             }
         }
     }
 
-    public class PageServerMessageBox : PageServer
+    public class PageMessageBox : Page
     {
-        public void Init(Type typePageServerReturn)
+        public void Init(Type typePageReturn)
         {
-            ReturnTypeNamePageServer = Framework.Util.TypeToTypeName(typePageServerReturn);
+            ReturnTypePage = Framework.Util.TypeToString(typePageReturn);
             Show();
         }
 
         protected override void ProcessApplicationJsonInit()
         {
-            new Label(ApplicationJson, "Delete item?") { TypeNamePageServer = TypeNamePageServer() };
-            new Button(ApplicationJson, "Yes") { TypeNamePageServer = TypeNamePageServer() };
-            new Button(ApplicationJson, "No") { TypeNamePageServer = TypeNamePageServer() };
+            new Label(ApplicationJson, "Delete item?") { TypePage = TypePage() };
+            new Button(ApplicationJson, "Yes") { TypePage = TypePage() };
+            new Button(ApplicationJson, "No") { TypePage = TypePage() };
             Show();
         }
 
@@ -135,7 +135,7 @@
                 Button button = component as Button;
                 if (button != null)
                 {
-                    if (button.TypeNamePageServer == TypeNamePageServer() && button.IsClick)
+                    if (button.TypePage == TypePage() && button.IsClick)
                     {
                         text = button.Text;
                         isClick = true;
@@ -146,20 +146,20 @@
             if (isClick)
             {
                 ReturnText = text;
-                Type typePageServer = Framework.Util.TypeFromTypeName(ReturnTypeNamePageServer, ApplicationServer.GetType());
-                ApplicationServer.PageServer(typePageServer).Show();
+                Type typePage = Framework.Util.TypeFromString(ReturnTypePage, Application.GetType());
+                Application.Page(typePage).Show();
             }
         }
 
-        public string ReturnTypeNamePageServer
+        public string ReturnTypePage
         {
             get
             {
-                return StateGet<string>(nameof(ReturnTypeNamePageServer));
+                return StateGet<string>(nameof(ReturnTypePage));
             }
             set
             {
-                StateSet(nameof(ReturnTypeNamePageServer), value);
+                StateSet(nameof(ReturnTypePage), value);
             }
         }
 

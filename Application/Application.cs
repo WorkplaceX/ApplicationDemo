@@ -6,7 +6,7 @@
     using System.Collections.Generic;
     using Framework.Server.Application.Json;
 
-    public class ApplicationServer : ApplicationServerBase
+    public class Application : ApplicationBase
     {
         protected override void ApplicationJsonInit(ApplicationJson applicationJson)
         {
@@ -40,9 +40,9 @@
             //
             MessageBoxInit(applicationJson);
             //
-            GridDataServer gridDataServer = new GridDataServer();
-            gridDataServer.LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
-            gridDataServer.SaveJson(applicationJson);
+            GridData gridData = new GridData();
+            gridData.LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
+            gridData.SaveJson(applicationJson);
         }
 
         private void MessageBoxInit(ApplicationJson applicationJson)
@@ -55,13 +55,13 @@
             new GridField(applicationJson, "GridField", "MessageBox", "ButtonYes", "1");
             // grid.IsHide = true;
             //
-            GridDataServer gridDataServer = new GridDataServer();
+            GridData gridData = new GridData();
             Database.MessageBox messageBox = new Database.MessageBox();
             messageBox.Text = "Delete record?";
             messageBox.ButtonYes = "Yes";
             messageBox.ButtonNo = "No";
-            gridDataServer.LoadRow("MessageBox", messageBox);
-            gridDataServer.SaveJson(applicationJson);
+            gridData.LoadRow("MessageBox", messageBox);
+            gridData.SaveJson(applicationJson);
         }
 
         protected override void ProcessInit()
@@ -71,16 +71,16 @@
             ProcessListInsertAfter<ProcessGridIsIsClick>(new ProcessGridMasterIsClick(this));
         }
 
-        protected override Type TypePageServerMain()
+        protected override Type TypePageMain()
         {
-            return typeof(PageServerMain);
+            return typeof(PageMain);
         }
     }
 
     public class ProcessGridMasterIsClick : ProcessBase
     {
-        public ProcessGridMasterIsClick(ApplicationServerBase applicationServer) :
-            base(applicationServer)
+        public ProcessGridMasterIsClick(ApplicationBase application) :
+            base(application)
         {
 
         }
@@ -93,18 +93,18 @@
                 {
                     if (Util.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
                     {
-                        GridDataServer gridDataServer = new GridDataServer();
-                        gridDataServer.LoadJson(applicationJson, "Master", typeof(ApplicationServer));
-                        var row = gridDataServer.Row("Master", gridRow.Index) as Database.dbo.TableName;
+                        GridData gridData = new GridData();
+                        gridData.LoadJson(applicationJson, "Master", typeof(Application));
+                        var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
                         string tableName = row.TableName2;
                         if (tableName != null && tableName.IndexOf(".") != -1)
                         {
                             tableName = tableName.Substring(tableName.IndexOf(".") + 1);
                             //
-                            Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(ApplicationServer));
-                            gridDataServer = new GridDataServer();
-                            gridDataServer.LoadDatabase("Detail", null, null, false, typeRow);
-                            gridDataServer.SaveJson(applicationJson);
+                            Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(Application));
+                            gridData = new GridData();
+                            gridData.LoadDatabase("Detail", null, null, false, typeRow);
+                            gridData.SaveJson(applicationJson);
                         }
                     }
                 }

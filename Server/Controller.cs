@@ -9,7 +9,7 @@
         [Route(Startup.RoutePath + "{*uri}")]
         public async Task<IActionResult> Web()
         {
-            return await Framework.Server.Util.ControllerWebRequest(this, Startup.RoutePath, new ApplicationServer());
+            return await Framework.Server.Util.ControllerWebRequest(this, Startup.RoutePath, new Application());
         }
     }
 }
