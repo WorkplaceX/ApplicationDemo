@@ -4,13 +4,14 @@
     using Framework.Server.Application.Json;
     using System;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
-    public class PageDatabaseBrowse : PageGrid
+    public class PageGridDatabaseBrowse : PageGrid
     {
         protected override void ProcessInit()
         {
             base.ProcessInit();
-            ProcessList.AddBefore<ProcessGridMasterIsClick2, ProcessGridIsClickFalse>();
+            ProcessList.AddBefore<ProcessGridMasterIsClick, ProcessGridIsClickFalse>();
         }
 
         protected override void ApplicationJsonInit()
@@ -74,8 +75,8 @@
     {
         protected override void ApplicationJsonInit()
         {
-            new Button(ApplicationJson, "Delete") { TypePage = TypePage(), Name = "D" };
             new Button(ApplicationJson, "Browse") { TypePage = TypePage(), Name = "B" };
+            new Button(ApplicationJson, "About") { TypePage = TypePage(), Name = "A" };
         }
 
 
@@ -96,27 +97,64 @@
                     }
                 }
             }
-            if (isClick && name == "D")
-            {
-                Application.PageShow<PageMessageBox>().Init(GetType());
-            }
             if (isClick && name == "B")
             {
-                Application.PageShow<PageDatabaseBrowse>();
+                Application.PageShow<PageGridDatabaseBrowse>();
+            }
+            if (isClick && name == "A")
+            {
+                Application.PageShow<PageMessageBoxAbout>();
             }
         }
     }
 
-    public class PageMessageBox : Page
+    public class PageMessageBoxAbout : Page
     {
-        public void Init(Type typePageReturn)
+        protected override void ApplicationJsonInit()
         {
-            ReturnTypePage = Framework.Util.TypeToString(typePageReturn);
+            new Label(ApplicationJson, "(C) 2017 by Framework") { TypePage = TypePage() };
+            new Button(ApplicationJson, "Ok") { TypePage = TypePage() };
         }
+
+        protected override void ProcessPage()
+        {
+            bool isClick = false;
+            string text = null;
+            foreach (Component component in ApplicationJson.List)
+            {
+                Button button = component as Button;
+                if (button != null)
+                {
+                    if (button.TypePage == TypePage() && button.IsClick)
+                    {
+                        text = button.Text;
+                        isClick = true;
+                        break;
+                    }
+                }
+            }
+            if (isClick)
+            {
+                Application.PageShow<PageMain>();
+            }
+        }
+    }
+
+    public class PageMessageBoxDelete : Page
+    {
+        public void Init(string gridName, string index)
+        {
+            this.GridName = gridName;
+            this.Index = index;
+            //
+            label.Text = string.Format("Delete? ({0})", ((Database.dbo.ImportName)GridData().Row(gridName, index)).Name);
+        }
+
+        private Label label;
 
         protected override void ApplicationJsonInit()
         {
-            new Label(ApplicationJson, "Delete item?") { TypePage = TypePage() };
+            label = new Label(ApplicationJson, null) { TypePage = TypePage() };
             new Button(ApplicationJson, "Yes") { TypePage = TypePage() };
             new Button(ApplicationJson, "No") { TypePage = TypePage() };
         }
@@ -140,39 +178,40 @@
             }
             if (isClick)
             {
-                ReturnText = text;
-                Type typePage = Framework.Util.TypeFromString(ReturnTypePage, Application.GetType());
+                GridData().LoadRow("Detail", null);
+                GridData().SaveJson(ApplicationJson);
+                //
                 Application.PageRemove(GetType());
-                Application.PageShow(typePage);
+                Application.PageShow<PageGridDatabaseBrowse>();
             }
         }
 
-        public string ReturnTypePage
+        public string GridName
         {
             get
             {
-                return StateGet<string>(nameof(ReturnTypePage));
+                return StateGet<string>();
             }
             set
             {
-                StateSet(nameof(ReturnTypePage), value);
+                StateSet(value);
             }
         }
 
-        public string ReturnText
+        public string Index
         {
             get
             {
-                return StateGet<string>(nameof(ReturnText));
+                return StateGet<string>();
             }
             set
             {
-                StateSet(nameof(ReturnText), value);
+                StateSet(value);
             }
         }
     }
 
-    public class ProcessGridMasterIsClick2 : ProcessBase<PageGrid>
+    public class ProcessGridMasterIsClick : ProcessBase<PageGrid>
     {
         protected override void Process()
         {

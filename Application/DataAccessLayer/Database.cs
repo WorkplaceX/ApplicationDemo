@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Framework.Server.DataAccessLayer;
+    using Application;
 
     public partial class AirportDisplay_AirportId
     {
@@ -29,38 +30,9 @@
 
     public partial class ImportName_ButtonDelete : Cell<ImportName>
     {
-        protected override void CellProcessButtonIsClick()
+        protected override void CellProcessButtonIsClick(Framework.Server.Application.PageGrid pageGrid, string gridName, string index, string fieldName)
         {
-            var d = this.Row;
+            pageGrid.Application.PageShow<PageMessageBoxDelete>(false).Init(gridName, index);
         }
     }
-}
-
-namespace Database
-{
-    using System;
-    using System.Collections.Generic;
-    using Framework.Server.DataAccessLayer;
-
-    [SqlName("MessageBox")]
-    public class MessageBox : Row
-    {
-        [SqlName("Text")]
-        [TypeCell(typeof(TableName_Text))]
-        public string Text { get; set; }
-
-        [SqlName("ButtonYes")]
-        [TypeCell(typeof(TableName_ButtonYes))]
-        public string ButtonYes { get; set; }
-
-        [SqlName("ButtonNo")]
-        [TypeCell(typeof(TableName_ButtonNo))]
-        public string ButtonNo { get; set; }
-    }
-
-    public class TableName_Text : Cell<MessageBox> { }
-
-    public class TableName_ButtonYes : Cell<MessageBox> { }
-
-    public class TableName_ButtonNo : Cell<MessageBox> { }
 }
