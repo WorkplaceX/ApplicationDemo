@@ -8,10 +8,10 @@
 
     public class PageGridDatabaseBrowse : PageGrid
     {
-        protected override void ProcessInit()
+        protected override void ProcessInit(ProcessList processList)
         {
-            base.ProcessInit();
-            ProcessList.AddBefore<ProcessGridMasterIsClick, ProcessGridIsClickFalse>();
+            base.ProcessInit(processList);
+            processList.AddBefore<ProcessGridMasterIsClick, ProcessGridIsClickFalse>();
         }
 
         protected override void ApplicationJsonInit()
@@ -147,7 +147,7 @@
             this.GridName = gridName;
             this.Index = index;
             //
-            label.Text = string.Format("Delete? ({0})", ((Database.dbo.ImportName)GridData().Row(gridName, index)).Name);
+            label.Text = string.Format("Delete? ({0})", ((Database.dbo.ImportName)Application.GridData().Row(gridName, index)).Name);
         }
 
         private Label label;
@@ -178,8 +178,8 @@
             }
             if (isClick)
             {
-                GridData().LoadRow("Detail", null);
-                GridData().SaveJson(ApplicationJson);
+                Application.GridData().LoadRow("Detail", null);
+                Application.GridData().SaveJson(ApplicationJson);
                 //
                 Application.PageRemove(GetType());
                 Application.PageShow<PageGridDatabaseBrowse>();
@@ -221,7 +221,7 @@
                 {
                     if (Util.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
                     {
-                        GridData gridData = Page.GridData();
+                        GridData gridData = Application.GridData();
                         var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
                         string tableName = row.TableName2;
                         if (tableName != null && tableName.IndexOf(".") != -1)
