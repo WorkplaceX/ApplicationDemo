@@ -211,7 +211,7 @@
         }
     }
 
-    public class ProcessGridMasterIsClick : ProcessBase<PageGrid>
+    public class ProcessGridMasterIsClick : ProcessBase
     {
         protected override void Process()
         {

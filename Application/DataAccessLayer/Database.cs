@@ -30,9 +30,9 @@
 
     public partial class ImportName_ButtonDelete : Cell<ImportName>
     {
-        protected override void CellProcessButtonIsClick(Framework.Server.Application.PageGrid pageGrid, string gridName, string index, string fieldName)
+        protected override void CellProcessButtonIsClick(Framework.Server.Application.Page page, string gridName, string index, string fieldName)
         {
-            pageGrid.Application.PageShow<PageMessageBoxDelete>(false).Init(gridName, index);
+            page.Application.PageShow<PageMessageBoxDelete>(false).Init(gridName, index);
         }
     }
 }
