@@ -9,5 +9,10 @@
         {
             return typeof(PageMain);
         }
+
+        protected override Type TypePage2Main()
+        {
+            return typeof(PageMain2);
+        }
     }
 }

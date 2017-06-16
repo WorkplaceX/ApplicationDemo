@@ -71,6 +71,44 @@
         }
     }
 
+    public class PageMain2 : Page2
+    {
+        protected override void Init(ApplicationBase applicationBase)
+        {
+            new Button(this, "About2");
+        }
+
+        public Button ButtonAbout()
+        {
+            return (Button)List[0];
+        }
+
+        protected override void ProcessBegin(ApplicationBase application)
+        {
+            if (ButtonAbout().IsClick)
+            {
+                Page2Show<PageMessageBoxAbout2>(application);
+            }
+        }
+    }
+
+    public class PageMessageBoxAbout2 : Page2
+    {
+        protected override void Init(ApplicationBase applicationBase)
+        {
+            new Label(this, "(C) 2017 by Framework2");
+            new Button(this, "Ok");
+        }
+
+        protected override void ProcessBegin(ApplicationBase application)
+        {
+            if (List.OfType<Button>().First().IsClick)
+            {
+                Page2Show<PageMain2>(application);
+            }
+        }
+    }
+
     public class PageMain : Page
     {
         protected override void ApplicationJsonInit()
