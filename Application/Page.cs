@@ -77,6 +77,7 @@
         {
             new Button(ApplicationJson, "Browse") { TypePage = TypePage(), Name = "B" };
             new Button(ApplicationJson, "About") { TypePage = TypePage(), Name = "A" };
+            new Button(ApplicationJson, "Debug") { TypePage = TypePage(), Name = "D" };
         }
 
 
@@ -104,6 +105,10 @@
             if (isClick && name == "A")
             {
                 Application.PageShow<PageMessageBoxAbout>();
+            }
+            if (isClick && name == "D")
+            {
+                Application.PageShow<PageDebug>();
             }
         }
     }
@@ -234,6 +239,58 @@
                         }
                     }
                 }
+            }
+        }
+    }
+
+    public class PageDebug : Page
+    {
+        protected override void ApplicationJsonInit()
+        {
+            // var p = new PageComponent(ApplicationJson, "Process") { TypePage = TypePage() };
+            new Button(ApplicationJson, "Toggle X") { TypePage = TypePage() };
+            new Button(ApplicationJson, "Remove Y") { TypePage = TypePage() };
+            new Button(ApplicationJson, "X") { TypePage = TypePage() };
+            new Button(ApplicationJson, "Y") { TypePage = TypePage() };
+            new Button(ApplicationJson, "Reset") { TypePage = TypePage() };
+            new Button(ApplicationJson, "Close") { TypePage = TypePage() };
+
+            //new Label(p, "Hello");
+
+            //var layoutContainer = new LayoutContainer(ApplicationJson, "Container");
+            //var rowHeader = new LayoutRow(layoutContainer, null);
+            //var cell1 = new LayoutCell(rowHeader, "Cell1");// { Class = "col-sm-6" };
+            //new Label(cell1, "Cell1 Content");
+            //var cell2 = new LayoutCell(rowHeader, "Cell2");// { Class = "col-sm-6" };
+            //new Label(cell2, "Cell2 Content");
+            //new Button(p, "P2");
+            //new Button(ApplicationJson, "Browse") { TypePage = TypePage(), Name = "B" };
+            //new Button(ApplicationJson, "About") { TypePage = TypePage(), Name = "A" };
+        }
+
+        protected override void ProcessPage()
+        {
+            if (ApplicationJson.ListAll<Button>()[0].IsClick)
+            {
+                ApplicationJson.ListAll<Button>()[2].IsHide = !ApplicationJson.ListAll<Button>()[2].IsHide;
+            }
+            if (ApplicationJson.ListAll<Button>()[1].IsClick)
+            {
+                ApplicationJson.List.Remove(ApplicationJson.ListAll<Button>()[3]);
+            }
+            if (ApplicationJson.ListAll<Button>()[3].IsClick)
+            {
+                ApplicationJson.List.Clear();
+                new Button(ApplicationJson, "Toggle X") { TypePage = TypePage() };
+                new Button(ApplicationJson, "Remove Y") { TypePage = TypePage() };
+                new Button(ApplicationJson, "X") { TypePage = TypePage() };
+                new Button(ApplicationJson, "Y") { TypePage = TypePage() };
+                new Button(ApplicationJson, "Reset") { TypePage = TypePage() };
+                new Button(ApplicationJson, "Close") { TypePage = TypePage() };
+            }
+            if (ApplicationJson.ListAll<Button>().Count > 5 && ApplicationJson.ListAll<Button>()[5].IsClick)
+            {
+                Application.PageShow<PageMain>();
             }
         }
     }
