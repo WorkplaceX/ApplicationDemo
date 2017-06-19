@@ -13,7 +13,7 @@
             new Label(this, null);
         }
 
-        protected override void ProcessEnd()
+        protected override void RunEnd()
         {
             List.OfType<Label>().Single().Text = "IsModify=";
         }
@@ -55,7 +55,7 @@
             application.GridData().SaveJson(application.ApplicationJson);
         }
 
-        protected override void ProcessBegin(ApplicationBase application)
+        protected override void RunBegin(ApplicationBase application)
         {
             bool isClick = false;
             string name = null;
@@ -85,7 +85,7 @@
             
         }
 
-        protected override void ProcessBegin(ApplicationBase application)
+        protected override void RunBegin(ApplicationBase application)
         {
             if (List.OfType<Button>().ToArray()[0].IsClick)
             {
@@ -110,7 +110,7 @@
             new Button(this, "Ok");
         }
 
-        protected override void ProcessBegin(ApplicationBase application)
+        protected override void RunBegin(ApplicationBase application)
         {
             if (List.OfType<Button>().First().IsClick)
             {
@@ -138,7 +138,7 @@
             label.Text = string.Format("Delete? ({0})", ((Database.dbo.ImportName)application.GridData().Row(gridName, index)).Name);
         }
 
-        protected override void ProcessBegin(ApplicationBase application)
+        protected override void RunBegin(ApplicationBase application)
         {
             bool isClick = false;
             foreach (Button button in List.OfType<Button>())
@@ -164,12 +164,12 @@
         public string Index;
     }
 
-    public class ProcessGridMasterIsClick : ProcessBase
+    public class ProcessGridMasterIsClick : Process
     {
-        protected override void Process()
+        protected override void Run(ApplicationBase application)
         {
             List<GridRow> rowList;
-            if (ApplicationJson.GridDataJson.RowList.TryGetValue("Master", out rowList))
+            if (application.ApplicationJson.GridDataJson.RowList.TryGetValue("Master", out rowList))
             {
                 foreach (GridRow gridRow in rowList)
                 {
@@ -177,7 +177,7 @@
                     {
                         if (Util.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
                         {
-                            GridData gridData = Application.GridData();
+                            GridData gridData = application.GridData();
                             var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
                             string tableName = row.TableName2;
                             if (tableName != null && tableName.IndexOf(".") != -1)
@@ -186,7 +186,7 @@
                                 //
                                 Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(Application));
                                 gridData.LoadDatabase("Detail", null, null, false, typeRow);
-                                gridData.SaveJson(ApplicationJson);
+                                gridData.SaveJson(application.ApplicationJson);
                             }
                         }
                     }
@@ -213,7 +213,7 @@
         }
 
 
-        protected override void ProcessBegin(ApplicationBase application)
+        protected override void RunBegin(ApplicationBase application)
         {
             if (Button("Toggle X")?.IsClick == true)
             {
