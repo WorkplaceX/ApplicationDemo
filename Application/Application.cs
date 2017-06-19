@@ -5,14 +5,15 @@
 
     public class Application : ApplicationBase
     {
+        protected override void ProcessInit(ProcessList processList)
+        {
+            base.ProcessInit(processList);
+            processList.AddBefore<ProcessGridMasterIsClick, ProcessGridIsClickFalse>();
+        }
+
         protected override Type TypePageMain()
         {
             return typeof(PageMain);
-        }
-
-        protected override Type TypePage2Main()
-        {
-            return typeof(PageMain2);
         }
     }
 }

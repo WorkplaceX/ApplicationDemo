@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Framework.Server.DataAccessLayer;
     using Application;
+    using Framework.Server.Application;
 
     public partial class AirportDisplay_AirportId
     {
@@ -18,7 +19,7 @@
         protected override void LookUp(out Type typeRow, out List<Row> rowList)
         {
             typeRow = typeof(Database.dbo.LoRole);
-            rowList = Util.Select(typeRow, null, null, false, 0, 5);
+            rowList = Framework.Server.DataAccessLayer.Util.Select(typeRow, null, null, false, 0, 5);
         }
     }
 
@@ -30,9 +31,9 @@
 
     public partial class ImportName_ButtonDelete : Cell<ImportName>
     {
-        protected override void CellProcessButtonIsClick(Framework.Server.Application.Page page, string gridName, string index, string fieldName)
+        protected override void CellProcessButtonIsClick(ApplicationBase application, string gridName, string index, string fieldName)
         {
-            page.Application.PageShow<PageMessageBoxDelete>(false).Init(gridName, index);
+            application.PageShow<PageMessageBoxDelete>(application.ApplicationJson).Init(application, gridName, index);
         }
     }
 }
