@@ -25,30 +25,34 @@
         {
             new GridKeyboard(this, "GridKeyboard");
             new Button(this, "Close") { Name = "Close"};
-            var container = new LayoutContainer(this, "Container") { Class = "co"};
-            var rowLogo = new LayoutRow(container, "RowLogo") { Class = "r" };
+            this.CssClass = "container co";
+            var container = this;
+            var rowLogo = new LayoutRow(container, "RowLogo") { CssClass = "r" };
             var literalLogo = new Literal(rowLogo, "Logo");
             literalLogo.Html = "<img src='Logo.png' />";
-            var rowHeader = new LayoutRow(container, "Header") { Class = "r" };
-            var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1") { Class = "c" };
+            // Row
+            var rowHeader = new LayoutRow(container, "Header") { CssClass = "r" };
+            var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1") { CssClass = "col-sm-6" };
             new GridField(cellHeader1, "Field", null, null, null);
-            var cellHeader2 = new LayoutCell(rowHeader, "HeaderCell2") { Class = "c" };
+            var cellHeader2 = new LayoutCell(rowHeader, "HeaderCell2") { CssClass = "col-sm-6 c" };
             new Grid(cellHeader2, "LookUp", "LookUp");
-            var rowHeader2 = new LayoutRow(container, "Header") { Class = "r" };
-            var cellHeader3 = new LayoutCell(rowHeader, "HeaderCell3") { Class = "c" };
+            // Row
+            var rowHeader2 = new LayoutRow(container, "Header") { CssClass = "r" };
+            var cellHeader3 = new LayoutCell(rowHeader2, "HeaderCell3") { CssClass = "col-sm-12 c" };
             app.PageShow<GridTrafficLight>(cellHeader3);
-            // new LabelGridSaveState(cellHeader3, "GridSaveState"); // TODO
+            // Row
             var rowContent = new LayoutRow(container, "Content");
-            var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { Class = "c" };
-            var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { Class = "c2" };
+            var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { CssClass = "col-sm-6 c d1" };
+            var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { CssClass = "col-sm-6 c2 d2" };
             new Grid(cellContent1, "Master", "Master");
             new Grid(cellContent2, "Detail", "Detail");
+
             var rowFooter = new LayoutRow(container, "Footer");
-            var cellFooter1 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
+            var cellFooter1 = new LayoutCell(rowFooter, "FooterCell1") { CssClass = "col-sm-6 c" };
             var literal = new Literal(cellFooter1, "Literal");
             literal.Html = "Hello <b>Literal</b>";
-            literal.Class = "y";
-            var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
+            literal.CssClass = "y";
+            var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { CssClass = "col-sm-6 c" };
             var button = new Button(cellFooter2, "Hello");
             //
             app.GridData().LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
@@ -79,10 +83,10 @@
     {
         protected override void InitJson(App app)
         {
+            this.CssClass = "container";
             new Button(this, "Browse");
             new Button(this, "Debug");
             new Button(this, "About");
-            
         }
 
         protected override void RunBegin(App app)
