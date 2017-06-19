@@ -8,7 +8,7 @@
 
     public class GridTrafficLight : Page
     {
-        protected override void InitJson(ApplicationBase application)
+        protected override void InitJson(App app)
         {
             new Label(this, null);
         }
@@ -21,7 +21,7 @@
 
     public class PageGridDatabaseBrowse : Page
     {
-        protected override void InitJson(ApplicationBase application)
+        protected override void InitJson(App app)
         {
             new GridKeyboard(this, "GridKeyboard");
             new Button(this, "Close") { Name = "Close"};
@@ -36,7 +36,7 @@
             new Grid(cellHeader2, "LookUp", "LookUp");
             var rowHeader2 = new LayoutRow(container, "Header") { Class = "r" };
             var cellHeader3 = new LayoutCell(rowHeader, "HeaderCell3") { Class = "c" };
-            application.PageShow<GridTrafficLight>(cellHeader3);
+            app.PageShow<GridTrafficLight>(cellHeader3);
             // new LabelGridSaveState(cellHeader3, "GridSaveState"); // TODO
             var rowContent = new LayoutRow(container, "Content");
             var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { Class = "c" };
@@ -51,11 +51,11 @@
             var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { Class = "c" };
             var button = new Button(cellFooter2, "Hello");
             //
-            application.GridData().LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
-            application.GridData().SaveJson(application.ApplicationJson);
+            app.GridData().LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
+            app.GridData().SaveJson(app.AppJson);
         }
 
-        protected override void RunBegin(ApplicationBase application)
+        protected override void RunBegin(App app)
         {
             bool isClick = false;
             string name = null;
@@ -70,14 +70,14 @@
             }
             if (isClick && name == "Close")
             {
-                PageShow<PageMain>(application);
+                PageShow<PageMain>(app);
             }
         }
     }
 
     public class PageMain : Page
     {
-        protected override void InitJson(ApplicationBase application)
+        protected override void InitJson(App app)
         {
             new Button(this, "Browse");
             new Button(this, "Debug");
@@ -85,36 +85,36 @@
             
         }
 
-        protected override void RunBegin(ApplicationBase application)
+        protected override void RunBegin(App app)
         {
             if (List.OfType<Button>().ToArray()[0].IsClick)
             {
-                PageShow<PageGridDatabaseBrowse>(application);
+                PageShow<PageGridDatabaseBrowse>(app);
             }
             if (List.OfType<Button>().ToArray()[1].IsClick)
             {
-                PageShow<PageDebug>(application);
+                PageShow<PageDebug>(app);
             }
             if (List.OfType<Button>().ToArray()[2].IsClick)
             {
-                PageShow<PageMessageBoxAbout>(application);
+                PageShow<PageMessageBoxAbout>(app);
             }
         }
     }
 
     public class PageMessageBoxAbout : Page
     {
-        protected override void InitJson(ApplicationBase applicationBase)
+        protected override void InitJson(App app)
         {
             new Label(this, "(C) 2017 by Framework");
             new Button(this, "Ok");
         }
 
-        protected override void RunBegin(ApplicationBase application)
+        protected override void RunBegin(App app)
         {
             if (List.OfType<Button>().First().IsClick)
             {
-                PageShow<PageMain>(application);
+                PageShow<PageMain>(app);
             }
         }
     }
@@ -123,22 +123,22 @@
     {
         private Label label;
 
-        protected override void InitJson(ApplicationBase application)
+        protected override void InitJson(App app)
         {
             label = new Label(this, null);
             new Button(this, "Yes");
             new Button(this, "No");
         }
 
-        public void Init(ApplicationBase application, string gridName, string index)
+        public void Init(App app, string gridName, string index)
         {
             this.GridName = gridName;
             this.Index = index;
             //
-            label.Text = string.Format("Delete? ({0})", ((Database.dbo.ImportName)application.GridData().Row(gridName, index)).Name);
+            label.Text = string.Format("Delete? ({0})", ((Database.dbo.ImportName)app.GridData().Row(gridName, index)).Name);
         }
 
-        protected override void RunBegin(ApplicationBase application)
+        protected override void RunBegin(App app)
         {
             bool isClick = false;
             foreach (Button button in List.OfType<Button>())
@@ -152,10 +152,10 @@
             //
             if (isClick)
             {
-                application.GridData().LoadRow("Detail", null);
-                application.GridData().SaveJson(application.ApplicationJson);
+                app.GridData().LoadRow("Detail", null);
+                app.GridData().SaveJson(app.AppJson);
                 //
-                PageShow<PageGridDatabaseBrowse>(application);
+                PageShow<PageGridDatabaseBrowse>(app);
             }
         }
 
@@ -166,10 +166,10 @@
 
     public class ProcessGridMasterIsClick : Process
     {
-        protected override void Run(ApplicationBase application)
+        protected override void Run(App app)
         {
             List<GridRow> rowList;
-            if (application.ApplicationJson.GridDataJson.RowList.TryGetValue("Master", out rowList))
+            if (app.AppJson.GridDataJson.RowList.TryGetValue("Master", out rowList))
             {
                 foreach (GridRow gridRow in rowList)
                 {
@@ -177,16 +177,16 @@
                     {
                         if (Util.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
                         {
-                            GridData gridData = application.GridData();
+                            GridData gridData = app.GridData();
                             var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
                             string tableName = row.TableName2;
                             if (tableName != null && tableName.IndexOf(".") != -1)
                             {
                                 tableName = tableName.Substring(tableName.IndexOf(".") + 1);
                                 //
-                                Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(Application));
+                                Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(AppDemo));
                                 gridData.LoadDatabase("Detail", null, null, false, typeRow);
-                                gridData.SaveJson(application.ApplicationJson);
+                                gridData.SaveJson(app.AppJson);
                             }
                         }
                     }
@@ -197,7 +197,7 @@
 
     public class PageDebug : Page
     {
-        protected override void InitJson(ApplicationBase application)
+        protected override void InitJson(App app)
         {
             new Button(this, "Toggle X");
             new Button(this, "Remove Y");
@@ -213,7 +213,7 @@
         }
 
 
-        protected override void RunBegin(ApplicationBase application)
+        protected override void RunBegin(App app)
         {
             if (Button("Toggle X")?.IsClick == true)
             {
@@ -226,11 +226,11 @@
             if (Button("Reset")?.IsClick == true)
             {
                 List.Clear();
-                InitJson(application);
+                InitJson(app);
             }
             if (Button("Close")?.IsClick == true)
             {
-                PageShow<PageMain>(application);
+                PageShow<PageMain>(app);
             }
         }
     }

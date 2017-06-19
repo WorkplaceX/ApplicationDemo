@@ -3,7 +3,7 @@
     using Framework.Server.Application;
     using System;
 
-    public class Application : ApplicationBase
+    public class AppDemo : App
     {
         protected override void ProcessInit(ProcessList processList)
         {

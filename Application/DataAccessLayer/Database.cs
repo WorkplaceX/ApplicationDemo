@@ -31,9 +31,9 @@
 
     public partial class ImportName_ButtonDelete : Cell<ImportName>
     {
-        protected override void CellProcessButtonIsClick(ApplicationBase application, string gridName, string index, string fieldName)
+        protected override void CellProcessButtonIsClick(App app, string gridName, string index, string fieldName)
         {
-            application.PageShow<PageMessageBoxDelete>(application.ApplicationJson).Init(application, gridName, index);
+            app.PageShow<PageMessageBoxDelete>(app.AppJson).Init(app, gridName, index);
         }
     }
 }
