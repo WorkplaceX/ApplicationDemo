@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Submodule\Framework.Tool\Framework.Tool.csproj" />
+    <ProjectReference Include="..\Submodule\Framework.BuildTool\Framework.BuildTool.csproj" />
   </ItemGroup>
 
 </Project>
