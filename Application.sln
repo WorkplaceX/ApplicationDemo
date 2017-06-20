@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{09B34598-3BAE-4F6B-A246-3B4AF22EFCE5}"
 EndProject
@@ -15,7 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office", "Submodule\Office\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "Submodule\Framework\Framework.csproj", "{71EF0870-6731-4FB2-B17B-3A2521FFDB59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{AD700978-DECF-4985-92EA-4E09A8FD2F79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{AD700978-DECF-4985-92EA-4E09A8FD2F79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tool", "Tool\Tool.csproj", "{217AF9CA-6910-41E5-B423-E41156DC0BD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Tool", "Submodule\Framework.Tool\Framework.Tool.csproj", "{603EBCE1-653F-4BE0-B358-23E2952F652D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{AD700978-DECF-4985-92EA-4E09A8FD2F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD700978-DECF-4985-92EA-4E09A8FD2F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD700978-DECF-4985-92EA-4E09A8FD2F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{217AF9CA-6910-41E5-B423-E41156DC0BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{217AF9CA-6910-41E5-B423-E41156DC0BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{217AF9CA-6910-41E5-B423-E41156DC0BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{217AF9CA-6910-41E5-B423-E41156DC0BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{603EBCE1-653F-4BE0-B358-23E2952F652D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{603EBCE1-653F-4BE0-B358-23E2952F652D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{603EBCE1-653F-4BE0-B358-23E2952F652D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{603EBCE1-653F-4BE0-B358-23E2952F652D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
