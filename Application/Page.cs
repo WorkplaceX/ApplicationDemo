@@ -2,7 +2,7 @@
 {
     using Framework.Application;
     using Framework.DataAccessLayer;
-    using Framework.JsonComponent;
+    using Framework.Component;
     using System;
     using System.Collections.Generic;
     using System.Linq;
