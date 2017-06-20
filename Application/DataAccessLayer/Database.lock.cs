@@ -1,6 +1,6 @@
 namespace Database.dbo
 {
-    using Framework.Server.DataAccessLayer;
+    using Framework.DataAccessLayer;
 
     [SqlName("Airport")]
     public partial class Airport : Row

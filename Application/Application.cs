@@ -1,6 +1,6 @@
 ﻿namespace Application
 {
-    using Framework.Server.Application;
+    using Framework.Application;
     using System;
 
     public class AppDemo : App

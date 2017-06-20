@@ -1,7 +1,7 @@
 ﻿namespace Application
 {
-    using Framework.Server.Application;
-    using Framework.Server.Application.Json;
+    using Framework.Application;
+    using Framework.JsonComponent;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -179,7 +179,7 @@
                 {
                     if (gridRow.IsClick)
                     {
-                        if (Util.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
+                        if (UtilApplication.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
                         {
                             GridData gridData = app.GridData();
                             var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
@@ -188,7 +188,7 @@
                             {
                                 tableName = tableName.Substring(tableName.IndexOf(".") + 1);
                                 //
-                                Type typeRow = Framework.Server.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(AppDemo));
+                                Type typeRow = Framework.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(AppDemo));
                                 gridData.LoadDatabase("Detail", null, null, false, typeRow);
                                 gridData.SaveJson(app.AppJson);
                             }

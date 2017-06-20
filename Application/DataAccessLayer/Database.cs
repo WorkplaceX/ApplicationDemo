@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using Framework.Server.DataAccessLayer;
+    using Framework.DataAccessLayer;
     using Application;
-    using Framework.Server.Application;
+    using Framework.Application;
 
     public partial class AirportDisplay_AirportId
     {
@@ -19,7 +19,7 @@
         protected override void LookUp(out Type typeRow, out List<Row> rowList)
         {
             typeRow = typeof(Database.dbo.LoRole);
-            rowList = Framework.Server.DataAccessLayer.Util.Select(typeRow, null, null, false, 0, 5);
+            rowList = Util.Select(typeRow, null, null, false, 0, 5);
         }
     }
 
