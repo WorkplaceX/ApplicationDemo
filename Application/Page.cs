@@ -1,6 +1,7 @@
 ﻿namespace Application
 {
     using Framework.Application;
+    using Framework.DataAccessLayer;
     using Framework.JsonComponent;
     using System;
     using System.Collections.Generic;
@@ -188,7 +189,7 @@
                             {
                                 tableName = tableName.Substring(tableName.IndexOf(".") + 1);
                                 //
-                                Type typeRow = Framework.DataAccessLayer.Util.TypeRowFromTableName(tableName, typeof(AppDemo));
+                                Type typeRow = UtilDataAccessLayer.TypeRowFromTableName(tableName, typeof(AppDemo));
                                 gridData.LoadDatabase("Detail", null, null, false, typeRow);
                                 gridData.SaveJson(app.AppJson);
                             }

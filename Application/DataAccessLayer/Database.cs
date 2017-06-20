@@ -19,7 +19,7 @@
         protected override void LookUp(out Type typeRow, out List<Row> rowList)
         {
             typeRow = typeof(Database.dbo.LoRole);
-            rowList = Util.Select(typeRow, null, null, false, 0, 5);
+            rowList = UtilDataAccessLayer.Select(typeRow, null, null, false, 0, 5);
         }
     }
 
