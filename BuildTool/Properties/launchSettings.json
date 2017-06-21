@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Tool": {
-      "commandName": "Project",
-      "commandLineArgs": "connection ABC"
+      "commandName": "Project"
     }
   }
 }
