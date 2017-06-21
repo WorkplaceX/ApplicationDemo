@@ -1,4 +1,4 @@
-﻿namespace Build.Airport
+﻿namespace BuildTool.Airport
 {
     using Framework.BuildTool;
 

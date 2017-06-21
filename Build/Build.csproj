@@ -14,6 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Submodule\Framework.BuildTool\Framework.BuildTool.csproj" />
     <ProjectReference Include="..\Submodule\Framework\Framework.csproj" />
   </ItemGroup>
 

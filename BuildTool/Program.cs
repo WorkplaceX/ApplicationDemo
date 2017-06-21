@@ -1,10 +1,10 @@
-﻿namespace Tool
+﻿namespace BuildTool
 {
     class Program
     {
         static void Main(string[] args)
         {
-            new Tool().Run(args);
+            new AppBuildToolDemo().Run(args);
         }
     }
 }
