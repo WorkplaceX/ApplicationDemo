@@ -17,7 +17,7 @@
     {
         public override void Run()
         {
-            if (Framework.Util.IsLinux == false)
+            if (Framework.UtilFramework.IsLinux == false)
             {
                 BuildTool.Airport.Script.Run();
             }

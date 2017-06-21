@@ -10,25 +10,25 @@
         public static void Run()
         {
             string connectionString = Framework.Server.ConnectionManager.ConnectionString;
-            string fileName = Framework.Util.FolderName + "Submodule/Office/bin/Debug/Office.exe";
+            string fileName = Framework.UtilFramework.FolderName + "Submodule/Office/bin/Debug/Office.exe";
             // SqlDrop
             {
                 string command = "SqlDrop";
                 string arguments = command + " " + "\"" + connectionString + "\"";
-                UtilBuildTool.Start(Framework.Util.FolderName, fileName, arguments);
+                UtilBuildTool.Start(Framework.UtilFramework.FolderName, fileName, arguments);
             }
             // SqlCreate
             {
                 string command = "SqlCreate";
                 string arguments = command + " " + "\"" + connectionString + "\"";
-                UtilBuildTool.Start(Framework.Util.FolderName, fileName, arguments);
+                UtilBuildTool.Start(Framework.UtilFramework.FolderName, fileName, arguments);
             }
             // Run
             {
                 string command = "Run";
-                string folderName = Framework.Util.FolderName + "Build/Airport/";
+                string folderName = Framework.UtilFramework.FolderName + "Build/Airport/";
                 string arguments = command + " " + "\"" + connectionString + "\"" + " " + "\"" + folderName + "\"";
-                UtilBuildTool.Start(Framework.Util.FolderName, fileName, arguments);
+                UtilBuildTool.Start(Framework.UtilFramework.FolderName, fileName, arguments);
             }
         }
     }
