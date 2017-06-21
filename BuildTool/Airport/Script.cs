@@ -26,7 +26,7 @@
             // Run
             {
                 string command = "Run";
-                string folderName = Framework.UtilFramework.FolderName + "Build/Airport/";
+                string folderName = Framework.UtilFramework.FolderName + "BuildTool/Airport/";
                 string arguments = command + " " + "\"" + connectionString + "\"" + " " + "\"" + folderName + "\"";
                 UtilBuildTool.Start(Framework.UtilFramework.FolderName, fileName, arguments);
             }
