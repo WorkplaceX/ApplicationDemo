@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Tool": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "buildClient"
     }
   }
 }
