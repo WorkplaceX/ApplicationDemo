@@ -998,6 +998,7 @@ INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (994, N'El Bor
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (995, N'Sfax Thyna International Airport', N'SFA', 220)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (996, N'Tozeur Nefta International Airport', N'TOE', 220)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (997, N'Dywer Airbase', N'DWR', 3)
+GO
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (998, N'Niamtougou International Airport', N'LRL', 214)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (999, N'Lomé-Tokoin Airport', N'LFW', 214)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1000, N'Elenak Airport', N'EAL', 141)
@@ -1997,6 +1998,7 @@ INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1993, N'Nimba
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1994, N'Gulgubip Airport', N'GLP', 174)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1995, N'Roberts International Airport', N'ROB', 129)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1996, N'Sasstown Airport', N'SAZ', 129)
+GO
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1997, N'Tchien Airport', N'THC', 129)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1998, N'Voinjama Airport', N'VOI', 129)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (1999, N'Al Massira Airport', N'AGA', 135)
@@ -2996,6 +2998,7 @@ INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (2992, N'Niaga
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (2993, N'George Bush Intercontinental Houston Airport', N'IAH', 230)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (2994, N'Schenck Field', N'ICL', 230)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (2995, N'Wichita Mid Continent Airport', N'ICT', 230)
+GO
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (2996, N'Idaho Falls Regional Airport', N'IDA', 230)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (2997, N'Indiana County/Jimmy Stewart Fld/ Airport', N'IDI', 230)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (2998, N'Independence Municipal Airport', N'IDP', 230)
@@ -3995,6 +3998,7 @@ INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (3991, N'Melch
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (3992, N'Puerto Barrios Airport', N'PBR', 89)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (3993, N'Poptún Airport', N'PON', 89)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (3994, N'Santa Cruz del Quiche Airport', N'AQB', 89)
+GO
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (3995, N'Quezaltenango Airport', N'AAZ', 89)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (3996, N'Rubelsanto Airport', N'RUV', 89)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (3997, N'Retalhuleu Airport', N'RER', 89)
@@ -4994,6 +4998,7 @@ INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (4990, N'Obo A
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (4991, N'Balimo Airport', N'OPU', 174)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (4992, N'Suki Airport', N'SKC', 174)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (4993, N'Tufi Airport', N'TFI', 174)
+GO
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (4994, N'Telefomin Airport', N'TFM', 174)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (4995, N'Tol Airport', N'TLO', 174)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (4996, N'Nuku Airport', N'UKU', 174)
@@ -5993,6 +5998,7 @@ INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (5989, N'Canai
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (5990, N'Carora Airport', N'VCR', 235)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (5991, N'General Francisco Bermúdez Airport', N'CUP', 235)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (5992, N'José Leonardo Chirinos Airport', N'CZE', 235)
+GO
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (5993, N'Cumaná (Antonio José de Sucre) Airport', N'CUM', 235)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (5994, N'La Tortuga Punta Delgada Airport', N'isl', 235)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (5995, N'El Dorado Airport', N'EOR', 235)
@@ -6992,6 +6998,7 @@ INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (6988, N'Seuna
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (6989, N'Lhok Sukon Airport', N'LSX', 98)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (6990, N'Malikus Saleh Airport', N'LSW', 98)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (6991, N'Sultan Iskandar Muda International Airport', N'BTJ', 98)
+GO
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (6992, N'Sungai Tiang Airport', N'SXT', 156)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (6993, N'Mersing Airport', N'MEP', 156)
 INSERT [dbo].[Airport] ([Id], [Text], [Code], [CountryId]) VALUES (6994, N'Sitiawan Airport', N'SWY', 156)
