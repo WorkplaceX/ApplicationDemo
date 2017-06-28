@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\favicon (1).ico" />
     <Content Include="wwwroot\favicon.ico" />
   </ItemGroup>
   <ItemGroup>
