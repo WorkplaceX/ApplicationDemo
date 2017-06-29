@@ -140,7 +140,7 @@
             this.GridName = gridName;
             this.Index = index;
             //
-            label.Text = string.Format("Delete? ({0})", ((Database.dbo.ImportName)app.GridData().Row(gridName, index)).Name);
+            label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData().Row(gridName, index)).Text);
         }
 
         protected override void RunBegin(App app)

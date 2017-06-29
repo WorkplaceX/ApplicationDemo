@@ -23,17 +23,17 @@
         }
     }
 
-    public partial class ImportName : Row
+    public partial class Country : Row
     {
-        [TypeCell(typeof(ImportName_ButtonDelete))]
+        [TypeCell(typeof(Country_ButtonDelete))]
         public string ButtonDelete { get; set; }
     }
 
-    public partial class ImportName_ButtonDelete : Cell<ImportName>
+    public partial class Country_ButtonDelete : Cell<Country>
     {
         protected override void CellProcessButtonIsClick(App app, string gridName, string index, string fieldName)
         {
-            app.PageShow<PageMessageBoxDelete>(app.AppJson).Init(app, gridName, index);
+            app.PageShow<PageMessageBoxDelete>(app.AppJson, false).Init(app, gridName, index);
         }
     }
 }

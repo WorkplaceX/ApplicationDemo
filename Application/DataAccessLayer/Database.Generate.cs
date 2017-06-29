@@ -98,175 +98,43 @@ namespace Database.dbo
 
     public partial class Country_Continent : Cell<Country> { }
 
-    [SqlName("ImportAirport")]
-    public partial class ImportAirport : Row
-    {
-        [SqlName("Text")]
-        [TypeCell(typeof(ImportAirport_Text))]
-        public string Text { get; set; }
-
-        [SqlName("Code")]
-        [TypeCell(typeof(ImportAirport_Code))]
-        public string Code { get; set; }
-
-        [SqlName("CountryTextShort")]
-        [TypeCell(typeof(ImportAirport_CountryTextShort))]
-        public string CountryTextShort { get; set; }
-    }
-
-    public partial class ImportAirport_Text : Cell<ImportAirport> { }
-
-    public partial class ImportAirport_Code : Cell<ImportAirport> { }
-
-    public partial class ImportAirport_CountryTextShort : Cell<ImportAirport> { }
-
-    [SqlName("ImportCountry")]
-    public partial class ImportCountry : Row
-    {
-        [SqlName("Text")]
-        [TypeCell(typeof(ImportCountry_Text))]
-        public string Text { get; set; }
-
-        [SqlName("TextShort")]
-        [TypeCell(typeof(ImportCountry_TextShort))]
-        public string TextShort { get; set; }
-
-        [SqlName("Continent")]
-        [TypeCell(typeof(ImportCountry_Continent))]
-        public string Continent { get; set; }
-    }
-
-    public partial class ImportCountry_Text : Cell<ImportCountry> { }
-
-    public partial class ImportCountry_TextShort : Cell<ImportCountry> { }
-
-    public partial class ImportCountry_Continent : Cell<ImportCountry> { }
-
-    [SqlName("ImportExcel")]
-    public partial class ImportExcel : Row
+    [SqlName("FrameworkFileStorage")]
+    public partial class FrameworkFileStorage : Row
     {
         [SqlName("Id")]
-        [TypeCell(typeof(ImportExcel_Id))]
+        [TypeCell(typeof(FrameworkFileStorage_Id))]
         public int Id { get; set; }
-
-        [SqlName("FileNameId")]
-        [TypeCell(typeof(ImportExcel_FileNameId))]
-        public int? FileNameId { get; set; }
-
-        [SqlName("SheetNameId")]
-        [TypeCell(typeof(ImportExcel_SheetNameId))]
-        public int? SheetNameId { get; set; }
-
-        [SqlName("Row")]
-        [TypeCell(typeof(ImportExcel_Row))]
-        public int? Row { get; set; }
-
-        [SqlName("ColumnNameId")]
-        [TypeCell(typeof(ImportExcel_ColumnNameId))]
-        public int? ColumnNameId { get; set; }
-
-        [SqlName("ValueNumber")]
-        [TypeCell(typeof(ImportExcel_ValueNumber))]
-        public double? ValueNumber { get; set; }
-
-        [SqlName("ValueText")]
-        [TypeCell(typeof(ImportExcel_ValueText))]
-        public string ValueText { get; set; }
-    }
-
-    public partial class ImportExcel_Id : Cell<ImportExcel> { }
-
-    public partial class ImportExcel_FileNameId : Cell<ImportExcel> { }
-
-    public partial class ImportExcel_SheetNameId : Cell<ImportExcel> { }
-
-    public partial class ImportExcel_Row : Cell<ImportExcel> { }
-
-    public partial class ImportExcel_ColumnNameId : Cell<ImportExcel> { }
-
-    public partial class ImportExcel_ValueNumber : Cell<ImportExcel> { }
-
-    public partial class ImportExcel_ValueText : Cell<ImportExcel> { }
-
-    [SqlName("ImportExcelDisplay")]
-    public partial class ImportExcelDisplay : Row
-    {
-        [SqlName("ExcelId")]
-        [TypeCell(typeof(ImportExcelDisplay_ExcelId))]
-        public int ExcelId { get; set; }
-
-        [SqlName("FileNameId")]
-        [TypeCell(typeof(ImportExcelDisplay_FileNameId))]
-        public int? FileNameId { get; set; }
 
         [SqlName("FileName")]
-        [TypeCell(typeof(ImportExcelDisplay_FileName))]
+        [TypeCell(typeof(FrameworkFileStorage_FileName))]
         public string FileName { get; set; }
 
-        [SqlName("SheetNameId")]
-        [TypeCell(typeof(ImportExcelDisplay_SheetNameId))]
-        public int? SheetNameId { get; set; }
-
-        [SqlName("SheetName")]
-        [TypeCell(typeof(ImportExcelDisplay_SheetName))]
-        public string SheetName { get; set; }
-
-        [SqlName("Row")]
-        [TypeCell(typeof(ImportExcelDisplay_Row))]
-        public int? Row { get; set; }
-
-        [SqlName("ColumnNameId")]
-        [TypeCell(typeof(ImportExcelDisplay_ColumnNameId))]
-        public int? ColumnNameId { get; set; }
-
-        [SqlName("ColumnName")]
-        [TypeCell(typeof(ImportExcelDisplay_ColumnName))]
-        public string ColumnName { get; set; }
-
-        [SqlName("ValueNumber")]
-        [TypeCell(typeof(ImportExcelDisplay_ValueNumber))]
-        public double? ValueNumber { get; set; }
-
-        [SqlName("ValueText")]
-        [TypeCell(typeof(ImportExcelDisplay_ValueText))]
-        public string ValueText { get; set; }
+        [SqlName("Data")]
+        [TypeCell(typeof(FrameworkFileStorage_Data))]
+        public byte[] Data { get; set; }
     }
 
-    public partial class ImportExcelDisplay_ExcelId : Cell<ImportExcelDisplay> { }
+    public partial class FrameworkFileStorage_Id : Cell<FrameworkFileStorage> { }
 
-    public partial class ImportExcelDisplay_FileNameId : Cell<ImportExcelDisplay> { }
+    public partial class FrameworkFileStorage_FileName : Cell<FrameworkFileStorage> { }
 
-    public partial class ImportExcelDisplay_FileName : Cell<ImportExcelDisplay> { }
+    public partial class FrameworkFileStorage_Data : Cell<FrameworkFileStorage> { }
 
-    public partial class ImportExcelDisplay_SheetNameId : Cell<ImportExcelDisplay> { }
-
-    public partial class ImportExcelDisplay_SheetName : Cell<ImportExcelDisplay> { }
-
-    public partial class ImportExcelDisplay_Row : Cell<ImportExcelDisplay> { }
-
-    public partial class ImportExcelDisplay_ColumnNameId : Cell<ImportExcelDisplay> { }
-
-    public partial class ImportExcelDisplay_ColumnName : Cell<ImportExcelDisplay> { }
-
-    public partial class ImportExcelDisplay_ValueNumber : Cell<ImportExcelDisplay> { }
-
-    public partial class ImportExcelDisplay_ValueText : Cell<ImportExcelDisplay> { }
-
-    [SqlName("ImportName")]
-    public partial class ImportName : Row
+    [SqlName("FrameworkVersion")]
+    public partial class FrameworkVersion : Row
     {
         [SqlName("Id")]
-        [TypeCell(typeof(ImportName_Id))]
+        [TypeCell(typeof(FrameworkVersion_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(ImportName_Name))]
-        public string Name { get; set; }
+        [SqlName("Version")]
+        [TypeCell(typeof(FrameworkVersion_Version))]
+        public string Version { get; set; }
     }
 
-    public partial class ImportName_Id : Cell<ImportName> { }
+    public partial class FrameworkVersion_Id : Cell<FrameworkVersion> { }
 
-    public partial class ImportName_Name : Cell<ImportName> { }
+    public partial class FrameworkVersion_Version : Cell<FrameworkVersion> { }
 
     [SqlName("LoLoation")]
     public partial class LoLoation : Row
