@@ -39,9 +39,9 @@
 
     public partial class Country_Text : Cell<Country>
     {
-        protected override void CellIsLiteral(App app, string gridName, string index, ref bool isLiteral)
+        protected override void CellIsHtml(App app, string gridName, string index, ref bool isHtml)
         {
-            isLiteral = true;
+            isHtml = true;
         }
     }
 }
