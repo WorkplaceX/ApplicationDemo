@@ -36,4 +36,12 @@
             app.PageShow<PageMessageBoxDelete>(app.AppJson, false).Init(app, gridName, index);
         }
     }
+
+    public partial class Country_Text : Cell<Country>
+    {
+        protected override void CellIsLiteral(App app, string gridName, string index, ref bool isLiteral)
+        {
+            isLiteral = true;
+        }
+    }
 }

@@ -57,7 +57,7 @@
             var button = new Button(cellFooter2, "Hello");
             //
             app.GridData().LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
-            app.GridData().SaveJson(app.AppJson);
+            app.GridData().SaveJson(app);
         }
 
         protected override void RunBegin(App app)
@@ -158,7 +158,7 @@
             if (isClick)
             {
                 app.GridData().LoadRow("Detail", null);
-                app.GridData().SaveJson(app.AppJson);
+                app.GridData().SaveJson(app);
                 //
                 PageShow<PageGridDatabaseBrowse>(app);
             }
@@ -191,7 +191,7 @@
                                 //
                                 Type typeRow = UtilDataAccessLayer.TypeRowFromTableName(tableName, typeof(AppDemo));
                                 gridData.LoadDatabase("Detail", null, null, false, typeRow);
-                                gridData.SaveJson(app.AppJson);
+                                gridData.SaveJson(app);
                             }
                         }
                     }
