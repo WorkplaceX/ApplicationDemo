@@ -98,44 +98,6 @@ namespace Database.dbo
 
     public partial class Country_Continent : Cell<Country> { }
 
-    [SqlName("FrameworkFileStorage")]
-    public partial class FrameworkFileStorage : Row
-    {
-        [SqlName("Id")]
-        [TypeCell(typeof(FrameworkFileStorage_Id))]
-        public int Id { get; set; }
-
-        [SqlName("FileName")]
-        [TypeCell(typeof(FrameworkFileStorage_FileName))]
-        public string FileName { get; set; }
-
-        [SqlName("Data")]
-        [TypeCell(typeof(FrameworkFileStorage_Data))]
-        public byte[] Data { get; set; }
-    }
-
-    public partial class FrameworkFileStorage_Id : Cell<FrameworkFileStorage> { }
-
-    public partial class FrameworkFileStorage_FileName : Cell<FrameworkFileStorage> { }
-
-    public partial class FrameworkFileStorage_Data : Cell<FrameworkFileStorage> { }
-
-    [SqlName("FrameworkVersion")]
-    public partial class FrameworkVersion : Row
-    {
-        [SqlName("Id")]
-        [TypeCell(typeof(FrameworkVersion_Id))]
-        public int Id { get; set; }
-
-        [SqlName("Version")]
-        [TypeCell(typeof(FrameworkVersion_Version))]
-        public string Version { get; set; }
-    }
-
-    public partial class FrameworkVersion_Id : Cell<FrameworkVersion> { }
-
-    public partial class FrameworkVersion_Version : Cell<FrameworkVersion> { }
-
     [SqlName("LoLoation")]
     public partial class LoLoation : Row
     {
