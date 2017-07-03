@@ -13,39 +13,39 @@
             processList.AddBefore<ProcessGridMasterIsClick, ProcessGridIsClickFalse>();
         }
 
-        protected override void CellValueToText(string gridName, string index, Cell cell, ref string text)
+        protected override void CellValueToText(string gridName, string index, Cell cell, ref string result)
         {
-            if (UtilApplication.IndexToIndexEnum(index) == IndexEnum.Index)
+            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
             {
                 if (UtilFramework.TypeUnderlying(cell.TypeField) == typeof(bool))
                 {
                     if ((bool?)cell.Value == false)
                     {
-                        text = "No";
+                        result = "No";
                     }
                     if ((bool?)cell.Value == true)
                     {
-                        text = "Yes";
+                        result = "Yes";
                     }
                 }
             }
         }
 
-        protected override void CellValueFromText(string gridName, string index, Cell cell, ref string text)
+        protected override void CellValueFromText(string gridName, string index, Cell cell, ref string result)
         {
-            if (UtilApplication.IndexToIndexEnum(index) == IndexEnum.Index)
+            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
             {
                 if (UtilFramework.TypeUnderlying(cell.TypeField) == typeof(bool))
                 {
-                    if (text != null)
+                    if (result != null)
                     {
-                        if (text.ToUpper() == "YES")
+                        if (result.ToUpper() == "YES")
                         {
-                            text = "True";
+                            result = "True";
                         }
-                        if (text.ToUpper() == "NO")
+                        if (result.ToUpper() == "NO")
                         {
-                            text = "False";
+                            result = "False";
                         }
                     }
                 }

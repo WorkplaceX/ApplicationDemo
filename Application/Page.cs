@@ -180,7 +180,7 @@
                 {
                     if (gridRow.IsClick)
                     {
-                        if (UtilApplication.IndexToIndexEnum(gridRow.Index) == IndexEnum.Index)
+                        if (UtilApplication.IndexEnumFromText(gridRow.Index) == IndexEnum.Index)
                         {
                             GridData gridData = app.GridData();
                             var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
