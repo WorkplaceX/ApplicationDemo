@@ -1,6 +1,7 @@
 namespace Database.dbo
 {
     using Framework.DataAccessLayer;
+    using System;
 
     [SqlName("Airport")]
     public partial class Airport : Row
@@ -411,4 +412,326 @@ namespace Database.dbo
     public partial class TableName_TableName2 : Cell<TableName> { }
 
     public partial class TableName_IsView : Cell<TableName> { }
+
+    [SqlName("YContentText")]
+    public partial class YContentText : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YContentText_Id))]
+        public int Id { get; set; }
+
+        [SqlName("LayerId")]
+        [TypeCell(typeof(YContentText_LayerId))]
+        public int LayerId { get; set; }
+
+        [SqlName("Name")]
+        [TypeCell(typeof(YContentText_Name))]
+        public string Name { get; set; }
+
+        [SqlName("Text")]
+        [TypeCell(typeof(YContentText_Text))]
+        public string Text { get; set; }
+
+        [SqlName("IsActive")]
+        [TypeCell(typeof(YContentText_IsActive))]
+        public bool? IsActive { get; set; }
+    }
+
+    public partial class YContentText_Id : Cell<YContentText> { }
+
+    public partial class YContentText_LayerId : Cell<YContentText> { }
+
+    public partial class YContentText_Name : Cell<YContentText> { }
+
+    public partial class YContentText_Text : Cell<YContentText> { }
+
+    public partial class YContentText_IsActive : Cell<YContentText> { }
+
+    [SqlName("YContentTextDisplay")]
+    public partial class YContentTextDisplay : Row
+    {
+        [SqlName("SessionId")]
+        [TypeCell(typeof(YContentTextDisplay_SessionId))]
+        public int SessionId { get; set; }
+
+        [SqlName("Name")]
+        [TypeCell(typeof(YContentTextDisplay_Name))]
+        public string Name { get; set; }
+
+        [SqlName("Text")]
+        [TypeCell(typeof(YContentTextDisplay_Text))]
+        public string Text { get; set; }
+
+        [SqlName("Path")]
+        [TypeCell(typeof(YContentTextDisplay_Path))]
+        public string Path { get; set; }
+    }
+
+    public partial class YContentTextDisplay_SessionId : Cell<YContentTextDisplay> { }
+
+    public partial class YContentTextDisplay_Name : Cell<YContentTextDisplay> { }
+
+    public partial class YContentTextDisplay_Text : Cell<YContentTextDisplay> { }
+
+    public partial class YContentTextDisplay_Path : Cell<YContentTextDisplay> { }
+
+    [SqlName("YContentType")]
+    public partial class YContentType : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YContentType_Id))]
+        public int Id { get; set; }
+
+        [SqlName("Name")]
+        [TypeCell(typeof(YContentType_Name))]
+        public string Name { get; set; }
+    }
+
+    public partial class YContentType_Id : Cell<YContentType> { }
+
+    public partial class YContentType_Name : Cell<YContentType> { }
+
+    [SqlName("YLayer")]
+    public partial class YLayer : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YLayer_Id))]
+        public int Id { get; set; }
+
+        [SqlName("ParentId")]
+        [TypeCell(typeof(YLayer_ParentId))]
+        public int? ParentId { get; set; }
+
+        [SqlName("Application")]
+        [TypeCell(typeof(YLayer_Application))]
+        public string Application { get; set; }
+
+        [SqlName("Language")]
+        [TypeCell(typeof(YLayer_Language))]
+        public string Language { get; set; }
+
+        [SqlName("Screen")]
+        [TypeCell(typeof(YLayer_Screen))]
+        public string Screen { get; set; }
+
+        [SqlName("User")]
+        [TypeCell(typeof(YLayer_User))]
+        public string User { get; set; }
+    }
+
+    public partial class YLayer_Id : Cell<YLayer> { }
+
+    public partial class YLayer_ParentId : Cell<YLayer> { }
+
+    public partial class YLayer_Application : Cell<YLayer> { }
+
+    public partial class YLayer_Language : Cell<YLayer> { }
+
+    public partial class YLayer_Screen : Cell<YLayer> { }
+
+    public partial class YLayer_User : Cell<YLayer> { }
+
+    [SqlName("YLayerDeclare")]
+    public partial class YLayerDeclare : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YLayerDeclare_Id))]
+        public string Id { get; set; }
+
+        [SqlName("LayerTypeId")]
+        [TypeCell(typeof(YLayerDeclare_LayerTypeId))]
+        public int LayerTypeId { get; set; }
+
+        [SqlName("LayerIdDeclare")]
+        [TypeCell(typeof(YLayerDeclare_LayerIdDeclare))]
+        public string LayerIdDeclare { get; set; }
+
+        [SqlName("Name")]
+        [TypeCell(typeof(YLayerDeclare_Name))]
+        public string Name { get; set; }
+    }
+
+    public partial class YLayerDeclare_Id : Cell<YLayerDeclare> { }
+
+    public partial class YLayerDeclare_LayerTypeId : Cell<YLayerDeclare> { }
+
+    public partial class YLayerDeclare_LayerIdDeclare : Cell<YLayerDeclare> { }
+
+    public partial class YLayerDeclare_Name : Cell<YLayerDeclare> { }
+
+    [SqlName("YLayerHierarchy")]
+    public partial class YLayerHierarchy : Row
+    {
+        [SqlName("LayerId")]
+        [TypeCell(typeof(YLayerHierarchy_LayerId))]
+        public int? LayerId { get; set; }
+
+        [SqlName("LayerIdContain")]
+        [TypeCell(typeof(YLayerHierarchy_LayerIdContain))]
+        public int? LayerIdContain { get; set; }
+
+        [SqlName("Level")]
+        [TypeCell(typeof(YLayerHierarchy_Level))]
+        public int? Level { get; set; }
+    }
+
+    public partial class YLayerHierarchy_LayerId : Cell<YLayerHierarchy> { }
+
+    public partial class YLayerHierarchy_LayerIdContain : Cell<YLayerHierarchy> { }
+
+    public partial class YLayerHierarchy_Level : Cell<YLayerHierarchy> { }
+
+    [SqlName("YLayerPath")]
+    public partial class YLayerPath : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YLayerPath_Id))]
+        public int Id { get; set; }
+
+        [SqlName("SessionId")]
+        [TypeCell(typeof(YLayerPath_SessionId))]
+        public int SessionId { get; set; }
+
+        [SqlName("ContentTypeId")]
+        [TypeCell(typeof(YLayerPath_ContentTypeId))]
+        public int ContentTypeId { get; set; }
+
+        [SqlName("LayerId")]
+        [TypeCell(typeof(YLayerPath_LayerId))]
+        public int LayerId { get; set; }
+
+        [SqlName("LayerIdContain")]
+        [TypeCell(typeof(YLayerPath_LayerIdContain))]
+        public int LayerIdContain { get; set; }
+
+        [SqlName("Level")]
+        [TypeCell(typeof(YLayerPath_Level))]
+        public int Level { get; set; }
+    }
+
+    public partial class YLayerPath_Id : Cell<YLayerPath> { }
+
+    public partial class YLayerPath_SessionId : Cell<YLayerPath> { }
+
+    public partial class YLayerPath_ContentTypeId : Cell<YLayerPath> { }
+
+    public partial class YLayerPath_LayerId : Cell<YLayerPath> { }
+
+    public partial class YLayerPath_LayerIdContain : Cell<YLayerPath> { }
+
+    public partial class YLayerPath_Level : Cell<YLayerPath> { }
+
+    [SqlName("YLayerType")]
+    public partial class YLayerType : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YLayerType_Id))]
+        public int Id { get; set; }
+
+        [SqlName("Name")]
+        [TypeCell(typeof(YLayerType_Name))]
+        public string Name { get; set; }
+    }
+
+    public partial class YLayerType_Id : Cell<YLayerType> { }
+
+    public partial class YLayerType_Name : Cell<YLayerType> { }
+
+    [SqlName("YLayerView")]
+    public partial class YLayerView : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YLayerView_Id))]
+        public int Id { get; set; }
+
+        [SqlName("ParentId")]
+        [TypeCell(typeof(YLayerView_ParentId))]
+        public int? ParentId { get; set; }
+
+        [SqlName("LayerDeclareIdApplication")]
+        [TypeCell(typeof(YLayerView_LayerDeclareIdApplication))]
+        public int? LayerDeclareIdApplication { get; set; }
+
+        [SqlName("LayerDeclareIdLanguage")]
+        [TypeCell(typeof(YLayerView_LayerDeclareIdLanguage))]
+        public int? LayerDeclareIdLanguage { get; set; }
+
+        [SqlName("LayerDeclareIdScreen")]
+        [TypeCell(typeof(YLayerView_LayerDeclareIdScreen))]
+        public int? LayerDeclareIdScreen { get; set; }
+
+        [SqlName("LayerDeclareIdUser")]
+        [TypeCell(typeof(YLayerView_LayerDeclareIdUser))]
+        public int? LayerDeclareIdUser { get; set; }
+
+        [SqlName("Path")]
+        [TypeCell(typeof(YLayerView_Path))]
+        public string Path { get; set; }
+    }
+
+    public partial class YLayerView_Id : Cell<YLayerView> { }
+
+    public partial class YLayerView_ParentId : Cell<YLayerView> { }
+
+    public partial class YLayerView_LayerDeclareIdApplication : Cell<YLayerView> { }
+
+    public partial class YLayerView_LayerDeclareIdLanguage : Cell<YLayerView> { }
+
+    public partial class YLayerView_LayerDeclareIdScreen : Cell<YLayerView> { }
+
+    public partial class YLayerView_LayerDeclareIdUser : Cell<YLayerView> { }
+
+    public partial class YLayerView_Path : Cell<YLayerView> { }
+
+    [SqlName("YSession")]
+    public partial class YSession : Row
+    {
+        [SqlName("Id")]
+        [TypeCell(typeof(YSession_Id))]
+        public int Id { get; set; }
+
+        [SqlName("Name")]
+        [TypeCell(typeof(YSession_Name))]
+        public Guid Name { get; set; }
+
+        [SqlName("LayerDeclareIdApplication")]
+        [TypeCell(typeof(YSession_LayerDeclareIdApplication))]
+        public int LayerDeclareIdApplication { get; set; }
+
+        [SqlName("LayerDeclareIdLanguage")]
+        [TypeCell(typeof(YSession_LayerDeclareIdLanguage))]
+        public int? LayerDeclareIdLanguage { get; set; }
+
+        [SqlName("LayerDeclareIdScreen")]
+        [TypeCell(typeof(YSession_LayerDeclareIdScreen))]
+        public int? LayerDeclareIdScreen { get; set; }
+
+        [SqlName("LayerDeclareIdUser")]
+        [TypeCell(typeof(YSession_LayerDeclareIdUser))]
+        public int? LayerDeclareIdUser { get; set; }
+
+        [SqlName("LayerIdText")]
+        [TypeCell(typeof(YSession_LayerIdText))]
+        public int? LayerIdText { get; set; }
+
+        [SqlName("LayerIdFile")]
+        [TypeCell(typeof(YSession_LayerIdFile))]
+        public int? LayerIdFile { get; set; }
+    }
+
+    public partial class YSession_Id : Cell<YSession> { }
+
+    public partial class YSession_Name : Cell<YSession> { }
+
+    public partial class YSession_LayerDeclareIdApplication : Cell<YSession> { }
+
+    public partial class YSession_LayerDeclareIdLanguage : Cell<YSession> { }
+
+    public partial class YSession_LayerDeclareIdScreen : Cell<YSession> { }
+
+    public partial class YSession_LayerDeclareIdUser : Cell<YSession> { }
+
+    public partial class YSession_LayerIdText : Cell<YSession> { }
+
+    public partial class YSession_LayerIdFile : Cell<YSession> { }
 }
