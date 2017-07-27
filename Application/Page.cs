@@ -30,7 +30,7 @@
             var container = this;
             var rowLogo = new LayoutRow(container, "RowLogo") { CssClass = "r" };
             var literalLogo = new Literal(rowLogo, "Logo");
-            literalLogo.Html = "<img src='Logo.png' />";
+            literalLogo.Html = "<img src='/Logo.png' />";
             // Row
             var rowHeader = new LayoutRow(container, "Header") { CssClass = "r" };
             var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1") { CssClass = "col-sm-6" };

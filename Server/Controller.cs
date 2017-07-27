@@ -7,10 +7,10 @@
 
     public class WebController : Controller
     {
-        [Route(Startup.RoutePath + "{*uri}")]
+        [Route(Startup.ControllerPath + "{*uri}")]
         public async Task<IActionResult> Web()
         {
-            return await UtilServer.ControllerWebRequest(this, Startup.RoutePath, new AppDemo());
+            return await UtilServer.ControllerWebRequest(this, Startup.ControllerPath, new AppSelectorDemo());
         }
     }
 }
