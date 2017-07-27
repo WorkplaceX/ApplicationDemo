@@ -1,6 +1,7 @@
 ﻿namespace Server
 {
     using Application;
+    using Framework.Application;
     using Framework.Server;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
