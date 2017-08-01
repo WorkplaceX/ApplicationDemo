@@ -4,6 +4,8 @@
     using Framework.BuildTool;
     using Framework.Application;
     using Application;
+    using Database.dbo;
+    using Framework;
 
     /// <summary>
     /// Overwrite method RegisterCommand(); to add additional custom commands.
@@ -16,9 +18,9 @@
 
         }
 
-        protected override void RegisterCommand(List<Command> commandList)
+        protected override void DbFrameworkApplicationView(List<FrameworkApplicationView> result)
         {
-            base.RegisterCommand(commandList);
+            result.Add(new FrameworkApplicationView() { Name = "Demo", Path = "demo", Type = UtilFramework.TypeToName(typeof(AppDemo)), IsActive = true });
         }
     }
 }

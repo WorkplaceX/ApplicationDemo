@@ -7,16 +7,11 @@
     using Database.dbo;
     using System.Collections.Generic;
     using Framework.Application.Setup;
+    using System.Linq;
 
     public class AppSelectorDemo : AppSelector
     {
-        public override IEnumerable<FrameworkApplication> ApplicationList()
-        {
-            List<FrameworkApplication> result = new List<FrameworkApplication>();
-            result.Add(new FrameworkApplication() { Name = "Setup", Path = "setup", Type = UtilFramework.TypeToName(typeof(AppSetup)) });
-            result.Add(new FrameworkApplication() { Name = "Demo", Path = null, Type = UtilFramework.TypeToName(typeof(AppDemo)) });
-            return result;
-        }
+
     }
 
     public class AppDemo : App
