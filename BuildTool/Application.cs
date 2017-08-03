@@ -8,7 +8,7 @@
     using Framework;
 
     /// <summary>
-    /// Overwrite method RegisterCommand(); to add additional custom commands.
+    /// Override method RegisterCommand(); to add additional custom commands.
     /// </summary>
     public class AppBuildToolDemo : AppBuildTool
     {
