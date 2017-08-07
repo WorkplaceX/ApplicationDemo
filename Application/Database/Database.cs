@@ -16,7 +16,7 @@
 
     public partial class TableName_TableName2
     {
-        protected override void LookUp(out Type typeRow, out List<Row> rowList)
+        protected override void CellLookUp(out Type typeRow, out List<Row> rowList)
         {
             typeRow = typeof(Database.dbo.LoRole);
             rowList = UtilDataAccessLayer.Select(typeRow, null, null, false, 0, 5);
