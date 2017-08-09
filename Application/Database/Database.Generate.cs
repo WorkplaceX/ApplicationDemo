@@ -3,7 +3,7 @@ namespace Database.dbo
     using Framework.DataAccessLayer;
     using System;
 
-    [SqlName("Airport")]
+    [SqlTable("dbo", "Airport")]
     public partial class Airport : Row
     {
         [SqlName("Id")]
@@ -31,7 +31,7 @@ namespace Database.dbo
 
     public partial class Airport_CountryId : Cell<Airport> { }
 
-    [SqlName("AirportDisplay")]
+    [SqlTable("dbo", "AirportDisplay")]
     public partial class AirportDisplay : Row
     {
         [SqlName("AirportId")]
@@ -71,7 +71,7 @@ namespace Database.dbo
 
     public partial class AirportDisplay_CountryContinent : Cell<AirportDisplay> { }
 
-    [SqlName("Country")]
+    [SqlTable("dbo", "Country")]
     public partial class Country : Row
     {
         [SqlName("Id")]
@@ -99,7 +99,7 @@ namespace Database.dbo
 
     public partial class Country_Continent : Cell<Country> { }
 
-    [SqlName("LoLoation")]
+    [SqlTable("dbo", "LoLoation")]
     public partial class LoLoation : Row
     {
         [SqlName("Id")]
@@ -115,7 +115,7 @@ namespace Database.dbo
 
     public partial class LoLoation_Name : Cell<LoLoation> { }
 
-    [SqlName("LoRole")]
+    [SqlTable("dbo", "LoRole")]
     public partial class LoRole : Row
     {
         [SqlName("Id")]
@@ -137,7 +137,7 @@ namespace Database.dbo
 
     public partial class LoRole_IsAdmin : Cell<LoRole> { }
 
-    [SqlName("LoRoleAccess")]
+    [SqlTable("dbo", "LoRoleAccess")]
     public partial class LoRoleAccess : Row
     {
         [SqlName("UserId")]
@@ -165,7 +165,7 @@ namespace Database.dbo
 
     public partial class LoRoleAccess_LoationName : Cell<LoRoleAccess> { }
 
-    [SqlName("LoRoleLoation")]
+    [SqlTable("dbo", "LoRoleLoation")]
     public partial class LoRoleLoation : Row
     {
         [SqlName("Id")]
@@ -199,7 +199,7 @@ namespace Database.dbo
 
     public partial class LoRoleLoation_IsActive : Cell<LoRoleLoation> { }
 
-    [SqlName("LoRoleMatrix")]
+    [SqlTable("dbo", "LoRoleMatrix")]
     public partial class LoRoleMatrix : Row
     {
         [SqlName("UserId")]
@@ -269,7 +269,7 @@ namespace Database.dbo
 
     public partial class LoRoleMatrix_IsAccess : Cell<LoRoleMatrix> { }
 
-    [SqlName("LoRoleUser")]
+    [SqlTable("dbo", "LoRoleUser")]
     public partial class LoRoleUser : Row
     {
         [SqlName("Id")]
@@ -297,7 +297,7 @@ namespace Database.dbo
 
     public partial class LoRoleUser_IsActive : Cell<LoRoleUser> { }
 
-    [SqlName("SyRole")]
+    [SqlTable("dbo", "SyRole")]
     public partial class SyRole : Row
     {
         [SqlName("Id")]
@@ -319,7 +319,7 @@ namespace Database.dbo
 
     public partial class SyRole_IsAdmin : Cell<SyRole> { }
 
-    [SqlName("SyRoleAccess")]
+    [SqlTable("dbo", "SyRoleAccess")]
     public partial class SyRoleAccess : Row
     {
         [SqlName("UserId")]
@@ -353,7 +353,7 @@ namespace Database.dbo
 
     public partial class SyRoleAccess_IsAdmin : Cell<SyRoleAccess> { }
 
-    [SqlName("SyRoleUser")]
+    [SqlTable("dbo", "SyRoleUser")]
     public partial class SyRoleUser : Row
     {
         [SqlName("Id")]
@@ -381,7 +381,7 @@ namespace Database.dbo
 
     public partial class SyRoleUser_IsActive : Cell<SyRoleUser> { }
 
-    [SqlName("SyUser")]
+    [SqlTable("dbo", "SyUser")]
     public partial class SyUser : Row
     {
         [SqlName("Id")]
@@ -397,7 +397,7 @@ namespace Database.dbo
 
     public partial class SyUser_Name : Cell<SyUser> { }
 
-    [SqlName("TableName")]
+    [SqlTable("dbo", "TableName")]
     public partial class TableName : Row
     {
         [SqlName("TableName2")]
@@ -413,7 +413,7 @@ namespace Database.dbo
 
     public partial class TableName_IsView : Cell<TableName> { }
 
-    [SqlName("YContentText")]
+    [SqlTable("dbo", "YContentText")]
     public partial class YContentText : Row
     {
         [SqlName("Id")]
@@ -447,7 +447,7 @@ namespace Database.dbo
 
     public partial class YContentText_IsActive : Cell<YContentText> { }
 
-    [SqlName("YContentTextDisplay")]
+    [SqlTable("dbo", "YContentTextDisplay")]
     public partial class YContentTextDisplay : Row
     {
         [SqlName("SessionId")]
@@ -475,7 +475,7 @@ namespace Database.dbo
 
     public partial class YContentTextDisplay_Path : Cell<YContentTextDisplay> { }
 
-    [SqlName("YContentType")]
+    [SqlTable("dbo", "YContentType")]
     public partial class YContentType : Row
     {
         [SqlName("Id")]
@@ -491,7 +491,7 @@ namespace Database.dbo
 
     public partial class YContentType_Name : Cell<YContentType> { }
 
-    [SqlName("YLayer")]
+    [SqlTable("dbo", "YLayer")]
     public partial class YLayer : Row
     {
         [SqlName("Id")]
@@ -531,7 +531,7 @@ namespace Database.dbo
 
     public partial class YLayer_User : Cell<YLayer> { }
 
-    [SqlName("YLayerDeclare")]
+    [SqlTable("dbo", "YLayerDeclare")]
     public partial class YLayerDeclare : Row
     {
         [SqlName("Id")]
@@ -559,7 +559,7 @@ namespace Database.dbo
 
     public partial class YLayerDeclare_Name : Cell<YLayerDeclare> { }
 
-    [SqlName("YLayerHierarchy")]
+    [SqlTable("dbo", "YLayerHierarchy")]
     public partial class YLayerHierarchy : Row
     {
         [SqlName("LayerId")]
@@ -581,7 +581,7 @@ namespace Database.dbo
 
     public partial class YLayerHierarchy_Level : Cell<YLayerHierarchy> { }
 
-    [SqlName("YLayerPath")]
+    [SqlTable("dbo", "YLayerPath")]
     public partial class YLayerPath : Row
     {
         [SqlName("Id")]
@@ -621,7 +621,7 @@ namespace Database.dbo
 
     public partial class YLayerPath_Level : Cell<YLayerPath> { }
 
-    [SqlName("YLayerType")]
+    [SqlTable("dbo", "YLayerType")]
     public partial class YLayerType : Row
     {
         [SqlName("Id")]
@@ -637,7 +637,7 @@ namespace Database.dbo
 
     public partial class YLayerType_Name : Cell<YLayerType> { }
 
-    [SqlName("YLayerView")]
+    [SqlTable("dbo", "YLayerView")]
     public partial class YLayerView : Row
     {
         [SqlName("Id")]
@@ -683,7 +683,7 @@ namespace Database.dbo
 
     public partial class YLayerView_Path : Cell<YLayerView> { }
 
-    [SqlName("YSession")]
+    [SqlTable("dbo", "YSession")]
     public partial class YSession : Row
     {
         [SqlName("Id")]

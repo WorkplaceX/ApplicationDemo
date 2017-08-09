@@ -187,8 +187,6 @@
                             string tableName = row.TableName2;
                             if (tableName != null && tableName.IndexOf(".") != -1)
                             {
-                                tableName = "Database." + tableName;
-                                //
                                 Type typeRow = UtilDataAccessLayer.TypeRowFromName(tableName, typeof(AppDemo));
                                 gridData.LoadDatabase("Detail", null, null, false, typeRow);
                                 gridData.SaveJson(app);
