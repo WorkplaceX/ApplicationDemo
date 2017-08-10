@@ -25,7 +25,7 @@
 
     public partial class Country : Row
     {
-        [TypeCell(typeof(Country_ButtonDelete))]
+        [SqlColumn(null, typeof(Country_ButtonDelete))]
         public string ButtonDelete { get; set; }
     }
 

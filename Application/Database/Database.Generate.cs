@@ -6,20 +6,16 @@ namespace Database.dbo
     [SqlTable("dbo", "Airport")]
     public partial class Airport : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(Airport_Id))]
+        [SqlColumn("Id", typeof(Airport_Id))]
         public int Id { get; set; }
 
-        [SqlName("Text")]
-        [TypeCell(typeof(Airport_Text))]
+        [SqlColumn("Text", typeof(Airport_Text))]
         public string Text { get; set; }
 
-        [SqlName("Code")]
-        [TypeCell(typeof(Airport_Code))]
+        [SqlColumn("Code", typeof(Airport_Code))]
         public string Code { get; set; }
 
-        [SqlName("CountryId")]
-        [TypeCell(typeof(Airport_CountryId))]
+        [SqlColumn("CountryId", typeof(Airport_CountryId))]
         public int? CountryId { get; set; }
     }
 
@@ -34,28 +30,22 @@ namespace Database.dbo
     [SqlTable("dbo", "AirportDisplay")]
     public partial class AirportDisplay : Row
     {
-        [SqlName("AirportId")]
-        [TypeCell(typeof(AirportDisplay_AirportId))]
+        [SqlColumn("AirportId", typeof(AirportDisplay_AirportId))]
         public int AirportId { get; set; }
 
-        [SqlName("AirportText")]
-        [TypeCell(typeof(AirportDisplay_AirportText))]
+        [SqlColumn("AirportText", typeof(AirportDisplay_AirportText))]
         public string AirportText { get; set; }
 
-        [SqlName("AirportCode")]
-        [TypeCell(typeof(AirportDisplay_AirportCode))]
+        [SqlColumn("AirportCode", typeof(AirportDisplay_AirportCode))]
         public string AirportCode { get; set; }
 
-        [SqlName("CountryId")]
-        [TypeCell(typeof(AirportDisplay_CountryId))]
+        [SqlColumn("CountryId", typeof(AirportDisplay_CountryId))]
         public int? CountryId { get; set; }
 
-        [SqlName("CountryText")]
-        [TypeCell(typeof(AirportDisplay_CountryText))]
+        [SqlColumn("CountryText", typeof(AirportDisplay_CountryText))]
         public string CountryText { get; set; }
 
-        [SqlName("CountryContinent")]
-        [TypeCell(typeof(AirportDisplay_CountryContinent))]
+        [SqlColumn("CountryContinent", typeof(AirportDisplay_CountryContinent))]
         public string CountryContinent { get; set; }
     }
 
@@ -74,20 +64,16 @@ namespace Database.dbo
     [SqlTable("dbo", "Country")]
     public partial class Country : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(Country_Id))]
+        [SqlColumn("Id", typeof(Country_Id))]
         public int Id { get; set; }
 
-        [SqlName("Text")]
-        [TypeCell(typeof(Country_Text))]
+        [SqlColumn("Text", typeof(Country_Text))]
         public string Text { get; set; }
 
-        [SqlName("TextShort")]
-        [TypeCell(typeof(Country_TextShort))]
+        [SqlColumn("TextShort", typeof(Country_TextShort))]
         public string TextShort { get; set; }
 
-        [SqlName("Continent")]
-        [TypeCell(typeof(Country_Continent))]
+        [SqlColumn("Continent", typeof(Country_Continent))]
         public string Continent { get; set; }
     }
 
@@ -102,12 +88,10 @@ namespace Database.dbo
     [SqlTable("dbo", "LoLoation")]
     public partial class LoLoation : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(LoLoation_Id))]
+        [SqlColumn("Id", typeof(LoLoation_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(LoLoation_Name))]
+        [SqlColumn("Name", typeof(LoLoation_Name))]
         public string Name { get; set; }
     }
 
@@ -118,16 +102,13 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRole")]
     public partial class LoRole : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(LoRole_Id))]
+        [SqlColumn("Id", typeof(LoRole_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(LoRole_Name))]
+        [SqlColumn("Name", typeof(LoRole_Name))]
         public string Name { get; set; }
 
-        [SqlName("IsAdmin")]
-        [TypeCell(typeof(LoRole_IsAdmin))]
+        [SqlColumn("IsAdmin", typeof(LoRole_IsAdmin))]
         public bool IsAdmin { get; set; }
     }
 
@@ -140,20 +121,16 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRoleAccess")]
     public partial class LoRoleAccess : Row
     {
-        [SqlName("UserId")]
-        [TypeCell(typeof(LoRoleAccess_UserId))]
+        [SqlColumn("UserId", typeof(LoRoleAccess_UserId))]
         public int UserId { get; set; }
 
-        [SqlName("UserName")]
-        [TypeCell(typeof(LoRoleAccess_UserName))]
+        [SqlColumn("UserName", typeof(LoRoleAccess_UserName))]
         public string UserName { get; set; }
 
-        [SqlName("LoationId")]
-        [TypeCell(typeof(LoRoleAccess_LoationId))]
+        [SqlColumn("LoationId", typeof(LoRoleAccess_LoationId))]
         public int? LoationId { get; set; }
 
-        [SqlName("LoationName")]
-        [TypeCell(typeof(LoRoleAccess_LoationName))]
+        [SqlColumn("LoationName", typeof(LoRoleAccess_LoationName))]
         public string LoationName { get; set; }
     }
 
@@ -168,24 +145,19 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRoleLoation")]
     public partial class LoRoleLoation : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(LoRoleLoation_Id))]
+        [SqlColumn("Id", typeof(LoRoleLoation_Id))]
         public int Id { get; set; }
 
-        [SqlName("RoleId")]
-        [TypeCell(typeof(LoRoleLoation_RoleId))]
+        [SqlColumn("RoleId", typeof(LoRoleLoation_RoleId))]
         public int? RoleId { get; set; }
 
-        [SqlName("UserId")]
-        [TypeCell(typeof(LoRoleLoation_UserId))]
+        [SqlColumn("UserId", typeof(LoRoleLoation_UserId))]
         public int? UserId { get; set; }
 
-        [SqlName("LoationId")]
-        [TypeCell(typeof(LoRoleLoation_LoationId))]
+        [SqlColumn("LoationId", typeof(LoRoleLoation_LoationId))]
         public int LoationId { get; set; }
 
-        [SqlName("IsActive")]
-        [TypeCell(typeof(LoRoleLoation_IsActive))]
+        [SqlColumn("IsActive", typeof(LoRoleLoation_IsActive))]
         public bool IsActive { get; set; }
     }
 
@@ -202,48 +174,37 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRoleMatrix")]
     public partial class LoRoleMatrix : Row
     {
-        [SqlName("UserId")]
-        [TypeCell(typeof(LoRoleMatrix_UserId))]
+        [SqlColumn("UserId", typeof(LoRoleMatrix_UserId))]
         public int UserId { get; set; }
 
-        [SqlName("UserName")]
-        [TypeCell(typeof(LoRoleMatrix_UserName))]
+        [SqlColumn("UserName", typeof(LoRoleMatrix_UserName))]
         public string UserName { get; set; }
 
-        [SqlName("LoationId")]
-        [TypeCell(typeof(LoRoleMatrix_LoationId))]
+        [SqlColumn("LoationId", typeof(LoRoleMatrix_LoationId))]
         public int LoationId { get; set; }
 
-        [SqlName("LoationName")]
-        [TypeCell(typeof(LoRoleMatrix_LoationName))]
+        [SqlColumn("LoationName", typeof(LoRoleMatrix_LoationName))]
         public string LoationName { get; set; }
 
-        [SqlName("RoleId")]
-        [TypeCell(typeof(LoRoleMatrix_RoleId))]
+        [SqlColumn("RoleId", typeof(LoRoleMatrix_RoleId))]
         public int RoleId { get; set; }
 
-        [SqlName("RoleName")]
-        [TypeCell(typeof(LoRoleMatrix_RoleName))]
+        [SqlColumn("RoleName", typeof(LoRoleMatrix_RoleName))]
         public string RoleName { get; set; }
 
-        [SqlName("IsRole")]
-        [TypeCell(typeof(LoRoleMatrix_IsRole))]
+        [SqlColumn("IsRole", typeof(LoRoleMatrix_IsRole))]
         public bool? IsRole { get; set; }
 
-        [SqlName("IsDirect")]
-        [TypeCell(typeof(LoRoleMatrix_IsDirect))]
+        [SqlColumn("IsDirect", typeof(LoRoleMatrix_IsDirect))]
         public bool? IsDirect { get; set; }
 
-        [SqlName("IsAdmin")]
-        [TypeCell(typeof(LoRoleMatrix_IsAdmin))]
+        [SqlColumn("IsAdmin", typeof(LoRoleMatrix_IsAdmin))]
         public bool? IsAdmin { get; set; }
 
-        [SqlName("IsAdminModule")]
-        [TypeCell(typeof(LoRoleMatrix_IsAdminModule))]
+        [SqlColumn("IsAdminModule", typeof(LoRoleMatrix_IsAdminModule))]
         public bool? IsAdminModule { get; set; }
 
-        [SqlName("IsAccess")]
-        [TypeCell(typeof(LoRoleMatrix_IsAccess))]
+        [SqlColumn("IsAccess", typeof(LoRoleMatrix_IsAccess))]
         public int? IsAccess { get; set; }
     }
 
@@ -272,20 +233,16 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRoleUser")]
     public partial class LoRoleUser : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(LoRoleUser_Id))]
+        [SqlColumn("Id", typeof(LoRoleUser_Id))]
         public int Id { get; set; }
 
-        [SqlName("UserId")]
-        [TypeCell(typeof(LoRoleUser_UserId))]
+        [SqlColumn("UserId", typeof(LoRoleUser_UserId))]
         public int UserId { get; set; }
 
-        [SqlName("RoleId")]
-        [TypeCell(typeof(LoRoleUser_RoleId))]
+        [SqlColumn("RoleId", typeof(LoRoleUser_RoleId))]
         public int RoleId { get; set; }
 
-        [SqlName("IsActive")]
-        [TypeCell(typeof(LoRoleUser_IsActive))]
+        [SqlColumn("IsActive", typeof(LoRoleUser_IsActive))]
         public bool IsActive { get; set; }
     }
 
@@ -300,16 +257,13 @@ namespace Database.dbo
     [SqlTable("dbo", "SyRole")]
     public partial class SyRole : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(SyRole_Id))]
+        [SqlColumn("Id", typeof(SyRole_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(SyRole_Name))]
+        [SqlColumn("Name", typeof(SyRole_Name))]
         public string Name { get; set; }
 
-        [SqlName("IsAdmin")]
-        [TypeCell(typeof(SyRole_IsAdmin))]
+        [SqlColumn("IsAdmin", typeof(SyRole_IsAdmin))]
         public bool? IsAdmin { get; set; }
     }
 
@@ -322,24 +276,19 @@ namespace Database.dbo
     [SqlTable("dbo", "SyRoleAccess")]
     public partial class SyRoleAccess : Row
     {
-        [SqlName("UserId")]
-        [TypeCell(typeof(SyRoleAccess_UserId))]
+        [SqlColumn("UserId", typeof(SyRoleAccess_UserId))]
         public int UserId { get; set; }
 
-        [SqlName("UserName")]
-        [TypeCell(typeof(SyRoleAccess_UserName))]
+        [SqlColumn("UserName", typeof(SyRoleAccess_UserName))]
         public string UserName { get; set; }
 
-        [SqlName("RoleId")]
-        [TypeCell(typeof(SyRoleAccess_RoleId))]
+        [SqlColumn("RoleId", typeof(SyRoleAccess_RoleId))]
         public int? RoleId { get; set; }
 
-        [SqlName("RoleName")]
-        [TypeCell(typeof(SyRoleAccess_RoleName))]
+        [SqlColumn("RoleName", typeof(SyRoleAccess_RoleName))]
         public string RoleName { get; set; }
 
-        [SqlName("IsAdmin")]
-        [TypeCell(typeof(SyRoleAccess_IsAdmin))]
+        [SqlColumn("IsAdmin", typeof(SyRoleAccess_IsAdmin))]
         public bool? IsAdmin { get; set; }
     }
 
@@ -356,20 +305,16 @@ namespace Database.dbo
     [SqlTable("dbo", "SyRoleUser")]
     public partial class SyRoleUser : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(SyRoleUser_Id))]
+        [SqlColumn("Id", typeof(SyRoleUser_Id))]
         public int Id { get; set; }
 
-        [SqlName("UserId")]
-        [TypeCell(typeof(SyRoleUser_UserId))]
+        [SqlColumn("UserId", typeof(SyRoleUser_UserId))]
         public int UserId { get; set; }
 
-        [SqlName("RoleId")]
-        [TypeCell(typeof(SyRoleUser_RoleId))]
+        [SqlColumn("RoleId", typeof(SyRoleUser_RoleId))]
         public int RoleId { get; set; }
 
-        [SqlName("IsActive")]
-        [TypeCell(typeof(SyRoleUser_IsActive))]
+        [SqlColumn("IsActive", typeof(SyRoleUser_IsActive))]
         public bool IsActive { get; set; }
     }
 
@@ -384,12 +329,10 @@ namespace Database.dbo
     [SqlTable("dbo", "SyUser")]
     public partial class SyUser : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(SyUser_Id))]
+        [SqlColumn("Id", typeof(SyUser_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(SyUser_Name))]
+        [SqlColumn("Name", typeof(SyUser_Name))]
         public string Name { get; set; }
     }
 
@@ -400,12 +343,10 @@ namespace Database.dbo
     [SqlTable("dbo", "TableName")]
     public partial class TableName : Row
     {
-        [SqlName("TableName2")]
-        [TypeCell(typeof(TableName_TableName2))]
+        [SqlColumn("TableName2", typeof(TableName_TableName2))]
         public string TableName2 { get; set; }
 
-        [SqlName("IsView")]
-        [TypeCell(typeof(TableName_IsView))]
+        [SqlColumn("IsView", typeof(TableName_IsView))]
         public bool? IsView { get; set; }
     }
 
@@ -416,24 +357,19 @@ namespace Database.dbo
     [SqlTable("dbo", "YContentText")]
     public partial class YContentText : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YContentText_Id))]
+        [SqlColumn("Id", typeof(YContentText_Id))]
         public int Id { get; set; }
 
-        [SqlName("LayerId")]
-        [TypeCell(typeof(YContentText_LayerId))]
+        [SqlColumn("LayerId", typeof(YContentText_LayerId))]
         public int LayerId { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(YContentText_Name))]
+        [SqlColumn("Name", typeof(YContentText_Name))]
         public string Name { get; set; }
 
-        [SqlName("Text")]
-        [TypeCell(typeof(YContentText_Text))]
+        [SqlColumn("Text", typeof(YContentText_Text))]
         public string Text { get; set; }
 
-        [SqlName("IsActive")]
-        [TypeCell(typeof(YContentText_IsActive))]
+        [SqlColumn("IsActive", typeof(YContentText_IsActive))]
         public bool? IsActive { get; set; }
     }
 
@@ -450,20 +386,16 @@ namespace Database.dbo
     [SqlTable("dbo", "YContentTextDisplay")]
     public partial class YContentTextDisplay : Row
     {
-        [SqlName("SessionId")]
-        [TypeCell(typeof(YContentTextDisplay_SessionId))]
+        [SqlColumn("SessionId", typeof(YContentTextDisplay_SessionId))]
         public int SessionId { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(YContentTextDisplay_Name))]
+        [SqlColumn("Name", typeof(YContentTextDisplay_Name))]
         public string Name { get; set; }
 
-        [SqlName("Text")]
-        [TypeCell(typeof(YContentTextDisplay_Text))]
+        [SqlColumn("Text", typeof(YContentTextDisplay_Text))]
         public string Text { get; set; }
 
-        [SqlName("Path")]
-        [TypeCell(typeof(YContentTextDisplay_Path))]
+        [SqlColumn("Path", typeof(YContentTextDisplay_Path))]
         public string Path { get; set; }
     }
 
@@ -478,12 +410,10 @@ namespace Database.dbo
     [SqlTable("dbo", "YContentType")]
     public partial class YContentType : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YContentType_Id))]
+        [SqlColumn("Id", typeof(YContentType_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(YContentType_Name))]
+        [SqlColumn("Name", typeof(YContentType_Name))]
         public string Name { get; set; }
     }
 
@@ -494,28 +424,22 @@ namespace Database.dbo
     [SqlTable("dbo", "YLayer")]
     public partial class YLayer : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YLayer_Id))]
+        [SqlColumn("Id", typeof(YLayer_Id))]
         public int Id { get; set; }
 
-        [SqlName("ParentId")]
-        [TypeCell(typeof(YLayer_ParentId))]
+        [SqlColumn("ParentId", typeof(YLayer_ParentId))]
         public int? ParentId { get; set; }
 
-        [SqlName("Application")]
-        [TypeCell(typeof(YLayer_Application))]
+        [SqlColumn("Application", typeof(YLayer_Application))]
         public string Application { get; set; }
 
-        [SqlName("Language")]
-        [TypeCell(typeof(YLayer_Language))]
+        [SqlColumn("Language", typeof(YLayer_Language))]
         public string Language { get; set; }
 
-        [SqlName("Screen")]
-        [TypeCell(typeof(YLayer_Screen))]
+        [SqlColumn("Screen", typeof(YLayer_Screen))]
         public string Screen { get; set; }
 
-        [SqlName("User")]
-        [TypeCell(typeof(YLayer_User))]
+        [SqlColumn("User", typeof(YLayer_User))]
         public string User { get; set; }
     }
 
@@ -534,20 +458,16 @@ namespace Database.dbo
     [SqlTable("dbo", "YLayerDeclare")]
     public partial class YLayerDeclare : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YLayerDeclare_Id))]
+        [SqlColumn("Id", typeof(YLayerDeclare_Id))]
         public string Id { get; set; }
 
-        [SqlName("LayerTypeId")]
-        [TypeCell(typeof(YLayerDeclare_LayerTypeId))]
+        [SqlColumn("LayerTypeId", typeof(YLayerDeclare_LayerTypeId))]
         public int LayerTypeId { get; set; }
 
-        [SqlName("LayerIdDeclare")]
-        [TypeCell(typeof(YLayerDeclare_LayerIdDeclare))]
+        [SqlColumn("LayerIdDeclare", typeof(YLayerDeclare_LayerIdDeclare))]
         public string LayerIdDeclare { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(YLayerDeclare_Name))]
+        [SqlColumn("Name", typeof(YLayerDeclare_Name))]
         public string Name { get; set; }
     }
 
@@ -562,16 +482,13 @@ namespace Database.dbo
     [SqlTable("dbo", "YLayerHierarchy")]
     public partial class YLayerHierarchy : Row
     {
-        [SqlName("LayerId")]
-        [TypeCell(typeof(YLayerHierarchy_LayerId))]
+        [SqlColumn("LayerId", typeof(YLayerHierarchy_LayerId))]
         public int? LayerId { get; set; }
 
-        [SqlName("LayerIdContain")]
-        [TypeCell(typeof(YLayerHierarchy_LayerIdContain))]
+        [SqlColumn("LayerIdContain", typeof(YLayerHierarchy_LayerIdContain))]
         public int? LayerIdContain { get; set; }
 
-        [SqlName("Level")]
-        [TypeCell(typeof(YLayerHierarchy_Level))]
+        [SqlColumn("Level", typeof(YLayerHierarchy_Level))]
         public int? Level { get; set; }
     }
 
@@ -584,28 +501,22 @@ namespace Database.dbo
     [SqlTable("dbo", "YLayerPath")]
     public partial class YLayerPath : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YLayerPath_Id))]
+        [SqlColumn("Id", typeof(YLayerPath_Id))]
         public int Id { get; set; }
 
-        [SqlName("SessionId")]
-        [TypeCell(typeof(YLayerPath_SessionId))]
+        [SqlColumn("SessionId", typeof(YLayerPath_SessionId))]
         public int SessionId { get; set; }
 
-        [SqlName("ContentTypeId")]
-        [TypeCell(typeof(YLayerPath_ContentTypeId))]
+        [SqlColumn("ContentTypeId", typeof(YLayerPath_ContentTypeId))]
         public int ContentTypeId { get; set; }
 
-        [SqlName("LayerId")]
-        [TypeCell(typeof(YLayerPath_LayerId))]
+        [SqlColumn("LayerId", typeof(YLayerPath_LayerId))]
         public int LayerId { get; set; }
 
-        [SqlName("LayerIdContain")]
-        [TypeCell(typeof(YLayerPath_LayerIdContain))]
+        [SqlColumn("LayerIdContain", typeof(YLayerPath_LayerIdContain))]
         public int LayerIdContain { get; set; }
 
-        [SqlName("Level")]
-        [TypeCell(typeof(YLayerPath_Level))]
+        [SqlColumn("Level", typeof(YLayerPath_Level))]
         public int Level { get; set; }
     }
 
@@ -624,12 +535,10 @@ namespace Database.dbo
     [SqlTable("dbo", "YLayerType")]
     public partial class YLayerType : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YLayerType_Id))]
+        [SqlColumn("Id", typeof(YLayerType_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(YLayerType_Name))]
+        [SqlColumn("Name", typeof(YLayerType_Name))]
         public string Name { get; set; }
     }
 
@@ -640,32 +549,25 @@ namespace Database.dbo
     [SqlTable("dbo", "YLayerView")]
     public partial class YLayerView : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YLayerView_Id))]
+        [SqlColumn("Id", typeof(YLayerView_Id))]
         public int Id { get; set; }
 
-        [SqlName("ParentId")]
-        [TypeCell(typeof(YLayerView_ParentId))]
+        [SqlColumn("ParentId", typeof(YLayerView_ParentId))]
         public int? ParentId { get; set; }
 
-        [SqlName("LayerDeclareIdApplication")]
-        [TypeCell(typeof(YLayerView_LayerDeclareIdApplication))]
+        [SqlColumn("LayerDeclareIdApplication", typeof(YLayerView_LayerDeclareIdApplication))]
         public int? LayerDeclareIdApplication { get; set; }
 
-        [SqlName("LayerDeclareIdLanguage")]
-        [TypeCell(typeof(YLayerView_LayerDeclareIdLanguage))]
+        [SqlColumn("LayerDeclareIdLanguage", typeof(YLayerView_LayerDeclareIdLanguage))]
         public int? LayerDeclareIdLanguage { get; set; }
 
-        [SqlName("LayerDeclareIdScreen")]
-        [TypeCell(typeof(YLayerView_LayerDeclareIdScreen))]
+        [SqlColumn("LayerDeclareIdScreen", typeof(YLayerView_LayerDeclareIdScreen))]
         public int? LayerDeclareIdScreen { get; set; }
 
-        [SqlName("LayerDeclareIdUser")]
-        [TypeCell(typeof(YLayerView_LayerDeclareIdUser))]
+        [SqlColumn("LayerDeclareIdUser", typeof(YLayerView_LayerDeclareIdUser))]
         public int? LayerDeclareIdUser { get; set; }
 
-        [SqlName("Path")]
-        [TypeCell(typeof(YLayerView_Path))]
+        [SqlColumn("Path", typeof(YLayerView_Path))]
         public string Path { get; set; }
     }
 
@@ -686,36 +588,28 @@ namespace Database.dbo
     [SqlTable("dbo", "YSession")]
     public partial class YSession : Row
     {
-        [SqlName("Id")]
-        [TypeCell(typeof(YSession_Id))]
+        [SqlColumn("Id", typeof(YSession_Id))]
         public int Id { get; set; }
 
-        [SqlName("Name")]
-        [TypeCell(typeof(YSession_Name))]
+        [SqlColumn("Name", typeof(YSession_Name))]
         public Guid Name { get; set; }
 
-        [SqlName("LayerDeclareIdApplication")]
-        [TypeCell(typeof(YSession_LayerDeclareIdApplication))]
+        [SqlColumn("LayerDeclareIdApplication", typeof(YSession_LayerDeclareIdApplication))]
         public int LayerDeclareIdApplication { get; set; }
 
-        [SqlName("LayerDeclareIdLanguage")]
-        [TypeCell(typeof(YSession_LayerDeclareIdLanguage))]
+        [SqlColumn("LayerDeclareIdLanguage", typeof(YSession_LayerDeclareIdLanguage))]
         public int? LayerDeclareIdLanguage { get; set; }
 
-        [SqlName("LayerDeclareIdScreen")]
-        [TypeCell(typeof(YSession_LayerDeclareIdScreen))]
+        [SqlColumn("LayerDeclareIdScreen", typeof(YSession_LayerDeclareIdScreen))]
         public int? LayerDeclareIdScreen { get; set; }
 
-        [SqlName("LayerDeclareIdUser")]
-        [TypeCell(typeof(YSession_LayerDeclareIdUser))]
+        [SqlColumn("LayerDeclareIdUser", typeof(YSession_LayerDeclareIdUser))]
         public int? LayerDeclareIdUser { get; set; }
 
-        [SqlName("LayerIdText")]
-        [TypeCell(typeof(YSession_LayerIdText))]
+        [SqlColumn("LayerIdText", typeof(YSession_LayerIdText))]
         public int? LayerIdText { get; set; }
 
-        [SqlName("LayerIdFile")]
-        [TypeCell(typeof(YSession_LayerIdFile))]
+        [SqlColumn("LayerIdFile", typeof(YSession_LayerIdFile))]
         public int? LayerIdFile { get; set; }
     }
 
