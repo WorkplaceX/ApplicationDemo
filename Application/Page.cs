@@ -11,7 +11,7 @@
     {
         protected override void InitJson(App app)
         {
-            new Label(this, null);
+            new Label(this);
         }
 
         protected override void RunEnd()
@@ -24,37 +24,37 @@
     {
         protected override void InitJson(App app)
         {
-            new GridKeyboard(this, "GridKeyboard");
-            new Button(this, "Close") { Name = "Close"};
+            new GridKeyboard(this);
+            new Button(this) { Name = "Close", Text = "Close" };
             this.CssClass = "container co";
             var container = this;
-            var rowLogo = new LayoutRow(container, "RowLogo") { CssClass = "r" };
-            var literalLogo = new Literal(rowLogo, "Logo");
-            literalLogo.Html = "<img src='/Logo.png' />";
+            var rowLogo = new LayoutRow(container) { CssClass = "r" };
+            var literalLogo = new Literal(rowLogo);
+            literalLogo.TextHtml = "<img src='/Logo.png' />";
             // Row
-            var rowHeader = new LayoutRow(container, "Header") { CssClass = "r" };
-            var cellHeader1 = new LayoutCell(rowHeader, "HeaderCell1") { CssClass = "col-sm-6" };
-            new GridField(cellHeader1, "Field", null, null, null);
-            var cellHeader2 = new LayoutCell(rowHeader, "HeaderCell2") { CssClass = "col-sm-6 c" };
-            new Grid(cellHeader2, "LookUp", "LookUp");
+            var rowHeader = new LayoutRow(container) { CssClass = "r" };
+            var cellHeader1 = new LayoutCell(rowHeader) { CssClass = "col-sm-6" };
+            new GridField(cellHeader1, null, null, null);
+            var cellHeader2 = new LayoutCell(rowHeader) { CssClass = "col-sm-6 c" };
+            new Grid(cellHeader2, "LookUp");
             // Row
-            var rowHeader2 = new LayoutRow(container, "Header") { CssClass = "r" };
-            var cellHeader3 = new LayoutCell(rowHeader2, "HeaderCell3") { CssClass = "col-sm-12 c" };
+            var rowHeader2 = new LayoutRow(container) { CssClass = "r" };
+            var cellHeader3 = new LayoutCell(rowHeader2) { CssClass = "col-sm-12 c" };
             app.PageShow<GridTrafficLight>(cellHeader3);
             // Row
-            var rowContent = new LayoutRow(container, "Content");
-            var cellContent1 = new LayoutCell(rowContent, "ContentCell1") { CssClass = "col-sm-6 c d1" };
-            var cellContent2 = new LayoutCell(rowContent, "ContentCell2") { CssClass = "col-sm-6 c2 d2" };
-            new Grid(cellContent1, "Master", "Master");
-            new Grid(cellContent2, "Detail", "Detail");
+            var rowContent = new LayoutRow(container);
+            var cellContent1 = new LayoutCell(rowContent) { CssClass = "col-sm-6 c d1" };
+            var cellContent2 = new LayoutCell(rowContent) { CssClass = "col-sm-6 c2 d2" };
+            new Grid(cellContent1, "Master");
+            new Grid(cellContent2, "Detail");
 
-            var rowFooter = new LayoutRow(container, "Footer");
-            var cellFooter1 = new LayoutCell(rowFooter, "FooterCell1") { CssClass = "col-sm-6 c" };
-            var literal = new Literal(cellFooter1, "Literal");
-            literal.Html = "Hello <b>Literal</b>";
+            var rowFooter = new LayoutRow(container);
+            var cellFooter1 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
+            var literal = new Literal(cellFooter1);
+            literal.TextHtml = "Hello <b>Literal</b>";
             literal.CssClass = "y";
-            var cellFooter2 = new LayoutCell(rowFooter, "FooterCell1") { CssClass = "col-sm-6 c" };
-            var button = new Button(cellFooter2, "Hello");
+            var cellFooter2 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
+            var button = new Button(cellFooter2) { Text = "Hello" };
             //
             app.GridData().LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
             app.GridData().SaveJson(app);
@@ -85,9 +85,9 @@
         protected override void InitJson(App app)
         {
             this.CssClass = "container";
-            new Button(this, "Browse");
-            new Button(this, "Debug");
-            new Button(this, "About");
+            new Button(this) { Text = "Browse" };
+            new Button(this) { Text = "Debug" };
+            new Button(this) { Text = "About" };
         }
 
         protected override void RunBegin(App app)
@@ -111,8 +111,8 @@
     {
         protected override void InitJson(App app)
         {
-            new Label(this, "(C) 2017 by Framework");
-            new Button(this, "Ok");
+            new Label(this) { Text = "(C) 2017 by Framework" };
+            new Button(this) { Text = "Ok" };
         }
 
         protected override void RunBegin(App app)
@@ -130,9 +130,9 @@
 
         protected override void InitJson(App app)
         {
-            label = new Label(this, null);
-            new Button(this, "Yes");
-            new Button(this, "No");
+            label = new Label(this);
+            new Button(this) { Text = "Yes" };
+            new Button(this) { Text = "No" };
         }
 
         public void Init(App app, string gridName, string index)
@@ -202,12 +202,12 @@
     {
         protected override void InitJson(App app)
         {
-            new Button(this, "Toggle X");
-            new Button(this, "Remove Y");
-            new Button(this, "X");
-            new Button(this, "Y");
-            new Button(this, "Reset");
-            new Button(this, "Close");
+            new Button(this) { Text = "Toggle X" };
+            new Button(this) { Text = "Remove Y" };
+            new Button(this) { Text = "X" };
+            new Button(this) { Text = "Y" };
+            new Button(this) { Text = "Reset" };
+            new Button(this) { Text = "Close" };
         }
 
         public Button Button(string text)
