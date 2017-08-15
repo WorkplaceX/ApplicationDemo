@@ -56,7 +56,7 @@
             var cellFooter2 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
             var button = new Button(cellFooter2) { Text = "Hello" };
             //
-            app.GridData().LoadDatabase("Master", null, null, false, typeof(Database.dbo.TableName));
+            app.GridData().LoadDatabase<Database.dbo.TableName>(app, "Master");
             app.GridData().SaveJson(app);
         }
 
@@ -188,7 +188,7 @@
                             if (tableName != null && tableName.IndexOf(".") != -1)
                             {
                                 Type typeRow = UtilDataAccessLayer.TypeRowFromName(tableName, typeof(AppDemo));
-                                gridData.LoadDatabase("Detail", null, null, false, typeRow);
+                                gridData.LoadDatabase(app, "Detail", typeRow);
                                 gridData.SaveJson(app);
                             }
                         }
