@@ -4,10 +4,6 @@
     using Framework.Application;
     using Framework.DataAccessLayer;
     using System;
-    using Database.dbo;
-    using System.Collections.Generic;
-    using Framework.Application.Setup;
-    using System.Linq;
 
     public class AppSelectorDemo : AppSelector
     {
