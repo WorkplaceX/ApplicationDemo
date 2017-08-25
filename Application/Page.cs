@@ -56,8 +56,8 @@
             var cellFooter2 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
             var button = new Button(cellFooter2) { Text = "Hello" };
             //
-            app.GridData().LoadDatabase<Database.dbo.TableName>(app, "Master");
-            app.GridData().SaveJson(app);
+            app.GridData.LoadDatabase<Database.dbo.TableName>("Master");
+            app.GridData.SaveJson();
         }
 
         protected override void RunBegin(App app)
@@ -140,7 +140,7 @@
             this.GridName = gridName;
             this.Index = index;
             //
-            label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData().Row(gridName, index)).Text);
+            label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData.Row(gridName, index)).Text);
         }
 
         protected override void RunBegin(App app)
@@ -157,8 +157,8 @@
             //
             if (isClick)
             {
-                app.GridData().LoadRow("Detail", null);
-                app.GridData().SaveJson(app);
+                app.GridData.LoadRow("Detail", null);
+                app.GridData.SaveJson();
                 //
                 PageShow<PageGridDatabaseBrowse>(app);
             }
@@ -182,14 +182,14 @@
                     {
                         if (UtilApplication.IndexEnumFromText(gridRow.Index) == IndexEnum.Index)
                         {
-                            GridData gridData = app.GridData();
+                            GridData gridData = app.GridData;
                             var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
                             string tableName = row.TableName2;
                             if (tableName != null && tableName.IndexOf(".") != -1)
                             {
                                 Type typeRow = UtilDataAccessLayer.TypeRowFromName(tableName, typeof(AppDemo));
-                                gridData.LoadDatabase(app, "Detail", typeRow);
-                                gridData.SaveJson(app);
+                                gridData.LoadDatabase("Detail", typeRow);
+                                gridData.SaveJson();
                             }
                         }
                     }

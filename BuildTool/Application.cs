@@ -20,7 +20,7 @@
 
         protected override void DbFrameworkApplicationView(List<FrameworkApplicationView> result)
         {
-            result.Add(new FrameworkApplicationView() { Name = "Demo", Path = "demo", Type = UtilFramework.TypeToName(typeof(AppDemo)), IsActive = true });
+            result.Add(new FrameworkApplicationView() { Text = "Demo Application", Path = "demo", Type = UtilFramework.TypeToName(typeof(AppDemo)), IsActive = true });
         }
     }
 }
