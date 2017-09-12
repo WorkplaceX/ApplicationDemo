@@ -5,6 +5,7 @@
     using Framework.DataAccessLayer;
     using Application;
     using Framework.Application;
+    using Framework.Component;
 
     public partial class AirportDisplay_AirportId
     {
@@ -13,6 +14,24 @@
             widthPercent = 8;
         }
     }
+
+    public partial class TableName
+    {
+        protected override void MasterDetail(App app, string gridNameMaster, Row rowMaster, ref bool isReload)
+        {
+            if (gridNameMaster == "Master")
+            {
+                var rowTableName = rowMaster as Database.dbo.TableName;
+                string tableName = rowTableName.TableName2;
+                if (tableName != null && tableName.IndexOf(".") != -1)
+                {
+                    Type typeRow = UtilDataAccessLayer.TypeRowFromName(tableName, typeof(AppDemo));
+                    app.GridData.LoadDatabase("Detail", typeRow);
+                }
+            }
+        }
+    }
+
 
     public partial class TableName_TableName2
     {
@@ -31,9 +50,9 @@
 
     public partial class Country_ButtonDelete : Cell<Country>
     {
-        protected override void CellIsButton(App app, string gridName, string index, ref bool result)
+        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
         {
-            result = true;
+            result.CellEnum = GridCellEnum.Button;
         }
 
         protected override void CellProcessButtonIsClick(App app, string gridName, string index, string fieldName)
@@ -49,9 +68,9 @@
 
     public partial class Country_Text : Cell<Country>
     {
-        protected override void CellIsHtml(App app, string gridName, string index, ref bool result)
+        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
         {
-            result = true;
+            result.CellEnum = GridCellEnum.Html;
         }
     }
 }

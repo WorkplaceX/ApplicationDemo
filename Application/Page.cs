@@ -57,7 +57,6 @@
             var button = new Button(cellFooter2) { Text = "Hello" };
             //
             app.GridData.LoadDatabase<Database.dbo.TableName>("Master");
-            app.GridData.SaveJson();
         }
 
         protected override void RunBegin(App app)
@@ -158,7 +157,6 @@
             if (isClick)
             {
                 app.GridData.LoadRow("Detail", null);
-                app.GridData.SaveJson();
                 //
                 PageShow<PageGridDatabaseBrowse>(app);
             }
@@ -167,35 +165,6 @@
         public string GridName;
 
         public string Index;
-    }
-
-    public class ProcessGridMasterIsClick : Process
-    {
-        protected override void Run(App app)
-        {
-            List<GridRow> rowList;
-            if (app.AppJson.GridDataJson.RowList.TryGetValue("Master", out rowList))
-            {
-                foreach (GridRow gridRow in rowList)
-                {
-                    if (gridRow.IsClick)
-                    {
-                        if (UtilApplication.IndexEnumFromText(gridRow.Index) == IndexEnum.Index)
-                        {
-                            GridData gridData = app.GridData;
-                            var row = gridData.Row("Master", gridRow.Index) as Database.dbo.TableName;
-                            string tableName = row.TableName2;
-                            if (tableName != null && tableName.IndexOf(".") != -1)
-                            {
-                                Type typeRow = UtilDataAccessLayer.TypeRowFromName(tableName, typeof(AppDemo));
-                                gridData.LoadDatabase("Detail", typeRow);
-                                gridData.SaveJson();
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     public class PageDebug : Page

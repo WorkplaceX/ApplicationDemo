@@ -12,12 +12,6 @@
 
     public class AppDemo : App
     {
-        protected override void ProcessInit(ProcessList processList)
-        {
-            base.ProcessInit(processList);
-            processList.AddBefore<ProcessGridMasterIsClick, ProcessGridIsClickFalse>();
-        }
-
         protected override void CellValueToText(string gridName, string index, Cell cell, ref string result)
         {
             if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
