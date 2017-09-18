@@ -50,17 +50,17 @@
 
     public partial class Country_ButtonDelete : Cell<Country>
     {
-        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
+        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
         {
             result.CellEnum = GridCellEnum.Button;
         }
 
-        protected override void CellProcessButtonIsClick(App app, string gridName, string index, string fieldName)
+        protected override void CellButtonIsClick(App app, string gridName, Index index, Row row, string fieldName, ref bool isReload)
         {
             app.PageShow<PageMessageBoxDelete>(app.AppJson, false).Init(app, gridName, index);
         }
 
-        protected override void CellValueToText(App app, string gridName, string index, ref string result)
+        protected override void CellValueToText(App app, string gridName, Index index, ref string result)
         {
             result = "Button";
         }
@@ -68,7 +68,7 @@
 
     public partial class Country_Text : Cell<Country>
     {
-        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
+        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
         {
             result.CellEnum = GridCellEnum.Html;
         }

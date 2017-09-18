@@ -134,10 +134,10 @@
             new Button(this) { Text = "No" };
         }
 
-        public void Init(App app, string gridName, string index)
+        public void Init(App app, string gridName, Index index)
         {
             this.GridName = gridName;
-            this.Index = index;
+            this.Index = index.Value;
             //
             label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData.Row(gridName, index)).Text);
         }

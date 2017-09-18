@@ -12,9 +12,9 @@
 
     public class AppDemo : App
     {
-        protected override void CellValueToText(string gridName, string index, Cell cell, ref string result)
+        protected override void CellValueToText(string gridName, Index index, Cell cell, ref string result)
         {
-            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
+            if (index.Enum == IndexEnum.Index)
             {
                 if (UtilFramework.TypeUnderlying(cell.TypeField) == typeof(bool))
                 {
@@ -30,9 +30,9 @@
             }
         }
 
-        protected override void CellValueFromText(string gridName, string index, Cell cell, ref string result)
+        protected override void CellValueFromText(string gridName, Index index, Cell cell, ref string result)
         {
-            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
+            if (index.Enum == IndexEnum.Index)
             {
                 if (UtilFramework.TypeUnderlying(cell.TypeField) == typeof(bool))
                 {
@@ -53,7 +53,7 @@
 
         protected override Type TypePageMain()
         {
-            return typeof(PageMain);
+            return typeof(PageGridDatabaseBrowse);
         }
     }
 }
