@@ -26,34 +26,34 @@
         {
             new GridKeyboard(this);
             new Button(this) { Name = "Close", Text = "Close" };
-            this.CssClass = "container co";
+            this.Css = "container co";
             var container = this;
-            var rowLogo = new LayoutRow(container) { CssClass = "r" };
+            var rowLogo = new LayoutRow(container) { Css = "r" };
             var literalLogo = new Literal(rowLogo);
             literalLogo.TextHtml = "<img src='/Logo.png' />";
             // Row
-            var rowHeader = new LayoutRow(container) { CssClass = "r" };
-            var cellHeader1 = new LayoutCell(rowHeader) { CssClass = "col-sm-6" };
+            var rowHeader = new LayoutRow(container) { Css = "r" };
+            var cellHeader1 = new LayoutCell(rowHeader) { Css = "col-sm-6" };
             new GridField(cellHeader1, null, null, null);
-            var cellHeader2 = new LayoutCell(rowHeader) { CssClass = "col-sm-6 c" };
+            var cellHeader2 = new LayoutCell(rowHeader) { Css = "col-sm-6 c" };
             new Grid(cellHeader2, "LookUp");
             // Row
-            var rowHeader2 = new LayoutRow(container) { CssClass = "r" };
-            var cellHeader3 = new LayoutCell(rowHeader2) { CssClass = "col-sm-12 c" };
+            var rowHeader2 = new LayoutRow(container) { Css = "r" };
+            var cellHeader3 = new LayoutCell(rowHeader2) { Css = "col-sm-12 c" };
             app.PageShow<GridTrafficLight>(cellHeader3);
             // Row
             var rowContent = new LayoutRow(container);
-            var cellContent1 = new LayoutCell(rowContent) { CssClass = "col-sm-6 c d1" };
-            var cellContent2 = new LayoutCell(rowContent) { CssClass = "col-sm-6 c2 d2" };
+            var cellContent1 = new LayoutCell(rowContent) { Css = "col-sm-6 c d1" };
+            var cellContent2 = new LayoutCell(rowContent) { Css = "col-sm-6 c2 d2" };
             new Grid(cellContent1, "Master");
             new Grid(cellContent2, "Detail");
 
             var rowFooter = new LayoutRow(container);
-            var cellFooter1 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
+            var cellFooter1 = new LayoutCell(rowFooter) { Css = "col-sm-6 c" };
             var literal = new Literal(cellFooter1);
             literal.TextHtml = "Hello <b>Literal</b>";
-            literal.CssClass = "y";
-            var cellFooter2 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
+            literal.Css = "y";
+            var cellFooter2 = new LayoutCell(rowFooter) { Css = "col-sm-6 c" };
             var button = new Button(cellFooter2) { Text = "Hello" };
             //
             app.GridData.LoadDatabase<Database.dbo.TableName>("Master");
@@ -83,7 +83,7 @@
     {
         protected override void InitJson(App app)
         {
-            this.CssClass = "container";
+            this.Css = "container";
             new Button(this) { Text = "Browse" };
             new Button(this) { Text = "Debug" };
             new Button(this) { Text = "About" };
