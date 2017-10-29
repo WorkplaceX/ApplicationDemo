@@ -12,11 +12,11 @@
 
     public class AppDemo : App
     {
-        protected override void CellValueToText(string gridName, Index index, Cell cell, ref string result)
+        protected override void CellValueToText(GridName gridName, Index index, Cell cell, ref string result)
         {
             if (index.Enum == IndexEnum.Index)
             {
-                if (UtilFramework.TypeUnderlying(cell.TypeField) == typeof(bool))
+                if (cell.TypeField == typeof(bool) || cell.TypeField == typeof(bool?))
                 {
                     if ((bool?)cell.Value == false)
                     {
@@ -30,11 +30,11 @@
             }
         }
 
-        protected override void CellValueFromText(string gridName, Index index, Cell cell, ref string result)
+        protected override void CellValueFromText(GridName gridName, Index index, Cell cell, ref string result)
         {
             if (index.Enum == IndexEnum.Index)
             {
-                if (UtilFramework.TypeUnderlying(cell.TypeField) == typeof(bool))
+                if (cell.TypeField == typeof(bool) || cell.TypeField == typeof(bool?))
                 {
                     if (result != null)
                     {

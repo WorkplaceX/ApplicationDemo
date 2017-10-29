@@ -24,39 +24,40 @@
     {
         protected override void InitJson(App app)
         {
+            var gridNameMaster = new GridName<Database.dbo.TableName>();
+            //
             new GridKeyboard(this);
             new Button(this) { Name = "Close", Text = "Close" };
-            this.Css = "container co";
+            this.CssClass = "container co";
             var container = this;
-            var rowLogo = new LayoutRow(container) { Css = "r" };
+            var rowLogo = new LayoutRow(container) { CssClass = "r" };
             var literalLogo = new Literal(rowLogo);
             literalLogo.TextHtml = "<img src='/Logo.png' />";
             // Row
-            var rowHeader = new LayoutRow(container) { Css = "r" };
-            var cellHeader1 = new LayoutCell(rowHeader) { Css = "col-sm-6" };
-            new GridField(cellHeader1, null, null, null);
-            var cellHeader2 = new LayoutCell(rowHeader) { Css = "col-sm-6 c" };
-            new Grid(cellHeader2, "LookUp");
+            var rowHeader = new LayoutRow(container) { CssClass = "r" };
+            var cellHeader1 = new LayoutCell(rowHeader) { CssClass = "col-sm-6" };
+            new GridFieldSingle(cellHeader1);
+            var cellHeader2 = new LayoutCell(rowHeader) { CssClass = "col-sm-6 c" };
             // Row
-            var rowHeader2 = new LayoutRow(container) { Css = "r" };
-            var cellHeader3 = new LayoutCell(rowHeader2) { Css = "col-sm-12 c" };
+            var rowHeader2 = new LayoutRow(container) { CssClass = "r" };
+            var cellHeader3 = new LayoutCell(rowHeader2) { CssClass = "col-sm-12 c" };
             app.PageShow<GridTrafficLight>(cellHeader3);
             // Row
             var rowContent = new LayoutRow(container);
-            var cellContent1 = new LayoutCell(rowContent) { Css = "col-sm-6 c d1" };
-            var cellContent2 = new LayoutCell(rowContent) { Css = "col-sm-6 c2 d2" };
-            new Grid(cellContent1, "Master");
-            new Grid(cellContent2, "Detail");
+            var cellContent1 = new LayoutCell(rowContent) { CssClass = "col-sm-6 c d1" };
+            var cellContent2 = new LayoutCell(rowContent) { CssClass = "col-sm-6 c2 d2" };
+            new Grid(cellContent1, gridNameMaster);
+            new Grid(cellContent2, new GridName("Detail"));
 
             var rowFooter = new LayoutRow(container);
-            var cellFooter1 = new LayoutCell(rowFooter) { Css = "col-sm-6 c" };
+            var cellFooter1 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
             var literal = new Literal(cellFooter1);
             literal.TextHtml = "Hello <b>Literal</b>";
-            literal.Css = "y";
-            var cellFooter2 = new LayoutCell(rowFooter) { Css = "col-sm-6 c" };
+            literal.CssClass = "y";
+            var cellFooter2 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
             var button = new Button(cellFooter2) { Text = "Hello" };
             //
-            app.GridData.LoadDatabase<Database.dbo.TableName>("Master");
+            app.GridData.LoadDatabase(gridNameMaster);
         }
 
         protected override void RunBegin(App app)
@@ -83,7 +84,7 @@
     {
         protected override void InitJson(App app)
         {
-            this.Css = "container";
+            this.CssClass = "container";
             new Button(this) { Text = "Browse" };
             new Button(this) { Text = "Debug" };
             new Button(this) { Text = "About" };
@@ -134,9 +135,9 @@
             new Button(this) { Text = "No" };
         }
 
-        public void Init(App app, string gridName, Index index)
+        public void Init(App app, GridName gridName, Index index)
         {
-            this.GridName = gridName;
+            this.GridName = UtilApplication.GridNameToJson(gridName);
             this.Index = index.Value;
             //
             label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData.Row(gridName, index)).Text);
@@ -156,7 +157,7 @@
             //
             if (isClick)
             {
-                app.GridData.LoadRow("Detail", null);
+                app.GridData.LoadRow(new GridNameTypeRow(null, "Detail"), (List<Row>)null);
                 //
                 PageShow<PageGridDatabaseBrowse>(app);
             }
