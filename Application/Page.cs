@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Framework;
 
     public class GridTrafficLight : Page
     {
@@ -88,6 +89,7 @@
             new Button(this) { Text = "Browse" };
             new Button(this) { Text = "Debug" };
             new Button(this) { Text = "About" };
+            new Label(this) { Text = "VersionServer=" + UtilFramework.VersionServer };
         }
 
         protected override void RunBegin(App app)
