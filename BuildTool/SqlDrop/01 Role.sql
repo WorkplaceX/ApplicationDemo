@@ -1,0 +1,10 @@
+DROP VIEW LoRoleMatrix
+DROP VIEW SyRoleAccess
+DROP VIEW LoRoleAccess
+DROP TABLE LoRoleUser
+DROP TABLE LoRoleLoation
+DROP TABLE LoRole
+DROP TABLE LoLoation
+DROP TABLE SyRoleUser
+DROP TABLE SyUser
+DROP TABLE SyRole

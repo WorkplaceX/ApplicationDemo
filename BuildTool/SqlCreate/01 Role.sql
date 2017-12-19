@@ -1,16 +1,3 @@
-IF EXISTS(SELECT * FROM sys.views WHERE name = 'LoRoleMatrix') DROP VIEW LoRoleMatrix
-IF EXISTS(SELECT * FROM sys.views WHERE name = 'SyRoleAccess') DROP VIEW SyRoleAccess
-IF EXISTS(SELECT * FROM sys.views WHERE name = 'LoRoleAccess') DROP VIEW LoRoleAccess
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'LoRoleUser') DROP TABLE LoRoleUser
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'LoRoleLoation') DROP TABLE LoRoleLoation
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'LoRole') DROP TABLE LoRole
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'LoLoation') DROP TABLE LoLoation
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'SyRoleUser') DROP TABLE SyRoleUser
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'SyUser') DROP TABLE SyUser
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'SyRole') DROP TABLE SyRole
-
-GO
-
 /* SyUser */
 CREATE TABLE SyUser
 (

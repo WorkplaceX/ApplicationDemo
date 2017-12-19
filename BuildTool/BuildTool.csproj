@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Submodule\Framework.BuildTool\Framework.BuildTool.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SqlDrop\" />
-  </ItemGroup>
-
 </Project>

@@ -1,13 +1,5 @@
 ﻿/* Create tables and views */
 
-IF EXISTS(SELECT * FROM sys.views WHERE name = 'TableName') DROP VIEW TableName
-
-IF EXISTS(SELECT * FROM sys.views WHERE name = 'AirportDisplay') DROP VIEW AirportDisplay
-
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'Airport') DROP TABLE Airport
-
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'Country') DROP TABLE Country
-
 CREATE TABLE Country
 (
 	Id INT PRIMARY KEY IDENTITY (1, 1),
