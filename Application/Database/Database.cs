@@ -61,7 +61,7 @@
             app.PageShow<PageMessageBoxDelete>(app.AppJson, false).Init(app, gridName, index);
         }
 
-        protected override void CellValueToText(App app, GridName gridName, Index index, ref string result)
+        protected override void CellRowValueToText(App app, GridName gridName, Index index, ref string result)
         {
             result = "Button";
         }

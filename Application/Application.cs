@@ -12,7 +12,7 @@
 
     public class AppDemo : App
     {
-        protected override void CellValueToText(GridName gridName, Index index, Cell cell, ref string result)
+        protected override void CellRowValueToText(GridName gridName, Index index, Cell cell, ref string result)
         {
             if (index.Enum == IndexEnum.Index)
             {
@@ -30,7 +30,7 @@
             }
         }
 
-        protected override void CellValueFromText(GridName gridName, Index index, Cell cell, ref string result)
+        protected override void CellRowValueFromText(GridName gridName, Index index, Cell cell, ref string result)
         {
             if (index.Enum == IndexEnum.Index)
             {
