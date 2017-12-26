@@ -35,7 +35,7 @@
 
     public partial class Flight_AirportValid
     {
-        protected override void InfoCell(App app, GridName gridName, Index index, InfoCell result)
+        protected override void DesignCell(App app, GridName gridName, Index index, DesignCell result)
         {
             if (index.Enum == IndexEnum.Index)
             {
@@ -126,7 +126,7 @@
 
     public partial class Country_ButtonDelete : Cell<Country>
     {
-        protected override void InfoCell(App app, GridName gridName, Index index, InfoCell result)
+        protected override void DesignCell(App app, GridName gridName, Index index, DesignCell result)
         {
             result.CellEnum = GridCellEnum.Button;
         }
@@ -144,7 +144,7 @@
 
     public partial class Country_Text : Cell<Country>
     {
-        protected override void InfoCell(App app, GridName gridName, Index index, InfoCell result)
+        protected override void DesignCell(App app, GridName gridName, Index index, DesignCell result)
         {
             result.CellEnum = GridCellEnum.Html;
         }
