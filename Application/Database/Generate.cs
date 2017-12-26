@@ -87,6 +87,55 @@ namespace Database.dbo
 
     public partial class Country_Continent : Cell<Country> { }
 
+    [SqlTable("dbo", "Flight")]
+    public partial class Flight : Row
+    {
+        [SqlColumn("Id", typeof(Flight_Id))]
+        public int Id { get; set; }
+
+        [SqlColumn("Date", typeof(Flight_Date))]
+        public DateTime? Date { get; set; }
+
+        [SqlColumn("Number", typeof(Flight_Number))]
+        public double? Number { get; set; }
+
+        [SqlColumn("AirlineCode", typeof(Flight_AirlineCode))]
+        public string AirlineCode { get; set; }
+
+        [SqlColumn("AirlineText", typeof(Flight_AirlineText))]
+        public string AirlineText { get; set; }
+
+        [SqlColumn("AirlineValid", typeof(Flight_AirlineValid))]
+        public string AirlineValid { get; set; }
+
+        [SqlColumn("AirportCode", typeof(Flight_AirportCode))]
+        public string AirportCode { get; set; }
+
+        [SqlColumn("AirportText", typeof(Flight_AirportText))]
+        public string AirportText { get; set; }
+
+        [SqlColumn("AirportValid", typeof(Flight_AirportValid))]
+        public string AirportValid { get; set; }
+    }
+
+    public partial class Flight_Id : Cell<Flight> { }
+
+    public partial class Flight_Date : Cell<Flight> { }
+
+    public partial class Flight_Number : Cell<Flight> { }
+
+    public partial class Flight_AirlineCode : Cell<Flight> { }
+
+    public partial class Flight_AirlineText : Cell<Flight> { }
+
+    public partial class Flight_AirlineValid : Cell<Flight> { }
+
+    public partial class Flight_AirportCode : Cell<Flight> { }
+
+    public partial class Flight_AirportText : Cell<Flight> { }
+
+    public partial class Flight_AirportValid : Cell<Flight> { }
+
     [SqlTable("dbo", "LoLoation")]
     public partial class LoLoation : Row
     {

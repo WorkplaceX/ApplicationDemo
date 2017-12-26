@@ -89,6 +89,7 @@
             new Button(this) { Text = "Browse" };
             new Button(this) { Text = "Debug" };
             new Button(this) { Text = "About" };
+            new Button(this) { Text = "Flight" };
             new Label(this) { Text = "VersionServer=" + UtilFramework.VersionServer };
         }
 
@@ -105,6 +106,10 @@
             if (List.OfType<Button>().ToArray()[2].IsClick)
             {
                 PageShow<PageMessageBoxAbout>(app);
+            }
+            if (List.OfType<Button>().ToArray()[3].IsClick)
+            {
+                PageShow<PageFlight>(app);
             }
         }
     }

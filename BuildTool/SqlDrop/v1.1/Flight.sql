@@ -1,0 +1,2 @@
+﻿DROP PROCEDURE FlightValid
+DROP TABLE Flight
