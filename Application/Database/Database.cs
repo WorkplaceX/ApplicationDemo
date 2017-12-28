@@ -9,13 +9,18 @@
     using Framework;
     using System.Linq;
 
+    public partial class Airport
+    {
+        public static GridName AirportMaster { get { return new GridName<Airport>("Master"); } }
+    }
+
     public partial class Flight
     {
         private void Refresh()
         {
             UtilDataAccessLayer.Execute("EXEC FlightValid"); // Execute stored procedure.
             var flight = UtilDataAccessLayer.Query<Flight>().Where(item => item.Id == this.Id).Single();
-            this.AirportValid = flight.AirportValid;
+            this.AirportValid = flight.AirportValid; // Update client field
         }
 
         protected override void Update(App app, GridName gridName, Index index, Row row, Row rowNew)

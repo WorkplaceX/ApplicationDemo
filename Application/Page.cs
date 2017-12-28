@@ -25,6 +25,9 @@
     {
         protected override void InitJson(App app)
         {
+            PageShow<PageFlight>(app);
+            return;
+
             var gridNameMaster = new GridName<Database.dbo.TableName>();
             //
             new GridKeyboard(this);
