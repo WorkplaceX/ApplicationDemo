@@ -20,7 +20,7 @@
         {
             UtilDataAccessLayer.Execute("EXEC FlightValid"); // Execute stored procedure.
             var flight = UtilDataAccessLayer.Query<Flight>().Where(item => item.Id == this.Id).Single();
-            this.AirportValid = flight.AirportValid; // Update client field
+            this.AirportValid = flight.AirportValid; // Update client cell
         }
 
         protected override void Update(App app, GridName gridName, Index index, Row row, Row rowNew)
@@ -62,9 +62,9 @@
 
     public partial class Flight_AirportCode
     {
-        protected override void CellTextParse(App app, GridName gridName, Index index, string fieldName, string text)
+        protected override void CellTextParse(App app, GridName gridName, Index index, string columnName, string text)
         {
-            base.CellTextParse(app, gridName, index, fieldName, text);
+            base.CellTextParse(app, gridName, index, columnName, text);
             //
             Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code == text).FirstOrDefault();
             if (airport != null)
@@ -73,7 +73,7 @@
             }
         }
 
-        protected override void CellLookup(App app, GridName gridName, Index index, string fieldName, out IQueryable query)
+        protected override void CellLookup(App app, GridName gridName, Index index, string columnName, out IQueryable query)
         {
             query = null;
             if (index.Enum == IndexEnum.Index || index.Enum == IndexEnum.New)
@@ -82,10 +82,10 @@
             }
         }
 
-        protected override void CellLookupIsClick(App app, GridName gridName, Index index, string fieldName, Row rowLookup, string fieldNameLookup, string text)
+        protected override void CellLookupIsClick(App app, GridName gridName, Index index, string columnName, Row rowLookup, string columnNameLookup, string text)
         {
             text = ((Airport)rowLookup).Code;
-            base.CellLookupIsClick(app, gridName, index, fieldName, rowLookup, fieldNameLookup, text);
+            base.CellLookupIsClick(app, gridName, index, columnName, rowLookup, columnNameLookup, text);
         }
     }
 
@@ -117,7 +117,7 @@
 
     public partial class AirportDisplay_CountryText
     {
-        protected override void CellLookup(App app, GridName gridName, Index index, string fieldName, out IQueryable query)
+        protected override void CellLookup(App app, GridName gridName, Index index, string columnName, out IQueryable query)
         {
             query = UtilDataAccessLayer.Query<Country>().Take(10);
         }
@@ -136,7 +136,7 @@
             result.CellEnum = GridCellEnum.Button;
         }
 
-        protected override void CellButtonIsClick(App app, GridName gridName, Index index, Row row, string fieldName, ref bool isReload)
+        protected override void CellButtonIsClick(App app, GridName gridName, Index index, Row row, string columnName, ref bool isReload)
         {
             app.PageShow<PageMessageBoxDelete>(app.AppJson, false).Init(app, gridName, index);
         }

@@ -8,6 +8,8 @@
     {
         protected override void InitJson(App app)
         {
+            new GridFieldSingle(this);
+            //
             var gridName = new GridName<Flight>();
             new Grid(this, gridName);
             app.GridData.LoadDatabase(gridName);

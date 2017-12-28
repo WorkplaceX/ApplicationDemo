@@ -16,7 +16,7 @@
         {
             if (index.Enum == IndexEnum.Index)
             {
-                if (cell.TypeField == typeof(bool) || cell.TypeField == typeof(bool?))
+                if (cell.TypeColumn == typeof(bool) || cell.TypeColumn == typeof(bool?))
                 {
                     if ((bool?)cell.Value == false)
                     {
@@ -34,7 +34,7 @@
         {
             if (index.Enum == IndexEnum.Index)
             {
-                if (cell.TypeField == typeof(bool) || cell.TypeField == typeof(bool?))
+                if (cell.TypeColumn == typeof(bool) || cell.TypeColumn == typeof(bool?))
                 {
                     if (result != null)
                     {
