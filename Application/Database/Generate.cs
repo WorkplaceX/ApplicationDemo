@@ -25,6 +25,7 @@ namespace Database.dbo
 
     public partial class Airport_Text : Cell<Airport> { }
 
+    [ConfigColumn(gridName: "Master", text: "TD", description: "DescriptionDefault", isVisible: true, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: false, sort: 22, sortIsNull: false, widthPercent: 55, widthPercentIsNull: false)]
     public partial class Airport_Code : Cell<Airport> { }
 
     public partial class Airport_CountryId : Cell<Airport> { }
