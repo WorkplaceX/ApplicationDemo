@@ -16,6 +16,14 @@
 
     public partial class Flight
     {
+        public static GridNameTypeRow GridNameDetail
+        {
+            get
+            {
+                return new GridName<Flight>("Detail");
+            }
+        }
+
         private void Refresh()
         {
             UtilDataAccessLayer.Execute("EXEC FlightValid"); // Execute stored procedure.

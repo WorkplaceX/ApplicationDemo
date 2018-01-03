@@ -10,7 +10,7 @@
         {
             new GridFieldSingle(this);
             //
-            var gridName = new GridName<Flight>();
+            var gridName = Flight.GridNameDetail;
             new Grid(this, gridName);
             app.GridData.LoadDatabase(gridName);
         }
