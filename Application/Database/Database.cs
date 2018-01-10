@@ -86,13 +86,42 @@
             query = null;
             if (index.Enum == IndexEnum.Index || index.Enum == IndexEnum.New)
             {
-                query = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(Row.AirportCode) || Row.AirportCode == null).OrderBy(item => item.Text);
+                query = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(Row.AirportCode) | Row.AirportCode == null).OrderBy(item => item.Text);
             }
         }
 
         protected override void CellLookupIsClick(App app, GridName gridName, Index index, string columnName, Row rowLookup, string columnNameLookup, string text)
         {
             text = ((Airport)rowLookup).Code;
+            base.CellLookupIsClick(app, gridName, index, columnName, rowLookup, columnNameLookup, text);
+        }
+    }
+
+    public partial class Flight_AirportText
+    {
+        protected override void CellTextParse(App app, GridName gridName, Index index, string columnName, string text)
+        {
+            base.CellTextParse(app, gridName, index, columnName, text);
+            //
+            Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text == text).FirstOrDefault();
+            if (airport != null)
+            {
+                Row.AirportCode = airport.Code;
+            }
+        }
+
+        protected override void CellLookup(App app, GridName gridName, Index index, string columnName, out IQueryable query)
+        {
+            query = null;
+            if (index.Enum == IndexEnum.Index || index.Enum == IndexEnum.New)
+            {
+                query = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(Row.AirportText) | Row.AirportText == null).OrderBy(item => item.Text);
+            }
+        }
+
+        protected override void CellLookupIsClick(App app, GridName gridName, Index index, string columnName, Row rowLookup, string columnNameLookup, string text)
+        {
+            text = ((Airport)rowLookup).Text; // User might click AirportCode in look up row.
             base.CellLookupIsClick(app, gridName, index, columnName, rowLookup, columnNameLookup, text);
         }
     }
