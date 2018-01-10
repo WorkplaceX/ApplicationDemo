@@ -6,3 +6,7 @@ body {
 .my {
     background-color: yellow;
 }
+
+.imgLogo {
+    width: auto; /* Don't scale the image */
+}

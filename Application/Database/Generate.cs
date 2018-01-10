@@ -123,18 +123,25 @@ namespace Database.dbo
 
     public partial class Flight_Date : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: null, description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_Number : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: "Airline Code", description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineCode : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: "Airline", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineText : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: null, description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineValid : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: "AirportCode", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportCode : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: "Airport", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportText : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: "Valid", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportValid : Cell<Flight> { }
 
     [SqlTable("dbo", "LoLoation")]
