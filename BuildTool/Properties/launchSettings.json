@@ -1,8 +1,7 @@
 {
   "profiles": {
     "BuildTool": {
-      "commandName": "Project",
-      "commandLineArgs": "deploy \"https://Framework:ksaDXkJ3xma_jQ0e8@wplx.scm.azurewebsites.net:443/wplx.git\""
+      "commandName": "Project"
     }
   }
 }
