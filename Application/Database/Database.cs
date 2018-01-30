@@ -12,6 +12,31 @@
     public partial class Airport
     {
         public static GridName AirportMaster { get { return new GridName<Airport>("Master"); } }
+
+        public static GridNameTypeRow AirportCodeLookup { get { return new GridName<Airport>("AirportCodeLookup"); } }
+
+        public static GridNameTypeRow AirportTextLookup { get { return new GridName<Airport>("AirportTextLookup"); } }
+
+        protected override IQueryable Query(App app, GridName gridName)
+        {
+            return base.Query(app, gridName);
+        }
+
+        protected override IQueryable QueryLookup(Row rowLookup, ApplicationEventArgument e)
+        {
+            IQueryable result = null;
+            if (e.GridName == AirportCodeLookup)
+            {
+                Flight rowFlight = (Flight)rowLookup;
+                result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(rowFlight.AirportCode) | rowFlight.AirportCode == null).OrderBy(item => item.Code);
+            }
+            if (e.GridName == AirportTextLookup)
+            {
+                Flight rowFlight = (Flight)rowLookup;
+                result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(rowFlight.AirportText) | rowFlight.AirportText == null).OrderBy(item => item.Text);
+            }
+            return result;
+        }
     }
 
     public partial class Flight
@@ -81,19 +106,16 @@
             }
         }
 
-        protected override void CellLookup(App app, GridName gridName, Index index, string columnName, out IQueryable query)
+        protected override GridNameTypeRow CellLookup(ApplicationEventArgument e)
         {
-            query = null;
-            if (index.Enum == IndexEnum.Index || index.Enum == IndexEnum.New)
-            {
-                query = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(Row.AirportCode) | Row.AirportCode == null).OrderBy(item => item.Text);
-            }
+            return Airport.AirportCodeLookup;
         }
 
-        protected override void CellLookupIsClick(App app, GridName gridName, Index index, string columnName, Row rowLookup, string columnNameLookup, string text)
+        protected override void CellLookupIsClick(Row rowLookup, ApplicationEventArgument e)
         {
-            text = ((Airport)rowLookup).Code;
-            base.CellLookupIsClick(app, gridName, index, columnName, rowLookup, columnNameLookup, text);
+            Airport airport = ((Airport)rowLookup);
+            Row.AirportCode = airport.Code;
+            Row.AirportText = airport.Text;
         }
     }
 
@@ -110,19 +132,16 @@
             }
         }
 
-        protected override void CellLookup(App app, GridName gridName, Index index, string columnName, out IQueryable query)
+        protected override GridNameTypeRow CellLookup(ApplicationEventArgument e)
         {
-            query = null;
-            if (index.Enum == IndexEnum.Index || index.Enum == IndexEnum.New)
-            {
-                query = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(Row.AirportText) | Row.AirportText == null).OrderBy(item => item.Text);
-            }
+            return Airport.AirportTextLookup;
         }
 
-        protected override void CellLookupIsClick(App app, GridName gridName, Index index, string columnName, Row rowLookup, string columnNameLookup, string text)
+        protected override void CellLookupIsClick(Row rowLookup, ApplicationEventArgument e)
         {
-            text = ((Airport)rowLookup).Text; // User might click AirportCode in look up row.
-            base.CellLookupIsClick(app, gridName, index, columnName, rowLookup, columnNameLookup, text);
+            Airport airport = ((Airport)rowLookup);
+            Row.AirportCode = airport.Code;
+            Row.AirportText = airport.Text;
         }
     }
 
@@ -154,10 +173,7 @@
 
     public partial class AirportDisplay_CountryText
     {
-        protected override void CellLookup(App app, GridName gridName, Index index, string columnName, out IQueryable query)
-        {
-            query = UtilDataAccessLayer.Query<Country>().Take(10);
-        }
+
     }
 
     public partial class Country : Row
