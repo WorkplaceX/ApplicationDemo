@@ -56,26 +56,26 @@
             this.AirportValid = flight.AirportValid; // Update client cell
         }
 
-        protected override void Update(App app, GridName gridName, Index index, Row row, Row rowNew)
+        protected override void Update(Row row, Row rowNew, ApplicationEventArgument e)
         {
             this.AirportValid = null;
-            base.Update(app, gridName, index, row, rowNew);
+            base.Update(row, rowNew, e);
             Refresh();
         }
 
-        protected override void Insert(App app, GridName gridName, Index index, Row rowNew)
+        protected override void Insert(Row rowNew, ApplicationEventArgument e)
         {
             this.AirportValid = null;
-            base.Insert(app, gridName, index, rowNew);
+            base.Insert(rowNew, e);
             Refresh();
         }
     }
 
     public partial class Flight_AirportValid
     {
-        protected override void DesignCell(App app, GridName gridName, Index index, DesignCell result)
+        protected override void DesignCell(DesignCell result, ApplicationEventArgument e)
         {
-            if (index.Enum == IndexEnum.Index)
+            if (e.Index.Enum == IndexEnum.Index)
             {
                 result.CssClass.Clear();
                 if (Row.AirportValid != null)
@@ -95,9 +95,9 @@
 
     public partial class Flight_AirportCode
     {
-        protected override void CellTextParse(App app, GridName gridName, Index index, string columnName, string text)
+        protected override void TextParse(string text, ApplicationEventArgument e)
         {
-            base.CellTextParse(app, gridName, index, columnName, text);
+            base.TextParse(text, e);
             //
             Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code == text).FirstOrDefault();
             if (airport != null)
@@ -106,12 +106,12 @@
             }
         }
 
-        protected override GridNameTypeRow CellLookup(ApplicationEventArgument e)
+        protected override GridNameTypeRow Lookup(ApplicationEventArgument e)
         {
             return Airport.AirportCodeLookup;
         }
 
-        protected override void CellLookupIsClick(Row rowLookup, ApplicationEventArgument e)
+        protected override void LookupIsClick(Row rowLookup, ApplicationEventArgument e)
         {
             Airport airport = ((Airport)rowLookup);
             Row.AirportCode = airport.Code;
@@ -121,9 +121,9 @@
 
     public partial class Flight_AirportText
     {
-        protected override void CellTextParse(App app, GridName gridName, Index index, string columnName, string text)
+        protected override void TextParse(string text, ApplicationEventArgument e)
         {
-            base.CellTextParse(app, gridName, index, columnName, text);
+            base.TextParse(text, e);
             //
             Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text == text).FirstOrDefault();
             if (airport != null)
@@ -132,12 +132,12 @@
             }
         }
 
-        protected override GridNameTypeRow CellLookup(ApplicationEventArgument e)
+        protected override GridNameTypeRow Lookup(ApplicationEventArgument e)
         {
             return Airport.AirportTextLookup;
         }
 
-        protected override void CellLookupIsClick(Row rowLookup, ApplicationEventArgument e)
+        protected override void LookupIsClick(Row rowLookup, ApplicationEventArgument e)
         {
             Airport airport = ((Airport)rowLookup);
             Row.AirportCode = airport.Code;
@@ -147,7 +147,7 @@
 
     public partial class AirportDisplay_AirportId
     {
-        protected override void ColumnWidthPercent(ref double widthPercent)
+        protected override void WidthPercent(ref double widthPercent)
         {
             widthPercent = 8;
         }
@@ -184,17 +184,17 @@
 
     public partial class Country_ButtonDelete : Cell<Country>
     {
-        protected override void DesignCell(App app, GridName gridName, Index index, DesignCell result)
+        protected override void DesignCell(DesignCell result, ApplicationEventArgument e)
         {
             result.CellEnum = GridCellEnum.Button;
         }
 
-        protected override void CellButtonIsClick(App app, GridName gridName, Index index, Row row, string columnName, ref bool isReload)
+        protected override void ButtonIsClick(App app, GridName gridName, Index index, Row row, string columnName, ref bool isReload)
         {
             app.PageShow<PageMessageBoxDelete>(app.AppJson, false).Init(app, gridName, index);
         }
 
-        protected override void CellRowValueToText(App app, GridName gridName, Index index, ref string result)
+        protected override void RowValueToText(ref string result, ApplicationEventArgument e)
         {
             result = "Button";
         }
@@ -202,7 +202,7 @@
 
     public partial class Country_Text : Cell<Country>
     {
-        protected override void DesignCell(App app, GridName gridName, Index index, DesignCell result)
+        protected override void DesignCell(DesignCell result, ApplicationEventArgument e)
         {
             result.CellEnum = GridCellEnum.Html;
         }
