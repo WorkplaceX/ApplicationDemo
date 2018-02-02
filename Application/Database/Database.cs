@@ -11,7 +11,7 @@
 
     public partial class Airport
     {
-        public static GridName AirportMaster { get { return new GridName<Airport>("Master"); } }
+        public static GridNameTypeRow AirportMaster { get { return new GridName<Airport>("Master"); } }
 
         public static GridNameTypeRow AirportCodeLookup { get { return new GridName<Airport>("AirportCodeLookup"); } }
 
@@ -19,7 +19,9 @@
 
         protected override IQueryable Query(App app, GridName gridName)
         {
-            return base.Query(app, gridName);
+            Flight flight = app.GridData.RowSelected(Flight.GridNameDetail);
+            string airportCode = flight?.AirportCode;
+            return UtilDataAccessLayer.Query<Airport>().Where(item => airportCode == null | item.Code == airportCode);
         }
 
         protected override IQueryable QueryLookup(Row rowLookup, ApplicationEventArgument e)
@@ -37,11 +39,20 @@
             }
             return result;
         }
+
+        protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
+        {
+            Flight flight = rowMaster as Flight;
+            if (flight != null)
+            {
+                isReload = true;
+            }
+        }
     }
 
     public partial class Flight
     {
-        public static GridNameTypeRow GridNameDetail
+        public static GridName<Flight> GridNameDetail
         {
             get
             {
@@ -164,7 +175,7 @@
                 if (tableName != null && tableName.IndexOf(".") != -1)
                 {
                     Type typeRow = UtilFramework.TypeFromName("Database." + tableName, typeof(AppDemo), typeof(Framework.UtilFramework));
-                    app.GridData.LoadDatabase(new GridNameTypeRow(typeRow, "Detail", true));
+                    // app.GridData.LoadDatabase(new GridNameTypeRow(typeRow, "Detail", true));
                 }
             }
         }

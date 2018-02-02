@@ -61,7 +61,7 @@
             var cellFooter2 = new LayoutCell(rowFooter) { CssClass = "col-sm-6 c" };
             var button = new Button(cellFooter2) { Text = "Hello" };
             //
-            app.GridData.LoadDatabase(gridNameMaster);
+            // app.GridData.LoadDatabase(gridNameMaster);
         }
 
         protected override void RunBegin(App app)
@@ -150,7 +150,7 @@
             this.GridName = UtilApplication.GridNameToJson(gridName);
             this.Index = index.Value;
             //
-            label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData.Row(gridName, index)).Text);
+            // label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData.Row(gridName, index)).Text);
         }
 
         protected override void RunBegin(App app)
@@ -167,7 +167,7 @@
             //
             if (isClick)
             {
-                app.GridData.LoadRow(new GridNameTypeRow(null, "Detail"), (List<Row>)null);
+                // app.GridData.LoadRow(new GridNameTypeRow(null, "Detail"), (List<Row>)null);
                 //
                 PageShow<PageGridDatabaseBrowse>(app);
             }

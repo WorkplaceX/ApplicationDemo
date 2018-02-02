@@ -15,7 +15,10 @@
             //
             var gridName = Flight.GridNameDetail;
             new Grid(this, gridName);
-            app.GridData.LoadDatabase(gridName);
+            // app.GridData.LoadDatabase(gridName);
+            //
+            new Grid(this, Airport.AirportMaster);
+            app.GridData.LoadDatabaseInit(Airport.AirportMaster);
             //
             new Label(this).Text = UtilFramework.VersionServer;
         }
