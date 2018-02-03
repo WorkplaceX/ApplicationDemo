@@ -86,6 +86,7 @@
     {
         protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
         {
+            result.IsReadOnly = true;
             // There can be only one background image!
             result.CssClass.Remove("gridOk");
             result.CssClass.Remove("gridError");
@@ -108,7 +109,8 @@
     {
         protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
         {
-            // result.IsReadOnly = true;
+            result.IsReadOnly = true;
+            result.CssClass.Add("gridReadOnly");
         }
     }
 
