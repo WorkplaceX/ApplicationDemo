@@ -86,21 +86,29 @@
     {
         protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
         {
-            if (e.Index.Enum == IndexEnum.Index)
+            // There can be only one background image!
+            result.CssClass.Remove("gridOk");
+            result.CssClass.Remove("gridError");
+            result.CssClass.Remove("gridReadOnly");
+            if (Row.AirportValid != null)
             {
-                result.CssClass.Clear();
-                if (Row.AirportValid != null)
+                if (Row.AirportValid == "Ok")
                 {
-                    if (Row.AirportValid == "Ok")
-                    {
-                        result.CssClass.Add("gridOk");
-                    }
-                    else
-                    {
-                        result.CssClass.Add("gridError");
-                    }
+                    result.CssClass.Add("gridOk");
+                }
+                else
+                {
+                    result.CssClass.Add("gridError");
                 }
             }
+        }
+    }
+
+    public partial class Flight_AirlineText
+    {
+        protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
+        {
+            // result.IsReadOnly = true;
         }
     }
 
