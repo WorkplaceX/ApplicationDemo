@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{09B34598-3BAE-4F6B-A246-3B4AF22EFCE5}"
-EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Framework.UniversalExpress", "Submodule\Framework.UniversalExpress\Framework.UniversalExpress.njsproj", "{65F95D4D-36AD-4330-A7A6-BCE1011DEA88}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.UnitTest", "Submodule\Framework.UnitTest\Framework.UnitTest.csproj", "{68FA5CD3-DF11-4C6E-9A79-50F51EED109C}"
 EndProject
@@ -27,10 +25,6 @@ Global
 		{09B34598-3BAE-4F6B-A246-3B4AF22EFCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09B34598-3BAE-4F6B-A246-3B4AF22EFCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09B34598-3BAE-4F6B-A246-3B4AF22EFCE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65F95D4D-36AD-4330-A7A6-BCE1011DEA88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65F95D4D-36AD-4330-A7A6-BCE1011DEA88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65F95D4D-36AD-4330-A7A6-BCE1011DEA88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65F95D4D-36AD-4330-A7A6-BCE1011DEA88}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68FA5CD3-DF11-4C6E-9A79-50F51EED109C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68FA5CD3-DF11-4C6E-9A79-50F51EED109C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68FA5CD3-DF11-4C6E-9A79-50F51EED109C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,5 +48,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F09DA68-C0AF-4E7A-BECA-1B05130F3ACD}
 	EndGlobalSection
 EndGlobal
