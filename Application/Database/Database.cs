@@ -80,6 +80,32 @@
             base.Insert(rowNew, e);
             Refresh();
         }
+
+        [SqlColumn(null, typeof(Flight_Delete))]
+        public string Delete { get; set; }
+    }
+
+    public class Flight_Delete : Cell<Flight>
+    {
+        protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
+        {
+            result.CellEnum = GridCellEnum.Button;
+        }
+
+        protected override void ButtonIsClick(ref bool isReload, ApplicationEventArgument e)
+        {
+            {
+                //Flight rowNew = UtilDataAccessLayer.RowClone(Row);
+                //rowNew.AirlineCode = "ZRH";
+                //UtilDataAccessLayer.Update(Row, rowNew);
+                //isReload = true;
+            }
+            {
+                e.App.PageShow<PageMessageBoxDelete>(e.App.AppJson, false).Init(e);
+                //UtilDataAccessLayer.Delete(Row);
+                //isReload = true;
+            }
+        }
     }
 
     public partial class Flight_AirportValid
@@ -210,9 +236,9 @@
             result.CellEnum = GridCellEnum.Button;
         }
 
-        protected override void ButtonIsClick(App app, GridName gridName, Index index, Row row, string columnName, ref bool isReload)
+        protected override void ButtonIsClick(ref bool isReload, ApplicationEventArgument e)
         {
-            app.PageShow<PageMessageBoxDelete>(app.AppJson, false).Init(app, gridName, index);
+            e.App.PageShow<PageMessageBoxDelete>(e.App.AppJson, false).Init(e);
         }
 
         protected override void RowValueToText(ref string result, ApplicationEventArgument e)

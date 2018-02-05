@@ -143,39 +143,38 @@
             label = new Label(this);
             new Button(this) { Text = "Yes" };
             new Button(this) { Text = "No" };
+            new Button(this) { Text = "None" };
         }
 
-        public void Init(App app, GridName gridName, Index index)
+        public void Init(ApplicationEventArgument e)
         {
-            this.GridName = UtilApplication.GridNameToJson(gridName);
-            this.Index = index.Value;
+            this.ApplicationEventArgumentJson = UtilApplication.ApplicationEventArgumentToJson(e);
             //
-            // label.Text = string.Format("Delete? ({0})", ((Database.dbo.Country)app.GridData.Row(gridName, index)).Text);
+            label.Text = string.Format("Delete? ({0})", ((Database.dbo.Flight)e.App.GridData.RowGet(e.GridName, e.Index)).AirportText);
         }
 
         protected override void RunBegin(App app)
         {
-            bool isClick = false;
-            foreach (Button button in List.OfType<Button>())
+            if (ListAll().OfType<Button>().Where(item => item.Text == "Yes").Single().IsClick)
             {
-                if (button.IsClick)
-                {
-                    isClick = true;
-                    break;
-                }
+                ApplicationEventArgument e = ApplicationEventArgument(app);
+                Row row = app.GridData.RowGet(e.GridName, e.Index);
+                UtilDataAccessLayer.Delete(row);
+                app.GridData.LoadDatabaseReload(e.GridName);
+                PageShow<PageGridDatabaseBrowse>(app);
             }
-            //
-            if (isClick)
+            if (ListAll().OfType<Button>().Where(item => item.Text == "No").Single().IsClick)
             {
-                // app.GridData.LoadRow(new GridNameTypeRow(null, "Detail"), (List<Row>)null);
-                //
                 PageShow<PageGridDatabaseBrowse>(app);
             }
         }
 
-        public string GridName;
+        public string ApplicationEventArgumentJson;
 
-        public string Index;
+        public ApplicationEventArgument ApplicationEventArgument(App app)
+        {
+            return UtilApplication.ApplicationEventArgumentFromJson(app, ApplicationEventArgumentJson);
+        }
     }
 
     public class PageDebug : Page
