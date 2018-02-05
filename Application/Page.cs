@@ -146,9 +146,9 @@
             new Button(this) { Text = "None" };
         }
 
-        public void Init(ApplicationEventArgument e)
+        public void Init(AppEventArg e)
         {
-            this.ApplicationEventArgumentJson = UtilApplication.ApplicationEventArgumentToJson(e);
+            this.AppEventArgJson = UtilApplication.AppEventArgToJson(e);
             //
             label.Text = string.Format("Delete? ({0})", ((Database.dbo.Flight)e.App.GridData.RowGet(e.GridName, e.Index)).AirportText);
         }
@@ -157,7 +157,7 @@
         {
             if (ListAll().OfType<Button>().Where(item => item.Text == "Yes").Single().IsClick)
             {
-                ApplicationEventArgument e = ApplicationEventArgument(app);
+                AppEventArg e = AppEventArg(app);
                 Row row = app.GridData.RowGet(e.GridName, e.Index);
                 UtilDataAccessLayer.Delete(row);
                 app.GridData.LoadDatabaseReload(e.GridName);
@@ -169,11 +169,11 @@
             }
         }
 
-        public string ApplicationEventArgumentJson;
+        public string AppEventArgJson;
 
-        public ApplicationEventArgument ApplicationEventArgument(App app)
+        public AppEventArg AppEventArg(App app)
         {
-            return UtilApplication.ApplicationEventArgumentFromJson(app, ApplicationEventArgumentJson);
+            return UtilApplication.AppEventArgFromJson(app, AppEventArgJson);
         }
     }
 

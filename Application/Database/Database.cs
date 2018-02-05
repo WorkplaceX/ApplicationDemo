@@ -24,7 +24,7 @@
             return UtilDataAccessLayer.Query<Airport>().Where(item => airportCode == null | item.Code == airportCode);
         }
 
-        protected override IQueryable QueryLookup(Row rowLookup, ApplicationEventArgument e)
+        protected override IQueryable QueryLookup(Row rowLookup, AppEventArg e)
         {
             IQueryable result = null;
             if (e.GridName == AirportCodeLookup)
@@ -67,14 +67,14 @@
             this.AirportValid = flight.AirportValid; // Update client cell
         }
 
-        protected override void Update(Row row, Row rowNew, ApplicationEventArgument e)
+        protected override void Update(Row row, Row rowNew, AppEventArg e)
         {
             this.AirportValid = null;
             base.Update(row, rowNew, e);
             Refresh();
         }
 
-        protected override void Insert(Row rowNew, ApplicationEventArgument e)
+        protected override void Insert(Row rowNew, AppEventArg e)
         {
             this.AirportValid = null;
             base.Insert(rowNew, e);
@@ -87,12 +87,12 @@
 
     public class Flight_Delete : Cell<Flight>
     {
-        protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
+        protected override void ConfigCell(ConfigCell result, AppEventArg e)
         {
             result.CellEnum = GridCellEnum.Button;
         }
 
-        protected override void ButtonIsClick(ref bool isReload, ApplicationEventArgument e)
+        protected override void ButtonIsClick(ref bool isReload, AppEventArg e)
         {
             {
                 //Flight rowNew = UtilDataAccessLayer.RowClone(Row);
@@ -110,7 +110,7 @@
 
     public partial class Flight_AirportValid
     {
-        protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
+        protected override void ConfigCell(ConfigCell result, AppEventArg e)
         {
             result.IsReadOnly = true;
             // There can be only one background image!
@@ -133,7 +133,7 @@
 
     public partial class Flight_AirlineText
     {
-        protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
+        protected override void ConfigCell(ConfigCell result, AppEventArg e)
         {
             result.IsReadOnly = true;
             result.CssClass.Add("gridReadOnly");
@@ -142,7 +142,7 @@
 
     public partial class Flight_AirportCode
     {
-        protected override void TextParse(string text, ApplicationEventArgument e)
+        protected override void TextParse(string text, AppEventArg e)
         {
             base.TextParse(text, e);
             //
@@ -153,12 +153,12 @@
             }
         }
 
-        protected override GridNameTypeRow Lookup(ApplicationEventArgument e)
+        protected override GridNameTypeRow Lookup(AppEventArg e)
         {
             return Airport.AirportCodeLookup;
         }
 
-        protected override void LookupIsClick(Row rowLookup, ApplicationEventArgument e)
+        protected override void LookupIsClick(Row rowLookup, AppEventArg e)
         {
             Airport airport = ((Airport)rowLookup);
             Row.AirportCode = airport.Code;
@@ -168,7 +168,7 @@
 
     public partial class Flight_AirportText
     {
-        protected override void TextParse(string text, ApplicationEventArgument e)
+        protected override void TextParse(string text, AppEventArg e)
         {
             base.TextParse(text, e);
             //
@@ -179,12 +179,12 @@
             }
         }
 
-        protected override GridNameTypeRow Lookup(ApplicationEventArgument e)
+        protected override GridNameTypeRow Lookup(AppEventArg e)
         {
             return Airport.AirportTextLookup;
         }
 
-        protected override void LookupIsClick(Row rowLookup, ApplicationEventArgument e)
+        protected override void LookupIsClick(Row rowLookup, AppEventArg e)
         {
             Airport airport = ((Airport)rowLookup);
             Row.AirportCode = airport.Code;
@@ -231,17 +231,17 @@
 
     public partial class Country_ButtonDelete : Cell<Country>
     {
-        protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
+        protected override void ConfigCell(ConfigCell result, AppEventArg e)
         {
             result.CellEnum = GridCellEnum.Button;
         }
 
-        protected override void ButtonIsClick(ref bool isReload, ApplicationEventArgument e)
+        protected override void ButtonIsClick(ref bool isReload, AppEventArg e)
         {
             e.App.PageShow<PageMessageBoxDelete>(e.App.AppJson, false).Init(e);
         }
 
-        protected override void RowValueToText(ref string result, ApplicationEventArgument e)
+        protected override void RowValueToText(ref string result, AppEventArg e)
         {
             result = "Button";
         }
@@ -249,7 +249,7 @@
 
     public partial class Country_Text : Cell<Country>
     {
-        protected override void ConfigCell(ConfigCell result, ApplicationEventArgument e)
+        protected override void ConfigCell(ConfigCell result, AppEventArg e)
         {
             result.CellEnum = GridCellEnum.Html;
         }
