@@ -1,10 +1,12 @@
 ﻿namespace Application
 {
-    using Framework;
     using Framework.Application;
     using Framework.DataAccessLayer;
     using System;
 
+    /// <summary>
+    /// AppSelector has to be in same assembly like App classes.
+    /// </summary>
     public class AppSelectorDemo : AppSelector
     {
 

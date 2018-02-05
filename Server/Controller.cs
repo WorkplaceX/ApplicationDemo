@@ -8,12 +8,18 @@
 
     public class WebController : WebControllerBase
     {
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public WebController(IMemoryCache memoryCache)
             : base(memoryCache)
         {
 
         }
 
+        /// <summary>
+        /// Every WebRequest comes here.
+        /// </summary>
         [Route(Startup.ControllerPath + "{*uri}")]
         public async Task<IActionResult> Web()
         {
