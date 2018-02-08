@@ -1,5 +1,6 @@
 ﻿namespace Application
 {
+    using Framework;
     using Framework.Application;
     using System;
 
@@ -8,7 +9,10 @@
     /// </summary>
     public class AppSelectorDemo : AppSelector
     {
-
+        public AppSelectorDemo()
+        {
+            // UtilFramework.UnitTest(typeof(AppDemo)); // Enable InMemory database.
+        }
     }
 
     public class AppDemo : App
