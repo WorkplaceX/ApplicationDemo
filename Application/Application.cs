@@ -11,8 +11,8 @@
     {
         public AppSelectorDemo()
         {
+            // UtilFramework.UnitTest();
             // UtilFramework.UnitTest(typeof(AppDemo)); // Enable InMemory database.
-            // UtilFramework.UnitTest(typeof(UnitTest.Application.MyApp)); // Enable InMemory database.
         }
     }
 
