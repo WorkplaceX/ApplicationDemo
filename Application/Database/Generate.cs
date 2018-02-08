@@ -5,10 +5,13 @@ namespace Database.dbo
     using Framework.DataAccessLayer;
     using System;
 
+    [ConfigGrid("AirportCodeLookup", 0, true, false, false)]
+    [ConfigGrid("AirportTextLookup", 0, true, false, false)]
+    [ConfigGrid("Master", 0, true, false, false)]
     [SqlTable("dbo", "Airport")]
     public partial class Airport : Row
     {
-        [SqlColumn("Id", typeof(Airport_Id))]
+        [SqlColumn("Id", typeof(Airport_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("Text", typeof(Airport_Text))]
@@ -67,7 +70,7 @@ namespace Database.dbo
     [SqlTable("dbo", "Country")]
     public partial class Country : Row
     {
-        [SqlColumn("Id", typeof(Country_Id))]
+        [SqlColumn("Id", typeof(Country_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("Text", typeof(Country_Text))]
@@ -88,10 +91,12 @@ namespace Database.dbo
 
     public partial class Country_Continent : Cell<Country> { }
 
+    [ConfigGrid(null, 0, true, true, false)]
+    [ConfigGrid("Detail", 5, false, true, false)]
     [SqlTable("dbo", "Flight")]
     public partial class Flight : Row
     {
-        [SqlColumn("Id", typeof(Flight_Id))]
+        [SqlColumn("Id", typeof(Flight_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("Date", typeof(Flight_Date))]
@@ -121,6 +126,7 @@ namespace Database.dbo
 
     public partial class Flight_Id : Cell<Flight> { }
 
+    [ConfigColumn(gridName: "Detail", text: "DATE", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_Date : Cell<Flight> { }
 
     [ConfigColumn(gridName: "Detail", text: null, description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
@@ -129,25 +135,25 @@ namespace Database.dbo
     [ConfigColumn(gridName: "Detail", text: "Airline Code", description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineCode : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "Airline", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
+    [ConfigColumn(gridName: "Detail", text: "Airline", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: false, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineText : Cell<Flight> { }
 
     [ConfigColumn(gridName: "Detail", text: null, description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineValid : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "AirportCode", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
+    [ConfigColumn(gridName: "Detail", text: "AirportCode", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: true, isReadOnlyIsNull: false, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportCode : Cell<Flight> { }
 
     [ConfigColumn(gridName: "Detail", text: "Airport", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportText : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "Valid", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
+    [ConfigColumn(gridName: "Detail", text: "Valid", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: true, isReadOnlyIsNull: false, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportValid : Cell<Flight> { }
 
     [SqlTable("dbo", "LoLoation")]
     public partial class LoLoation : Row
     {
-        [SqlColumn("Id", typeof(LoLoation_Id))]
+        [SqlColumn("Id", typeof(LoLoation_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("Name", typeof(LoLoation_Name))]
@@ -161,7 +167,7 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRole")]
     public partial class LoRole : Row
     {
-        [SqlColumn("Id", typeof(LoRole_Id))]
+        [SqlColumn("Id", typeof(LoRole_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("Name", typeof(LoRole_Name))]
@@ -204,7 +210,7 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRoleLoation")]
     public partial class LoRoleLoation : Row
     {
-        [SqlColumn("Id", typeof(LoRoleLoation_Id))]
+        [SqlColumn("Id", typeof(LoRoleLoation_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("RoleId", typeof(LoRoleLoation_RoleId))]
@@ -292,7 +298,7 @@ namespace Database.dbo
     [SqlTable("dbo", "LoRoleUser")]
     public partial class LoRoleUser : Row
     {
-        [SqlColumn("Id", typeof(LoRoleUser_Id))]
+        [SqlColumn("Id", typeof(LoRoleUser_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("UserId", typeof(LoRoleUser_UserId))]
@@ -316,7 +322,7 @@ namespace Database.dbo
     [SqlTable("dbo", "SyRole")]
     public partial class SyRole : Row
     {
-        [SqlColumn("Id", typeof(SyRole_Id))]
+        [SqlColumn("Id", typeof(SyRole_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("Name", typeof(SyRole_Name))]
@@ -364,7 +370,7 @@ namespace Database.dbo
     [SqlTable("dbo", "SyRoleUser")]
     public partial class SyRoleUser : Row
     {
-        [SqlColumn("Id", typeof(SyRoleUser_Id))]
+        [SqlColumn("Id", typeof(SyRoleUser_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("UserId", typeof(SyRoleUser_UserId))]
@@ -388,7 +394,7 @@ namespace Database.dbo
     [SqlTable("dbo", "SyUser")]
     public partial class SyUser : Row
     {
-        [SqlColumn("Id", typeof(SyUser_Id))]
+        [SqlColumn("Id", typeof(SyUser_Id), true)]
         public int Id { get; set; }
 
         [SqlColumn("Name", typeof(SyUser_Name))]
