@@ -30,12 +30,26 @@
             if (e.GridName == GridNameCodeLookup)
             {
                 Flight rowFlight = (Flight)rowLookup;
-                result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(rowFlight.AirportCode) | rowFlight.AirportCode == null).OrderBy(item => item.Code);
+                if (rowFlight.AirportCode == null)
+                {
+                    result = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Code); // Show all
+                }
+                else
+                {
+                    result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(rowFlight.AirportCode)).OrderBy(item => item.Code);
+                }
             }
             if (e.GridName == GridNameTextLookup)
             {
                 Flight rowFlight = (Flight)rowLookup;
-                result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(rowFlight.AirportText) | rowFlight.AirportText == null).OrderBy(item => item.Text);
+                if (rowFlight.AirportText == null)
+                {
+                    result = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Text); // Show all
+                }
+                else
+                {
+                    result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(rowFlight.AirportText)).OrderBy(item => item.Text);
+                }
             }
             return result;
         }
