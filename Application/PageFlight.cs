@@ -13,12 +13,12 @@
             literalLogo.TextHtml = "<img class='imgLogo' src='/Arrival.png' />";
             new GridFieldSingle(this).CssClass = "gridFieldSingle";
             //
-            var gridName = Flight.GridNameDetail;
+            var gridName = Flight.GridName;
             new Grid(this, gridName);
             // app.GridData.LoadDatabase(gridName);
             //
-            new Grid(this, Airport.AirportMaster);
-            app.GridData.LoadDatabaseInit(Airport.AirportMaster);
+            new Grid(this, Airport.GridName);
+            app.GridData.LoadDatabaseInit(Airport.GridName);
             //
             new Label(this).Text = UtilFramework.VersionServer;
         }

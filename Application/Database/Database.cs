@@ -11,15 +11,15 @@
 
     public partial class Airport
     {
-        public static GridNameTypeRow AirportMaster { get { return new GridName<Airport>("Master"); } }
+        public static GridNameTypeRow GridName { get { return new GridName<Airport>(); } }
 
-        public static GridNameTypeRow AirportCodeLookup { get { return new GridName<Airport>("AirportCodeLookup"); } }
+        public static GridNameTypeRow GridNameCodeLookup { get { return new GridName<Airport>("CodeLookup"); } }
 
-        public static GridNameTypeRow AirportTextLookup { get { return new GridName<Airport>("AirportTextLookup"); } }
+        public static GridNameTypeRow GridNameTextLookup { get { return new GridName<Airport>("TextLookup"); } }
 
         protected override IQueryable Query(App app, GridName gridName)
         {
-            Flight flight = app.GridData.RowSelected(Flight.GridNameDetail);
+            Flight flight = app.GridData.RowSelected(Flight.GridName);
             string airportCode = flight?.AirportCode;
             return UtilDataAccessLayer.Query<Airport>().Where(item => airportCode == null | item.Code == airportCode);
         }
@@ -27,12 +27,12 @@
         protected override IQueryable QueryLookup(Row rowLookup, AppEventArg e)
         {
             IQueryable result = null;
-            if (e.GridName == AirportCodeLookup)
+            if (e.GridName == GridNameCodeLookup)
             {
                 Flight rowFlight = (Flight)rowLookup;
                 result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(rowFlight.AirportCode) | rowFlight.AirportCode == null).OrderBy(item => item.Code);
             }
-            if (e.GridName == AirportTextLookup)
+            if (e.GridName == GridNameTextLookup)
             {
                 Flight rowFlight = (Flight)rowLookup;
                 result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(rowFlight.AirportText) | rowFlight.AirportText == null).OrderBy(item => item.Text);
@@ -40,23 +40,26 @@
             return result;
         }
 
-        protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
+        protected override void MasterIsClick(GridName gridNameMaster, Row rowMaster, ref bool isReload, AppEventArg e)
         {
             Flight flight = rowMaster as Flight;
             if (flight != null)
             {
-                isReload = true;
+                if (e.GridName == Airport.GridName)
+                {
+                    isReload = true;
+                }
             }
         }
     }
 
     public partial class Flight
     {
-        public static GridName<Flight> GridNameDetail
+        public static GridName<Flight> GridName
         {
             get
             {
-                return new GridName<Flight>("Detail");
+                return new GridName<Flight>();
             }
         }
 
@@ -155,7 +158,7 @@
 
         protected override GridNameTypeRow Lookup(AppEventArg e)
         {
-            return Airport.AirportCodeLookup;
+            return Airport.GridNameCodeLookup;
         }
 
         protected override void LookupIsClick(Row rowLookup, AppEventArg e)
@@ -181,7 +184,7 @@
 
         protected override GridNameTypeRow Lookup(AppEventArg e)
         {
-            return Airport.AirportTextLookup;
+            return Airport.GridNameTextLookup;
         }
 
         protected override void LookupIsClick(Row rowLookup, AppEventArg e)
@@ -202,7 +205,7 @@
 
     public partial class TableName
     {
-        protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
+        protected override void MasterIsClick(GridName gridNameMaster, Row rowMaster, ref bool isReload, AppEventArg e)
         {
             if (gridNameMaster == new GridName<Database.dbo.TableName>())
             {
