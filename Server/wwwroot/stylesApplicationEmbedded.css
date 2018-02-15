@@ -23,3 +23,7 @@ body {
 .btn {
     margin-bottom: 0px;
 }
+
+.gridColumn {
+    word-wrap: normal;
+}
