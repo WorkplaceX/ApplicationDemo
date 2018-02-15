@@ -19,3 +19,7 @@ body {
     border-bottom: 1px solid black;
     /* background-color: #8ac7eb; */
 }
+
+.btn {
+    margin-bottom: 0px;
+}
