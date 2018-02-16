@@ -29,9 +29,6 @@ namespace Database.dbo
 
     public partial class Airline_Country : Cell<Airline> { }
 
-    [ConfigGrid("AirportCodeLookup", 0, true, false, false)]
-    [ConfigGrid("AirportTextLookup", 0, true, false, false)]
-    [ConfigGrid("Master", 0, true, false, false)]
     [SqlTable("dbo", "Airport")]
     public partial class Airport : Row
     {
@@ -52,7 +49,6 @@ namespace Database.dbo
 
     public partial class Airport_Text : Cell<Airport> { }
 
-    [ConfigColumn(gridName: "Master", text: "Text", description: "Description", isVisible: true, isVisibleIsNull: false, isReadOnly: true, isReadOnlyIsNull: false, sort: 22, sortIsNull: false, widthPercent: 55, widthPercentIsNull: false)]
     public partial class Airport_Code : Cell<Airport> { }
 
     public partial class Airport_CountryId : Cell<Airport> { }
@@ -115,8 +111,6 @@ namespace Database.dbo
 
     public partial class Country_Continent : Cell<Country> { }
 
-    [ConfigGrid(null, 0, true, true, false)]
-    [ConfigGrid("Detail", 5, false, true, false)]
     [SqlTable("dbo", "Flight")]
     public partial class Flight : Row
     {
@@ -150,28 +144,20 @@ namespace Database.dbo
 
     public partial class Flight_Id : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "DATE", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_Date : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: null, description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_Number : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "Airline Code", description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineCode : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "Airline", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: false, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineText : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: null, description: null, isVisible: false, isVisibleIsNull: false, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirlineValid : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "AirportCode", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: true, isReadOnlyIsNull: false, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportCode : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "Airport", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: false, isReadOnlyIsNull: true, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportText : Cell<Flight> { }
 
-    [ConfigColumn(gridName: "Detail", text: "Valid", description: null, isVisible: false, isVisibleIsNull: true, isReadOnly: true, isReadOnlyIsNull: false, sort: 0, sortIsNull: true, widthPercent: 0, widthPercentIsNull: true)]
     public partial class Flight_AirportValid : Cell<Flight> { }
 
     [SqlTable("dbo", "LoLoation")]
@@ -342,30 +328,6 @@ namespace Database.dbo
     public partial class LoRoleUser_RoleId : Cell<LoRoleUser> { }
 
     public partial class LoRoleUser_IsActive : Cell<LoRoleUser> { }
-
-    [SqlTable("dbo", "MyRow")]
-    public partial class MyRow : Row
-    {
-        [SqlColumn("Id", typeof(MyRow_Id), true)]
-        public int Id { get; set; }
-
-        [SqlColumn("Text", typeof(MyRow_Text))]
-        public string Text { get; set; }
-
-        [SqlColumn("X", typeof(MyRow_X))]
-        public string X { get; set; }
-
-        [SqlColumn("Y", typeof(MyRow_Y))]
-        public bool? Y { get; set; }
-    }
-
-    public partial class MyRow_Id : Cell<MyRow> { }
-
-    public partial class MyRow_Text : Cell<MyRow> { }
-
-    public partial class MyRow_X : Cell<MyRow> { }
-
-    public partial class MyRow_Y : Cell<MyRow> { }
 
     [SqlTable("dbo", "SyRole")]
     public partial class SyRole : Row
