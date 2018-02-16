@@ -24,12 +24,12 @@
             return UtilDataAccessLayer.Query<Airport>().Where(item => airportCode == null | item.Code == airportCode);
         }
 
-        protected override IQueryable QueryLookup(Row rowLookup, AppEventArg e)
+        protected override IQueryable QueryLookup(Row rowExternal, AppEventArg e)
         {
             IQueryable result = null;
             if (e.GridName == GridNameCodeLookup)
             {
-                Flight rowFlight = (Flight)rowLookup;
+                Flight rowFlight = (Flight)rowExternal;
                 if (rowFlight.AirportCode == null)
                 {
                     result = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Code); // Show all
@@ -41,7 +41,7 @@
             }
             if (e.GridName == GridNameTextLookup)
             {
-                Flight rowFlight = (Flight)rowLookup;
+                Flight rowFlight = (Flight)rowExternal;
                 if (rowFlight.AirportText == null)
                 {
                     result = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Text); // Show all
@@ -148,12 +148,49 @@
         }
     }
 
+    public partial class Airline
+    {
+        public static GridName<Airline> AirlineLookup = new GridName<Airline>("Lookup");
+
+        protected override IQueryable QueryLookup(Row rowExternal, AppEventArg e)
+        {
+            Flight flight = rowExternal as Flight;
+            if (e.GridName == Airline.AirlineLookup && flight != null)
+            {
+                if (flight.AirlineText == null)
+                {
+                    return UtilDataAccessLayer.Query<Airline>().OrderBy(item => item.Text);
+                }
+                else
+                {
+                    return UtilDataAccessLayer.Query<Airline>().Where(item => item.Text.Contains(flight.AirlineText)).OrderBy(item => item.Text);
+                }
+            }
+            else
+            {
+                return base.QueryLookup(rowExternal, e);
+            }
+        }
+    }
+
     public partial class Flight_AirlineText
     {
         protected override void ConfigCell(ConfigCell result, AppEventArg e)
         {
-            result.IsReadOnly = true;
-            result.CssClass.Add("gridReadOnly");
+            // result.IsReadOnly = true;
+            // result.CssClass.Add("gridReadOnly");
+        }
+
+        protected override GridNameTypeRow Lookup(AppEventArg e)
+        {
+            return Airline.AirlineLookup;
+        }
+
+        protected override void LookupIsClick(Row rowLookup, AppEventArg e)
+        {
+            Airline airline = (Airline)rowLookup;
+            Row.AirlineText = airline.Text;
+            Row.AirlineCode = airline.Code;
         }
     }
 

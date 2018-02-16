@@ -5,6 +5,30 @@ namespace Database.dbo
     using Framework.DataAccessLayer;
     using System;
 
+    [SqlTable("dbo", "Airline")]
+    public partial class Airline : Row
+    {
+        [SqlColumn("Id", typeof(Airline_Id), true)]
+        public int Id { get; set; }
+
+        [SqlColumn("Text", typeof(Airline_Text))]
+        public string Text { get; set; }
+
+        [SqlColumn("Code", typeof(Airline_Code))]
+        public string Code { get; set; }
+
+        [SqlColumn("Country", typeof(Airline_Country))]
+        public string Country { get; set; }
+    }
+
+    public partial class Airline_Id : Cell<Airline> { }
+
+    public partial class Airline_Text : Cell<Airline> { }
+
+    public partial class Airline_Code : Cell<Airline> { }
+
+    public partial class Airline_Country : Cell<Airline> { }
+
     [ConfigGrid("AirportCodeLookup", 0, true, false, false)]
     [ConfigGrid("AirportTextLookup", 0, true, false, false)]
     [ConfigGrid("Master", 0, true, false, false)]
@@ -318,6 +342,30 @@ namespace Database.dbo
     public partial class LoRoleUser_RoleId : Cell<LoRoleUser> { }
 
     public partial class LoRoleUser_IsActive : Cell<LoRoleUser> { }
+
+    [SqlTable("dbo", "MyRow")]
+    public partial class MyRow : Row
+    {
+        [SqlColumn("Id", typeof(MyRow_Id), true)]
+        public int Id { get; set; }
+
+        [SqlColumn("Text", typeof(MyRow_Text))]
+        public string Text { get; set; }
+
+        [SqlColumn("X", typeof(MyRow_X))]
+        public string X { get; set; }
+
+        [SqlColumn("Y", typeof(MyRow_Y))]
+        public bool? Y { get; set; }
+    }
+
+    public partial class MyRow_Id : Cell<MyRow> { }
+
+    public partial class MyRow_Text : Cell<MyRow> { }
+
+    public partial class MyRow_X : Cell<MyRow> { }
+
+    public partial class MyRow_Y : Cell<MyRow> { }
 
     [SqlTable("dbo", "SyRole")]
     public partial class SyRole : Row
