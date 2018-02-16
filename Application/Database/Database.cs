@@ -151,26 +151,6 @@
     public partial class Airline
     {
         public static GridName<Airline> AirlineLookup = new GridName<Airline>("Lookup");
-
-        protected override IQueryable QueryLookup(Row rowExternal, AppEventArg e)
-        {
-            Flight flight = rowExternal as Flight;
-            if (e.GridName == Airline.AirlineLookup && flight != null)
-            {
-                if (flight.AirlineText == null)
-                {
-                    return UtilDataAccessLayer.Query<Airline>().OrderBy(item => item.Text);
-                }
-                else
-                {
-                    return UtilDataAccessLayer.Query<Airline>().Where(item => item.Text.Contains(flight.AirlineText)).OrderBy(item => item.Text);
-                }
-            }
-            else
-            {
-                return base.QueryLookup(rowExternal, e);
-            }
-        }
     }
 
     public partial class Flight_AirlineText
@@ -181,9 +161,22 @@
             // result.CssClass.Add("gridReadOnly");
         }
 
-        protected override GridNameTypeRow Lookup(AppEventArg e)
+        //protected override GridNameTypeRow Lookup(AppEventArg e)
+        //{
+        //    return Airline.AirlineLookup;
+        //}
+
+        protected override void Lookup(out GridNameTypeRow gridName, out IQueryable query)
         {
-            return Airline.AirlineLookup;
+            gridName = Airline.AirlineLookup;
+            if (Row.AirlineText == null)
+            {
+                query = UtilDataAccessLayer.Query<Airline>().OrderBy(item => item.Text);
+            }
+            else
+            {
+                query = UtilDataAccessLayer.Query<Airline>().Where(item => item.Text.Contains(Row.AirlineText)).OrderBy(item => item.Text);
+            }
         }
 
         protected override void LookupIsClick(Row rowLookup, AppEventArg e)
