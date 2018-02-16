@@ -24,36 +24,6 @@
             return UtilDataAccessLayer.Query<Airport>().Where(item => airportCode == null | item.Code == airportCode);
         }
 
-        protected override IQueryable QueryLookup(Row rowExternal, AppEventArg e)
-        {
-            IQueryable result = null;
-            if (e.GridName == GridNameCodeLookup)
-            {
-                Flight rowFlight = (Flight)rowExternal;
-                if (rowFlight.AirportCode == null)
-                {
-                    result = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Code); // Show all
-                }
-                else
-                {
-                    result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(rowFlight.AirportCode)).OrderBy(item => item.Code);
-                }
-            }
-            if (e.GridName == GridNameTextLookup)
-            {
-                Flight rowFlight = (Flight)rowExternal;
-                if (rowFlight.AirportText == null)
-                {
-                    result = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Text); // Show all
-                }
-                else
-                {
-                    result = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(rowFlight.AirportText)).OrderBy(item => item.Text);
-                }
-            }
-            return result;
-        }
-
         protected override void MasterIsClick(GridName gridNameMaster, Row rowMaster, ref bool isReload, AppEventArg e)
         {
             Flight flight = rowMaster as Flight;
@@ -200,9 +170,17 @@
             }
         }
 
-        protected override GridNameTypeRow Lookup(AppEventArg e)
+        protected override void Lookup(out GridNameTypeRow gridName, out IQueryable query)
         {
-            return Airport.GridNameCodeLookup;
+            gridName = Airport.GridNameCodeLookup;
+            if (Row.AirportCode == null)
+            {
+                query = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Code); // Show all
+            }
+            else
+            {
+                query = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code.StartsWith(Row.AirportCode)).OrderBy(item => item.Code);
+            }
         }
 
         protected override void LookupIsClick(Row rowLookup, AppEventArg e)
@@ -226,9 +204,17 @@
             }
         }
 
-        protected override GridNameTypeRow Lookup(AppEventArg e)
+        protected override void Lookup(out GridNameTypeRow gridName, out IQueryable query)
         {
-            return Airport.GridNameTextLookup;
+            gridName = Airport.GridNameTextLookup;
+            if (Row.AirportText == null)
+            {
+                query = UtilDataAccessLayer.Query<Airport>().OrderBy(item => item.Text); // Show all
+            }
+            else
+            {
+                query = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text.Contains(Row.AirportText)).OrderBy(item => item.Text);
+            }
         }
 
         protected override void LookupIsClick(Row rowLookup, AppEventArg e)
