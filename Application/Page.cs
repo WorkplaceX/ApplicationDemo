@@ -15,7 +15,7 @@
             new Label(this);
         }
 
-        protected override void RunEnd()
+        protected override void RunEnd(App app)
         {
             List.OfType<Label>().Single().Text = "IsModify=";
         }
