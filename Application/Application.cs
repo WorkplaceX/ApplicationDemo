@@ -2,6 +2,7 @@
 {
     using Framework;
     using Framework.Application;
+    using Framework.Application.Config;
     using System;
 
     /// <summary>
@@ -21,6 +22,7 @@
         protected override Type TypePageMain()
         {
             return typeof(PageGridDatabaseBrowse);
+            // return typeof(PageCmsConfig);
         }
     }
 }

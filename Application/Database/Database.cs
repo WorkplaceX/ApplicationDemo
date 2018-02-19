@@ -154,11 +154,12 @@
 
     public partial class Flight_AirportCode
     {
-        protected override void TextParse(string text, AppEventArg e)
+        protected override void TextParse(ref string text, bool isDeleteKey, AppEventArg e)
         {
-            base.TextParse(text, e);
+            base.TextParse(ref text, isDeleteKey, e);
             //
-            Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code == text).FirstOrDefault();
+            string textLocal = text;
+            Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Code == textLocal).FirstOrDefault();
             if (airport != null)
             {
                 Row.AirportText = airport.Text;
@@ -188,11 +189,12 @@
 
     public partial class Flight_AirportText
     {
-        protected override void TextParse(string text, AppEventArg e)
+        protected override void TextParse(ref string text, bool isDeleteKey, AppEventArg e)
         {
-            base.TextParse(text, e);
+            base.TextParse(ref text, isDeleteKey, e);
             //
-            Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text == text).FirstOrDefault();
+            string textLocal = text;
+            Airport airport = UtilDataAccessLayer.Query<Airport>().Where(item => item.Text == textLocal).FirstOrDefault();
             if (airport != null)
             {
                 Row.AirportCode = airport.Code;
