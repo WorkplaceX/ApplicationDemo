@@ -25,7 +25,7 @@
     {
         protected override void InitJson(App app)
         {
-            PageShow<PageFlight>(app);
+            app.PageShow<PageFlight>(app.AppJson);
             return;
 
             var gridNameMaster = new GridName<Database.dbo.TableName>();
@@ -79,7 +79,7 @@
             }
             if (isClick && name == "Close")
             {
-                PageShow<PageMain>(app);
+                app.PageShow<PageMain>(app.AppJson);
             }
         }
     }
@@ -100,19 +100,19 @@
         {
             if (List.OfType<Button>().ToArray()[0].IsClick)
             {
-                PageShow<PageGridDatabaseBrowse>(app);
+                app.PageShow<PageGridDatabaseBrowse>(app.AppJson);
             }
             if (List.OfType<Button>().ToArray()[1].IsClick)
             {
-                PageShow<PageDebug>(app);
+                app.PageShow<PageDebug>(app.AppJson);
             }
             if (List.OfType<Button>().ToArray()[2].IsClick)
             {
-                PageShow<PageMessageBoxAbout>(app);
+                app.PageShow<PageMessageBoxAbout>(app.AppJson);
             }
             if (List.OfType<Button>().ToArray()[3].IsClick)
             {
-                PageShow<PageFlight>(app);
+                app.PageShow<PageFlight>(app.AppJson);
             }
         }
     }
@@ -129,7 +129,7 @@
         {
             if (List.OfType<Button>().First().IsClick)
             {
-                PageShow<PageMain>(app);
+                app.PageShow<PageMain>(app.AppJson);
             }
         }
     }
@@ -161,11 +161,11 @@
                 Row row = app.GridData.RowGet(e.GridName, e.Index);
                 UtilDataAccessLayer.Delete(row);
                 app.GridData.LoadDatabaseReload(e.GridName);
-                PageShow<PageGridDatabaseBrowse>(app);
+                app.PageShow<PageGridDatabaseBrowse>(app.AppJson);
             }
             if (ListAll().OfType<Button>().Where(item => item.Text == "No").Single().IsClick)
             {
-                PageShow<PageGridDatabaseBrowse>(app);
+                app.PageShow<PageGridDatabaseBrowse>(app.AppJson);
             }
         }
 
@@ -212,7 +212,7 @@
             }
             if (Button("Close")?.IsClick == true)
             {
-                PageShow<PageMain>(app);
+                app.PageShow<PageMain>(app.AppJson);
             }
         }
     }
