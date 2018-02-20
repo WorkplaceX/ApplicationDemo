@@ -27,3 +27,9 @@ body {
 .gridColumn {
     word-wrap: normal;
 }
+
+div[data-app] input, .gridColumn, .gridFilter, .gridCell {
+    font-size: 90%;
+    height: 1.6em;
+    line-height: 1.6em;
+}
