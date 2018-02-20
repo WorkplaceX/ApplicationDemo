@@ -17,12 +17,12 @@
 
         public static GridNameWithType GridNameTextLookup { get { return new GridName<Airport>("TextLookup"); } }
 
-        protected override IQueryable Query(App app, GridName gridName)
-        {
-            Flight flight = app.GridData.RowSelected(Flight.GridName);
-            string airportCode = flight?.AirportCode;
-            return UtilDataAccessLayer.Query<Airport>().Where(item => airportCode == null | item.Code == airportCode);
-        }
+        //protected override IQueryable Query(App app, GridName gridName)
+        //{
+        //    Flight flight = app.GridData.RowSelected(Flight.GridName);
+        //    string airportCode = flight?.AirportCode;
+        //    return UtilDataAccessLayer.Query<Airport>().Where(item => airportCode == null | item.Code == airportCode);
+        //}
 
         protected override void MasterIsClick(GridName gridNameMaster, Row rowMaster, ref bool isReload, AppEventArg e)
         {
