@@ -11,11 +11,11 @@
 
     public partial class Airport
     {
-        public static GridNameWithType GridName { get { return new GridName<Airport>(); } }
+        public static GridNameType GridName { get { return new GridName<Airport>(); } }
 
-        public static GridNameWithType GridNameCodeLookup { get { return new GridName<Airport>("CodeLookup"); } }
+        public static GridNameType GridNameCodeLookup { get { return new GridName<Airport>("CodeLookup"); } }
 
-        public static GridNameWithType GridNameTextLookup { get { return new GridName<Airport>("TextLookup"); } }
+        public static GridNameType GridNameTextLookup { get { return new GridName<Airport>("TextLookup"); } }
 
         //protected override IQueryable Query(App app, GridName gridName)
         //{
@@ -131,7 +131,7 @@
             // result.CssClass.Add("gridReadOnly");
         }
 
-        protected override void Lookup(out GridNameWithType gridName, out IQueryable query)
+        protected override void Lookup(out GridNameType gridName, out IQueryable query)
         {
             gridName = Airline.AirlineLookup;
             if (Row.AirlineText == null)
@@ -166,7 +166,7 @@
             }
         }
 
-        protected override void Lookup(out GridNameWithType gridName, out IQueryable query)
+        protected override void Lookup(out GridNameType gridName, out IQueryable query)
         {
             gridName = Airport.GridNameCodeLookup;
             if (Row.AirportCode == null)
@@ -201,7 +201,7 @@
             }
         }
 
-        protected override void Lookup(out GridNameWithType gridName, out IQueryable query)
+        protected override void Lookup(out GridNameType gridName, out IQueryable query)
         {
             gridName = Airport.GridNameTextLookup;
             if (Row.AirportText == null)
@@ -241,7 +241,7 @@
                 if (tableName != null && tableName.IndexOf(".") != -1)
                 {
                     Type typeRow = UtilFramework.TypeFromName("Database." + tableName, typeof(AppDemo), typeof(Framework.UtilFramework));
-                    // app.GridData.LoadDatabase(new GridNameWithType(typeRow, "Detail", true));
+                    // app.GridData.LoadDatabase(new GridNameType(typeRow, "Detail", true));
                 }
             }
         }
