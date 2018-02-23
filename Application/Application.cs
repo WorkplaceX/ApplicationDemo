@@ -3,7 +3,6 @@
     using Database.dbo;
     using Framework;
     using Framework.Application;
-    using Framework.Application.Config;
     using Framework.Component;
     using Framework.Server;
     using System;
@@ -24,16 +23,16 @@
     {
         protected override Type TypePageMain()
         {
-            return typeof(PageContainer);
+            return typeof(PageNavigation);
             // return typeof(PageCmsConfig);
         }
     }
 
-    public class PageContainer : Page
+    public class PageNavigation : Page
     {
-        public PageContainer() { }
+        public PageNavigation() { }
 
-        public PageContainer(Component owner)
+        public PageNavigation(Component owner)
             : base(owner)
         {
 
