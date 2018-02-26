@@ -47,25 +47,25 @@
             }
         }
 
-        private void Refresh()
+        protected override void Reload()
         {
             UtilDataAccessLayer.Execute("EXEC FlightValid"); // Execute stored procedure.
             var flight = UtilDataAccessLayer.Query<Flight>().Where(item => item.Id == this.Id).Single();
             this.AirportValid = flight.AirportValid; // Update client cell
         }
 
-        protected override void Update(Row row, Row rowNew, AppEventArg e)
+        protected override void Update(Row row, Row rowNew, ref bool isReload, AppEventArg e)
         {
             this.AirportValid = null;
-            base.Update(row, rowNew, e);
-            Refresh();
+            base.Update(row, rowNew, ref isReload, e);
+            isReload = true;
         }
 
-        protected override void Insert(Row rowNew, AppEventArg e)
+        protected override void Insert(Row rowNew, ref bool isReload, AppEventArg e)
         {
             this.AirportValid = null;
-            base.Insert(rowNew, e);
-            Refresh();
+            base.Insert(rowNew, ref isReload, e);
+            isReload = true;
         }
 
         [SqlColumn(null, typeof(Flight_Delete))]
@@ -131,7 +131,7 @@
             // result.CssClass.Add("gridReadOnly");
         }
 
-        protected override void Lookup(out GridNameType gridName, out IQueryable query)
+        protected override void Lookup(out GridNameType gridName, out IQueryable query, AppEventArg e)
         {
             gridName = Airline.AirlineLookup;
             if (Row.AirlineText == null)
@@ -166,7 +166,7 @@
             }
         }
 
-        protected override void Lookup(out GridNameType gridName, out IQueryable query)
+        protected override void Lookup(out GridNameType gridName, out IQueryable query, AppEventArg e)
         {
             gridName = Airport.GridNameCodeLookup;
             if (Row.AirportCode == null)
@@ -201,7 +201,7 @@
             }
         }
 
-        protected override void Lookup(out GridNameType gridName, out IQueryable query)
+        protected override void Lookup(out GridNameType gridName, out IQueryable query, AppEventArg e)
         {
             gridName = Airport.GridNameTextLookup;
             if (Row.AirportText == null)
