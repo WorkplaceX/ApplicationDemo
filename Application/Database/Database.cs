@@ -47,7 +47,7 @@
             }
         }
 
-        protected override void Reload()
+        protected override void Reload(AppEventArg e)
         {
             UtilDataAccessLayer.Execute("EXEC FlightValid"); // Execute stored procedure.
             var flight = UtilDataAccessLayer.Query<Flight>().Where(item => item.Id == this.Id).Single();
