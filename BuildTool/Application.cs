@@ -18,9 +18,9 @@
 
         }
 
-        protected override void DbFrameworkApplicationView(List<FrameworkApplicationView> result)
+        protected override void DbFrameworkApplicationDisplay(List<FrameworkApplicationDisplay> result)
         {
-            result.Add(new FrameworkApplicationView() { Text = "Demo Application", Path = "demo", TypeName = UtilFramework.TypeToName(typeof(AppDemo)), IsActive = true });
+            result.Add(new FrameworkApplicationDisplay() { Text = "Demo Application", Path = "demo", TypeName = UtilFramework.TypeToName(typeof(AppDemo)), IsActive = true });
         }
     }
 }
