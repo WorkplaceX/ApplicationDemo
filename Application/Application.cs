@@ -26,6 +26,21 @@
             return typeof(PageNavigation);
             // return typeof(PageCmsConfig);
         }
+
+        public static FrameworkLoginPermission PermissionAirportFull()
+        {
+            return new FrameworkLoginPermission("AirportFull", "Add, update and remove Airport", "MasterData", "AdminApp");
+        }
+
+        public static FrameworkLoginPermission PermissionFlightFull()
+        {
+            return new FrameworkLoginPermission("FlightFull", "Add, update and remove Flight", "TransactionData", "AdminApp");
+        }
+
+        public static FrameworkLoginPermission PermissionFlightReadOnly()
+        {
+            return new FrameworkLoginPermission("FlightReadOnly", "Read Flight", "Guest", "TransactionData", "AdminApp");
+        }
     }
 
     public class PageNavigation : Page
