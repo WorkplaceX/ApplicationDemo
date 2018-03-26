@@ -27,19 +27,23 @@
             // return typeof(PageCmsConfig);
         }
 
-        public static FrameworkLoginPermission PermissionAirportFull()
+        public static FrameworkLoginPermissionDisplay PermissionAirportFull()
         {
-            return new FrameworkLoginPermission("AirportFull", "Add, update and remove Airport", "MasterData", "AdminApp");
+            return new FrameworkLoginPermissionDisplay(typeof(AppDemo), "AirportFull", "Add, update and remove Airport", "MasterData", "AdminApp");
         }
 
-        public static FrameworkLoginPermission PermissionFlightFull()
+        public static FrameworkLoginPermissionDisplay PermissionFlightFull()
         {
-            return new FrameworkLoginPermission("FlightFull", "Add, update and remove Flight", "TransactionData", "AdminApp");
+            return new FrameworkLoginPermissionDisplay(typeof(AppDemo), "FlightFull", "Add, update and remove Flight", "TransactionData", "AdminApp");
         }
 
-        public static FrameworkLoginPermission PermissionFlightReadOnly()
+        /// <summary>
+        /// Returns BuiltIn Permission to read Flight.
+        /// </summary>
+        /// <returns></returns>
+        public static FrameworkLoginPermissionDisplay PermissionFlightReadOnly()
         {
-            return new FrameworkLoginPermission("FlightReadOnly", "Read Flight", "Guest", "TransactionData", "AdminApp");
+            return new FrameworkLoginPermissionDisplay(typeof(AppDemo), "FlightReadOnly", "Read Flight", "Guest", "TransactionData", "AdminApp");
         }
     }
 
