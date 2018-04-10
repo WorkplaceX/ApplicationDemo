@@ -49,7 +49,7 @@
 
         protected override void Reload(AppEventArg e)
         {
-            UtilDataAccessLayer.Execute("EXEC FlightValid"); // Execute stored procedure.
+            UtilDataAccessLayer.ExecuteNonQuery("EXEC FlightValid"); // Execute stored procedure.
             var flight = UtilDataAccessLayer.Query<Flight>().Where(item => item.Id == this.Id).Single();
             this.AirportValid = flight.AirportValid; // Update client cell
         }
