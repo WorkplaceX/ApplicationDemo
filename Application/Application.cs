@@ -6,6 +6,7 @@
     using Framework.Component;
     using Framework.Server;
     using System;
+    using System.Linq;
 
     /// <summary>
     /// AppSelector has to be in same assembly like App classes.
@@ -61,7 +62,13 @@
         {
             new Navigation(this);
             //
-            new Label(this).Text = UtilFramework.VersionServer;
+            new Label(this);
+            new Button(this).Text = "Click";
+        }
+
+        protected override void RunBegin(App app)
+        {
+            this.List.OfType<Label>().First().Text = UtilFramework.VersionServer + " Session=" + app.AppJson.Session;
         }
     }
 
