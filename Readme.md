@@ -6,7 +6,7 @@ Develop business applications with WorkplaceX framework.
 
 ## Clone
 ```cmd
-git clone https://github.com/WorkplaceX/Application.git --recursive
+git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
 ```
 Recursive argument enables additional cloning of submodule (Framework).
 
