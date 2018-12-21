@@ -1,0 +1,5 @@
+﻿sudo: required # Needed to install .NET Core 2.1
+
+install: ./Framework/Framework.Cli/Ci/travis-ci.org/Install.sh
+
+script: ./Framework/Framework.Cli/Ci/travis-ci.org/Build.sh
