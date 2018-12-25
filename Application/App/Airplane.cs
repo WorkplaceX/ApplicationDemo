@@ -15,6 +15,7 @@
 
         protected override async Task InitAsync()
         {
+            this.ComponentCreate<Html>().TextHtml = "<h1>Airplane</h1>";
             await this.ComponentCreate<Grid>().LoadAsync();
         }
 
