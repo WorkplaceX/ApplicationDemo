@@ -37,10 +37,12 @@
                     if (value == true)
                     {
                         result.Html = "<i class='fas fa-check'></i>";
+                        result.Align = AlignEnum.Center;
                     }
                     if (value == false)
                     {
                         result.Html = "<i class='far fa-square'></i>";
+                        result.Align = AlignEnum.Center;
                     }
                 }
             }
