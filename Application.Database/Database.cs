@@ -186,17 +186,48 @@ namespace Database.Demo
         [SqlField("Code", FrameworkTypeEnum.Nvarcahr)]
         public string Code { get; set; }
 
-        [SqlField("IsWikipedia", FrameworkTypeEnum.Int)]
-        public int IsWikipedia { get; set; }
+        [SqlField("IsWikipedia", FrameworkTypeEnum.Bit)]
+        public bool? IsWikipedia { get; set; }
 
-        [SqlField("IsOpenFlightsAirport", FrameworkTypeEnum.Int)]
-        public int IsOpenFlightsAirport { get; set; }
+        [SqlField("IsOpenFlightsAirport", FrameworkTypeEnum.Bit)]
+        public bool? IsOpenFlightsAirport { get; set; }
 
-        [SqlField("IsOpenFlightsAirline", FrameworkTypeEnum.Int)]
-        public int IsOpenFlightsAirline { get; set; }
+        [SqlField("IsOpenFlightsAirline", FrameworkTypeEnum.Bit)]
+        public bool? IsOpenFlightsAirline { get; set; }
 
-        [SqlField("IsFlagIconCss", FrameworkTypeEnum.Int)]
-        public int IsFlagIconCss { get; set; }
+        [SqlField("IsFlagIconCss", FrameworkTypeEnum.Bit)]
+        public bool? IsFlagIconCss { get; set; }
+
+        [SqlField("WikipediaCountryUrl", FrameworkTypeEnum.Nvarcahr)]
+        public string WikipediaCountryUrl { get; set; }
+
+        [SqlField("ASFlagIcon", FrameworkTypeEnum.Nvarcahr)]
+        public string ASFlagIcon { get; set; }
+    }
+
+    [SqlTable("Demo", "CountryDisplayCache")]
+    public class CountryDisplayCache : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Country", FrameworkTypeEnum.Nvarcahr)]
+        public string Country { get; set; }
+
+        [SqlField("Code", FrameworkTypeEnum.Nvarcahr)]
+        public string Code { get; set; }
+
+        [SqlField("IsWikipedia", FrameworkTypeEnum.Bit)]
+        public bool? IsWikipedia { get; set; }
+
+        [SqlField("IsOpenFlightsAirport", FrameworkTypeEnum.Bit)]
+        public bool? IsOpenFlightsAirport { get; set; }
+
+        [SqlField("IsOpenFlightsAirline", FrameworkTypeEnum.Bit)]
+        public bool? IsOpenFlightsAirline { get; set; }
+
+        [SqlField("IsFlagIconCss", FrameworkTypeEnum.Bit)]
+        public bool? IsFlagIconCss { get; set; }
 
         [SqlField("WikipediaCountryUrl", FrameworkTypeEnum.Nvarcahr)]
         public string WikipediaCountryUrl { get; set; }
