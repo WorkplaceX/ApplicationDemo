@@ -27,19 +27,21 @@
             return UtilDal.Query<CountryDisplayCache>();
         }
 
-        private void GridCellAnnotationBool(string fieldName, Expression<Func<bool?>> property, GridCellAnnotationResult result)
+        private void GridCellAnnotationBool(string fieldName, Row row, Type typeRow, string nameof, GridCellAnnotationResult result)
         {
-            UtilApplication.PropertyValueGet(property, out var propertyFieldName, out var value);
-
-            if (fieldName == propertyFieldName)
+            if (fieldName == nameof)
             {
-                if (value == true)
+                if (row?.GetType() == typeRow)
                 {
-                    result.Html = "<i class='fas fa-check'></i>";
-                }
-                if (value == false)
-                {
-                    result.Html = "<i class='far fa-square'></i>";
+                    bool? value = (bool?)row.GetType().GetProperty(nameof).GetValue(row);
+                    if (value == true)
+                    {
+                        result.Html = "<i class='fas fa-check'></i>";
+                    }
+                    if (value == false)
+                    {
+                        result.Html = "<i class='far fa-square'></i>";
+                    }
                 }
             }
         }
@@ -57,10 +59,10 @@
                 result.Html = string.Format("<a href='{0}' target='_blank'>{1}", countryDisplay?.WikipediaCountryUrl, "Wikipedia");
             }
 
-            GridCellAnnotationBool(fieldName, () => (row as CountryDisplayCache).IsWikipedia, result);
-            GridCellAnnotationBool(fieldName, () => (row as CountryDisplayCache).IsOpenFlightsAirport, result);
-            GridCellAnnotationBool(fieldName, () => (row as CountryDisplayCache).IsOpenFlightsAirline, result);
-            GridCellAnnotationBool(fieldName, () => (row as CountryDisplayCache).IsFlagIconCss, result);
+            GridCellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsFlagIconCss), result);
+            GridCellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsOpenFlightsAirline), result);
+            GridCellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsOpenFlightsAirport), result);
+            GridCellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsWikipedia), result);
         }
     }
 }
