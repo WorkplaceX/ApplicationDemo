@@ -18,7 +18,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B43B7410-C0FF-443C-973F-715E811B229A}"
 	ProjectSection(SolutionItems) = preProject
 		ConfigCli.json = ConfigCli.json
-		ConfigFramework.json = ConfigFramework.json
+		ConfigWebServer.json = ConfigWebServer.json
 	EndProjectSection
 EndProject
 Global
