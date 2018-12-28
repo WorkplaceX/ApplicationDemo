@@ -40,6 +40,7 @@ SELECT
 FROM 
 	CountryCode CountryCode
 
+GO
 SELECT IDENTITY(INT, 1, 1) AS Id,* 
 INTO Demo.CountryDisplayCache
 FROM Demo.CountryDisplay
