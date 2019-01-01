@@ -2,7 +2,7 @@
 
 namespace Database.dbo
 {
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
 
     [SqlTable("dbo", "AWBuildVersion")]
@@ -174,7 +174,7 @@ namespace Database.dbo
 
 namespace Database.Demo
 {
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
 
     [SqlTable("Demo", "CountryDisplay")]
@@ -389,7 +389,7 @@ namespace Database.Demo
 
 namespace Database.HumanResources
 {
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
 
     [SqlTable("HumanResources", "Department")]
@@ -790,7 +790,7 @@ namespace Database.HumanResources
 
 namespace Database.Person
 {
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
 
     [SqlTable("Person", "Address")]
@@ -1132,7 +1132,7 @@ namespace Database.Person
 
 namespace Database.Production
 {
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
 
     [SqlTable("Production", "BillOfMaterials")]
@@ -1870,7 +1870,7 @@ namespace Database.Production
 
 namespace Database.Purchasing
 {
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
 
     [SqlTable("Purchasing", "ProductVendor")]
@@ -2114,7 +2114,7 @@ namespace Database.Purchasing
 
 namespace Database.Sales
 {
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
 
     [SqlTable("Sales", "CountryRegionCurrency")]

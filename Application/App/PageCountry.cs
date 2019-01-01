@@ -6,7 +6,7 @@
     using System.Threading.Tasks;
     using Database.Demo;
     using Framework.Application;
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using Framework.Json;
     using Framework.Session;
 
@@ -24,7 +24,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return UtilDal.Query<CountryDisplayCache>();
+            return Data.Query<CountryDisplayCache>();
         }
 
         private void GridCellAnnotationBool(string fieldName, Row row, Type typeRow, string nameof, GridCellAnnotationResult result)

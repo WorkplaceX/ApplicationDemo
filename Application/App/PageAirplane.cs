@@ -3,7 +3,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Database.Demo;
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using Framework.Json;
     using Framework.Session;
 
@@ -21,7 +21,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return UtilDal.Query<RawWikipediaAircraft>();
+            return Data.Query<RawWikipediaAircraft>();
         }
 
         protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
