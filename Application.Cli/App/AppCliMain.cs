@@ -7,6 +7,7 @@
     using Framework.Cli.Config;
     using Microsoft.Extensions.CommandLineUtils;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Command line interface application.
@@ -33,9 +34,10 @@
         {
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
-                DomainName = "default",
-                FolderNameNpmBuild = "Website/",
-                FolderNameDist = "Website/dist/",
+                FolderNameServer = "Default",
+                DomainNameList = new List<string>(),
+                FolderNameNpmBuild = "WebsiteDefault/",
+                FolderNameDist = "WebsiteDefault/dist/",
             });
         }
     }

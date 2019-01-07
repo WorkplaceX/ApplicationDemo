@@ -15,7 +15,7 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder applicationBuilder)
         {
-            Framework.Server.StartupFramework.Configure(applicationBuilder, new AppSelectorDemo());
+            Framework.Server.StartupFramework.Configure(applicationBuilder);
         }
     }
 }
