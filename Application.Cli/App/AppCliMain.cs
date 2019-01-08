@@ -34,6 +34,7 @@
         {
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
+                AppTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace,
                 FolderNameServer = "Default",
                 DomainNameList = new List<string>(),
                 FolderNameNpmBuild = "WebsiteDefault/",
