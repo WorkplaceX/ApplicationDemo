@@ -1,6 +1,7 @@
 ﻿namespace Application
 {
     using Framework.Application;
+    using Framework.DataAccessLayer;
     using Framework.Json;
     using System;
     using System.Threading.Tasks;
@@ -17,6 +18,11 @@
             // await this.ComponentPageShowAsync<Config>();
             await this.ComponentPageShowAsync<PageAirplane>();
             await this.ComponentPageShowAsync<PageCountry>();
+        }
+
+        protected override Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
+        {
+            return base.GridUpdateAsync(grid, row, rowNew, databaseEnum);
         }
     }
 }
