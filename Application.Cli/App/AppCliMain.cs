@@ -2,7 +2,7 @@
 {
     extern alias Application;
 
-    using Application::Database.dbo; // Framework and Application contain same namespace.
+    using Application::Database.Demo; // Framework and Application contain same namespace.
     using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Microsoft.Extensions.CommandLineUtils;
@@ -15,7 +15,7 @@
     public class AppCliMain : AppCli
     {
         public AppCliMain() : 
-            base(typeof(AWBuildVersion).Assembly, typeof(AppMain).Assembly)
+            base(typeof(CountryDisplayCache).Assembly, typeof(AppMain).Assembly)
         {
 
         }

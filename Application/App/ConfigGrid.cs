@@ -17,6 +17,7 @@
             this.ComponentCreate<Html>().TextHtml = "<h1>Config Grid</h1>";
             await GridConfigGrid().LoadAsync();
             this.ComponentCreate<Html>().TextHtml = "<h1>Config Field</h1>";
+            GridConfigField();
         }
 
         public Grid GridConfigGrid()
@@ -26,12 +27,21 @@
 
         public Grid GridConfigField()
         {
-            return this.ComponentGetOrCreate<Grid>("ConfigGrid");
+            return this.ComponentGetOrCreate<Grid>("ConfigField");
         }
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return Data.Query<FrameworkConfigGridBuiltIn>();
+            if (grid == GridConfigGrid())
+            {
+                return Data.Query<FrameworkConfigGridBuiltIn>();
+            }
+            if (grid == GridConfigField())
+            {
+                var rowSelected = (FrameworkConfigGridBuiltIn)GridConfigGrid().GridRowSelected();
+                return Data.Query<FrameworkConfigFieldDisplay>().Where(item => item.ConfigGridId == rowSelected.Id);
+            }
+            return base.GridQuery(grid);
         }
 
         protected override async Task<bool> GridInsertAsync(Grid grid, Row rowNew, DatabaseEnum databaseEnum)
@@ -69,13 +79,13 @@
             }
         }
 
-        protected override Task GridRowSelectedAsync(Grid grid)
+        protected override async Task GridRowSelectedAsync(Grid grid)
         {
             if (grid == GridConfigGrid())
             {
                 var configGrid = (FrameworkConfigGridBuiltIn)grid.GridRowSelected();
+                await GridConfigField().LoadAsync();
             }
-            return base.GridRowSelectedAsync(grid);
         }
     }
 }
