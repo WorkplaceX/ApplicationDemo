@@ -14,6 +14,7 @@
         protected override async Task InitAsync()
         {
             this.ComponentGetOrCreate<Html>(html => html.TextHtml = "Hello Demo");
+            // await this.ComponentPageShowAsync<Config>();
             await this.ComponentPageShowAsync<PageAirplane>();
             await this.ComponentPageShowAsync<PageCountry>();
         }
