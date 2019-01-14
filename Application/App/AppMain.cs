@@ -1,9 +1,7 @@
 ﻿namespace Application
 {
-    using Framework.Application;
     using Framework.DataAccessLayer;
     using Framework.Json;
-    using System;
     using System.Threading.Tasks;
 
     public class AppMain : AppJson
@@ -15,7 +13,6 @@
         protected override async Task InitAsync()
         {
             this.ComponentGetOrCreate<Html>(html => html.TextHtml = "Hello Demo");
-            // await this.ComponentPageShowAsync<Config>();
             await this.ComponentPageShowAsync<PageAirplane>();
             await this.ComponentPageShowAsync<PageCountry>();
         }
