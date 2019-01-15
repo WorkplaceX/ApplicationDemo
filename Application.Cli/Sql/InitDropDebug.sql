@@ -1,6 +1,7 @@
 ﻿/* For debug only! Reset DEV database */
 
 /* Application */
+DROP TABLE Demo.CountryDisplayCache
 DROP VIEW [Demo].[CountryDisplay]
 DROP TABLE [Demo].[Raw.Wikipedia.Country]
 DROP TABLE [Demo].[Raw.Wikipedia.Aircraft]
