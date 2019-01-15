@@ -12,7 +12,11 @@
 
         protected override async Task InitAsync()
         {
-            this.ComponentGetOrCreate<Html>(html => html.TextHtml = "Hello Demo");
+            //var modal = await this.ComponentPageShowAsync<BootstrapModal>();
+            //modal.DivModalBody().ComponentCreate<Html>().TextHtml = "Body";
+            //modal.DivModalHeader().ComponentCreate<Html>().TextHtml = "Header";
+
+            //this.ComponentGetOrCreate<Html>(html => html.TextHtml = "Hello Demo");
             await this.ComponentPageShowAsync<PageAirplane>();
             await this.ComponentPageShowAsync<PageCountry>();
         }
