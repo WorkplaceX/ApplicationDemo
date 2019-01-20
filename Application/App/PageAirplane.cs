@@ -26,14 +26,12 @@
             return Data.Query<RawWikipediaAircraft>();
         }
 
-
         protected override void GridQueryConfig(Grid grid, ConfigResult result)
         {
             List<FrameworkConfigFieldBuiltIn> list = new List<FrameworkConfigFieldBuiltIn>();
             list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "IcaoCode", Text = "My IATA", TableNameCSharp = "Demo.RawWikipediaAircraft" });
             result.ConfigFieldQuery = list.AsQueryable();
         }
-
 
         protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
         {
