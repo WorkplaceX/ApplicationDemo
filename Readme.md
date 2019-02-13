@@ -5,7 +5,7 @@
 Develop business applications with WorkplaceX framework.
 
 ## Git Clone
-For installation see: https://workplacex.org/install
+For installation see: https://workplacex.org/install#git-clone
 
 ## .travis.yml
 File is a copy of Framework/Framework.Cli/Ci/travis-ci.org
