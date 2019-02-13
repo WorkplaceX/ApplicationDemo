@@ -1,6 +1,6 @@
 # Application Demo
 [![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo)
-(Application; travis;)
+(ApplicationDemo; travis;)
 
 Develop business applications with WorkplaceX framework.
 
