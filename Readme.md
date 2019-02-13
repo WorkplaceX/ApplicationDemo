@@ -14,7 +14,7 @@ Recursive argument enables additional cloning of submodule (Framework).
 In the root folder type cli for framework cli.
 
 ```cmd
-cd Application
+cd ApplicationDemo
 .\cli.cmd
 ```
 This will show the framework CLI:
