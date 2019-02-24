@@ -29,8 +29,8 @@
         protected override void GridQueryConfig(Grid grid, ConfigResult result)
         {
             List<FrameworkConfigFieldBuiltIn> list = new List<FrameworkConfigFieldBuiltIn>();
-            list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "IcaoCode", Text = "My IATA", TableNameCSharp = "Demo.RawWikipediaAircraft", IsVisible = true });
-            list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "Model", Text = "My Model", TableNameCSharp = "Demo.RawWikipediaAircraft", IsVisible = true });
+            list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "IcaoCode", Text = "My IATA", TableNameCSharp = "Demo.RawWikipediaAircraft", IsVisible = false });
+            list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "Model", Text = "My Model", TableNameCSharp = "Demo.RawWikipediaAircraft", Sort = 0.5 });
             result.ConfigFieldQuery = list.AsQueryable();
         }
 
