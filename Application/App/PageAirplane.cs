@@ -26,8 +26,11 @@
             return Data.Query<RawWikipediaAircraft>();
         }
 
-        protected override void GridQueryConfig(Grid grid, ConfigResult result)
+        protected override void GridQueryConfig(Grid grid, string tableNameCSharp, ConfigResult result)
         {
+            result.ConfigFieldQuery = Data.Query<FrameworkConfigFieldBuiltIn>().Where(item => item.TableNameCSharp == tableNameCSharp && item.ConfigName == grid.ConfigName);
+
+            return;
             List<FrameworkConfigFieldBuiltIn> list = new List<FrameworkConfigFieldBuiltIn>();
             list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "IcaoCode", Text = "My IATA", TableNameCSharp = "Demo.RawWikipediaAircraft", IsVisible = false });
             list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "Model", Text = "My Model", TableNameCSharp = "Demo.RawWikipediaAircraft", Sort = 0.5 });
