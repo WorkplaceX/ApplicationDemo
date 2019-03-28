@@ -1,4 +1,4 @@
-# Application Demo HP2
+# Application Demo HP24
 [![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo)
 (ApplicationDemo; travis;)
 
