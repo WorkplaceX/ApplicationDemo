@@ -12,18 +12,29 @@
 
         protected override async Task InitAsync()
         {
-            //var modal = await this.ComponentPageShowAsync<BootstrapModal>();
-            //modal.DivModalBody().ComponentCreate<Html>().TextHtml = "Body";
-            //modal.DivModalHeader().ComponentCreate<Html>().TextHtml = "Header";
+            if (this.IsSessionExpired)
+            {
+                this.BootstrapAlert(sessionExpired, "Session expired!", BootstrapAlertEnum.Warning);
+            }
 
-            //this.ComponentGetOrCreate<Html>(html => html.TextHtml = "Hello Demo");
             await this.ComponentPageShowAsync<PageAirplane>();
             await this.ComponentPageShowAsync<PageCountry>();
         }
 
+        private const string sessionExpired = "SessionExpired";
+
         protected override Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
         {
             return base.GridUpdateAsync(grid, row, rowNew, databaseEnum);
+        }
+
+        protected override Task ProcessAsync()
+        {
+            if (this.ComponentGet(sessionExpired) != null && this.IsSessionExpired == false)
+            {
+                this.ComponentGet(sessionExpired).ComponentRemove();
+            }
+            return base.ProcessAsync();
         }
     }
 }

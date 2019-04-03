@@ -1,9 +1,7 @@
 ﻿namespace Application
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Database.dbo;
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
@@ -26,17 +24,9 @@
             return Data.Query<RawWikipediaAircraft>();
         }
 
-        protected override void GridQueryConfig(Grid grid, string tableNameCSharp, ConfigResult result)
-        {
-            result.ConfigFieldQuery = Data.Query<FrameworkConfigFieldBuiltIn>().Where(item => item.TableNameCSharp == tableNameCSharp && item.ConfigName == grid.ConfigName);
-
-            return;
-            List<FrameworkConfigFieldBuiltIn> list = new List<FrameworkConfigFieldBuiltIn>();
-            list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "IcaoCode", Text = "My IATA", TableNameCSharp = "Demo.RawWikipediaAircraft", IsVisible = false });
-            list.Add(new FrameworkConfigFieldBuiltIn() { FieldNameCSharp = "Model", Text = "My Model", TableNameCSharp = "Demo.RawWikipediaAircraft", Sort = 0.5 });
-            result.ConfigFieldQuery = list.AsQueryable();
-        }
-
+        /// <summary>
+        /// Add some annotation to the grid data like hyperlink or render as image.
+        /// </summary>
         protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
         {
             var aircraft = row as RawWikipediaAircraft;
