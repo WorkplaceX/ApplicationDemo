@@ -20,7 +20,7 @@
             await this.ComponentPageShowAsync<PageAirplane>();
             await this.ComponentPageShowAsync<PageCountry>();
 
-            new Html(this).TextHtml = "(C) 2019";
+            new Html(this).TextHtml = ".NET Core 2.2";
         }
 
         private const string sessionExpired = "SessionExpired";
