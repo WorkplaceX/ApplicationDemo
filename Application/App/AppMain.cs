@@ -19,6 +19,8 @@
 
             await this.ComponentPageShowAsync<PageAirplane>();
             await this.ComponentPageShowAsync<PageCountry>();
+
+            new Html(this).TextHtml = "(C) 2019";
         }
 
         private const string sessionExpired = "SessionExpired";
