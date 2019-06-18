@@ -64,6 +64,16 @@ namespace Database.Demo
         public string ASFlagIcon { get; set; }
     }
 
+    [SqlTable("Demo", "Language")]
+    public class Language : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("LanguageName", FrameworkTypeEnum.Nvarcahr)]
+        public string LanguageName { get; set; }
+    }
+
     [SqlTable("Demo", "Raw.FlagIconCss.Country")]
     public class RawFlagIconCssCountry : Row
     {

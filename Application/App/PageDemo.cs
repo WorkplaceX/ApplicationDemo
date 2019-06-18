@@ -19,7 +19,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return base.GridQuery(grid);
+            return Data.Query<Database.Demo.Language>();
         }
     }
 }
