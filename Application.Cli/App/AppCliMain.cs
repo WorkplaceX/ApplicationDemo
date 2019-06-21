@@ -5,9 +5,11 @@
     using Application::Database.Demo; // Framework and Application contain same namespace.
     using Framework.Cli.Command;
     using Framework.Cli.Config;
+    using Framework.DataAccessLayer;
     using Microsoft.Extensions.CommandLineUtils;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Command line interface application.
@@ -15,7 +17,9 @@
     public class AppCliMain : AppCli
     {
         public AppCliMain() : 
-            base(typeof(CountryDisplayCache).Assembly, typeof(AppMain).Assembly)
+            base(
+                typeof(CountryDisplayCache).Assembly, // Register Application.Database dll
+                typeof(AppMain).Assembly) // Register Application dll
         {
 
         }
@@ -40,6 +44,22 @@
                 FolderNameNpmBuild = "WebsiteDefault/",
                 FolderNameDist = "WebsiteDefault/dist/",
             });
+        }
+
+        protected override List<GenerateBuiltInItem> GenerateBuiltInList()
+        {
+            var result = base.GenerateBuiltInList();
+            var rowList = Data.Query<Language>().ToList().Cast<Row>().ToList();
+            result.Add(new GenerateBuiltInItem(false, typeof(Language), rowList));
+            return result;
+        }
+
+        protected override List<DeployDbBuiltInItem> DeployDbBuiltInList()
+        {
+            var result = base.DeployDbBuiltInList();
+            // var rowList = Data.Query<My>().Cast<Row>().ToList();
+            // result.Add(new DeployDbBuiltInItem(rowList, new string[] { nameof(My.I2d) }, null));
+            return result;
         }
     }
 
