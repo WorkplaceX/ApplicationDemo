@@ -1,8 +1,6 @@
 ﻿namespace Application.Cli
 {
-    extern alias Application;
-
-    using Application::Database.Demo; // Framework and Application contain same namespace.
+    using DatabaseApplication.Demo; // Framework and Application contain same namespace.
     using DatabaseBuiltIn.Demo;
     using Framework.Cli.Command;
     using Framework.Cli.Config;

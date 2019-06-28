@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application.Database\Application.Database.csproj">
-      <Aliases>Application</Aliases>
-    </ProjectReference>
+    <ProjectReference Include="..\Application.Database\Application.Database.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Framework\Framework.Cli\Framework.Cli.csproj" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
+    using DatabaseApplication.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
 
@@ -19,7 +20,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return Data.Query<Database.Demo.Language>();
+            return Data.Query<Language>();
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace DatabaseBuiltIn.dbo
 {
     using System.Collections.Generic;
-    using Database.dbo;
+    using DatabaseFramework.dbo;
 
     public static class FrameworkConfigGridBuiltInCli
     {
@@ -41,10 +41,8 @@ namespace DatabaseBuiltIn.dbo
 
 namespace DatabaseBuiltIn.Demo
 {
-    extern alias Application;
-
+    using DatabaseApplication.Demo;
     using System.Collections.Generic;
-    using Application::Database.Demo;
 
     public static class LanguageCli
     {
