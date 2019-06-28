@@ -3,13 +3,13 @@
     extern alias Application;
 
     using Application::Database.Demo; // Framework and Application contain same namespace.
+    using DatabaseBuiltIn.Demo;
     using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Framework.DataAccessLayer;
     using Microsoft.Extensions.CommandLineUtils;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Command line interface application.
@@ -46,20 +46,15 @@
             });
         }
 
-        protected override List<GenerateBuiltInItem> GenerateBuiltInList()
+        protected override void CommandGenerateBuiltIn(List<GenerateBuiltInItem> list)
         {
-            var result = base.GenerateBuiltInList();
-            var rowList = Data.Query<Language>().ToList().Cast<Row>().ToList();
-            result.Add(new GenerateBuiltInItem(false, typeof(Language), rowList));
-            return result;
+            var rowList = Data.Select<Row>(Data.Query<Language>());
+            list.Add(new GenerateBuiltInItem(false, typeof(Language), rowList));
         }
 
-        protected override List<DeployDbBuiltInItem> DeployDbBuiltInList()
+        protected override void CommandDeployDbBuiltIn(List<DeployDbBuiltInItem> list)
         {
-            var result = base.DeployDbBuiltInList();
-            // var rowList = Data.Query<My>().Cast<Row>().ToList();
-            // result.Add(new DeployDbBuiltInItem(rowList, new string[] { nameof(My.I2d) }, null));
-            return result;
+            list.Add(DeployDbBuiltInItem.Create(LanguageCli.List, nameof(Language.LanguageName), null));
         }
     }
 

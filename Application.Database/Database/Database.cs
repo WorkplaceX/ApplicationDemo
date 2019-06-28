@@ -74,6 +74,16 @@ namespace Database.Demo
         public string LanguageName { get; set; }
     }
 
+    [SqlTable("Demo", "LanguageBuiltIn")]
+    public class LanguageBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("LanguageName", FrameworkTypeEnum.Nvarcahr)]
+        public string LanguageName { get; set; }
+    }
+
     [SqlTable("Demo", "Raw.FlagIconCss.Country")]
     public class RawFlagIconCssCountry : Row
     {
