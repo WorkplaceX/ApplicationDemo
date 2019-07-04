@@ -1,7 +1,7 @@
 ﻿namespace Application.Cli
 {
     using DatabaseApplication.Demo; // Framework and Application contain same namespace.
-    using DatabaseBuiltIn.Demo;
+    using DatabaseFrameworkBuiltIn.Demo;
     using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Framework.DataAccessLayer;
