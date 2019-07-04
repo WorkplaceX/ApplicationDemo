@@ -39,7 +39,7 @@ namespace DatabaseApplicationBuiltIn.dbo
     }
 }
 
-namespace DatabaseFrameworkBuiltIn.Demo
+namespace DatabaseApplicationBuiltIn.Demo
 {
     using System.Collections.Generic;
     using DatabaseApplication.Demo;
