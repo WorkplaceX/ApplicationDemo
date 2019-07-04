@@ -47,12 +47,12 @@
         protected override void CommandGenerateBuiltIn(List<GenerateBuiltInItem> list)
         {
             var rowList = Data.Select<Row>(Data.Query<Language>());
-            list.Add(new GenerateBuiltInItem(false, typeof(Language), rowList));
+            list.Add(new GenerateBuiltInItem(true, typeof(Language), rowList));
         }
 
         protected override void CommandDeployDbBuiltIn(List<DeployDbBuiltInItem> list)
         {
-            list.Add(DeployDbBuiltInItem.Create(LanguageCli.List, nameof(Language.LanguageName), null));
+            list.Add(DeployDbBuiltInItem.Create(LanguageTableApp.RowList, nameof(Language.LanguageName), null));
         }
     }
 

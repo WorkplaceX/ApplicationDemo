@@ -5,9 +5,9 @@ namespace DatabaseApplicationBuiltIn.dbo
     using System.Collections.Generic;
     using DatabaseFramework.dbo;
 
-    public static class FrameworkConfigGridBuiltInCli
+    public static class FrameworkConfigGridBuiltInTableCli
     {
-        public static List<FrameworkConfigGridBuiltIn> List
+        public static List<FrameworkConfigGridBuiltIn> RowList
         {
             get
             {
@@ -19,9 +19,9 @@ namespace DatabaseApplicationBuiltIn.dbo
         }
     }
 
-    public static class FrameworkConfigFieldBuiltInCli
+    public static class FrameworkConfigFieldBuiltInTableCli
     {
-        public static List<FrameworkConfigFieldBuiltIn> List
+        public static List<FrameworkConfigFieldBuiltIn> RowList
         {
             get
             {
@@ -33,28 +33,6 @@ namespace DatabaseApplicationBuiltIn.dbo
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 21, ConfigGridId = 3, ConfigGridIdName = "Demo.RawWikipediaAircraft; ", FieldId = 136, FieldIdName = "Demo.RawWikipediaAircraft; ModelImageUrl", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = null, FieldNameCSharp = "ModelImageUrl", Text = "Image Link", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 22, ConfigGridId = 3, ConfigGridIdName = "Demo.RawWikipediaAircraft; ", FieldId = 135, FieldIdName = "Demo.RawWikipediaAircraft; ModelTitle", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = null, FieldNameCSharp = "ModelTitle", Text = "Title", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 23, ConfigGridId = 3, ConfigGridIdName = "Demo.RawWikipediaAircraft; ", FieldId = 134, FieldIdName = "Demo.RawWikipediaAircraft; ModelUrl", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = null, FieldNameCSharp = "ModelUrl", Text = "Url", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
-                return result;
-            }
-        }
-    }
-}
-
-namespace DatabaseApplicationBuiltIn.Demo
-{
-    using System.Collections.Generic;
-    using DatabaseApplication.Demo;
-
-    public static class LanguageCli
-    {
-        public static List<Language> List
-        {
-            get
-            {
-                var result = new List<Language>();
-                result.Add(new Language() { Id = 9, LanguageName = "English" });
-                result.Add(new Language() { Id = 10, LanguageName = "French" });
-                result.Add(new Language() { Id = 11, LanguageName = "German" });
-                result.Add(new Language() { Id = 12, LanguageName = "Italien" });
                 return result;
             }
         }
