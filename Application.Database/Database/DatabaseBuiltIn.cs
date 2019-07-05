@@ -5,7 +5,7 @@ namespace DatabaseBuiltIn.Demo
     using System.Collections.Generic;
     using Database.Demo;
 
-    public static class LanguageApplication
+    public static class LanguageTableApplication
     {
         public static List<Language> RowList
         {

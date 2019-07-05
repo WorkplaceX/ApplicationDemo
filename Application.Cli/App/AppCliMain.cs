@@ -52,7 +52,7 @@
 
         protected override void CommandDeployDbBuiltIn(List<DeployDbBuiltInItem> list)
         {
-            list.Add(DeployDbBuiltInItem.Create(LanguageApplication.RowList, nameof(Language.LanguageName), null));
+            list.Add(DeployDbBuiltInItem.Create(LanguageTableApplication.RowList, nameof(Language.LanguageName), null));
         }
     }
 
