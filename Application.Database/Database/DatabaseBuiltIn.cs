@@ -3,7 +3,7 @@
 namespace DatabaseApplicationBuiltIn.Demo
 {
     using System.Collections.Generic;
-    using DatabaseApplication.Demo;
+    using Database.Demo;
 
     public static class LanguageTableApp
     {
