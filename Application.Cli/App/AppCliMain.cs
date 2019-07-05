@@ -1,7 +1,7 @@
 ﻿namespace Application.Cli
 {
     using Database.Demo; // Framework and Application contain same namespace.
-    using DatabaseApplicationBuiltIn.Demo;
+    using DatabaseBuiltIn.Demo;
     using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Framework.DataAccessLayer;
@@ -52,7 +52,7 @@
 
         protected override void CommandDeployDbBuiltIn(List<DeployDbBuiltInItem> list)
         {
-            list.Add(DeployDbBuiltInItem.Create(LanguageTableApp.RowList, nameof(Language.LanguageName), null));
+            list.Add(DeployDbBuiltInItem.Create(LanguageApplication.RowList, nameof(Language.LanguageName), null));
         }
     }
 
