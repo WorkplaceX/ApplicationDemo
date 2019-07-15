@@ -5,17 +5,17 @@ namespace DatabaseBuiltIn.Demo
     using System.Collections.Generic;
     using Database.Demo;
 
-    public static class LanguageTableApplication
+    public static class LanguageBuiltInTableApplication
     {
-        public static List<Language> RowList
+        public static List<LanguageBuiltIn> RowList
         {
             get
             {
-                var result = new List<Language>();
-                result.Add(new Language() { Id = 9, LanguageName = "English" });
-                result.Add(new Language() { Id = 10, LanguageName = "French" });
-                result.Add(new Language() { Id = 11, LanguageName = "German" });
-                result.Add(new Language() { Id = 12, LanguageName = "Italien" });
+                var result = new List<LanguageBuiltIn>();
+                result.Add(new LanguageBuiltIn() { Id = 1, LanguageName = "English" });
+                result.Add(new LanguageBuiltIn() { Id = 2, LanguageName = "French" });
+                result.Add(new LanguageBuiltIn() { Id = 3, LanguageName = "German" });
+                result.Add(new LanguageBuiltIn() { Id = 4, LanguageName = "Italien" });
                 return result;
             }
         }

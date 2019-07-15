@@ -8,6 +8,7 @@ GO
 CREATE VIEW Demo.LanguageBuiltIn AS
 SELECT
 	Id,
+	LanguageName AS IdName,
 	LanguageName
 FROM
 	Demo.Language

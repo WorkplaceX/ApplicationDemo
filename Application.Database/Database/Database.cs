@@ -80,6 +80,9 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
         [SqlField("LanguageName", FrameworkTypeEnum.Nvarcahr)]
         public string LanguageName { get; set; }
     }
