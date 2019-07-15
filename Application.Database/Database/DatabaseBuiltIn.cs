@@ -12,10 +12,10 @@ namespace DatabaseBuiltIn.Demo
             get
             {
                 var result = new List<LanguageBuiltIn>();
-                result.Add(new LanguageBuiltIn() { Id = 1, LanguageName = "English" });
-                result.Add(new LanguageBuiltIn() { Id = 2, LanguageName = "French" });
-                result.Add(new LanguageBuiltIn() { Id = 3, LanguageName = "German" });
-                result.Add(new LanguageBuiltIn() { Id = 4, LanguageName = "Italien" });
+                result.Add(new LanguageBuiltIn() { Id = 1, IdName = "English", LanguageName = "English" });
+                result.Add(new LanguageBuiltIn() { Id = 2, IdName = "French", LanguageName = "French" });
+                result.Add(new LanguageBuiltIn() { Id = 3, IdName = "German", LanguageName = "German" });
+                result.Add(new LanguageBuiltIn() { Id = 4, IdName = "Italien", LanguageName = "Italien" });
                 return result;
             }
         }
