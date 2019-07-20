@@ -38,3 +38,26 @@ namespace DatabaseBuiltIn.dbo
         }
     }
 }
+
+namespace DatabaseBuiltIn.Demo
+{
+    using System.Collections.Generic;
+    using Database.Demo;
+
+    public static class NavigationTableApplicationCli
+    {
+        public static List<Navigation> RowList
+        {
+            get
+            {
+                var result = new List<Navigation>();
+                result.Add(new Navigation() { Id = 3, PageName = "About" });
+                result.Add(new Navigation() { Id = 4, PageName = "Airplane" });
+                result.Add(new Navigation() { Id = 2, PageName = "Contact" });
+                result.Add(new Navigation() { Id = 5, PageName = "Country" });
+                result.Add(new Navigation() { Id = 1, PageName = "Home" });
+                return result;
+            }
+        }
+    }
+}
