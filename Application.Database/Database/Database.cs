@@ -93,8 +93,20 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
+        [SqlField("Text1", FrameworkTypeEnum.Nvarcahr)]
+        public string Text1 { get; set; }
+
+        [SqlField("Text2", FrameworkTypeEnum.Nvarcahr)]
+        public string Text2 { get; set; }
+
+        [SqlField("Text3", FrameworkTypeEnum.Nvarcahr)]
+        public string Text3 { get; set; }
+
         [SqlField("PageName", FrameworkTypeEnum.Nvarcahr)]
         public string PageName { get; set; }
+
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
     }
 
     [SqlTable("Demo", "Raw.FlagIconCss.Country")]

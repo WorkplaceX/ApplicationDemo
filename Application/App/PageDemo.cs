@@ -15,8 +15,15 @@
         protected override async Task InitAsync()
         {
             this.ComponentCreate<Html>().TextHtml = "<h1>Demo</h1>";
+            NavBar();
             await GridNavigation().LoadAsync();
             await GridLanguage().LoadAsync();
+            NavBar().GridIndex = GridNavigation().Index;
+        }
+
+        public BootstrapNavbar NavBar()
+        {
+            return this.ComponentGetOrCreate<BootstrapNavbar>();
         }
 
         public Grid GridNavigation()
