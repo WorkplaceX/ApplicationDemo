@@ -17,12 +17,19 @@
                 this.BootstrapAlert(sessionExpired, "Session expired!", BootstrapAlertEnum.Warning);
             }
 
-            await this.ComponentPageShowAsync<PageAirplane>();
-            await this.ComponentPageShowAsync<PageCountry>();
+            bool isDemoPage = false;
 
-            await this.ComponentPageShowAsync<PageDemo>();
+            if (isDemoPage == false)
+            {
+                await this.ComponentPageShowAsync<PageAirplane>();
+                await this.ComponentPageShowAsync<PageCountry>();
+            }
+            else
+            {
+                await this.ComponentPageShowAsync<PageDemo>();
+            }
 
-            new Html(this).TextHtml = "Build 2019-07-22";
+            new Html(this).TextHtml = "Build 2019-08-01";
         }
 
         private const string sessionExpired = "SessionExpired";
