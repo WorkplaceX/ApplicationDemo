@@ -1,9 +1,8 @@
 ﻿CREATE TABLE Demo.Navigation
 (
 	Id INT PRIMARY KEY IDENTITY,
-	Text1 NVARCHAR(256),
-	Text2 NVARCHAR(256),
-	Text3 NVARCHAR(256),
-	PageName NVARCHAR(256),
+	ParentId INT,
 	Text NVARCHAR(256),
+	PageName NVARCHAR(256),
+	Sort FLOAT,
 )

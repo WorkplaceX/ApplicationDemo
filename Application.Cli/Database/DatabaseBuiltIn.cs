@@ -61,9 +61,6 @@ namespace DatabaseBuiltIn.Demo
             get
             {
                 var result = new List<Navigation>();
-                result.Add(new Navigation() { Id = 1, PageName = null });
-                result.Add(new Navigation() { Id = 2, PageName = null });
-                result.Add(new Navigation() { Id = 3, PageName = null });
                 return result;
             }
         }

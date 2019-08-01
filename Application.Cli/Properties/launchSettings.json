@@ -2,7 +2,7 @@
   "profiles": {
     "Application.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "deployDb"
+      "commandLineArgs": "generate"
     }
   }
 }
