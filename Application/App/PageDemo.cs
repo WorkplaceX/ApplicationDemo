@@ -36,6 +36,11 @@
             return this.ComponentGetOrCreate<BootstrapRow>()[1].ComponentGetOrCreate<Grid>();
         }
 
+        public Div Content()
+        {
+            return this.ComponentGetOrCreate<BootstrapRow>()[0].ComponentGetOrCreate<Div>();
+        }
+
         protected override IQueryable GridQuery(Grid grid)
         {
             if (grid == GridNavigation())
@@ -47,6 +52,18 @@
                 return Data.Query<Language>();
             }
             return base.GridQuery(grid);
+        }
+
+        protected override async Task GridRowSelectedAsync(Grid grid)
+        {
+            if (grid == GridNavigation())
+            {
+                Content().List.Clear();
+                if (grid.GridRowSelected<Navigation>().PageName == "Country")
+                {
+                    await Content().ComponentPageShowAsync<PageCountry>();
+                }
+            }
         }
     }
 }
