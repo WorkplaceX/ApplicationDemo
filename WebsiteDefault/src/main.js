@@ -1,2 +1,3 @@
 import './favicon.ico'
-import './style.css'
+import './bootstrap.scss'
+try { require('./style.css') }catch (exception) { } // Import if file exists.
