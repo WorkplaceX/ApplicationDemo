@@ -19,7 +19,7 @@
             await GridNavigation().LoadAsync();
             await GridLanguage().LoadAsync();
             NavBar().GridIndexList.Add(GridNavigation().Index.Value);
-            // NavBar().GridIndexList.Add(GridLanguage().Index.Value);
+            NavBar().GridIndexList.Add(GridLanguage().Index.Value);
         }
 
         public BootstrapNavbar NavBar()

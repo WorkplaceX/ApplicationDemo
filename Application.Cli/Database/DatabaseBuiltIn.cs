@@ -28,10 +28,9 @@ namespace DatabaseBuiltIn.dbo
             get
             {
                 var result = new List<FrameworkConfigFieldBuiltIn>();
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 18, ConfigGridId = 3, ConfigGridIdName = "Demo.Language; ", FieldId = 105, FieldIdName = "Demo.Language; LanguageName", TableNameCSharp = "Demo.Language", ConfigName = null, FieldNameCSharp = "LanguageName", Text = "Sprache", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 26, ConfigGridId = 5, ConfigGridIdName = "Demo.Navigation; ", FieldId = 109, FieldIdName = "Demo.Navigation; Id", TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "Id", Text = "MyID", Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = false });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 26, ConfigGridId = 5, ConfigGridIdName = "Demo.Navigation; ", FieldId = 109, FieldIdName = "Demo.Navigation; Id", TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "Id", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 25, ConfigGridId = 5, ConfigGridIdName = "Demo.Navigation; ", FieldId = 110, FieldIdName = "Demo.Navigation; PageName", TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "PageName", Text = "PAGE", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 33, ConfigGridId = 5, ConfigGridIdName = "Demo.Navigation; ", FieldId = 154, FieldIdName = "Demo.Navigation; ParentId", TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "ParentId", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = false });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 33, ConfigGridId = 5, ConfigGridIdName = "Demo.Navigation; ", FieldId = 154, FieldIdName = "Demo.Navigation; ParentId", TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "ParentId", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 27, ConfigGridId = 6, ConfigGridIdName = "Demo.RawWikipediaAircraft; ", FieldId = 139, FieldIdName = "Demo.RawWikipediaAircraft; IataCode", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = null, FieldNameCSharp = "IataCode", Text = "IATA Code", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 19, ConfigGridId = 4, ConfigGridIdName = "Demo.RawWikipediaAircraft; G", FieldId = 139, FieldIdName = "Demo.RawWikipediaAircraft; IataCode", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = "G", FieldNameCSharp = "IataCode", Text = "IATA Code", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 20, ConfigGridId = 4, ConfigGridIdName = "Demo.RawWikipediaAircraft; G", FieldId = 138, FieldIdName = "Demo.RawWikipediaAircraft; IcaoCode", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = "G", FieldNameCSharp = "IcaoCode", Text = "ICAO Code", Description = null, IsVisible = null, IsReadOnly = true, Sort = null, IsExist = true });
@@ -62,6 +61,11 @@ namespace DatabaseBuiltIn.Demo
             get
             {
                 var result = new List<Navigation>();
+                result.Add(new Navigation() { Id = 1, ParentId = null, Text = "<i class=\"fas fa-home\"></i> Home", PageName = null, Sort = null });
+                result.Add(new Navigation() { Id = 2, ParentId = null, Text = "<i class=\"fas fa-bullhorn\"></i> About", PageName = null, Sort = null });
+                result.Add(new Navigation() { Id = 3, ParentId = null, Text = "<i class=\"fas fa-address-card\"></i> Contact", PageName = null, Sort = null });
+                result.Add(new Navigation() { Id = 4, ParentId = 1, Text = "<i class=\"fas fa-globe\"></i> Country", PageName = "Country", Sort = null });
+                result.Add(new Navigation() { Id = 5, ParentId = 1, Text = "<i class=\"fas fa-dollar-sign\"></i> Money", PageName = null, Sort = null });
                 return result;
             }
         }

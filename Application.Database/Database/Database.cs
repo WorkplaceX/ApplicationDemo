@@ -70,8 +70,8 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("LanguageName", FrameworkTypeEnum.Nvarcahr)]
-        public string LanguageName { get; set; }
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
     }
 
     [SqlTable("Demo", "LanguageBuiltIn")]
@@ -83,8 +83,8 @@ namespace Database.Demo
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
 
-        [SqlField("LanguageName", FrameworkTypeEnum.Nvarcahr)]
-        public string LanguageName { get; set; }
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
     }
 
     [SqlTable("Demo", "Navigation")]
