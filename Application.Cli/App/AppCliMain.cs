@@ -57,8 +57,8 @@
 
         protected override void CommandDeployDbBuiltIn(List<DeployDbBuiltInItem> list)
         {
-            list.Add(DeployDbBuiltInItem.Create(LanguageBuiltInTableApplication.RowList, nameof(LanguageBuiltIn.Text), null));
-            list.Add(DeployDbBuiltInItem.Create(NavigationTableApplicationCli.RowList, nameof(Navigation.Text), null));
+            list.Add(DeployDbBuiltInItem.Create(LanguageBuiltInTableApplication.RowList, nameof(LanguageBuiltIn.Name), null));
+            list.Add(DeployDbBuiltInItem.Create(NavigationTableApplicationCli.RowList, nameof(Navigation.Name), null));
         }
     }
 

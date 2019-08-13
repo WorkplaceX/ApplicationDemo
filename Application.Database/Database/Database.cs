@@ -70,8 +70,11 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
-        public string Text { get; set; }
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("TextHtml", FrameworkTypeEnum.Nvarcahr)]
+        public string TextHtml { get; set; }
     }
 
     [SqlTable("Demo", "LanguageBuiltIn")]
@@ -83,8 +86,11 @@ namespace Database.Demo
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
 
-        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
-        public string Text { get; set; }
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("TextHtml", FrameworkTypeEnum.Nvarcahr)]
+        public string TextHtml { get; set; }
     }
 
     [SqlTable("Demo", "Navigation")]
@@ -96,8 +102,11 @@ namespace Database.Demo
         [SqlField("ParentId", FrameworkTypeEnum.Int)]
         public int? ParentId { get; set; }
 
-        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
-        public string Text { get; set; }
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("TextHtml", FrameworkTypeEnum.Nvarcahr)]
+        public string TextHtml { get; set; }
 
         [SqlField("PageName", FrameworkTypeEnum.Nvarcahr)]
         public string PageName { get; set; }

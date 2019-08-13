@@ -1,14 +1,16 @@
 ﻿CREATE TABLE Demo.Language
 (
 	Id INT PRIMARY KEY IDENTITY,
-	Text NVARCHAR(256) NOT NULL UNIQUE,
+	Name NVARCHAR(256) NOT NULL UNIQUE,
+	TextHtml NVARCHAR(256),
 )
 
 GO
 CREATE VIEW Demo.LanguageBuiltIn AS
 SELECT
 	Id,
-	Text AS IdName,
-	Text
+	Name AS IdName,
+	Name,
+	TextHtml
 FROM
 	Demo.Language
