@@ -20,6 +20,7 @@
             await GridLanguage().LoadAsync();
             NavBar().GridIndexList.Add(GridNavigation().Index.Value);
             NavBar().GridIndexList.Add(GridLanguage().Index.Value);
+            NavBar().BrandTextHtml = "Demo<b>App</b>";
         }
 
         public BootstrapNavbar NavBar()
