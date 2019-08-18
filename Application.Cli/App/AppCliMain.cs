@@ -8,6 +8,7 @@
     using Microsoft.Extensions.CommandLineUtils;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Command line interface application.
@@ -44,21 +45,54 @@
             });
         }
 
+        /// <summary>
+        /// Cli Generate.
+        /// </summary>
         protected override void CommandGenerateBuiltIn(List<GenerateBuiltInItem> list)
         {
             // LanguageBuiltIn
-            var rowList = Data.Select(Data.Query<LanguageBuiltIn>());
-            list.Add(GenerateBuiltInItem.Create(rowList, true));
+            var languageList = Data.Select(Data.Query<LanguageBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(languageList, true));
 
-            // Navigation
-            var navigationList = Data.Select(Data.Query<Navigation>());
+            // NavigationBuiltIn
+            var navigationList = Data.Select(Data.Query<NavigationBuiltIn>());
             list.Add(GenerateBuiltInItem.Create(navigationList));
         }
 
+        /// <summary>
+        /// Returns true if a next level exists.
+        /// </summary>
+        /// <param name="rowAllList">All rows.</param>
+        /// <param name="rowLevelList">Rows of current level.</param>
+        /// <returns>Returns rows of next level.</returns>
+        private static bool NavigationBuiltInLevel(List<NavigationBuiltIn> rowAllList, ref List<NavigationBuiltIn> rowLevelList)
+        {
+            if (rowLevelList == null)
+            {
+                rowLevelList = rowAllList.Where(row => row.NavigationId == null).ToList();
+            }
+            else
+            {
+                var idList = rowLevelList.Select(row => (int?)row.Id).ToList();
+                rowLevelList = rowAllList.Where(row => idList.Contains(row.NavigationId)).ToList();
+            }
+            return rowLevelList.Count() != 0;
+        }
+
+        /// <summary>
+        /// Cli Deploy.
+        /// </summary>
         protected override void CommandDeployDbBuiltIn(List<DeployDbBuiltInItem> list)
         {
             list.Add(DeployDbBuiltInItem.Create(LanguageBuiltInTableApplication.RowList, nameof(LanguageBuiltIn.Name), null));
-            list.Add(DeployDbBuiltInItem.Create(NavigationTableApplicationCli.RowList, nameof(Navigation.Name), null));
+
+            var rowList = NavigationBuiltInTableApplicationCli.RowList;
+
+            List<NavigationBuiltIn> rowLevelList = null;
+            while (NavigationBuiltInLevel(rowList, ref rowLevelList)) // Step through all levels.
+            {
+                list.Add(DeployDbBuiltInItem.Create(rowLevelList, nameof(NavigationBuiltIn.Name), null));
+            }
         }
     }
 

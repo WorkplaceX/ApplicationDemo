@@ -99,8 +99,8 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("ParentId", FrameworkTypeEnum.Int)]
-        public int? ParentId { get; set; }
+        [SqlField("NavigationId", FrameworkTypeEnum.Int)]
+        public int? NavigationId { get; set; }
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -113,6 +113,53 @@ namespace Database.Demo
 
         [SqlField("Sort", FrameworkTypeEnum.Float)]
         public double? Sort { get; set; }
+    }
+
+    [SqlTable("Demo", "NavigationBuiltIn")]
+    public class NavigationBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("NavigationId", FrameworkTypeEnum.Int)]
+        public int? NavigationId { get; set; }
+
+        [SqlField("NavigationIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string NavigationIdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("TextHtml", FrameworkTypeEnum.Nvarcahr)]
+        public string TextHtml { get; set; }
+
+        [SqlField("PageName", FrameworkTypeEnum.Nvarcahr)]
+        public string PageName { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
+    }
+
+    [SqlTable("Demo", "NavigationDisplay")]
+    public class NavigationDisplay : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int? Id { get; set; }
+
+        [SqlField("NavigationId", FrameworkTypeEnum.Int)]
+        public int? NavigationId { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("Level", FrameworkTypeEnum.Int)]
+        public int? Level { get; set; }
+
+        [SqlField("Path", FrameworkTypeEnum.Nvarcahr)]
+        public string Path { get; set; }
     }
 
     [SqlTable("Demo", "Raw.FlagIconCss.Country")]

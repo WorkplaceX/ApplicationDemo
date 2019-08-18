@@ -16,6 +16,7 @@ namespace DatabaseBuiltIn.Demo
                 result.Add(new LanguageBuiltIn() { Id = 2, IdName = "French", Name = "French", TextHtml = "<span class=\"flag-icon flag-icon-fr\"></span> French" });
                 result.Add(new LanguageBuiltIn() { Id = 3, IdName = "English", Name = "English", TextHtml = "<span class=\"flag-icon flag-icon-gb\"></span> English" });
                 result.Add(new LanguageBuiltIn() { Id = 4, IdName = "Italian", Name = "Italian", TextHtml = "<span class=\"flag-icon flag-icon-it\"></span> Italian" });
+                result.Add(new LanguageBuiltIn() { Id = 5, IdName = "Language", Name = "Language", TextHtml = "Language" });
                 return result;
             }
         }
