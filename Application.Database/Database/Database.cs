@@ -99,8 +99,8 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("NavigationId", FrameworkTypeEnum.Int)]
-        public int? NavigationId { get; set; }
+        [SqlField("ParentId", FrameworkTypeEnum.Int)]
+        public int? ParentId { get; set; }
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -124,11 +124,11 @@ namespace Database.Demo
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
 
-        [SqlField("NavigationId", FrameworkTypeEnum.Int)]
-        public int? NavigationId { get; set; }
+        [SqlField("ParentId", FrameworkTypeEnum.Int)]
+        public int? ParentId { get; set; }
 
-        [SqlField("NavigationIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string NavigationIdName { get; set; }
+        [SqlField("ParentIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ParentIdName { get; set; }
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }

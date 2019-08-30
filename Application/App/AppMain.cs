@@ -17,7 +17,7 @@
                 this.BootstrapAlert(sessionExpired, "Session expired!", BootstrapAlertEnum.Warning);
             }
 
-            bool isDemoPage = false;
+            bool isDemoPage = true;
 
             if (isDemoPage == false)
             {

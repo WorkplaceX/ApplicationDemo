@@ -60,11 +60,11 @@ namespace DatabaseBuiltIn.Demo
             get
             {
                 var result = new List<NavigationBuiltIn>();
-                result.Add(new NavigationBuiltIn() { Id = 1, IdName = "Home", NavigationId = null, NavigationIdName = null, Name = "Home", TextHtml = "<i class=\"fas fa-home\"></i> Home", PageName = null, Sort = null });
-                result.Add(new NavigationBuiltIn() { Id = 2, IdName = "Contact", NavigationId = null, NavigationIdName = null, Name = "Contact", TextHtml = "<i class=\"fas fa-address-card\"></i> Contact", PageName = null, Sort = null });
-                result.Add(new NavigationBuiltIn() { Id = 3, IdName = "About", NavigationId = null, NavigationIdName = null, Name = "About", TextHtml = "<i class=\"fas fa-bullhorn\"></i> About", PageName = null, Sort = null });
-                result.Add(new NavigationBuiltIn() { Id = 4, IdName = "Country", NavigationId = 1, NavigationIdName = "Home", Name = "Country", TextHtml = "<i class=\"fas fa-globe\"></i> Country", PageName = "Country", Sort = null });
-                result.Add(new NavigationBuiltIn() { Id = 5, IdName = "Money", NavigationId = 1, NavigationIdName = "Home", Name = "Money", TextHtml = "<i class=\"fas fa-dollar-sign\"></i> Money", PageName = null, Sort = null });
+                result.Add(new NavigationBuiltIn() { Id = 1, IdName = "Home", ParentId = null, ParentIdName = null, Name = "Home", TextHtml = "<i class=\"fas fa-home\"></i> Home", PageName = null, Sort = null });
+                result.Add(new NavigationBuiltIn() { Id = 2, IdName = "Contact", ParentId = null, ParentIdName = null, Name = "Contact", TextHtml = "<i class=\"fas fa-address-card\"></i> Contact", PageName = null, Sort = null });
+                result.Add(new NavigationBuiltIn() { Id = 3, IdName = "About", ParentId = null, ParentIdName = null, Name = "About", TextHtml = "<i class=\"fas fa-bullhorn\"></i> About", PageName = null, Sort = null });
+                result.Add(new NavigationBuiltIn() { Id = 4, IdName = "Country", ParentId = 1, ParentIdName = "Home", Name = "Country", TextHtml = "<i class=\"fas fa-globe\"></i> Country", PageName = "Country", Sort = null });
+                result.Add(new NavigationBuiltIn() { Id = 5, IdName = "Money", ParentId = 1, ParentIdName = "Home", Name = "Money", TextHtml = "<i class=\"fas fa-dollar-sign\"></i> Money", PageName = null, Sort = null });
                 return result;
             }
         }

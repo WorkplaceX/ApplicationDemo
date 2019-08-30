@@ -69,12 +69,12 @@
         {
             if (rowLevelList == null)
             {
-                rowLevelList = rowAllList.Where(row => row.NavigationId == null).ToList();
+                rowLevelList = rowAllList.Where(row => row.ParentId == null).ToList();
             }
             else
             {
                 var idList = rowLevelList.Select(row => (int?)row.Id).ToList();
-                rowLevelList = rowAllList.Where(row => idList.Contains(row.NavigationId)).ToList();
+                rowLevelList = rowAllList.Where(row => idList.Contains(row.ParentId)).ToList();
             }
             return rowLevelList.Count() != 0;
         }
