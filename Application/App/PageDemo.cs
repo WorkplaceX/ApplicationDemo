@@ -30,17 +30,17 @@
 
         public Grid GridNavigation()
         {
-            return this.ComponentGetOrCreate<BootstrapRow>()[0].ComponentGetOrCreate<Grid>();
+            return this.ComponentGetOrCreate<DivContainer>(div => div.CssClass="row").ComponentGetOrCreate<Div>(0, div => div.CssClass = "col").ComponentGetOrCreate<Grid>();
         }
 
         public Grid GridLanguage()
         {
-            return this.ComponentGetOrCreate<BootstrapRow>()[1].ComponentGetOrCreate<Grid>();
+            return this.ComponentGetOrCreate<DivContainer>(div => div.CssClass = "row").ComponentGetOrCreate<Div>(1, div => div.CssClass = "col").ComponentGetOrCreate<Grid>();
         }
 
         public Div Content()
         {
-            return this.ComponentGetOrCreate<BootstrapRow>()[0].ComponentGetOrCreate<Div>();
+            return this.ComponentGetOrCreate<DivContainer>(div => div.CssClass = "row").ComponentGetOrCreate<Div>(2, div => div.CssClass = "col").ComponentGetOrCreate<Div>();
         }
 
         protected override IQueryable GridQuery(Grid grid)
