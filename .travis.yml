@@ -4,7 +4,7 @@ dist: xenial // Ubuntu Xenial 16.04 // https://docs.travis-ci.com/user/reference
 sudo: required # Needed to install .NET Core 2.2
 
 node_js:
-  - 10 # Used for Angular 8
+  - 10
 
 install: ./Framework/Framework.Cli/Ci/travis-ci.org/Install.sh
 
