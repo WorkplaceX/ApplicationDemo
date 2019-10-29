@@ -5,7 +5,7 @@ sudo: required # Needed to install .NET Core 2.2
 
 language: node_js
 node_js:
-  - "10"
+  - "12"
 
 install: ./Framework/Framework.Cli/Ci/travis-ci.org/Install.sh
 
