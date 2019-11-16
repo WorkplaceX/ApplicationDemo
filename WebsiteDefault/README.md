@@ -17,4 +17,4 @@ Start dev server (with hot reload)
 npm run start
 ```
 
-Note: This is the raw site without frameworkStyle.css and angular linked.
+Note: This is just the raw site without frameworkStyle.css and angular link available.
