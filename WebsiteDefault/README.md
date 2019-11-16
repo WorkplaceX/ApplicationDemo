@@ -9,10 +9,12 @@ npm install
 
 Build to "dist/" folder:
 ```cmd
-npm run webpack
+npm run build
 ```
 
-Start dev server:
+Start dev server (with hot reload)
 ```cmd
 npm run start
 ```
+
+Note: This is the raw site without frameworkStyle.css and angular linked.
