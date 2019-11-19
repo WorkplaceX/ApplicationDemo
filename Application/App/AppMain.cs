@@ -29,7 +29,7 @@
                 await this.ComponentPageShowAsync<PageDemo>();
             }
 
-            new Html(this).TextHtml = "Build 2019-11-19 20:31";
+            new Html(this).TextHtml = "Build 2019-11-19 21:17";
         }
 
         private const string sessionExpired = "SessionExpired";
