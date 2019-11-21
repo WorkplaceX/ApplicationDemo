@@ -1,6 +1,8 @@
 {
   "repository": {},
   "license": "MIT",
+  "name": "websitedefault",
+  "version": "1.0.0",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --mode production"
