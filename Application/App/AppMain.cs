@@ -29,7 +29,9 @@
                 await this.ComponentPageShowAsync<PageDemo>();
             }
 
-            new Html(this).TextHtml = "Build 2019-12-08 21:40";
+            this.ComponentCreate<Button>().TextHtml = "Click";
+
+            new Html(this).TextHtml = "<p>Build 2019-12-08 23:16</p>";
         }
 
         private const string sessionExpired = "SessionExpired";
