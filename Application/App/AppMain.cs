@@ -29,7 +29,7 @@
                 await this.ComponentPageShowAsync<PageDemo>();
             }
 
-            new Html(this).TextHtml = "Build 2019-11-20 19:01";
+            new Html(this).TextHtml = "Build 2019-12-08 17:34";
         }
 
         private const string sessionExpired = "SessionExpired";
@@ -46,6 +46,20 @@
                 this.ComponentGet(sessionExpired).ComponentRemove();
             }
             return base.ProcessAsync();
+        }
+    }
+
+    public class AppX : AppJson
+    {
+        public AppX() : this(null) { }
+
+        public AppX(ComponentJson owner) : base(owner) { }
+
+        protected override Task InitAsync()
+        {
+            this.ComponentCreate<Html>().TextHtml = "Hello ApplicationX";
+
+            return base.InitAsync();
         }
     }
 }
