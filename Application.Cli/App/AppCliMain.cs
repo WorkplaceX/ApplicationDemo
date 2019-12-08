@@ -40,8 +40,8 @@
                 AppTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace,
                 FolderNameServer = "Default",
                 DomainNameList = new List<string>(),
-                FolderNameNpmBuild = "WebsiteDefault/",
-                FolderNameDist = "WebsiteDefault/dist/",
+                FolderNameNpmBuild = "Website/Default/",
+                FolderNameDist = "Website/Default/dist/",
             });
         }
 
