@@ -38,8 +38,8 @@
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
                 AppTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace,
-                FolderNameServer = "Default",
-                DomainNameList = new List<string>(),
+                FolderNameServer = "Application.Server/Framework/Website/Default/",
+                DomainNameList = new List<string>(new string[] { "localhost" }),
                 FolderNameNpmBuild = "Website/Default/",
                 FolderNameDist = "Website/Default/dist/",
             });
