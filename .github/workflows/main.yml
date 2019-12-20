@@ -1,14 +1,13 @@
 # Copy this file from "./Framework/Framework.Cli/Ci/github.com/.main.yml" to "./.github/workflows/main.yml"
 
 name: CI
-
-on: [push]
-
+on:
+  push:
+    branches: 
+      - master
 jobs:
   build:
-
     runs-on: ubuntu-18.04
-
     steps:
     - uses: actions/checkout@v1
       with:
