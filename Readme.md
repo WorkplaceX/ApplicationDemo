@@ -4,12 +4,17 @@
 
 [![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo) (ApplicationDemo; travis;)
 
-This is a data centric business application demonstrating the capabilities of the WorkplaceX framework.
+This demo shows the capabilities of the WorkplaceX framework. It uses airplanes and a countries stored in the database.
 
-## Git Clone
-For installation of this demo application see: https://workplacex.org/install#git-clone
+![Screenshot](https://raw.githubusercontent.com/WorkplaceX/Framework/master/Doc/Screenshot.png)
+
+## Get Started
+```cmd
+git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
+cd ApplicationDemo
+.\cli.cmd
+```
+
+For installation of this demo application see also: https://workplacex.org/install#git-clone
 
 Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
-
-## .travis.yml
-File is a copy of Framework/Framework.Cli/Ci/travis-ci.org
