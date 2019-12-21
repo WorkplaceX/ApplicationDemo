@@ -6,15 +6,15 @@
 
 This demo shows the capabilities of the WorkplaceX framework. It uses airplanes and a countries stored in the database.
 
-![Screenshot](https://raw.githubusercontent.com/WorkplaceX/Framework/master/Doc/Screenshot.png)
+![Screenshot](Doc/Screenshot.png)
 
-## Get Started
+## Getting Started
 ```cmd
 git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
 cd ApplicationDemo
 .\cli.cmd
 ```
 
-For installation of this demo application see also: https://workplacex.org/install#git-clone
+For ConnectionString, deploy data to database and start the application see: https://workplacex.org/install#git-clone
 
 Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
