@@ -4,9 +4,8 @@
 
 [![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo) (ApplicationDemo; travis;)
 
-This demo shows the capabilities of the WorkplaceX framework. It uses airplanes and a countries stored in the database.
-
 ## Screenshot
+This demo shows the capabilities of the WorkplaceX framework. It uses airplanes and a countries stored in the database.
 ![Screenshot](Doc/Screenshot.png)
 
 ## Getting Started
