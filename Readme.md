@@ -6,6 +6,7 @@
 
 This demo shows the capabilities of the WorkplaceX framework. It uses airplanes and a countries stored in the database.
 
+## Screenshot
 ![Screenshot](Doc/Screenshot.png)
 
 ## Getting Started
