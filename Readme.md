@@ -1,4 +1,5 @@
 # Application Demo
+This is a template for an ASP.NET Core application with Angular 8 and MS-SQL Server database.
 
 ![Build Status](https://github.com/WorkplaceX/ApplicationDemo/workflows/CI/badge.svg) (ApplicationDemo; github actions;)
 
