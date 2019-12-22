@@ -31,7 +31,7 @@
 
             this.ComponentCreate<Button>().TextHtml = "Click";
 
-            new Html(this).TextHtml = "<p>Build 2019-12-21 10:10</p>";
+            new Html(this).TextHtml = "<p>Build 2019-12-22 23:04</p>";
         }
 
         private const string sessionExpired = "SessionExpired";

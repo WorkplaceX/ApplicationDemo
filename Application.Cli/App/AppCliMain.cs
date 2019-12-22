@@ -96,10 +96,13 @@
         }
     }
 
+    /// <summary>
+    /// Custom cli command.
+    /// </summary>
     public class MyCommand : CommandBase
     {
         public MyCommand(AppCli appCli) 
-            : base(appCli, "My", "My command")
+            : base(appCli, "my", "My custom cli command")
         {
 
         }
