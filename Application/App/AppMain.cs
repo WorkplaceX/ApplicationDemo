@@ -29,8 +29,21 @@
                 await this.ComponentPageShowAsync<PageDemo>();
             }
 
-            this.ComponentCreate<Button>().TextHtml = "Click";
+            this.Button = this.ComponentCreate<Button>((button) => button.TextHtml = "Click");
+            this.ComponentCreate<Button>((button) => button.TextHtml = "Click2");
         }
+
+        protected override Task ButtonClickAsync(Button button)
+        {
+            if (button == Button)
+            {
+                button.TextHtml += ".";
+            }
+
+            return base.ButtonClickAsync(button);
+        }
+
+        public Button Button;
 
         private const string sessionExpired = "SessionExpired";
 
