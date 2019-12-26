@@ -10,8 +10,6 @@
 
     public class PageCountry : Page
     {
-        public PageCountry() { }
-
         public PageCountry(ComponentJson owner) : base(owner) { }
 
         protected override async Task InitAsync()

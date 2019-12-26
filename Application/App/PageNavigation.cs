@@ -8,8 +8,6 @@
 
     public class PageNavigation : Page
     {
-        public PageNavigation() { }
-
         public PageNavigation(ComponentJson owner) : base(owner) { }
 
         protected override async Task InitAsync()
