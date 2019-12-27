@@ -6,10 +6,6 @@
 
     public class AppMain : AppJson
     {
-        public AppMain() : this(null) { }
-
-        public AppMain(ComponentJson owner) : base(owner) { }
-
         protected override async Task InitAsync()
         {
             if (this.IsSessionExpired)
@@ -64,10 +60,6 @@
 
     public class AppX : AppJson
     {
-        public AppX() : this(null) { }
-
-        public AppX(ComponentJson owner) : base(owner) { }
-
         protected override Task InitAsync()
         {
             this.ComponentCreate<Html>().TextHtml = "Hello ApplicationX";

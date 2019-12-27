@@ -9,8 +9,6 @@
 
     public class PageAirplane : Page
     {
-        public PageAirplane() { }
-
         public PageAirplane(ComponentJson owner) : base(owner) { }
 
         protected override async Task InitAsync()

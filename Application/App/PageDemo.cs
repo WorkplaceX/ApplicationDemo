@@ -8,8 +8,6 @@
 
     public class PageDemo : Page
     {
-        public PageDemo() { }
-
         public PageDemo(ComponentJson owner) : base(owner) { }
 
         protected override async Task InitAsync()

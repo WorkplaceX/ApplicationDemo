@@ -8,8 +8,6 @@
 
     public class PageLanguage : Page
     {
-        public PageLanguage() { }
-
         public PageLanguage(ComponentJson owner) : base(owner) { }
 
         protected override async Task InitAsync()
