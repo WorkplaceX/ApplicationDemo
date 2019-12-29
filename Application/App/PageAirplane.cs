@@ -13,8 +13,8 @@
 
         protected override async Task InitAsync()
         {
-            this.ComponentCreate<Html>().TextHtml = "<h1>Airplane</h1>";
-            await this.ComponentCreate<Grid>().LoadAsync();
+            new Html(this) { TextHtml = "<h1>Airplane</h1>" };
+            await new Grid(this).LoadAsync();
         }
 
         protected override IQueryable GridQuery(Grid grid)
@@ -54,7 +54,7 @@
         {
             if (fieldName == nameof(RawWikipediaAircraft.IataCode))
             {
-                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true);
+                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code == null || item.Code.StartsWith(text)));
             }
             return base.GridLookupQuery(grid, row, fieldName, text);
         }

@@ -10,7 +10,7 @@
         {
             if (this.IsSessionExpired)
             {
-                this.BootstrapAlert(sessionExpired, "Session expired!", BootstrapAlertEnum.Warning);
+                this.HtmlSessionExpired = this.BootstrapAlert("Session expired!", BootstrapAlertEnum.Warning);
             }
 
             bool isDemoPage = false;
@@ -41,7 +41,7 @@
 
         public Button Button;
 
-        private const string sessionExpired = "SessionExpired";
+        public Html HtmlSessionExpired;
 
         protected override Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
         {
@@ -50,9 +50,9 @@
 
         protected override Task ProcessAsync()
         {
-            if (this.ComponentGet(sessionExpired) != null && this.IsSessionExpired == false)
+            if (this.HtmlSessionExpired != null && this.IsSessionExpired == false)
             {
-                this.ComponentGet(sessionExpired).ComponentRemove();
+                this.HtmlSessionExpired.ComponentRemove();
             }
             return base.ProcessAsync();
         }

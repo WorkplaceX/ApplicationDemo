@@ -12,8 +12,8 @@
 
         protected override async Task InitAsync()
         {
-            this.ComponentCreate<Html>().TextHtml = "<h1>Navigation</h1>";
-            await this.ComponentCreate<Grid>().LoadAsync();
+            new Html(this) { TextHtml = "<h1>Navigation</h1>" };
+            await new Grid(this).LoadAsync();
         }
 
         protected override IQueryable GridQuery(Grid grid)
