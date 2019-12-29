@@ -44,5 +44,24 @@
                 result.Html = string.Format("<a href='{0}' target='_blank'>{1}", aircraft.ModelImageUrl, "Image");
             }
         }
+
+        protected override Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
+        {
+            return Task.FromResult(true);
+        }
+
+        protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
+        {
+            if (fieldName == nameof(RawWikipediaAircraft.IataCode))
+            {
+                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true);
+            }
+            return base.GridLookupQuery(grid, row, fieldName, text);
+        }
+
+        protected override string GridLookupRowSelected(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row rowLookupSelected)
+        {
+            return ((CountryDisplayCache)rowLookupSelected).Code;
+        }
     }
 }
