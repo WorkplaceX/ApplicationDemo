@@ -7,7 +7,7 @@ This is a template to get started with an ASP.NET Core application with Angular 
 
 ## Screenshot
 This demo shows the capabilities of the WorkplaceX framework. It uses airplanes and a countries stored in the database.
-![Screenshot](Doc/Screenshot.png)
+![Screenshot](Application.Doc/Screenshot.png)
 
 ## Getting Started
 ```cmd
@@ -15,6 +15,17 @@ git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
 cd ApplicationDemo
 .\cli.cmd
 ```
+
+## Folder Structure
+* Application/ (C# Application with custom business logic)
+* Application.Cli/ (C# Command line interface to build and deploy)
+* Application.Database/ (Generated C# database dto objects like tables and views)
+* Application.Doc/ (Documentation images)
+* Application.Server/ (ASP.NET Core to start application)
+* Application.Website/ (Custom html and css websites used as theme template)
+* Framework/ (External WorkplaceX framework)
+* ConfigCli.json (Configuration file used by Application.Cli command line interface)
+* ConfigWebServer.json (Generated configuration used by Application.Server web server)
 
 For ConnectionString, deploy data to database and start the application see: https://workplacex.org/install#git-clone
 
