@@ -29,16 +29,6 @@
             this.ComponentCreate<Button>((button) => button.TextHtml = "Click2");
         }
 
-        protected override Task ButtonClickAsync(Button button)
-        {
-            if (button == Button)
-            {
-                button.TextHtml += ".";
-            }
-
-            return base.ButtonClickAsync(button);
-        }
-
         public Button Button;
 
         public Html HtmlSessionExpired;
@@ -50,6 +40,10 @@
 
         protected override Task ProcessAsync()
         {
+            if (Button.IsClick)
+            {
+                Button.TextHtml += ".";
+            }
             if (this.HtmlSessionExpired != null && this.IsSessionExpired == false)
             {
                 this.HtmlSessionExpired.ComponentRemove();
