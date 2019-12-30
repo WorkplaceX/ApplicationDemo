@@ -16,17 +16,18 @@ cd ApplicationDemo
 .\cli.cmd
 ```
 
-## Folder Structure
-* Application/ (C# Application with custom business logic)
-* Application.Cli/ (C# Command line interface to build and deploy)
-* Application.Database/ (Generated C# database dto objects like tables and views)
-* Application.Doc/ (Documentation images)
-* Application.Server/ (ASP.NET Core to start application)
-* Application.Website/ (Custom html and css websites used as theme template)
-* Framework/ (External WorkplaceX framework)
-* ConfigCli.json (Configuration file used by Application.Cli command line interface)
-* ConfigWebServer.json (Generated configuration used by Application.Server web server)
-
-For ConnectionString, deploy data to database and start the application see: https://workplacex.org/install#git-clone
+For ConnectionString, deploy sql scripts to database and start the application see: https://workplacex.org/install#git-clone
 
 Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
+
+## Folder Structure
+* **Application/** (Application with custom business logic in C#)
+* **Application.Cli/** (Command line interface to build and deploy in C#)
+* **Application.Cli/DeployDb/** (SQL scripts to deploy to SQL server)
+* **Application.Database/** (Generated C# database dto objects like tables and views)
+* **Application.Doc/** (Documentation images)
+* **Application.Server/** (ASP.NET Core to start application)
+* **Application.Website/** (Custom html and css websites used as theme template)
+* **Framework/** (External WorkplaceX framework)
+* **ConfigCli.json** (Configuration file used by Application.Cli command line interface)
+* **ConfigWebServer.json** (Generated configuration used by Application.Server web server)
