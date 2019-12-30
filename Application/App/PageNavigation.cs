@@ -24,7 +24,7 @@
         protected override async Task GridRowSelectedAsync(Grid grid)
         {
             // Remove all pages.
-            this.ComponentList().OfType<Page>().ToList().ForEach(page => page.ComponentRemove());
+            this.List.OfType<Page>().ToList().ForEach(page => page.ComponentRemove());
             if (grid.GridRowSelected() is Navigation navigation)
             {
                 if (navigation.PageName == "Country")
