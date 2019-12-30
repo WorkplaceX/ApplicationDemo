@@ -12,42 +12,40 @@
 
         protected override async Task InitAsync()
         {
-            this.ComponentCreate<Html>().TextHtml = "<h1>Demo</h1>";
-            NavBar();
-            await GridNavigation().LoadAsync();
-            await GridLanguage().LoadAsync();
-            NavBar().GridIndexList.Add(GridNavigation().Index.Value);
-            NavBar().GridIndexList.Add(GridLanguage().Index.Value);
-            NavBar().BrandTextHtml = "Demo<b>App</b>";
+            new Html(this) { TextHtml = "<h1>Demo</h1>" };
+            NavBar = new BootstrapNavbar(this);
+
+            DivContainer divContainer = new DivContainer(this) { CssClass = "row" };
+            Div divCol0 = new Div(divContainer) { CssClass = "col" };
+            Div divCol1 = new Div(divContainer) { CssClass = "col" };
+            Div divCol2 = new Div(divContainer) { CssClass = "col" };
+
+            GridNavigation = new Grid(divCol0);
+            GridLanguage = new Grid(divCol1);
+            Content = new Div(divCol2);
+
+            await GridNavigation.LoadAsync();
+            await GridLanguage.LoadAsync();
+            NavBar.GridIndexList.Add(GridNavigation.Index.Value);
+            NavBar.GridIndexList.Add(GridLanguage.Index.Value);
+            NavBar.BrandTextHtml = "Demo<b>App</b>";
         }
 
-        public BootstrapNavbar NavBar()
-        {
-            return this.ComponentGetOrCreate<BootstrapNavbar>();
-        }
+        public BootstrapNavbar NavBar;
 
-        public Grid GridNavigation()
-        {
-            return this.ComponentGetOrCreate<DivContainer>(div => div.CssClass="row").ComponentGetOrCreate<Div>(0, div => div.CssClass = "col").ComponentGetOrCreate<Grid>();
-        }
+        public Grid GridNavigation;
 
-        public Grid GridLanguage()
-        {
-            return this.ComponentGetOrCreate<DivContainer>(div => div.CssClass = "row").ComponentGetOrCreate<Div>(1, div => div.CssClass = "col").ComponentGetOrCreate<Grid>();
-        }
+        public Grid GridLanguage;
 
-        public Div Content()
-        {
-            return this.ComponentGetOrCreate<DivContainer>(div => div.CssClass = "row").ComponentGetOrCreate<Div>(2, div => div.CssClass = "col").ComponentGetOrCreate<Div>();
-        }
+        public Div Content;
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            if (grid == GridNavigation())
+            if (grid == GridNavigation)
             {
                 return Data.Query<Navigation>();
             }
-            if (grid == GridLanguage())
+            if (grid == GridLanguage)
             {
                 return Data.Query<Language>();
             }
@@ -56,12 +54,12 @@
 
         protected override async Task GridRowSelectedAsync(Grid grid)
         {
-            if (grid == GridNavigation())
+            if (grid == GridNavigation)
             {
-                Content().List.Clear();
+                Content.List.Clear();
                 if (grid.GridRowSelected<Navigation>().PageName == "Country")
                 {
-                    await Content().ComponentPageShowAsync<PageCountry>();
+                    await Content.ComponentPageShowAsync<PageCountry>();
                 }
             }
         }

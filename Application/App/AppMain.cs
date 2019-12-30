@@ -25,8 +25,8 @@
                 await this.ComponentPageShowAsync<PageDemo>();
             }
 
-            this.Button = this.ComponentCreate<Button>((button) => button.TextHtml = "Click");
-            this.ComponentCreate<Button>((button) => button.TextHtml = "Click2");
+            this.Button = new Button(this) { TextHtml = "Click" };
+            new Button(this) { TextHtml = "Click2" };
         }
 
         public Button Button;
@@ -56,7 +56,7 @@
     {
         protected override Task InitAsync()
         {
-            this.ComponentCreate<Html>().TextHtml = "Hello ApplicationX";
+            new Html(this) { TextHtml = "Hello ApplicationX" };
 
             return base.InitAsync();
         }
