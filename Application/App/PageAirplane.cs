@@ -54,7 +54,7 @@
         {
             if (fieldName == nameof(RawWikipediaAircraft.IataCode))
             {
-                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code == null || item.Code.StartsWith(text)));
+                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code.StartsWith(text == null ? "" : text)));
             }
             return base.GridLookupQuery(grid, row, fieldName, text);
         }
