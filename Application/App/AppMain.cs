@@ -6,7 +6,7 @@
 
     public class AppMain : AppJson
     {
-        protected override async Task InitAsync()
+        public override async Task InitAsync()
         {
             if (this.IsSessionExpired)
             {
@@ -54,7 +54,7 @@
 
     public class AppX : AppJson
     {
-        protected override Task InitAsync()
+        public override Task InitAsync()
         {
             new Html(this) { TextHtml = "Hello ApplicationX" };
 
