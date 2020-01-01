@@ -24,7 +24,7 @@
             }
             else
             {
-                await this.ComponentPageShowAsync<PageDemo>();
+                await new PageDemo(this).InitAsync();
             }
 
             this.Button = new Button(this) { TextHtml = "Click" };

@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ConfigWebServer.json = ConfigWebServer.json
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Test", "Framework\Framework.Test\Framework.Test.csproj", "{6B58ACBC-3AD5-490D-9340-DF6B927D53D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{970A6BD0-5701-4C7F-A971-0EB497FCE44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{970A6BD0-5701-4C7F-A971-0EB497FCE44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{970A6BD0-5701-4C7F-A971-0EB497FCE44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B58ACBC-3AD5-490D-9340-DF6B927D53D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B58ACBC-3AD5-490D-9340-DF6B927D53D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B58ACBC-3AD5-490D-9340-DF6B927D53D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B58ACBC-3AD5-490D-9340-DF6B927D53D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
