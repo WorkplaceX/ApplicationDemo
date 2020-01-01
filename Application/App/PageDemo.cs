@@ -10,7 +10,7 @@
     {
         public PageDemo(ComponentJson owner) : base(owner) { }
 
-        protected override async Task InitAsync()
+        public override async Task InitAsync()
         {
             new Html(this) { TextHtml = "<h1>Demo</h1>" };
             NavBar = new BootstrapNavbar(this);

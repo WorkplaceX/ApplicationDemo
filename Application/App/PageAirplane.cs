@@ -11,7 +11,7 @@
     {
         public PageAirplane(ComponentJson owner) : base(owner) { }
 
-        protected override async Task InitAsync()
+        public override async Task InitAsync()
         {
             new Html(this) { TextHtml = "<h1>Airplane</h1>" };
             await new Grid(this).LoadAsync();

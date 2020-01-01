@@ -6,7 +6,7 @@
 
     public class AppMain : AppJson
     {
-        protected override async Task InitAsync()
+        public override async Task InitAsync()
         {
             if (this.IsSessionExpired)
             {
@@ -17,8 +17,10 @@
 
             if (isDemoPage == false)
             {
-                await this.ComponentPageShowAsync<PageAirplane>();
-                await this.ComponentPageShowAsync<PageCountry>();
+                await new PageGrid2(this).InitAsync();
+
+                // await this.ComponentPageShowAsync<PageAirplane>();
+                // await this.ComponentPageShowAsync<PageCountry>();
             }
             else
             {
@@ -54,7 +56,7 @@
 
     public class AppX : AppJson
     {
-        protected override Task InitAsync()
+        public override Task InitAsync()
         {
             new Html(this) { TextHtml = "Hello ApplicationX" };
 
