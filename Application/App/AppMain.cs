@@ -17,12 +17,12 @@
 
             if (isDemoPage == false)
             {
-                await this.ComponentPageShowAsync<PageAirplane>();
-                await this.ComponentPageShowAsync<PageCountry>();
+                await new PageAirplane(this).InitAsync();
+                await new PageCountry(this).InitAsync();
             }
             else
             {
-                await this.ComponentPageShowAsync<PageDemo>();
+                await new PageDemo(this).InitAsync();
             }
 
             this.Button = new Button(this) { TextHtml = "Click" };
