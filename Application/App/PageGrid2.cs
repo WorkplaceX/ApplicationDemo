@@ -21,7 +21,7 @@
 
         protected override IQueryable Grid2Query(Grid2 grid)
         {
-            return Data.Query<RawWikipediaAircraft>();
+            return Data.Query<Database.Demo.Navigation>();
         }
     }
 }
