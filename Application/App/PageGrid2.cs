@@ -3,6 +3,7 @@
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
+    using Framework.Session;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -31,7 +32,35 @@
             }
         }
 
-        protected override void GridCellParse(Grid2 grid, Row row, string fieldName, string text, out bool isHandled)
+        private bool ParseUom(string text, out double value, out string measurement)
+        {
+            bool isValue = true;
+            string valueText = null;
+            value = 0;
+            measurement = valueText;
+            foreach (var item in text)
+            {
+                if (isValue)
+                {
+                    if ((item >= '0' && item <= '9') || item == '.')
+                    {
+                        valueText += item;
+                    }
+                    else
+                    {
+                        isValue = false;
+                    }
+                }
+                if (isValue == false)
+                {
+                    measurement += item;
+                }
+            }
+            measurement = measurement?.Trim();
+            return double.TryParse(valueText, out value);
+        }
+
+        protected override void GridCellParse(Grid2 grid, Row row, string fieldName, string text, out bool isHandled, ref string errorParse)
         {
             if (fieldName == nameof(Navigation.Sort))
             {
@@ -63,7 +92,23 @@
             }
             else
             {
-                base.GridCellParse(grid, row, fieldName, text, out isHandled);
+                base.GridCellParse(grid, row, fieldName, text, out isHandled, ref errorParse);
+            }
+        }
+
+        protected override void GridCellParseFilter(Grid2 grid, string fieldName, string text, Grid2Filter filter, out bool isHandled, ref string errorParse)
+        {
+            isHandled = false;
+            if (fieldName == nameof(Navigation.Sort))
+            {
+                bool isParse = ParseUom(text, out double value, out string measurement);
+                filter.ValueSet(nameof(Navigation.Sort), value, FilterOperator.Equal, string.Format("{0} {1}", value, measurement), !isParse);
+                filter.ValueSet(nameof(Navigation.PageName), measurement, FilterOperator.Equal, measurement, !isParse || measurement == null);
+                if (!isParse && text != "")
+                {
+                    errorParse = "Could not parse Uom!";
+                }
+                isHandled = true;
             }
         }
 
