@@ -116,5 +116,19 @@
         {
             return Data.Query<Database.Demo.Navigation>();
         }
+
+        protected override IQueryable GridLookupQuery(Grid2 grid, Row row, string fieldName, string text)
+        {
+            if (fieldName == nameof(Navigation.Name))
+            {
+                return Data.Query<CountryDisplay>();
+            }
+            return null;
+        }
+
+        protected override void GridLookupQueryConfig(Grid2 grid, string tableNameCSharp, GridConfigResult config)
+        {
+            base.GridLookupQueryConfig(grid, tableNameCSharp, config);
+        }
     }
 }
