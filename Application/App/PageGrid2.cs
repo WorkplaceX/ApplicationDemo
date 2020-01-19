@@ -60,8 +60,10 @@
             return double.TryParse(valueText, out value);
         }
 
-        protected override void GridCellParse(Grid2 grid, Row row, string fieldName, string text, out bool isHandled, ref string errorParse)
+        protected override async Task<(bool isHandled, string errorParse)> GridCellParseAsync(Grid2 grid, Row row, string fieldName, string text)
         {
+            bool isHandled = false;
+            string errorParse = null;
             if (fieldName == nameof(Navigation.Sort))
             {
                 bool isNumber = true;
@@ -90,10 +92,20 @@
                 ((Navigation)row).PageName = measure;
                 isHandled = true;
             }
-            else
+            if (fieldName == nameof(Navigation.Name))
             {
-                base.GridCellParse(grid, row, fieldName, text, out isHandled, ref errorParse);
+                isHandled = true;
+                var s = await Data.SelectAsync(Data.Query<CountryDisplay>().Where(item => item.Country == text));
+                if (s.Count != 1)
+                {
+                    errorParse = "Item not found!";
+                }
+                else
+                {
+                    // ((Navigation)row).Name = text;
+                }
             }
+            return (isHandled, errorParse);
         }
 
         protected override void GridCellParseFilter(Grid2 grid, string fieldName, string text, Grid2Filter filter, out bool isHandled, ref string errorParse)
@@ -121,14 +133,14 @@
         {
             if (fieldName == nameof(Navigation.Name))
             {
-                return Data.Query<CountryDisplay>();
+                return Data.Query<CountryDisplay>().Where(item => text == null || item.Country.Contains(text));
             }
             return null;
         }
 
-        protected override void GridLookupQueryConfig(Grid2 grid, string tableNameCSharp, GridConfigResult config)
+        protected override string GridLookupRowSelected(Grid2 grid, Row rowLookupSelected)
         {
-            base.GridLookupQueryConfig(grid, tableNameCSharp, config);
+            return ((CountryDisplay)rowLookupSelected).Country;
         }
     }
 }
