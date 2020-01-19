@@ -17,10 +17,10 @@
 
             if (isDemoPage == false)
             {
-                await new PageGrid2(this).InitAsync();
+                // await new PageGrid2(this).InitAsync();
 
-                // await this.ComponentPageShowAsync<PageAirplane>();
-                // await this.ComponentPageShowAsync<PageCountry>();
+                await this.ComponentPageShowAsync<PageAirplane>();
+                await this.ComponentPageShowAsync<PageCountry>();
             }
             else
             {
