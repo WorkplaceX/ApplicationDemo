@@ -15,10 +15,10 @@
         public override async Task InitAsync()
         {
             new Html(this) { TextHtml = "<h1>Country</h1>" };
-            await new Grid(this).LoadAsync();
+            await new Grid2(this).LoadAsync();
         }
 
-        protected override IQueryable GridQuery(Grid grid)
+        protected override IQueryable GridQuery(Grid2 grid)
         {
             return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true);
         }
@@ -44,7 +44,7 @@
             }
         }
 
-        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        protected override void GridCellAnnotation(Grid2 grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
         {
             var countryDisplay = row as CountryDisplayCache;
             if (fieldName == nameof(CountryDisplayCache.Country) && countryDisplay?.ASFlagIcon != null)
