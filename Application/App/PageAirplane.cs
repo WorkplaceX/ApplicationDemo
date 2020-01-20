@@ -59,9 +59,9 @@
             return base.GridLookupQuery(grid, row, fieldName, text);
         }
 
-        protected override string GridLookupRowSelected(Grid2 grid, Row rowLookupSelected)
+        protected override string GridLookupRowSelected(Grid2 grid)
         {
-            return ((CountryDisplayCache)rowLookupSelected).Code;
+            return ((CountryDisplayCache)grid.RowSelected).Code;
         }
     }
 }
