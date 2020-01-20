@@ -7,5 +7,10 @@
 			"path": "Framework\\Framework.Angular\\application"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"workbench.colorCustomizations": {
+			"terminal.background": "#000055"
+		},
+		"html.format.wrapLineLength": 0
+	}
 }
