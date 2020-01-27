@@ -20,8 +20,8 @@
             Div divCol1 = new Div(divContainer) { CssClass = "col" };
             Div divCol2 = new Div(divContainer) { CssClass = "col" };
 
-            GridNavigation = new Grid2(divCol0);
-            GridLanguage = new Grid2(divCol1);
+            GridNavigation = new Grid(divCol0);
+            GridLanguage = new Grid(divCol1);
             Content = new Div(divCol2);
 
             await GridNavigation.LoadAsync();
@@ -33,13 +33,13 @@
 
         public BootstrapNavbar NavBar;
 
-        public Grid2 GridNavigation;
+        public Grid GridNavigation;
 
-        public Grid2 GridLanguage;
+        public Grid GridLanguage;
 
         public Div Content;
 
-        protected override IQueryable GridQuery(Grid2 grid)
+        protected override IQueryable GridQuery(Grid grid)
         {
             if (grid == GridNavigation)
             {
@@ -52,7 +52,7 @@
             return base.GridQuery(grid);
         }
 
-        protected override async Task GridRowSelectedAsync(Grid2 grid)
+        protected override async Task GridRowSelectedAsync(Grid grid)
         {
             if (grid == GridNavigation)
             {

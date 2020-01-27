@@ -14,10 +14,10 @@
         public override async Task InitAsync()
         {
             new Html(this) { TextHtml = "<h1>Airplane</h1>" };
-            await new Grid2(this).LoadAsync();
+            await new Grid(this).LoadAsync();
         }
 
-        protected override IQueryable GridQuery(Grid2 grid)
+        protected override IQueryable GridQuery(Grid grid)
         {
             return Data.Query<RawWikipediaAircraft>();
         }
@@ -25,7 +25,7 @@
         /// <summary>
         /// Add some annotation to the grid data like hyperlink or render as image.
         /// </summary>
-        protected override void GridCellAnnotation(Grid2 grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
         {
             var aircraft = row as RawWikipediaAircraft;
 
@@ -45,12 +45,12 @@
             }
         }
 
-        protected override Task<bool> GridUpdateAsync(Grid2 grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
+        protected override Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
         {
             return Task.FromResult(true);
         }
 
-        protected override IQueryable GridLookupQuery(Grid2 grid, Row row, string fieldName, string text)
+        protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
         {
             if (fieldName == nameof(RawWikipediaAircraft.IataCode))
             {
@@ -59,7 +59,7 @@
             return base.GridLookupQuery(grid, row, fieldName, text);
         }
 
-        protected override string GridLookupRowSelected(Grid2 grid)
+        protected override string GridLookupRowSelected(Grid grid)
         {
             return ((CountryDisplayCache)grid.RowSelected).Code;
         }
