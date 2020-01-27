@@ -20,26 +20,26 @@
             Div divCol1 = new Div(divContainer) { CssClass = "col" };
             Div divCol2 = new Div(divContainer) { CssClass = "col" };
 
-            GridNavigation = new Grid(divCol0);
-            GridLanguage = new Grid(divCol1);
+            GridNavigation = new Grid2(divCol0);
+            GridLanguage = new Grid2(divCol1);
             Content = new Div(divCol2);
 
             await GridNavigation.LoadAsync();
             await GridLanguage.LoadAsync();
-            NavBar.GridIndexList.Add(GridNavigation.Index.Value);
-            NavBar.GridIndexList.Add(GridLanguage.Index.Value);
+            NavBar.GridAdd(GridNavigation);
+            NavBar.GridAdd(GridLanguage);
             NavBar.BrandTextHtml = "Demo<b>App</b>";
         }
 
         public BootstrapNavbar NavBar;
 
-        public Grid GridNavigation;
+        public Grid2 GridNavigation;
 
-        public Grid GridLanguage;
+        public Grid2 GridLanguage;
 
         public Div Content;
 
-        protected override IQueryable GridQuery(Grid grid)
+        protected override IQueryable GridQuery(Grid2 grid)
         {
             if (grid == GridNavigation)
             {
@@ -52,12 +52,13 @@
             return base.GridQuery(grid);
         }
 
-        protected override async Task GridRowSelectedAsync(Grid grid)
+        protected override async Task GridRowSelectedAsync(Grid2 grid)
         {
             if (grid == GridNavigation)
             {
                 Content.List.Clear();
-                if (grid.GridRowSelected<Navigation>().PageName == "Country")
+                
+                if (((Navigation)grid.RowSelected).PageName == "Country")
                 {
                     await Content.ComponentPageShowAsync<PageCountry>();
                 }
