@@ -33,11 +33,6 @@
 
         public Html HtmlSessionExpired;
 
-        protected override Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
-        {
-            return base.GridUpdateAsync(grid, row, rowNew, databaseEnum);
-        }
-
         protected override Task ProcessAsync()
         {
             if (Button.IsClick)

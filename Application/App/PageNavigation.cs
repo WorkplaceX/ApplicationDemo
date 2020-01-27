@@ -13,19 +13,19 @@
         public override async Task InitAsync()
         {
             new Html(this) { TextHtml = "<h1>Navigation</h1>" };
-            await new Grid(this).LoadAsync();
+            await new Grid2(this).LoadAsync();
         }
 
-        protected override IQueryable GridQuery(Grid grid)
+        protected override IQueryable GridQuery(Grid2 grid)
         {
             return Data.Query<Navigation>();
         }
 
-        protected override async Task GridRowSelectedAsync(Grid grid)
+        protected override async Task GridRowSelectedAsync(Grid2 grid)
         {
             // Remove all pages.
             this.List.OfType<Page>().ToList().ForEach(page => page.ComponentRemove());
-            if (grid.GridRowSelected() is Navigation navigation)
+            if (grid.RowSelected is Navigation navigation)
             {
                 if (navigation.PageName == "Country")
                 {
