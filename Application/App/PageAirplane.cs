@@ -31,7 +31,7 @@
 
             if (fieldName == nameof(RawWikipediaAircraft.Model) && aircraft?.ModelImageUrl != null)
             {
-                result.HtmlLeft = string.Format("<img src='{0}' width='128px' />", aircraft.ModelImageUrl);
+                result.HtmlLeft = string.Format("<img src='{0}' width='128' />", aircraft.ModelImageUrl);
             }
 
             if (fieldName == nameof(RawWikipediaAircraft.ModelUrl) && aircraft?.ModelUrl != null)
