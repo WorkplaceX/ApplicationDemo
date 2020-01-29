@@ -6,7 +6,6 @@
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
-    using Framework.Session;
 
     public class PageCountry : Page
     {
@@ -44,7 +43,7 @@
             }
         }
 
-        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        protected override void GridCellAnnotation(Grid grid, string fieldName, Row row, GridCellAnnotationResult result)
         {
             var countryDisplay = row as CountryDisplayCache;
             if (fieldName == nameof(CountryDisplayCache.Country) && countryDisplay?.ASFlagIcon != null)

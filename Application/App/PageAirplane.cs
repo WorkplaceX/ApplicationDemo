@@ -5,7 +5,6 @@
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
-    using Framework.Session;
 
     public class PageAirplane : Page
     {
@@ -25,7 +24,7 @@
         /// <summary>
         /// Add some annotation to the grid data like hyperlink or render as image.
         /// </summary>
-        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        protected override void GridCellAnnotation(Grid grid, string fieldName, Row row, GridCellAnnotationResult result)
         {
             var aircraft = row as RawWikipediaAircraft;
 
