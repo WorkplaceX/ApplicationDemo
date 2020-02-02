@@ -56,7 +56,7 @@
         {
             if (grid == GridNavigation)
             {
-                Content.List.Clear();
+                Content.ComponentListClear();
                 
                 if (((Navigation)grid.RowSelected).PageName == "Country")
                 {
