@@ -10,6 +10,7 @@
             if (this.IsSessionExpired)
             {
                 this.HtmlSessionExpired = this.BootstrapAlert("Session expired!", BootstrapAlertEnum.Warning);
+                this.IsScrollToTop = true;
             }
 
             bool isDemoPage = false;
