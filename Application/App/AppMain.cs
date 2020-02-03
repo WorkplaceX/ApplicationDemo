@@ -17,8 +17,9 @@
 
             if (isDemoPage == false)
             {
-                await new PageAirplane(this).InitAsync();
-                await new PageCountry(this).InitAsync();
+                await new PageMain(this).InitAsync();
+                // await new PageAirplane(this).InitAsync();
+                // await new PageCountry(this).InitAsync();
             }
             else
             {

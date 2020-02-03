@@ -93,6 +93,220 @@ namespace Database.Demo
         public string TextHtml { get; set; }
     }
 
+    [SqlTable("Demo", "LoginPermission")]
+    public class LoginPermission : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginPermissionBuiltIn")]
+    public class LoginPermissionBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginRole")]
+    public class LoginRole : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginRoleBuiltIn")]
+    public class LoginRoleBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginRolePermission")]
+    public class LoginRolePermission : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
+        public int? LoginRoleId { get; set; }
+
+        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
+        public int? LoginPermissionId { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginRolePermissionBuiltIn")]
+    public class LoginRolePermissionBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
+        public int? LoginRoleId { get; set; }
+
+        [SqlField("LoginRoleIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginRoleIdName { get; set; }
+
+        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
+        public int? LoginPermissionId { get; set; }
+
+        [SqlField("LoginPermissionIdIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginPermissionIdIdName { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginRolePermissionDisplay")]
+    public class LoginRolePermissionDisplay : Row
+    {
+        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
+        public int LoginRoleId { get; set; }
+
+        [SqlField("LoginRoleName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginRoleName { get; set; }
+
+        [SqlField("LoginRoleDescription", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginRoleDescription { get; set; }
+
+        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
+        public int LoginPermissionId { get; set; }
+
+        [SqlField("LoginPermissionName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginPermissionName { get; set; }
+
+        [SqlField("LoginPermissionDescription", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginPermissionDescription { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginUser")]
+    public class LoginUser : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("Password", FrameworkTypeEnum.Nvarcahr)]
+        public string Password { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginUserBuiltIn")]
+    public class LoginUserBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("Password", FrameworkTypeEnum.Nvarcahr)]
+        public string Password { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginUserPermissionDisplay")]
+    public class LoginUserPermissionDisplay : Row
+    {
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int LoginUserId { get; set; }
+
+        [SqlField("LoginUserName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginUserName { get; set; }
+
+        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
+        public int LoginPermissionId { get; set; }
+
+        [SqlField("LoginPermissionName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginPermissionName { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginUserRole")]
+    public class LoginUserRole : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int? LoginUserId { get; set; }
+
+        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
+        public int? LoginRoleId { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginUserRoleBuiltIn")]
+    public class LoginUserRoleBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int? LoginUserId { get; set; }
+
+        [SqlField("LoginUserIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginUserIdName { get; set; }
+
+        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
+        public int? LoginRoleId { get; set; }
+
+        [SqlField("LoginRoleIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginRoleIdName { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginUserRoleDisplay")]
+    public class LoginUserRoleDisplay : Row
+    {
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int LoginUserId { get; set; }
+
+        [SqlField("LoginUserName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginUserName { get; set; }
+
+        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
+        public int LoginRoleId { get; set; }
+
+        [SqlField("LoginRoleName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginRoleName { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
     [SqlTable("Demo", "Navigation")]
     public class Navigation : Row
     {
