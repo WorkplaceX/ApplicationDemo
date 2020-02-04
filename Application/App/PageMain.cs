@@ -72,6 +72,16 @@
                 {
                     await new PageRoadmap(Content).InitAsync();
                 }
+
+                if (((Navigation)grid.RowSelected).PageName == "LoginUser")
+                {
+                    await new PageLoginUser(Content).InitAsync();
+                }
+
+                if (((Navigation)grid.RowSelected).PageName == "LoginRole")
+                {
+                    await new PageLoginRole(Content).InitAsync();
+                }
             }
         }
     }
