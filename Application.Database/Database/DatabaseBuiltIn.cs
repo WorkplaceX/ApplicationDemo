@@ -30,8 +30,8 @@ namespace DatabaseBuiltIn.Demo
                 var result = new List<LoginPermissionBuiltIn>();
                 result.Add(new LoginPermissionBuiltIn() { Id = 1, IdName = "Calendar Modify", Name = "Calendar Modify", Description = "Allows user to modify the calendar." });
                 result.Add(new LoginPermissionBuiltIn() { Id = 2, IdName = "Roadmap Modify", Name = "Roadmap Modify", Description = "Allows user to modify the development roadmap." });
-                result.Add(new LoginPermissionBuiltIn() { Id = 5, IdName = "Language Modify", Name = "Language Modify", Description = "Allows user to add new languages." });
-                result.Add(new LoginPermissionBuiltIn() { Id = 6, IdName = "AirportPage Show", Name = "AirportPage Show", Description = "Allows user to see airport page." });
+                result.Add(new LoginPermissionBuiltIn() { Id = 3, IdName = "Language Modify", Name = "Language Modify", Description = "Allows user to add new languages." });
+                result.Add(new LoginPermissionBuiltIn() { Id = 4, IdName = "AirportPage Show", Name = "AirportPage Show", Description = "Allows user to see airport page." });
                 return result;
             }
         }
