@@ -60,8 +60,8 @@ GO
 CREATE TABLE Demo.LoginUserRole
 (
 	Id INT PRIMARY KEY IDENTITY,
-	LoginUserId INT FOREIGN KEY REFERENCES Demo.LoginUser(Id),
-	LoginRoleId INT FOREIGN KEY REFERENCES Demo.LoginRole(Id),
+	LoginUserId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginUser(Id),
+	LoginRoleId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginRole(Id),
 	IsActive BIT
 	INDEX IX_LoginUserRole UNIQUE (LoginUserId, LoginRoleId)
 )
@@ -83,8 +83,8 @@ GO
 CREATE TABLE Demo.LoginRolePermission
 (
 	Id INT PRIMARY KEY IDENTITY,
-	LoginRoleId INT FOREIGN KEY REFERENCES Demo.LoginRole(Id),
-	LoginPermissionId INT FOREIGN KEY REFERENCES Demo.LoginPermission(Id),
+	LoginRoleId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginRole(Id),
+	LoginPermissionId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginPermission(Id),
 	IsActive BIT
 	INDEX IX_LoginRolePermission UNIQUE (LoginRoleId, LoginPermissionId)
 )
