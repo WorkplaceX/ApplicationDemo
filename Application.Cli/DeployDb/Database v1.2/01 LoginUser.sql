@@ -12,6 +12,7 @@ CREATE VIEW Demo.LoginUserBuiltIn AS
 SELECT
 	LoginUser.Id,
 	LoginUser.Name AS IdName,
+	LoginUser.Name,
 	LoginUser.Password
 FROM
 	Demo.LoginUser LoginUser
@@ -30,6 +31,7 @@ CREATE VIEW Demo.LoginRoleBuiltIn AS
 SELECT
 	LoginRole.Id,
 	LoginRole.Name AS IdName,
+	LoginRole.Name,
 	LoginRole.Description
 FROM
 	Demo.LoginRole LoginRole
@@ -48,6 +50,7 @@ CREATE VIEW Demo.LoginPermissionBuiltIn AS
 SELECT
 	LoginPermission.Id,
 	LoginPermission.Name AS IdName,
+	LoginPermission.Name,
 	LoginPermission.Description
 FROM
 	Demo.LoginPermission LoginPermission
@@ -93,7 +96,7 @@ SELECT
 	LoginRolePermission.LoginRoleId,
 	(SELECT Name FROM Demo.LoginRole LoginRole WHERE LoginRole.Id = LoginRolePermission.LoginRoleId) AS LoginRoleIdName,
 	LoginRolePermission.LoginPermissionId,
-	(SELECT Name FROM Demo.LoginPermission LoginPermission WHERE LoginPermission.Id = LoginRolePermission.LoginPermissionId) AS LoginPermissionIdIdName,
+	(SELECT Name FROM Demo.LoginPermission LoginPermission WHERE LoginPermission.Id = LoginRolePermission.LoginPermissionId) AS LoginPermissionIdName,
 	LoginRolePermission.IsActive
 FROM
 	Demo.LoginRolePermission LoginRolePermission
@@ -129,7 +132,7 @@ FROM
 /* User to Permission Display */
 GO
 CREATE VIEW Demo.LoginUserPermissionDisplay AS
-SELECT
+SELECT DISTINCT
 	LoginUser.Id AS LoginUserId,
 	LoginUser.Name AS LoginUserName,
 	LoginPermission.Id AS LoginPermissionId,

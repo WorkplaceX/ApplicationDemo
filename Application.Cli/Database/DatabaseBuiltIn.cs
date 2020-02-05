@@ -76,4 +76,77 @@ namespace DatabaseBuiltIn.Demo
             }
         }
     }
+
+    public static class LoginRoleBuiltInTableApplicationCli
+    {
+        public static List<LoginRoleBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<LoginRoleBuiltIn>();
+                result.Add(new LoginRoleBuiltIn() { Id = 1, IdName = "Administrator", Name = "Administrator", Description = "Administrator role" });
+                result.Add(new LoginRoleBuiltIn() { Id = 2, IdName = "Guest", Name = "Guest", Description = "Guest user (not logged in)" });
+                result.Add(new LoginRoleBuiltIn() { Id = 3, IdName = "BackOffice", Name = "BackOffice", Description = "Power user" });
+                return result;
+            }
+        }
+    }
+
+    public static class LoginRolePermissionBuiltInTableApplicationCli
+    {
+        public static List<LoginRolePermissionBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<LoginRolePermissionBuiltIn>();
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 1, LoginRoleId = 1, LoginRoleIdName = "Administrator", LoginPermissionId = 1, LoginPermissionIdName = "Calendar Modify", IsActive = true });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 2, LoginRoleId = 1, LoginRoleIdName = "Administrator", LoginPermissionId = 2, LoginPermissionIdName = "Roadmap Modify", IsActive = true });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 3, LoginRoleId = 3, LoginRoleIdName = "BackOffice", LoginPermissionId = 1, LoginPermissionIdName = "Calendar Modify", IsActive = true });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 4, LoginRoleId = 3, LoginRoleIdName = "BackOffice", LoginPermissionId = 2, LoginPermissionIdName = "Roadmap Modify", IsActive = true });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 5, LoginRoleId = 2, LoginRoleIdName = "Guest", LoginPermissionId = 1, LoginPermissionIdName = "Calendar Modify", IsActive = false });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 6, LoginRoleId = 2, LoginRoleIdName = "Guest", LoginPermissionId = 2, LoginPermissionIdName = "Roadmap Modify", IsActive = false });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 7, LoginRoleId = 1, LoginRoleIdName = "Administrator", LoginPermissionId = 5, LoginPermissionIdName = "Language Modify", IsActive = true });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 8, LoginRoleId = 2, LoginRoleIdName = "Guest", LoginPermissionId = 6, LoginPermissionIdName = "AirportPage Show", IsActive = true });
+                result.Add(new LoginRolePermissionBuiltIn() { Id = 9, LoginRoleId = 1, LoginRoleIdName = "Administrator", LoginPermissionId = 6, LoginPermissionIdName = "AirportPage Show", IsActive = true });
+                return result;
+            }
+        }
+    }
+
+    public static class LoginUserBuiltInTableApplicationCli
+    {
+        public static List<LoginUserBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<LoginUserBuiltIn>();
+                result.Add(new LoginUserBuiltIn() { Id = 1, IdName = "John", Name = "John", Password = "J33" });
+                result.Add(new LoginUserBuiltIn() { Id = 2, IdName = "Marc", Name = "Marc", Password = "DAdkm" });
+                result.Add(new LoginUserBuiltIn() { Id = 3, IdName = "Guest", Name = "Guest", Password = "Guest33" });
+                result.Add(new LoginUserBuiltIn() { Id = 4, IdName = "Administrator", Name = "Administrator", Password = null });
+                return result;
+            }
+        }
+    }
+
+    public static class LoginUserRoleBuiltInTableApplicationCli
+    {
+        public static List<LoginUserRoleBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<LoginUserRoleBuiltIn>();
+                result.Add(new LoginUserRoleBuiltIn() { Id = 1, LoginUserId = 3, LoginUserIdName = "Guest", LoginRoleId = 1, LoginRoleIdName = "Administrator", IsActive = false });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 2, LoginUserId = 3, LoginUserIdName = "Guest", LoginRoleId = 2, LoginRoleIdName = "Guest", IsActive = true });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 3, LoginUserId = 3, LoginUserIdName = "Guest", LoginRoleId = 3, LoginRoleIdName = "BackOffice", IsActive = false });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 4, LoginUserId = 4, LoginUserIdName = "Administrator", LoginRoleId = 1, LoginRoleIdName = "Administrator", IsActive = true });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 5, LoginUserId = 4, LoginUserIdName = "Administrator", LoginRoleId = 2, LoginRoleIdName = "Guest", IsActive = true });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 6, LoginUserId = 4, LoginUserIdName = "Administrator", LoginRoleId = 3, LoginRoleIdName = "BackOffice", IsActive = true });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 7, LoginUserId = 2, LoginUserIdName = "Marc", LoginRoleId = 2, LoginRoleIdName = "Guest", IsActive = true });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 8, LoginUserId = 1, LoginUserIdName = "John", LoginRoleId = 2, LoginRoleIdName = "Guest", IsActive = null });
+                result.Add(new LoginUserRoleBuiltIn() { Id = 9, LoginUserId = 1, LoginUserIdName = "John", LoginRoleId = 3, LoginRoleIdName = "BackOffice", IsActive = true });
+                return result;
+            }
+        }
+    }
 }

@@ -115,6 +115,9 @@ namespace Database.Demo
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
 
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
     }
@@ -140,6 +143,9 @@ namespace Database.Demo
 
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
 
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
@@ -176,8 +182,8 @@ namespace Database.Demo
         [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
         public int? LoginPermissionId { get; set; }
 
-        [SqlField("LoginPermissionIdIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginPermissionIdIdName { get; set; }
+        [SqlField("LoginPermissionIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginPermissionIdName { get; set; }
 
         [SqlField("IsActive", FrameworkTypeEnum.Bit)]
         public bool? IsActive { get; set; }
@@ -229,6 +235,9 @@ namespace Database.Demo
 
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
 
         [SqlField("Password", FrameworkTypeEnum.Nvarcahr)]
         public string Password { get; set; }

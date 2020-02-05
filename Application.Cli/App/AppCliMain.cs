@@ -50,13 +50,33 @@
         /// </summary>
         protected override void CommandGenerateBuiltIn(List<GenerateBuiltInItem> list)
         {
-            // LanguageBuiltIn
+            // Language
             var languageList = Data.Select(Data.Query<LanguageBuiltIn>());
-            list.Add(GenerateBuiltInItem.Create(languageList, true));
+            list.Add(GenerateBuiltInItem.Create(languageList, isApplication: true));
 
-            // NavigationBuiltIn
+            // Navigation
             var navigationList = Data.Select(Data.Query<NavigationBuiltIn>());
             list.Add(GenerateBuiltInItem.Create(navigationList));
+
+            // LoginPermission
+            var loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: true));
+
+            // LoginRole
+            var loginRoleList = Data.Select(Data.Query<LoginRoleBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(loginRoleList));
+
+            // LoginRolePermission
+            var loginRolePermissionList = Data.Select(Data.Query<LoginRolePermissionBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(loginRolePermissionList));
+
+            // LoginUser
+            var loginUserList = Data.Select(Data.Query<LoginUserBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(loginUserList));
+
+            // LoginUserRole
+            var loginUserRoleList = Data.Select(Data.Query<LoginUserRoleBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(loginUserRoleList));
         }
 
         /// <summary>
@@ -93,6 +113,21 @@
             {
                 list.Add(DeployDbBuiltInItem.Create(rowLevelList, nameof(NavigationBuiltIn.Name), null));
             }
+
+            // LoginPermission
+            list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplication.RowList, nameof(LoginPermissionBuiltIn.Name), null));
+
+            // LoginRole
+            list.Add(DeployDbBuiltInItem.Create(LoginRoleBuiltInTableApplicationCli.RowList, nameof(LoginRoleBuiltIn.Name), null));
+
+            // LoginRolePermission
+            list.Add(DeployDbBuiltInItem.Create(LoginRolePermissionBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginRolePermissionBuiltIn.LoginRoleId), nameof(LoginRolePermissionBuiltIn.LoginPermissionId) }, null));
+
+            // LoginUser
+            list.Add(DeployDbBuiltInItem.Create(LoginUserBuiltInTableApplicationCli.RowList, nameof(LoginUserBuiltIn.Name), null));
+
+            // LoginUserRole
+            list.Add(DeployDbBuiltInItem.Create(LoginUserRoleBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginUserRoleBuiltIn.LoginUserId), nameof(LoginUserRoleBuiltIn.LoginRoleId) }, null));
         }
     }
 

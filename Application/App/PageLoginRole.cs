@@ -19,18 +19,17 @@
             DivColRight = new Div(DivRow) { CssClass = "col" };
 
             new Html(DivColLeft) { TextHtml = "<h1>Role <i class='fas fa-hat-cowboy'></i></h1>" };
-            new Html(DivColLeft) { TextHtml = "Define user roles." };
+            new Html(DivColLeft) { TextHtml = "Define User Roles." };
             GridLoginRole = new Grid(DivColLeft);
-            await GridLoginRole.LoadAsync();
             new Html(DivColRight) { TextHtml = "<h1>Permission <i class='fas fa-key'></i></h1>" };
-            new Html(DivColRight) { TextHtml = "Define permissions." };
+            new Html(DivColRight) { TextHtml = "Define Permissions." };
             GridLoginPermission = new Grid(DivColRight);
-            await GridLoginPermission.LoadAsync();
 
             new Html(DivContainer) { TextHtml = "<h1>Role <i class='fas fa-hat-cowboy'></i> to Permission <i class='fas fa-key'></i> Mapping</h1>" };
-            new Html(DivContainer) { TextHtml = "Assign permissions to roles." };
+            new Html(DivContainer) { TextHtml = "Assign Permissions to Roles." };
             GridLoginRolePermission = new Grid(DivContainer);
-            await GridLoginRolePermission.LoadAsync();
+
+            await Task.WhenAll(GridLoginRole.LoadAsync(), GridLoginPermission.LoadAsync());
         }
 
         public Div DivContainer;
@@ -47,6 +46,28 @@
 
         public Grid GridLoginRolePermission;
 
+        protected override async Task GridRowSelectedAsync(Grid grid)
+        {
+            if (grid == GridLoginRole)
+            {
+                await GridLoginRolePermission.LoadAsync();
+            }
+        }
+
+        protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
+        {
+            if (grid == GridLoginRolePermission)
+            {
+                var loginRolePermissionDisplay = (LoginRolePermissionDisplay)rowNew;
+                var loginRolePermission = new LoginRolePermission();
+                Data.RowCopy(loginRolePermissionDisplay, loginRolePermission);
+
+                await Data.UpsertAsync(loginRolePermission, new string[] { nameof(LoginRolePermission.LoginRoleId), nameof(LoginRolePermission.LoginPermissionId) });
+                return true;
+            }
+            return false;
+        }
+
         protected override IQueryable GridQuery(Grid grid)
         {
             if (grid == GridLoginRole)
@@ -59,7 +80,7 @@
             }
             if (grid == GridLoginRolePermission)
             {
-                return Data.Query<LoginRolePermissionDisplay>().OrderBy(item => item.LoginRoleName).ThenBy(item => item.LoginPermissionName);
+                return Data.Query<LoginRolePermissionDisplay>().Where(item => item.LoginRoleId == ((LoginRole)GridLoginRole.RowSelected).Id);
             }
             return base.GridQuery(grid);
         }

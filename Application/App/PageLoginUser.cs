@@ -16,11 +16,11 @@
 
             new Html(DivContainer) { TextHtml = "<h1>User <i class='fas fa-user'></i></h1>" };
             GridLoginUser = new Grid(DivContainer);
-            await GridLoginUser.LoadAsync();
 
             new Html(DivContainer) { TextHtml = "<h1>User <i class='fas fa-user'></i> to Role <i class='fas fa-hat-cowboy'></i> Mapping</h1>" };
             GridLoginUserRole = new Grid(DivContainer);
-            await GridLoginUserRole.LoadAsync();
+
+            await GridLoginUser.LoadAsync();
         }
 
         public Div DivContainer;
@@ -28,6 +28,20 @@
         public Grid GridLoginUser;
 
         public Grid GridLoginUserRole;
+
+        protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
+        {
+            if (grid == GridLoginUserRole)
+            {
+                var loginUserRoleDisplay = (LoginUserRoleDisplay)rowNew;
+                var loginUserRole = new LoginUserRole();
+                Data.RowCopy(loginUserRoleDisplay, loginUserRole);
+
+                await Data.UpsertAsync(loginUserRole, new string[] { nameof(LoginUserRole.LoginUserId), nameof(LoginUserRole.LoginRoleId) });
+                return true;
+            }
+            return false;
+        }
 
         protected override void GridCellAnnotation(Grid grid, string fieldName, Row row, GridCellAnnotationResult result)
         {
@@ -45,9 +59,17 @@
             }
             if (grid == GridLoginUserRole)
             {
-                return Data.Query<LoginUserRoleDisplay>();
+                return Data.Query<LoginUserRoleDisplay>().Where(item => item.LoginUserId == ((LoginUser)GridLoginUser.RowSelected).Id);
             }
             return base.GridQuery(grid);
+        }
+
+        protected override async Task GridRowSelectedAsync(Grid grid)
+        {
+            if (grid == GridLoginUser)
+            {
+                await GridLoginUserRole.LoadAsync();
+            }
         }
     }
 }
