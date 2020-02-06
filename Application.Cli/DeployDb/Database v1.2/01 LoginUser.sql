@@ -105,10 +105,10 @@ FROM
 GO
 CREATE VIEW Demo.LoginUserRoleDisplay AS
 SELECT
-	LoginUser.Id AS LoginUserId,
-	LoginUser.Name AS LoginUserName,
-	LoginRole.Id AS LoginRoleId,
-	LoginRole.Name AS LoginRoleName,
+	LoginUser.Id AS UserId,
+	LoginUser.Name AS UserName,
+	LoginRole.Id AS RoleId,
+	LoginRole.Name AS RoleName,
 	(SELECT LoginUserRole.IsActive FROM Demo.LoginUserRole LoginUserRole WHERE LoginUserRole.UserId = LoginUser.Id AND LoginUserRole.RoleId = LoginRole.Id) AS IsActive
 FROM
 	Demo.LoginUser LoginUser,
