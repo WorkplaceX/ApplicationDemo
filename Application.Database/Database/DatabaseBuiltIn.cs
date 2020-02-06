@@ -32,7 +32,7 @@ namespace DatabaseBuiltIn.Demo
 
     public static class LoginPermissionBuiltInTableApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Guest")]Guest = 1, [IdNameEnum("Administrator")]Administrator = 2, [IdNameEnum("Developer")]Developer = 3, [IdNameEnum("Calendar Modify")]CalendarModify = 4, [IdNameEnum("Roadmap Modify")]RoadmapModify = 5, [IdNameEnum("Language Modify")]LanguageModify = 6, [IdNameEnum("AirportPage Show")]AirportPageShow = 7 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Guest")]Guest = 1, [IdNameEnum("Administrator")]Administrator = 2, [IdNameEnum("Developer")]Developer = 3 }
 
         public static LoginPermissionBuiltIn Row(IdNameEnum value)
         {
@@ -47,10 +47,6 @@ namespace DatabaseBuiltIn.Demo
                 result.Add(new LoginPermissionBuiltIn() { Id = 1, IdName = "Guest", Name = "Guest", Description = "Guest permission", IsBuiltIn = true, IsExist = true });
                 result.Add(new LoginPermissionBuiltIn() { Id = 2, IdName = "Administrator", Name = "Administrator", Description = "Administrator permission", IsBuiltIn = true, IsExist = true });
                 result.Add(new LoginPermissionBuiltIn() { Id = 3, IdName = "Developer", Name = "Developer", Description = "Developer permission", IsBuiltIn = true, IsExist = true });
-                result.Add(new LoginPermissionBuiltIn() { Id = 4, IdName = "Calendar Modify", Name = "Calendar Modify", Description = "Allows user to modify the calendar.", IsBuiltIn = false, IsExist = true });
-                result.Add(new LoginPermissionBuiltIn() { Id = 5, IdName = "Roadmap Modify", Name = "Roadmap Modify", Description = "Allows user to modify the development roadmap.", IsBuiltIn = false, IsExist = true });
-                result.Add(new LoginPermissionBuiltIn() { Id = 6, IdName = "Language Modify", Name = "Language Modify", Description = "Allows user to add new languages.", IsBuiltIn = false, IsExist = true });
-                result.Add(new LoginPermissionBuiltIn() { Id = 7, IdName = "AirportPage Show", Name = "AirportPage Show", Description = "Allows user to see airport page.", IsBuiltIn = false, IsExist = true });
                 return result;
             }
         }

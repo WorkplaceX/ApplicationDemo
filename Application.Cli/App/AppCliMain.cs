@@ -59,10 +59,10 @@
             list.Add(GenerateBuiltInItem.Create(navigationList));
 
             // LoginPermission
-            var loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>()); // .Where(item => item.IsBuiltIn == true && item.IsExist == true));
+            var loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist));
             list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: true));
-            // loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist == true));
-            // list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: false));
+            loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist));
+            list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: false));
 
             // LoginRole
             var loginRoleList = Data.Select(Data.Query<LoginRoleBuiltIn>());
@@ -118,6 +118,7 @@
 
             // LoginPermission
             list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplication.RowList, nameof(LoginPermissionBuiltIn.Name), "Login"));
+            // list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplicationCli.RowList, nameof(LoginPermissionBuiltIn.Name), "Login"));
 
             // LoginRole
             list.Add(DeployDbBuiltInItem.Create(LoginRoleBuiltInTableApplicationCli.RowList, nameof(LoginRoleBuiltIn.Name), "Login"));

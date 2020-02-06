@@ -77,6 +77,22 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
+    public static class LoginPermissionBuiltInTableApplicationCli
+    {
+        public static List<LoginPermissionBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<LoginPermissionBuiltIn>();
+                result.Add(new LoginPermissionBuiltIn() { Id = 4, IdName = "Calendar Modify", Name = "Calendar Modify", Description = "Allows user to modify the calendar.", IsBuiltIn = false, IsExist = true });
+                result.Add(new LoginPermissionBuiltIn() { Id = 5, IdName = "Roadmap Modify", Name = "Roadmap Modify", Description = "Allows user to modify the development roadmap.", IsBuiltIn = false, IsExist = true });
+                result.Add(new LoginPermissionBuiltIn() { Id = 6, IdName = "Language Modify", Name = "Language Modify", Description = "Allows user to add new languages.", IsBuiltIn = false, IsExist = true });
+                result.Add(new LoginPermissionBuiltIn() { Id = 7, IdName = "AirportPage Show", Name = "AirportPage Show", Description = "Allows user to see airport page.", IsBuiltIn = false, IsExist = true });
+                return result;
+            }
+        }
+    }
+
     public static class LoginRoleBuiltInTableApplicationCli
     {
         public static List<LoginRoleBuiltIn> RowList
