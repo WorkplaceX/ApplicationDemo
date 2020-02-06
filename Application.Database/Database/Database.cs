@@ -106,10 +106,10 @@ namespace Database.Demo
         public string Description { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool? IsBuiltIn { get; set; }
+        public bool IsBuiltIn { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool? IsExist { get; set; }
+        public bool IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginPermissionBuiltIn")]
@@ -128,10 +128,10 @@ namespace Database.Demo
         public string Description { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool? IsBuiltIn { get; set; }
+        public bool IsBuiltIn { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool? IsExist { get; set; }
+        public bool IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginRole")]
@@ -239,10 +239,10 @@ namespace Database.Demo
         public string Password { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool? IsBuiltIn { get; set; }
+        public bool IsBuiltIn { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool? IsExist { get; set; }
+        public bool IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginUserBuiltIn")]
@@ -261,10 +261,10 @@ namespace Database.Demo
         public string Password { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool? IsBuiltIn { get; set; }
+        public bool IsBuiltIn { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool? IsExist { get; set; }
+        public bool IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginUserPermissionDisplay")]

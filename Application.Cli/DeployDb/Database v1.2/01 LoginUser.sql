@@ -5,8 +5,8 @@ CREATE TABLE Demo.LoginUser
 	Id INT PRIMARY KEY IDENTITY,
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Password NVARCHAR(256),
-	IsBuiltIn BIT, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
-	IsExist BIT,
+	IsBuiltIn BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
+	IsExist BIT NOT NULL,
 )
 
 GO
@@ -47,8 +47,8 @@ CREATE TABLE Demo.LoginPermission
 	Id INT PRIMARY KEY IDENTITY,
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Description NVARCHAR(256),
-	IsBuiltIn BIT, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
-	IsExist BIT,
+	IsBuiltIn BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
+	IsExist BIT NOT NULL,
 )
 
 GO
