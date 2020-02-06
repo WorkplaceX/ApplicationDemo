@@ -104,6 +104,12 @@ namespace Database.Demo
 
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool? IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool? IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginPermissionBuiltIn")]
@@ -120,6 +126,12 @@ namespace Database.Demo
 
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool? IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool? IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginRole")]
@@ -225,6 +237,12 @@ namespace Database.Demo
 
         [SqlField("Password", FrameworkTypeEnum.Nvarcahr)]
         public string Password { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool? IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool? IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginUserBuiltIn")]
@@ -241,6 +259,12 @@ namespace Database.Demo
 
         [SqlField("Password", FrameworkTypeEnum.Nvarcahr)]
         public string Password { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool? IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool? IsExist { get; set; }
     }
 
     [SqlTable("Demo", "LoginUserPermissionDisplay")]

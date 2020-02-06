@@ -59,8 +59,10 @@
             list.Add(GenerateBuiltInItem.Create(navigationList));
 
             // LoginPermission
-            var loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>());
+            var loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>()); // .Where(item => item.IsBuiltIn == true && item.IsExist == true));
             list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: true));
+            // loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist == true));
+            // list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: false));
 
             // LoginRole
             var loginRoleList = Data.Select(Data.Query<LoginRoleBuiltIn>());

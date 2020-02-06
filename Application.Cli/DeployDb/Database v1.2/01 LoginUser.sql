@@ -5,6 +5,8 @@ CREATE TABLE Demo.LoginUser
 	Id INT PRIMARY KEY IDENTITY,
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Password NVARCHAR(256),
+	IsBuiltIn BIT, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
+	IsExist BIT,
 )
 
 GO
@@ -13,7 +15,9 @@ SELECT
 	LoginUser.Id,
 	LoginUser.Name AS IdName,
 	LoginUser.Name,
-	LoginUser.Password
+	LoginUser.Password,
+	LoginUser.IsBuiltIn,
+	LoginUser.IsExist
 FROM
 	Demo.LoginUser LoginUser
 
@@ -43,6 +47,8 @@ CREATE TABLE Demo.LoginPermission
 	Id INT PRIMARY KEY IDENTITY,
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Description NVARCHAR(256),
+	IsBuiltIn BIT, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
+	IsExist BIT,
 )
 
 GO
@@ -51,11 +57,13 @@ SELECT
 	LoginPermission.Id,
 	LoginPermission.Name AS IdName,
 	LoginPermission.Name,
-	LoginPermission.Description
+	LoginPermission.Description,
+	LoginPermission.IsBuiltIn,
+	LoginPermission.IsExist
 FROM
 	Demo.LoginPermission LoginPermission
 
-/* User to Role */
+/* User to Role mapping */
 GO
 CREATE TABLE Demo.LoginUserRole
 (
@@ -78,7 +86,7 @@ SELECT
 FROM
 	Demo.LoginUserRole LoginUserRole
 
-/* Role to Permission */
+/* Role to Permission mapping */
 GO
 CREATE TABLE Demo.LoginRolePermission
 (
@@ -101,7 +109,7 @@ SELECT
 FROM
 	Demo.LoginRolePermission LoginRolePermission
 
-/* User to Role Display */
+/* User to Role mapping Display */
 GO
 CREATE VIEW Demo.LoginUserRoleDisplay AS
 SELECT
@@ -114,7 +122,7 @@ FROM
 	Demo.LoginUser LoginUser,
 	Demo.LoginRole LoginRole
 
-/* Role to Permission Display */
+/* Role to Permission mapping Display */
 GO
 CREATE VIEW Demo.LoginRolePermissionDisplay AS
 SELECT
@@ -129,7 +137,7 @@ FROM
 	Demo.LoginRole LoginRole,
 	Demo.LoginPermission LoginPermission
 
-/* User to Permission Display */
+/* User to Permission mapping Display */
 GO
 CREATE VIEW Demo.LoginUserPermissionDisplay AS
 SELECT DISTINCT
