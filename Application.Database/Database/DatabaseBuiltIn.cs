@@ -3,10 +3,19 @@
 namespace DatabaseBuiltIn.Demo
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using Framework.DataAccessLayer;
     using Database.Demo;
 
     public static class LanguageBuiltInTableApplication
     {
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("German")]German = 1, [IdNameEnum("French")]French = 2, [IdNameEnum("English")]English = 3, [IdNameEnum("Italian")]Italian = 4 }
+
+        public static LanguageBuiltIn Row(IdNameEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
         public static List<LanguageBuiltIn> RowList
         {
             get
@@ -23,6 +32,13 @@ namespace DatabaseBuiltIn.Demo
 
     public static class LoginPermissionBuiltInTableApplication
     {
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Calendar Modify")]CalendarModify = 1, [IdNameEnum("Roadmap Modify")]RoadmapModify = 2, [IdNameEnum("Language Modify")]LanguageModify = 3, [IdNameEnum("AirportPage Show")]AirportPageShow = 4 }
+
+        public static LoginPermissionBuiltIn Row(IdNameEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
         public static List<LoginPermissionBuiltIn> RowList
         {
             get

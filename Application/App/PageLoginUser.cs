@@ -1,6 +1,7 @@
 ﻿namespace Application
 {
     using Database.Demo;
+    using DatabaseBuiltIn.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
     using System.Linq;
@@ -20,6 +21,10 @@
             new Html(DivContainer) { TextHtml = "<h1>User <i class='fas fa-user'></i> to Role <i class='fas fa-hat-cowboy'></i> Mapping</h1>" };
             GridLoginUserRole = new Grid(DivContainer);
 
+            new Html(DivContainer) { TextHtml = "<h1>Permission <i class='fas fa-key'></i></h1>" };
+            new Html(DivContainer) { TextHtml = "User has the following permissions:" };
+            GridLoginUserPermission = new Grid(DivContainer);
+
             await GridLoginUser.LoadAsync();
         }
 
@@ -28,6 +33,8 @@
         public Grid GridLoginUser;
 
         public Grid GridLoginUserRole;
+
+        public Grid GridLoginUserPermission;
 
         protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
         {
@@ -61,6 +68,10 @@
             {
                 return Data.Query<LoginUserRoleDisplay>().Where(item => item.LoginUserId == ((LoginUser)GridLoginUser.RowSelected).Id);
             }
+            if (grid == GridLoginUserPermission)
+            {
+                return Data.Query<LoginUserPermissionDisplay>().Where(item => item.LoginUserId == ((LoginUser)GridLoginUser.RowSelected).Id);
+            }
             return base.GridQuery(grid);
         }
 
@@ -68,7 +79,8 @@
         {
             if (grid == GridLoginUser)
             {
-                await GridLoginUserRole.LoadAsync();
+                // Load detail data grids
+                await Task.WhenAll(GridLoginUserRole.LoadAsync(), GridLoginUserPermission.LoadAsync());
             }
         }
     }
