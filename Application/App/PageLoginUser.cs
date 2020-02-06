@@ -44,7 +44,7 @@
                 var loginUserRole = new LoginUserRole();
                 Data.RowCopy(loginUserRoleDisplay, loginUserRole);
 
-                await Data.UpsertAsync(loginUserRole, new string[] { nameof(LoginUserRole.LoginUserId), nameof(LoginUserRole.LoginRoleId) });
+                await Data.UpsertAsync(loginUserRole, new string[] { nameof(LoginUserRole.UserId), nameof(LoginUserRole.RoleId) });
                 return true;
             }
             return false;
@@ -66,11 +66,11 @@
             }
             if (grid == GridLoginUserRole)
             {
-                return Data.Query<LoginUserRoleDisplay>().Where(item => item.LoginUserId == ((LoginUser)GridLoginUser.RowSelected).Id);
+                return Data.Query<LoginUserRoleDisplay>().Where(item => item.UserId == ((LoginUser)GridLoginUser.RowSelected).Id);
             }
             if (grid == GridLoginUserPermission)
             {
-                return Data.Query<LoginUserPermissionDisplay>().Where(item => item.LoginUserId == ((LoginUser)GridLoginUser.RowSelected).Id);
+                return Data.Query<LoginUserPermissionDisplay>().Where(item => item.UserId == ((LoginUser)GridLoginUser.RowSelected).Id);
             }
             return base.GridQuery(grid);
         }

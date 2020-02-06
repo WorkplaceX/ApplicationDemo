@@ -157,11 +157,11 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
-        public int LoginRoleId { get; set; }
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
 
-        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
-        public int LoginPermissionId { get; set; }
+        [SqlField("PermissionId", FrameworkTypeEnum.Int)]
+        public int PermissionId { get; set; }
 
         [SqlField("IsActive", FrameworkTypeEnum.Bit)]
         public bool? IsActive { get; set; }
@@ -173,17 +173,17 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
-        public int LoginRoleId { get; set; }
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
 
-        [SqlField("LoginRoleIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginRoleIdName { get; set; }
+        [SqlField("RoleIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoleIdName { get; set; }
 
-        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
-        public int LoginPermissionId { get; set; }
+        [SqlField("PermissionId", FrameworkTypeEnum.Int)]
+        public int PermissionId { get; set; }
 
-        [SqlField("LoginPermissionIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginPermissionIdName { get; set; }
+        [SqlField("PermissionIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string PermissionIdName { get; set; }
 
         [SqlField("IsActive", FrameworkTypeEnum.Bit)]
         public bool? IsActive { get; set; }
@@ -192,23 +192,23 @@ namespace Database.Demo
     [SqlTable("Demo", "LoginRolePermissionDisplay")]
     public class LoginRolePermissionDisplay : Row
     {
-        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
-        public int LoginRoleId { get; set; }
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
 
-        [SqlField("LoginRoleName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginRoleName { get; set; }
+        [SqlField("RoleName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoleName { get; set; }
 
-        [SqlField("LoginRoleDescription", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginRoleDescription { get; set; }
+        [SqlField("RoleDescription", FrameworkTypeEnum.Nvarcahr)]
+        public string RoleDescription { get; set; }
 
-        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
-        public int LoginPermissionId { get; set; }
+        [SqlField("PermissionId", FrameworkTypeEnum.Int)]
+        public int PermissionId { get; set; }
 
-        [SqlField("LoginPermissionName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginPermissionName { get; set; }
+        [SqlField("PermissionName", FrameworkTypeEnum.Nvarcahr)]
+        public string PermissionName { get; set; }
 
-        [SqlField("LoginPermissionDescription", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginPermissionDescription { get; set; }
+        [SqlField("PermissionDescription", FrameworkTypeEnum.Nvarcahr)]
+        public string PermissionDescription { get; set; }
 
         [SqlField("IsActive", FrameworkTypeEnum.Bit)]
         public bool? IsActive { get; set; }
@@ -246,17 +246,17 @@ namespace Database.Demo
     [SqlTable("Demo", "LoginUserPermissionDisplay")]
     public class LoginUserPermissionDisplay : Row
     {
-        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
-        public int LoginUserId { get; set; }
+        [SqlField("UserId", FrameworkTypeEnum.Int)]
+        public int UserId { get; set; }
 
-        [SqlField("LoginUserName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginUserName { get; set; }
+        [SqlField("UserName", FrameworkTypeEnum.Nvarcahr)]
+        public string UserName { get; set; }
 
-        [SqlField("LoginPermissionId", FrameworkTypeEnum.Int)]
-        public int LoginPermissionId { get; set; }
+        [SqlField("PermissionId", FrameworkTypeEnum.Int)]
+        public int PermissionId { get; set; }
 
-        [SqlField("LoginPermissionName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginPermissionName { get; set; }
+        [SqlField("PermissionName", FrameworkTypeEnum.Nvarcahr)]
+        public string PermissionName { get; set; }
     }
 
     [SqlTable("Demo", "LoginUserRole")]
@@ -265,11 +265,11 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
-        public int LoginUserId { get; set; }
+        [SqlField("UserId", FrameworkTypeEnum.Int)]
+        public int UserId { get; set; }
 
-        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
-        public int LoginRoleId { get; set; }
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
 
         [SqlField("IsActive", FrameworkTypeEnum.Bit)]
         public bool? IsActive { get; set; }
@@ -281,17 +281,17 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
-        public int LoginUserId { get; set; }
+        [SqlField("UserId", FrameworkTypeEnum.Int)]
+        public int UserId { get; set; }
 
-        [SqlField("LoginUserIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginUserIdName { get; set; }
+        [SqlField("UserIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string UserIdName { get; set; }
 
-        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
-        public int LoginRoleId { get; set; }
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
 
-        [SqlField("LoginRoleIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginRoleIdName { get; set; }
+        [SqlField("RoleIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoleIdName { get; set; }
 
         [SqlField("IsActive", FrameworkTypeEnum.Bit)]
         public bool? IsActive { get; set; }
@@ -300,17 +300,17 @@ namespace Database.Demo
     [SqlTable("Demo", "LoginUserRoleDisplay")]
     public class LoginUserRoleDisplay : Row
     {
-        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
-        public int LoginUserId { get; set; }
+        [SqlField("UserId", FrameworkTypeEnum.Int)]
+        public int UserId { get; set; }
 
-        [SqlField("LoginUserName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginUserName { get; set; }
+        [SqlField("UserName", FrameworkTypeEnum.Nvarcahr)]
+        public string UserName { get; set; }
 
-        [SqlField("LoginRoleId", FrameworkTypeEnum.Int)]
-        public int LoginRoleId { get; set; }
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
 
-        [SqlField("LoginRoleName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginRoleName { get; set; }
+        [SqlField("RoleName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoleName { get; set; }
 
         [SqlField("IsActive", FrameworkTypeEnum.Bit)]
         public bool? IsActive { get; set; }

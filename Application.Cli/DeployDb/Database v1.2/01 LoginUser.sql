@@ -60,20 +60,20 @@ GO
 CREATE TABLE Demo.LoginUserRole
 (
 	Id INT PRIMARY KEY IDENTITY,
-	LoginUserId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginUser(Id),
-	LoginRoleId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginRole(Id),
+	UserId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginUser(Id),
+	RoleId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginRole(Id),
 	IsActive BIT
-	INDEX IX_LoginUserRole UNIQUE (LoginUserId, LoginRoleId)
+	INDEX IX_LoginUserRole UNIQUE (UserId, RoleId)
 )
 
 GO
 CREATE VIEW Demo.LoginUserRoleBuiltIn AS
 SELECT
 	LoginUserRole.Id,
-	LoginUserRole.LoginUserId,
-	(SELECT Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = LoginUserRole.LoginUserId) AS LoginUserIdName,
-	LoginUserRole.LoginRoleId,
-	(SELECT Name FROM Demo.LoginRole LoginRole WHERE LoginRole.Id = LoginUserRole.LoginRoleId) AS LoginRoleIdName,
+	LoginUserRole.UserId,
+	(SELECT Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = LoginUserRole.UserId) AS UserIdName,
+	LoginUserRole.RoleId,
+	(SELECT Name FROM Demo.LoginRole LoginRole WHERE LoginRole.Id = LoginUserRole.RoleId) AS RoleIdName,
 	LoginUserRole.IsActive
 FROM
 	Demo.LoginUserRole LoginUserRole
@@ -83,20 +83,20 @@ GO
 CREATE TABLE Demo.LoginRolePermission
 (
 	Id INT PRIMARY KEY IDENTITY,
-	LoginRoleId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginRole(Id),
-	LoginPermissionId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginPermission(Id),
+	RoleId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginRole(Id),
+	PermissionId INT NOT NULL FOREIGN KEY REFERENCES Demo.LoginPermission(Id),
 	IsActive BIT
-	INDEX IX_LoginRolePermission UNIQUE (LoginRoleId, LoginPermissionId)
+	INDEX IX_LoginRolePermission UNIQUE (RoleId, PermissionId)
 )
 
 GO
 CREATE VIEW Demo.LoginRolePermissionBuiltIn AS
 SELECT
 	LoginRolePermission.Id,
-	LoginRolePermission.LoginRoleId,
-	(SELECT Name FROM Demo.LoginRole LoginRole WHERE LoginRole.Id = LoginRolePermission.LoginRoleId) AS LoginRoleIdName,
-	LoginRolePermission.LoginPermissionId,
-	(SELECT Name FROM Demo.LoginPermission LoginPermission WHERE LoginPermission.Id = LoginRolePermission.LoginPermissionId) AS LoginPermissionIdName,
+	LoginRolePermission.RoleId,
+	(SELECT Name FROM Demo.LoginRole LoginRole WHERE LoginRole.Id = LoginRolePermission.RoleId) AS RoleIdName,
+	LoginRolePermission.PermissionId,
+	(SELECT Name FROM Demo.LoginPermission LoginPermission WHERE LoginPermission.Id = LoginRolePermission.PermissionId) AS PermissionIdName,
 	LoginRolePermission.IsActive
 FROM
 	Demo.LoginRolePermission LoginRolePermission
@@ -109,7 +109,7 @@ SELECT
 	LoginUser.Name AS LoginUserName,
 	LoginRole.Id AS LoginRoleId,
 	LoginRole.Name AS LoginRoleName,
-	(SELECT LoginUserRole.IsActive FROM Demo.LoginUserRole LoginUserRole WHERE LoginUserRole.LoginUserId = LoginUser.Id AND LoginUserRole.LoginRoleId = LoginRole.Id) AS IsActive
+	(SELECT LoginUserRole.IsActive FROM Demo.LoginUserRole LoginUserRole WHERE LoginUserRole.UserId = LoginUser.Id AND LoginUserRole.RoleId = LoginRole.Id) AS IsActive
 FROM
 	Demo.LoginUser LoginUser,
 	Demo.LoginRole LoginRole
@@ -118,13 +118,13 @@ FROM
 GO
 CREATE VIEW Demo.LoginRolePermissionDisplay AS
 SELECT
-	LoginRole.Id AS LoginRoleId,
-	LoginRole.Name AS LoginRoleName,
-	LoginRole.Description AS LoginRoleDescription,
-	LoginPermission.Id AS LoginPermissionId,
-	LoginPermission.Name AS LoginPermissionName,
-	LoginPermission.Description AS LoginPermissionDescription,
-	(SELECT LoginRolePermission.IsActive FROM Demo.LoginRolePermission LoginRolePermission WHERE LoginRolePermission.LoginRoleId = LoginRole.Id AND LoginRolePermission.LoginPermissionId = LoginPermission.Id) AS IsActive
+	LoginRole.Id AS RoleId,
+	LoginRole.Name AS RoleName,
+	LoginRole.Description AS RoleDescription,
+	LoginPermission.Id AS PermissionId,
+	LoginPermission.Name AS PermissionName,
+	LoginPermission.Description AS PermissionDescription,
+	(SELECT LoginRolePermission.IsActive FROM Demo.LoginRolePermission LoginRolePermission WHERE LoginRolePermission.RoleId = LoginRole.Id AND LoginRolePermission.PermissionId = LoginPermission.Id) AS IsActive
 FROM
 	Demo.LoginRole LoginRole,
 	Demo.LoginPermission LoginPermission
@@ -133,10 +133,10 @@ FROM
 GO
 CREATE VIEW Demo.LoginUserPermissionDisplay AS
 SELECT DISTINCT
-	LoginUser.Id AS LoginUserId,
-	LoginUser.Name AS LoginUserName,
-	LoginPermission.Id AS LoginPermissionId,
-	LoginPermission.Name AS LoginPermissionName
+	LoginUser.Id AS UserId,
+	LoginUser.Name AS UserName,
+	LoginPermission.Id AS PermissionId,
+	LoginPermission.Name AS PermissionName
 FROM
 	Demo.LoginUser LoginUser,
 	Demo.LoginUserRole LoginUserRole,
@@ -144,9 +144,9 @@ FROM
 	Demo.LoginRolePermission LoginRolePermission,
 	Demo.LoginPermission LoginPermission
 WHERE
-	LoginUserRole.LoginUserId = LoginUser.Id AND
-	LoginUserRole.LoginRoleId = LoginRole.Id AND
+	LoginUserRole.UserId = LoginUser.Id AND
+	LoginUserRole.RoleId = LoginRole.Id AND
 	LoginUserRole.IsActive = 1	AND
-	LoginRolePermission.LoginRoleId = LoginRole.Id AND
-	LoginRolePermission.LoginPermissionId = LoginPermission.Id AND
+	LoginRolePermission.RoleId = LoginRole.Id AND
+	LoginRolePermission.PermissionId = LoginPermission.Id AND
 	LoginRolePermission.IsActive = 1
