@@ -37,7 +37,7 @@
         {
             if (grid == GridNavigation)
             {
-                return Data.Query<Navigation>();
+                return Data.Query<Navigation>().OrderBy(item => item.Sort);
             }
             if (grid == GridLanguage)
             {
@@ -50,37 +50,59 @@
         {
             if (grid == GridNavigation)
             {
-                Content.ComponentListClear();
-
                 if (((Navigation)grid.RowSelected).PageName == "Home")
                 {
+                    Content.ComponentListClear();
                     await new PageAirplane(Content).InitAsync();
                     await new PageCountry(Content).InitAsync();
                 }
 
                 if (((Navigation)grid.RowSelected).PageName == "Airport")
                 {
+                    Content.ComponentListClear();
                     await new PageAirport(Content).InitAsync();
                 }
 
                 if (((Navigation)grid.RowSelected).PageName == "About")
                 {
+                    Content.ComponentListClear();
                     await new PageAbout(Content).InitAsync();
                 }
 
                 if (((Navigation)grid.RowSelected).PageName == "Roadmap")
                 {
+                    Content.ComponentListClear();
                     await new PageRoadmap(Content).InitAsync();
                 }
 
                 if (((Navigation)grid.RowSelected).PageName == "LoginUser")
                 {
+                    Content.ComponentListClear();
                     await new PageLoginUser(Content).InitAsync();
                 }
 
                 if (((Navigation)grid.RowSelected).PageName == "LoginRole")
                 {
+                    Content.ComponentListClear();
                     await new PageLoginRole(Content).InitAsync();
+                }
+
+                if (((Navigation)grid.RowSelected).Name == "LoginSignIn")
+                {
+                    Content.ComponentListClear();
+                    await new PageLoginSignIn(Content).InitAsync();
+                }
+
+                if (((Navigation)grid.RowSelected).Name == "LoginSignOut")
+                {
+                    Content.ComponentListClear();
+                    await new PageLoginSignOut(Content).InitAsync();
+                }
+
+                if (((Navigation)grid.RowSelected).Name == "LoginProfile")
+                {
+                    Content.ComponentListClear();
+                    await new PageLoginProfile(Content).InitAsync();
                 }
             }
         }
