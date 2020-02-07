@@ -65,18 +65,16 @@ namespace DatabaseBuiltIn.Demo
             {
                 var result = new List<NavigationBuiltIn>();
                 result.Add(new NavigationBuiltIn() { Id = 1, IdName = "Home", ParentId = null, ParentIdName = null, Name = "Home", TextHtml = "<i class=\"fas fa-home\"></i> Home", PageName = null, Sort = 1 });
-                result.Add(new NavigationBuiltIn() { Id = 2, IdName = "Contact", ParentId = null, ParentIdName = null, Name = "Contact", TextHtml = "<i class=\"fas fa-address-card\"></i> Contact", PageName = null, Sort = 9.5 });
                 result.Add(new NavigationBuiltIn() { Id = 3, IdName = "About", ParentId = null, ParentIdName = null, Name = "About", TextHtml = "<i class=\"fas fa-bullhorn\"></i> About", PageName = "About", Sort = 9.6 });
                 result.Add(new NavigationBuiltIn() { Id = 4, IdName = "LoginUser", ParentId = null, ParentIdName = null, Name = "LoginUser", TextHtml = "<i class=\"fas fa-user\"></i> User", PageName = null, Sort = 10 });
-                result.Add(new NavigationBuiltIn() { Id = 5, IdName = "Calendar", ParentId = null, ParentIdName = null, Name = "Calendar", TextHtml = "<i class=\"far fa-calendar\"></i> Calendar", PageName = null, Sort = 8 });
                 result.Add(new NavigationBuiltIn() { Id = 6, IdName = "Roadmap", ParentId = null, ParentIdName = null, Name = "Roadmap", TextHtml = "<i class=\"fas fa-road\"></i> Roadmap", PageName = "Roadmap", Sort = 9 });
                 result.Add(new NavigationBuiltIn() { Id = 7, IdName = "LoginRoleManagement", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginRoleManagement", TextHtml = "<i class=\'fas fa-hat-cowboy\'></i> Role Management", PageName = "LoginRole", Sort = 2.5 });
                 result.Add(new NavigationBuiltIn() { Id = 8, IdName = "Airport", ParentId = 1, ParentIdName = "Home", Name = "Airport", TextHtml = "<i class=\"fas fa-plane-departure\"></i> Airport", PageName = "Airport", Sort = 0.1 });
                 result.Add(new NavigationBuiltIn() { Id = 9, IdName = "LoginSignIn", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginSignIn", TextHtml = "<i class=\"fas fa-sign-in-alt\"></i> Sign In", PageName = null, Sort = 1 });
                 result.Add(new NavigationBuiltIn() { Id = 10, IdName = "LoginSignOut", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginSignOut", TextHtml = "<i class=\"fas fa-sign-out-alt\"></i> Sign Out", PageName = null, Sort = 3 });
                 result.Add(new NavigationBuiltIn() { Id = 11, IdName = "LoginProfile", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginProfile", TextHtml = "<i class=\"far fa-id-card\"></i> Profile", PageName = null, Sort = 2 });
-                result.Add(new NavigationBuiltIn() { Id = 13, IdName = "LoginUserManagement", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginUserManagement", TextHtml = "<i class=\"fas fa-user\"></i> User Management", PageName = "LoginUser", Sort = 2.4 });
-                result.Add(new NavigationBuiltIn() { Id = 14, IdName = "Airplane", ParentId = 1, ParentIdName = "Home", Name = "Airplane", TextHtml = "<i class=\"fas fa-plane\"></i> Airplane", PageName = "Home", Sort = 0.2 });
+                result.Add(new NavigationBuiltIn() { Id = 12, IdName = "LoginUserManagement", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginUserManagement", TextHtml = "<i class=\"fas fa-user\"></i> User Management", PageName = "LoginUser", Sort = 2.4 });
+                result.Add(new NavigationBuiltIn() { Id = 13, IdName = "Airplane", ParentId = 1, ParentIdName = "Home", Name = "Airplane", TextHtml = "<i class=\"fas fa-plane\"></i> Airplane", PageName = "Home", Sort = 0.2 });
                 return result;
             }
         }
