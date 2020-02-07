@@ -35,7 +35,7 @@
         /// </summary>
         protected override void InitConfigCli(ConfigCli configCli)
         {
-            configCli.WebsiteList.Add(new ConfigCliWebsite()
+            configCli.EnvironmentGet().WebsiteList.Add(new ConfigCliWebsite()
             {
                 AppTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace,
                 FolderNameServer = "Application.Server/Framework/Application.Website/Default/",
