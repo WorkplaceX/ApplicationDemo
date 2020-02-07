@@ -118,7 +118,7 @@
 
             // LoginPermission
             list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplication.RowList, nameof(LoginPermissionBuiltIn.Name), "Login"));
-            // list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplicationCli.RowList, nameof(LoginPermissionBuiltIn.Name), "Login"));
+            list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplicationCli.RowList, nameof(LoginPermissionBuiltIn.Name), "Login"));
 
             // LoginRole
             list.Add(DeployDbBuiltInItem.Create(LoginRoleBuiltInTableApplicationCli.RowList, nameof(LoginRoleBuiltIn.Name), "Login"));
