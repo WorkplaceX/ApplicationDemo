@@ -45,6 +45,7 @@
                 else
                 {
                     var pageMain = this.ComponentOwner<PageMain>();
+                    pageMain.LoginUser = loginUser;
                     pageMain.LoginUserPermissionDisplayList = await Data.SelectAsync<LoginUserPermissionDisplay>(Data.Query<LoginUserPermissionDisplay>().Where(item => item.UserName == loginUser.Name));
                 }
                 Button.TextHtml = string.Format("User={0};", ((LoginUser)Grid.RowSelected).Name);

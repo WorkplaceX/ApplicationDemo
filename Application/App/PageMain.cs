@@ -44,6 +44,20 @@
         /// </summary>
         public List<LoginUserPermissionDisplay> LoginUserPermissionDisplayList;
 
+        protected override void NavbarTextHtml(BootstrapNavbar bootstrapNavbar, Grid grid, Row row, ref string result)
+        {
+            if (row is Navigation navigation)
+            {
+                if (navigation.Name == "LoginUser")
+                {
+                    if (LoginUser?.Name != null)
+                    {
+                        result = navigation.TextHtml + " (" + LoginUser.Name + ")";
+                    }
+                }
+            }
+        }
+
         protected override IQueryable GridQuery(Grid grid)
         {
             if (grid == GridNavigation)
