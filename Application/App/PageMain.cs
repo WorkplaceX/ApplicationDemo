@@ -22,7 +22,7 @@
             await GridLanguage.LoadAsync();
 
             NavBar.GridAdd(GridNavigation);
-            NavBar.GridAdd(GridLanguage);
+            NavBar.GridAdd(GridLanguage, isSelectedMode: true);
             NavBar.BrandTextHtml = "Demo<b>App</b>";
         }
 
@@ -44,15 +44,15 @@
         /// </summary>
         public List<LoginUserPermissionDisplay> LoginUserPermissionDisplayList;
 
-        protected override void NavbarTextHtml(BootstrapNavbar bootstrapNavbar, Grid grid, Row row, ref string result)
+        protected override void BootstrapNavbarButtonTextHtml(BootstrapNavbarButtonArgs args, BootstrapNavbarButtonResult result)
         {
-            if (row is Navigation navigation)
+            if (args.Row is Navigation navigation)
             {
                 if (navigation.Name == "LoginUser")
                 {
                     if (LoginUser?.Name != null)
                     {
-                        result = navigation.TextHtml + " (" + LoginUser.Name + ")";
+                        result.TextHtml = navigation.TextHtml + " (" + LoginUser.Name + ")";
                     }
                 }
             }
