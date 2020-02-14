@@ -3,6 +3,7 @@
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -32,6 +33,16 @@
         public Grid GridLanguage;
 
         public Div Content;
+
+        /// <summary>
+        /// Gets LoginUser. Currently singed in user.
+        /// </summary>
+        public LoginUser LoginUser;
+
+        /// <summary>
+        /// Gets LoginUserPermissionDisplayList. Permissions of currently signed in user.
+        /// </summary>
+        public List<LoginUserPermissionDisplay> LoginUserPermissionDisplayList;
 
         protected override IQueryable GridQuery(Grid grid)
         {

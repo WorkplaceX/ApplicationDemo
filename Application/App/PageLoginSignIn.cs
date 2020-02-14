@@ -29,13 +29,26 @@
             return Data.Query<LoginUser>(DatabaseEnum.MemorySingleton);
         }
 
-        protected override Task ProcessAsync()
+        public Html AlertError;
+
+        protected override async Task ProcessAsync()
         {
+            AlertError.ComponentRemove();
             if (Button.IsClick)
             {
-                Button.TextHtml += ".";
+                var loginUserSession = (LoginUser)Grid.RowSelected;
+                var loginUser = (await Data.SelectAsync(Data.Query<LoginUser>().Where(item => item.Name == loginUserSession.Name))).SingleOrDefault();
+                if (loginUser == null)
+                {
+                    this.AlertError = this.BootstrapAlert("Username or password wrong!", BootstrapAlertEnum.Error);
+                }
+                else
+                {
+                    var pageMain = this.ComponentOwner<PageMain>();
+                    pageMain.LoginUserPermissionDisplayList = await Data.SelectAsync<LoginUserPermissionDisplay>(Data.Query<LoginUserPermissionDisplay>().Where(item => item.UserName == loginUser.Name));
+                }
+                Button.TextHtml = string.Format("User={0};", ((LoginUser)Grid.RowSelected).Name);
             }
-            return base.ProcessAsync();
         }
 
         public Div DivContainer;
