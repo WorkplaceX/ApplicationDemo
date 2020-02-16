@@ -3,6 +3,7 @@
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
+    using Framework.Json.Bing;
     using System.Linq;
     using System.Threading.Tasks;
 
