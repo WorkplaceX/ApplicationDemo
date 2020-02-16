@@ -3,6 +3,7 @@
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
+    using Framework.Json.Bootstrap;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -12,11 +13,11 @@
 
         public override async Task InitAsync()
         {
-            DivContainer = new Div(this) { CssClass = "container" };
+            DivContainer = new BootstrapContainer(this);
 
-            DivRow = new DivContainer(DivContainer) { CssClass = "row" };
-            DivColLeft = new Div(DivRow) { CssClass = "col" };
-            DivColRight = new Div(DivRow) { CssClass = "col" };
+            DivRow = new BootstrapRow(DivContainer);
+            DivColLeft = new BootstrapCol(DivRow);
+            DivColRight = new BootstrapCol(DivRow);
 
             new Html(DivColLeft) { TextHtml = "<h1>Role <i class='fas fa-hat-cowboy'></i></h1>" };
             new Html(DivColLeft) { TextHtml = "Define User Roles." };
@@ -32,11 +33,11 @@
             await Task.WhenAll(GridLoginRole.LoadAsync(), GridLoginPermission.LoadAsync());
         }
 
-        public Div DivContainer;
+        public BootstrapContainer DivContainer;
 
-        public DivContainer DivRow;
+        public BootstrapRow DivRow;
 
-        public Div DivColLeft;
+        public BootstrapCol DivColLeft;
         
         public Div DivColRight;
 
