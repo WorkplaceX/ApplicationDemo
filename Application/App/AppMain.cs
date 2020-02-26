@@ -13,18 +13,7 @@
                 this.IsScrollToTop = true;
             }
 
-            bool isDemoPage = false;
-
-            if (isDemoPage == false)
-            {
-                await new PageMain(this).InitAsync();
-                // await new PageAirplane(this).InitAsync();
-                // await new PageCountry(this).InitAsync();
-            }
-            else
-            {
-                await new PageDemo(this).InitAsync();
-            }
+            await new PageMain(this).InitAsync();
 
             this.Button = new Button(this) { TextHtml = "Click" };
             new Button(this) { TextHtml = "Click2" };

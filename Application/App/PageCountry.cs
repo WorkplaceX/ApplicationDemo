@@ -18,11 +18,6 @@
             await new GridCountry(this).LoadAsync();
         }
 
-        protected override IQueryable GridQuery(Grid grid)
-        {
-            return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true);
-        }
-
         private void GridCellAnnotationBool(string fieldName, Row row, Type typeRow, string nameof, GridCellAnnotationResult result)
         {
             if (fieldName == nameof)

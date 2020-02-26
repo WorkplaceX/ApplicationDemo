@@ -18,11 +18,6 @@
             await new GridAirplane(this).LoadAsync();
         }
 
-        protected override IQueryable GridQuery(Grid grid)
-        {
-            return Data.Query<RawWikipediaAircraft>();
-        }
-
         /// <summary>
         /// Add some annotation to the grid data like hyperlink or render as image.
         /// </summary>
