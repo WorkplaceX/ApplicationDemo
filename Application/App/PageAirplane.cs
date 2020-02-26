@@ -15,7 +15,7 @@
             new Html(this) { TextHtml = "<h1>Airplane <i class='fas fa-plane'></i></h1>" };
             new Html(this) { TextHtml = "Browse airplanes from <a href='https://en.wikipedia.org/wiki/List_of_aircraft_type_designators' target='_blank'>wikipedia.org</a> data. On how to convert and import data into sql database see <a href='https://github.com/WorkplaceX/Research/tree/master/Wikipedia' target='_blank'>github.com/WorkplaceX/Research</a>.<br/><br/>" };
 
-            await new Grid(this).LoadAsync();
+            await new GridAirplane(this).LoadAsync();
         }
 
         protected override IQueryable GridQuery(Grid grid)
@@ -46,11 +46,6 @@
             }
         }
 
-        protected override Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
-        {
-            return Task.FromResult(true);
-        }
-
         protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
         {
             if (fieldName == nameof(RawWikipediaAircraft.IataCode))
@@ -63,6 +58,16 @@
         protected override string GridLookupRowSelected(Grid grid)
         {
             return ((CountryDisplayCache)grid.RowSelected).Code;
+        }
+    }
+
+    public class GridAirplane : Grid<RawWikipediaAircraft>
+    {
+        public GridAirplane(ComponentJson owner) : base(owner) { }
+
+        protected override Task<bool> UpdateAsync(RawWikipediaAircraft row, RawWikipediaAircraft rowNew, DatabaseEnum databaseEnum)
+        {
+            return Task.FromResult(true);
         }
     }
 }

@@ -21,14 +21,14 @@
 
             new Html(DivColLeft) { TextHtml = "<h1>Role <i class='fas fa-hat-cowboy'></i></h1>" };
             new Html(DivColLeft) { TextHtml = "Define User Roles." };
-            GridLoginRole = new Grid(DivColLeft);
+            GridLoginRole = new GridLoginRole(DivColLeft);
             new Html(DivColRight) { TextHtml = "<h1>Permission <i class='fas fa-key'></i></h1>" };
             new Html(DivColRight) { TextHtml = "Define Permissions." };
-            GridLoginPermission = new Grid(DivColRight);
+            GridLoginPermission = new GridLoginPermission(DivColRight);
 
             new Html(DivContainer) { TextHtml = "<h1>Role <i class='fas fa-hat-cowboy'></i> to Permission <i class='fas fa-key'></i> Mapping</h1>" };
             new Html(DivContainer) { TextHtml = "Assign Permissions to Roles." };
-            GridLoginRolePermission = new Grid(DivContainer);
+            GridLoginRolePermission = new GridLoginRolePermission(DivContainer);
 
             await Task.WhenAll(GridLoginRole.LoadAsync(), GridLoginPermission.LoadAsync());
         }
@@ -41,49 +41,48 @@
         
         public Div DivColRight;
 
-        public Grid GridLoginRole;
+        public GridLoginRole GridLoginRole;
 
-        public Grid GridLoginPermission;
+        public GridLoginPermission GridLoginPermission;
 
-        public Grid GridLoginRolePermission;
+        public GridLoginRolePermission GridLoginRolePermission;
+    }
 
-        protected override async Task GridRowSelectedAsync(Grid grid)
+    public class GridLoginRole : Grid<LoginRole>
+    {
+        public GridLoginRole(ComponentJson owner) : base(owner) { }
+
+        protected override async Task RowSelectedAsync()
         {
-            if (grid == GridLoginRole)
-            {
-                await GridLoginRolePermission.LoadAsync();
-            }
+            var page = this.ComponentOwner<PageLoginRole>();
+
+            await page.GridLoginRolePermission.LoadAsync();
+        }
+    }
+
+    public class GridLoginPermission : Grid<LoginPermission>
+    {
+        public GridLoginPermission(ComponentJson owner) : base(owner) { }
+    }
+
+    public class GridLoginRolePermission : Grid<LoginRolePermissionDisplay>
+    {
+        public GridLoginRolePermission(ComponentJson owner) : base(owner) { }
+
+        protected override IQueryable<LoginRolePermissionDisplay> Query()
+        {
+            var page = this.ComponentOwner<PageLoginRole>();
+
+            return base.Query().Where(item => item.RoleId == page.GridLoginRole.RowSelected.Id);
         }
 
-        protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
+        protected override async Task<bool> UpdateAsync(LoginRolePermissionDisplay row, LoginRolePermissionDisplay rowNew, DatabaseEnum databaseEnum)
         {
-            if (grid == GridLoginRolePermission)
-            {
-                var loginRolePermissionDisplay = (LoginRolePermissionDisplay)rowNew;
-                var loginRolePermission = new LoginRolePermission();
-                Data.RowCopy(loginRolePermissionDisplay, loginRolePermission);
+            var loginRolePermission = new LoginRolePermission();
+            Data.RowCopy(rowNew, loginRolePermission);
 
-                await Data.UpsertAsync(loginRolePermission, new string[] { nameof(LoginRolePermission.RoleId), nameof(LoginRolePermission.PermissionId) });
-                return true;
-            }
-            return false;
-        }
-
-        protected override IQueryable GridQuery(Grid grid)
-        {
-            if (grid == GridLoginRole)
-            {
-                return Data.Query<LoginRole>();
-            }
-            if (grid == GridLoginPermission)
-            {
-                return Data.Query<LoginPermission>();
-            }
-            if (grid == GridLoginRolePermission)
-            {
-                return Data.Query<LoginRolePermissionDisplay>().Where(item => item.RoleId == ((LoginRole)GridLoginRole.RowSelected).Id);
-            }
-            return base.GridQuery(grid);
+            await Data.UpsertAsync(loginRolePermission, new string[] { nameof(LoginRolePermission.RoleId), nameof(LoginRolePermission.PermissionId) });
+            return true;
         }
     }
 }

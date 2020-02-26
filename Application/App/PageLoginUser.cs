@@ -15,39 +15,25 @@
             DivContainer = new Div(this) { CssClass = "container" };
 
             new Html(DivContainer) { TextHtml = "<h1>User <i class='fas fa-user'></i></h1>" };
-            GridLoginUser = new Grid(DivContainer);
+            GridLoginUser = new GridLoginUser(DivContainer);
 
             new Html(DivContainer) { TextHtml = "<h1>User <i class='fas fa-user'></i> to Role <i class='fas fa-hat-cowboy'></i> Mapping</h1>" };
-            GridLoginUserRole = new Grid(DivContainer);
+            GridLoginUserRole = new GridLoginUserRole(DivContainer);
 
             new Html(DivContainer) { TextHtml = "<h1>Permission <i class='fas fa-key'></i></h1>" };
             new Html(DivContainer) { TextHtml = "User has the following permissions:" };
-            GridLoginUserPermission = new Grid(DivContainer);
+            GridLoginUserPermission = new GridLoginUserPermission(DivContainer);
 
             await GridLoginUser.LoadAsync();
         }
 
         public Div DivContainer;
 
-        public Grid GridLoginUser;
+        public GridLoginUser GridLoginUser;
 
-        public Grid GridLoginUserRole;
+        public GridLoginUserRole GridLoginUserRole;
 
-        public Grid GridLoginUserPermission;
-
-        protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
-        {
-            if (grid == GridLoginUserRole)
-            {
-                var loginUserRoleDisplay = (LoginUserRoleDisplay)rowNew;
-                var loginUserRole = new LoginUserRole();
-                Data.RowCopy(loginUserRoleDisplay, loginUserRole);
-
-                await Data.UpsertAsync(loginUserRole, new string[] { nameof(LoginUserRole.UserId), nameof(LoginUserRole.RoleId) });
-                return true;
-            }
-            return false;
-        }
+        public GridLoginUserPermission GridLoginUserPermission;
 
         protected override void GridCellAnnotation(Grid grid, string fieldName, Row row, GridCellAnnotationResult result)
         {
@@ -56,31 +42,51 @@
                 result.IsPassword = true;
             }
         }
+    }
 
-        protected override IQueryable GridQuery(Grid grid)
+    public class GridLoginUser : Grid<LoginUser>
+    {
+        public GridLoginUser(ComponentJson owner) : base(owner) { }
+
+        protected override async Task RowSelectedAsync()
         {
-            if (grid == GridLoginUser)
-            {
-                return Data.Query<LoginUser>();
-            }
-            if (grid == GridLoginUserRole)
-            {
-                return Data.Query<LoginUserRoleDisplay>().Where(item => item.UserId == ((LoginUser)GridLoginUser.RowSelected).Id);
-            }
-            if (grid == GridLoginUserPermission)
-            {
-                return Data.Query<LoginUserPermissionDisplay>().Where(item => item.UserId == ((LoginUser)GridLoginUser.RowSelected).Id);
-            }
-            return base.GridQuery(grid);
+            var page = this.ComponentOwner<PageLoginUser>();
+
+            // Load detail data grids
+            await Task.WhenAll(page.GridLoginUserRole.LoadAsync(), page.GridLoginUserPermission.LoadAsync());
+        }
+    }
+
+    public class GridLoginUserRole : Grid<LoginUserRoleDisplay>
+    {
+        public GridLoginUserRole(ComponentJson owner) : base(owner) { }
+
+        protected override IQueryable<LoginUserRoleDisplay> Query()
+        {
+            var page = this.ComponentOwner<PageLoginUser>();
+
+            return base.Query().Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
         }
 
-        protected override async Task GridRowSelectedAsync(Grid grid)
+        protected override async Task<bool> UpdateAsync(LoginUserRoleDisplay row, LoginUserRoleDisplay rowNew, DatabaseEnum databaseEnum)
         {
-            if (grid == GridLoginUser)
-            {
-                // Load detail data grids
-                await Task.WhenAll(GridLoginUserRole.LoadAsync(), GridLoginUserPermission.LoadAsync());
-            }
+            var loginUserRole = new LoginUserRole();
+            Data.RowCopy(rowNew, loginUserRole);
+
+            await Data.UpsertAsync(loginUserRole, new string[] { nameof(LoginUserRole.UserId), nameof(LoginUserRole.RoleId) });
+            return true;
+        }
+    }
+
+    public class GridLoginUserPermission : Grid<LoginUserPermissionDisplay>
+    {
+        public GridLoginUserPermission(ComponentJson owner) : base(owner) { }
+
+        protected override IQueryable<LoginUserPermissionDisplay> Query()
+        {
+            var page = this.ComponentOwner<PageLoginUser>();
+
+            return base.Query().Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
         }
     }
 }
