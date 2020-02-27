@@ -18,15 +18,6 @@
             await new GridAirplane(this).LoadAsync();
         }
 
-        protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
-        {
-            if (fieldName == nameof(RawWikipediaAircraft.IataCode))
-            {
-                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code.StartsWith(text == null ? "" : text)));
-            }
-            return base.GridLookupQuery(grid, row, fieldName, text);
-        }
-
         protected override string GridLookupRowSelected(Grid grid)
         {
             return ((CountryDisplayCache)grid.RowSelected).Code;
@@ -61,6 +52,15 @@
             {
                 result.Html = string.Format("<a href='{0}' target='_blank'>{1}", row.ModelImageUrl, "Image");
             }
+        }
+
+        protected override IQueryable LookupQuery(RawWikipediaAircraft row, string fieldNameCSharp, string text)
+        {
+            if (fieldNameCSharp == nameof(RawWikipediaAircraft.IataCode))
+            {
+                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code.StartsWith(text == null ? "" : text)));
+            }
+            return base.LookupQuery(row, fieldNameCSharp, text);
         }
     }
 }
