@@ -76,13 +76,14 @@
             return base.Query().Where(item => item.RoleId == page.GridLoginRole.RowSelected.Id);
         }
 
-        protected override async Task<bool> UpdateAsync(LoginRolePermissionDisplay row, LoginRolePermissionDisplay rowNew, DatabaseEnum databaseEnum)
+        protected override async Task UpdateAsync(LoginRolePermissionDisplay row, LoginRolePermissionDisplay rowNew, DatabaseEnum databaseEnum, UpdateResult result)
         {
             var loginRolePermission = new LoginRolePermission();
             Data.RowCopy(rowNew, loginRolePermission);
 
             await Data.UpsertAsync(loginRolePermission, new string[] { nameof(LoginRolePermission.RoleId), nameof(LoginRolePermission.PermissionId) });
-            return true;
+
+            result.IsHandled = true;
         }
     }
 }

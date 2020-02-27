@@ -1,5 +1,6 @@
 ﻿namespace Application
 {
+    using Framework.DataAccessLayer;
     using Framework.Json;
     using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@
             DivContainer = new Div(this) { CssClass = "container" };
 
             new Html(DivContainer) { TextHtml = "<h1>User Profile</h1>" };
-            Grid = new Grid(DivContainer);
+            Grid = new GridLoginProfile(DivContainer);
         }
 
         public override async Task InitAsync()
@@ -21,6 +22,11 @@
 
         public Div DivContainer;
 
-        public Grid Grid;
+        public GridLoginProfile Grid;
+    }
+
+    public class GridLoginProfile : Grid<Row>
+    {
+        public GridLoginProfile(ComponentJson owner) : base(owner) { }
     }
 }

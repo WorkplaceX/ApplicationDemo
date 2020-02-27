@@ -23,27 +23,28 @@
     {
         public GridAirplane(ComponentJson owner) : base(owner) { }
 
-        protected override Task<bool> UpdateAsync(RawWikipediaAircraft row, RawWikipediaAircraft rowNew, DatabaseEnum databaseEnum)
+        protected override Task UpdateAsync(RawWikipediaAircraft row, RawWikipediaAircraft rowNew, DatabaseEnum databaseEnum, UpdateResult result)
         {
-            return Task.FromResult(true);
+            result.IsHandled = true;
+            return base.UpdateAsync(row, rowNew, databaseEnum, result);
         }
 
         /// <summary>
         /// Add some annotation to the grid data like hyperlink or render as image.
         /// </summary>
-        protected override void CellAnnotation(string fieldNameCSharp, RawWikipediaAircraft row, CellAnnotationResult result)
+        protected override void CellAnnotation(RawWikipediaAircraft row, string fieldName, CellAnnotationResult result)
         {
-            if (fieldNameCSharp == nameof(RawWikipediaAircraft.Model) && row?.ModelImageUrl != null)
+            if (fieldName == nameof(RawWikipediaAircraft.Model) && row?.ModelImageUrl != null)
             {
                 result.HtmlLeft = string.Format("<img src='{0}' width='128' />", row.ModelImageUrl);
             }
 
-            if (fieldNameCSharp == nameof(RawWikipediaAircraft.ModelUrl) && row?.ModelUrl != null)
+            if (fieldName == nameof(RawWikipediaAircraft.ModelUrl) && row?.ModelUrl != null)
             {
                 result.Html = string.Format("<a href='{0}' target='_blank'>{1}", row.ModelUrl, "Wikipedia");
             }
 
-            if (fieldNameCSharp == nameof(RawWikipediaAircraft.ModelImageUrl) && row?.ModelImageUrl != null)
+            if (fieldName == nameof(RawWikipediaAircraft.ModelImageUrl) && row?.ModelImageUrl != null)
             {
                 result.Html = string.Format("<a href='{0}' target='_blank'>{1}", row.ModelImageUrl, "Image");
             }

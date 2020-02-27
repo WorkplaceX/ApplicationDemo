@@ -48,9 +48,9 @@
             await Task.WhenAll(page.GridLoginUserRole.LoadAsync(), page.GridLoginUserPermission.LoadAsync());
         }
 
-        protected override void CellAnnotation(string fieldNameCSharp, LoginUser row, CellAnnotationResult result)
+        protected override void CellAnnotation(LoginUser row, string fieldName, CellAnnotationResult result)
         {
-            if (fieldNameCSharp == nameof(LoginUser.Password))
+            if (fieldName == nameof(LoginUser.Password))
             {
                 result.IsPassword = true;
             }
@@ -68,13 +68,14 @@
             return base.Query().Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
         }
 
-        protected override async Task<bool> UpdateAsync(LoginUserRoleDisplay row, LoginUserRoleDisplay rowNew, DatabaseEnum databaseEnum)
+        protected override async Task UpdateAsync(LoginUserRoleDisplay row, LoginUserRoleDisplay rowNew, DatabaseEnum databaseEnum, UpdateResult result)
         {
             var loginUserRole = new LoginUserRole();
             Data.RowCopy(rowNew, loginUserRole);
 
             await Data.UpsertAsync(loginUserRole, new string[] { nameof(LoginUserRole.UserId), nameof(LoginUserRole.RoleId) });
-            return true;
+
+            result.IsHandled = true;
         }
     }
 

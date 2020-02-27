@@ -49,23 +49,23 @@
             }
         }
 
-        protected override void CellAnnotation(string fieldNameCSharp, CountryDisplayCache row, CellAnnotationResult result)
+        protected override void CellAnnotation(CountryDisplayCache row, string fieldName, CellAnnotationResult result)
         {
             var countryDisplay = row as CountryDisplayCache;
-            if (fieldNameCSharp == nameof(CountryDisplayCache.Country) && countryDisplay?.ASFlagIcon != null)
+            if (fieldName == nameof(CountryDisplayCache.Country) && countryDisplay?.ASFlagIcon != null)
             {
                 result.HtmlLeft = string.Format("<span class='flag-icon {0}'></span>", countryDisplay.ASFlagIcon);
             }
 
-            if (fieldNameCSharp == nameof(CountryDisplayCache.WikipediaCountryUrl) && countryDisplay?.WikipediaCountryUrl != null)
+            if (fieldName == nameof(CountryDisplayCache.WikipediaCountryUrl) && countryDisplay?.WikipediaCountryUrl != null)
             {
                 result.Html = string.Format("<a href='{0}' target='_blank'>{1}", countryDisplay?.WikipediaCountryUrl, "Wikipedia");
             }
 
-            CellAnnotationBool(fieldNameCSharp, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsFlagIconCss), result);
-            CellAnnotationBool(fieldNameCSharp, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsOpenFlightsAirline), result);
-            CellAnnotationBool(fieldNameCSharp, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsOpenFlightsAirport), result);
-            CellAnnotationBool(fieldNameCSharp, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsWikipedia), result);
+            CellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsFlagIconCss), result);
+            CellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsOpenFlightsAirline), result);
+            CellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsOpenFlightsAirport), result);
+            CellAnnotationBool(fieldName, row, typeof(CountryDisplayCache), nameof(CountryDisplayCache.IsWikipedia), result);
         }
     }
 }
