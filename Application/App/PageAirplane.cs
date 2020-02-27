@@ -17,11 +17,6 @@
 
             await new GridAirplane(this).LoadAsync();
         }
-
-        protected override string GridLookupRowSelected(Grid grid)
-        {
-            return ((CountryDisplayCache)grid.RowSelected).Code;
-        }
     }
 
     public class GridAirplane : Grid<RawWikipediaAircraft>
@@ -61,6 +56,11 @@
                 return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code.StartsWith(text == null ? "" : text)));
             }
             return base.LookupQuery(row, fieldNameCSharp, text);
+        }
+
+        protected override string LookupRowSelected(Grid gridLookup)
+        {
+            return ((CountryDisplayCache)gridLookup.RowSelected).Code;
         }
     }
 }
