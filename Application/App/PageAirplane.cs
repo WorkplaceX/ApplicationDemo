@@ -18,29 +18,6 @@
             await new GridAirplane(this).LoadAsync();
         }
 
-        /// <summary>
-        /// Add some annotation to the grid data like hyperlink or render as image.
-        /// </summary>
-        protected override void GridCellAnnotation(Grid grid, string fieldName, Row row, GridCellAnnotationResult result)
-        {
-            var aircraft = row as RawWikipediaAircraft;
-
-            if (fieldName == nameof(RawWikipediaAircraft.Model) && aircraft?.ModelImageUrl != null)
-            {
-                result.HtmlLeft = string.Format("<img src='{0}' width='128' />", aircraft.ModelImageUrl);
-            }
-
-            if (fieldName == nameof(RawWikipediaAircraft.ModelUrl) && aircraft?.ModelUrl != null)
-            {
-                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", aircraft.ModelUrl, "Wikipedia");
-            }
-
-            if (fieldName == nameof(RawWikipediaAircraft.ModelImageUrl) && aircraft?.ModelImageUrl != null)
-            {
-                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", aircraft.ModelImageUrl, "Image");
-            }
-        }
-
         protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
         {
             if (fieldName == nameof(RawWikipediaAircraft.IataCode))
@@ -63,6 +40,27 @@
         protected override Task<bool> UpdateAsync(RawWikipediaAircraft row, RawWikipediaAircraft rowNew, DatabaseEnum databaseEnum)
         {
             return Task.FromResult(true);
+        }
+
+        /// <summary>
+        /// Add some annotation to the grid data like hyperlink or render as image.
+        /// </summary>
+        protected override void CellAnnotation(string fieldNameCSharp, RawWikipediaAircraft row, CellAnnotationResult result)
+        {
+            if (fieldNameCSharp == nameof(RawWikipediaAircraft.Model) && row?.ModelImageUrl != null)
+            {
+                result.HtmlLeft = string.Format("<img src='{0}' width='128' />", row.ModelImageUrl);
+            }
+
+            if (fieldNameCSharp == nameof(RawWikipediaAircraft.ModelUrl) && row?.ModelUrl != null)
+            {
+                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", row.ModelUrl, "Wikipedia");
+            }
+
+            if (fieldNameCSharp == nameof(RawWikipediaAircraft.ModelImageUrl) && row?.ModelImageUrl != null)
+            {
+                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", row.ModelImageUrl, "Image");
+            }
         }
     }
 }

@@ -34,14 +34,6 @@
         public GridLoginUserRole GridLoginUserRole;
 
         public GridLoginUserPermission GridLoginUserPermission;
-
-        protected override void GridCellAnnotation(Grid grid, string fieldName, Row row, GridCellAnnotationResult result)
-        {
-            if (fieldName == nameof(LoginUser.Password))
-            {
-                result.IsPassword = true;
-            }
-        }
     }
 
     public class GridLoginUser : Grid<LoginUser>
@@ -54,6 +46,14 @@
 
             // Load detail data grids
             await Task.WhenAll(page.GridLoginUserRole.LoadAsync(), page.GridLoginUserPermission.LoadAsync());
+        }
+
+        protected override void CellAnnotation(string fieldNameCSharp, LoginUser row, CellAnnotationResult result)
+        {
+            if (fieldNameCSharp == nameof(LoginUser.Password))
+            {
+                result.IsPassword = true;
+            }
         }
     }
 
