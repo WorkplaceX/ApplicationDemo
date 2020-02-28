@@ -1,5 +1,13 @@
 ﻿/* For debug only! Reset DEV database */
 
+/* Application.Roadmap */
+DROP VIEW Demo.RoadmapBuiltIn
+DROP TABLE Demo.Roadmap
+DROP VIEW Demo.RoadmapModuleBuiltIn
+DROP TABLE Demo.RoadmapModule
+DROP VIEW Demo.RoadmapStateBuiltIn
+DROP TABLE Demo.RoadmapState
+
 /* Application */
 DROP TABLE Demo.CountryDisplayCache
 DROP VIEW Demo.CountryDisplay

@@ -558,4 +558,133 @@ namespace Database.Demo
         [SqlField("Notes", FrameworkTypeEnum.Nvarcahr)]
         public string Notes { get; set; }
     }
+
+    [SqlTable("Demo", "Roadmap")]
+    public class Roadmap : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
+        public int? RoadmapModuleId { get; set; }
+
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int? LoginUserId { get; set; }
+
+        [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
+        public int? RoadmapStateId { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapBuiltIn")]
+    public class RoadmapBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
+        public int? RoadmapModuleId { get; set; }
+
+        [SqlField("RoadmapModuleIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapModuleIdName { get; set; }
+
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int? LoginUserId { get; set; }
+
+        [SqlField("LoginUserIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginUserIdName { get; set; }
+
+        [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
+        public int? RoadmapStateId { get; set; }
+
+        [SqlField("RoadmapStateIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapStateIdName { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapModule")]
+    public class RoadmapModule : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapModuleBuiltIn")]
+    public class RoadmapModuleBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapState")]
+    public class RoadmapState : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapStateBuiltIn")]
+    public class RoadmapStateBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
 }

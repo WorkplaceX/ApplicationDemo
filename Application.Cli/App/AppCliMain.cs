@@ -79,6 +79,12 @@
             // LoginUserRole
             var loginUserRoleList = Data.Select(Data.Query<LoginUserRoleBuiltIn>());
             list.Add(GenerateBuiltInItem.Create(loginUserRoleList));
+
+            // Roadmap
+            var roadmapStateList = Data.Select(Data.Query<RoadmapStateBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist));
+            list.Add(GenerateBuiltInItem.Create(roadmapStateList));
+            var roadmapModuleList = Data.Select(Data.Query<RoadmapModuleBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist));
+            list.Add(GenerateBuiltInItem.Create(roadmapModuleList));
         }
 
         /// <summary>
@@ -131,6 +137,10 @@
 
             // LoginUserRole
             list.Add(DeployDbBuiltInItem.Create(LoginUserRoleBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginUserRoleBuiltIn.UserId), nameof(LoginUserRoleBuiltIn.RoleId) }, "Login"));
+
+            // Roadmap
+            list.Add(DeployDbBuiltInItem.Create(RoadmapStateBuiltInTableApplicationCli.RowList, nameof(RoadmapStateBuiltIn.Name)));
+            list.Add(DeployDbBuiltInItem.Create(RoadmapModuleBuiltInTableApplicationCli.RowList, nameof(RoadmapModuleBuiltIn.Name)));
         }
     }
 

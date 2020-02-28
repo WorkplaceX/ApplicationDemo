@@ -176,4 +176,34 @@ namespace DatabaseBuiltIn.Demo
             }
         }
     }
+
+    public static class RoadmapStateBuiltInTableApplicationCli
+    {
+        public static List<RoadmapStateBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapStateBuiltIn>();
+                result.Add(new RoadmapStateBuiltIn() { Id = 1, IdName = "New", Name = "New", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 2, IdName = "Open", Name = "Open", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 3, IdName = "In Progress", Name = "In Progress", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 4, IdName = "Closed", Name = "Closed", IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
+
+    public static class RoadmapModuleBuiltInTableApplicationCli
+    {
+        public static List<RoadmapModuleBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapModuleBuiltIn>();
+                result.Add(new RoadmapModuleBuiltIn() { Id = 1, IdName = "Framework", Name = "Framework", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapModuleBuiltIn() { Id = 2, IdName = "Application", Name = "Application", IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
 }
