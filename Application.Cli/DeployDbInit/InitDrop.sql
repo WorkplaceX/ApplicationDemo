@@ -1,6 +1,7 @@
 ﻿/* For debug only! Reset DEV database */
 
 /* Application.Roadmap */
+DROP VIEW Demo.RoadmapDisplay
 DROP VIEW Demo.RoadmapBuiltIn
 DROP TABLE Demo.Roadmap
 DROP VIEW Demo.RoadmapModuleBuiltIn

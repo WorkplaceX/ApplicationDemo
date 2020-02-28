@@ -85,6 +85,8 @@
             list.Add(GenerateBuiltInItem.Create(roadmapStateList));
             var roadmapModuleList = Data.Select(Data.Query<RoadmapModuleBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist));
             list.Add(GenerateBuiltInItem.Create(roadmapModuleList));
+            var roadmapList = Data.Select(Data.Query<Roadmap>().Where(item => item.IsBuiltIn && item.IsExist));
+            list.Add(GenerateBuiltInItem.Create(roadmapList));
         }
 
         /// <summary>

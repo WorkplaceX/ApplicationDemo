@@ -565,8 +565,8 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
-        public string Text { get; set; }
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
 
         [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
         public int? RoadmapModuleId { get; set; }
@@ -590,8 +590,8 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
-        public string Text { get; set; }
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
 
         [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
         public int? RoadmapModuleId { get; set; }
@@ -616,6 +616,34 @@ namespace Database.Demo
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapDisplay")]
+    public class RoadmapDisplay : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+
+        [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
+        public int? RoadmapModuleId { get; set; }
+
+        [SqlField("RoadmapModuleText", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapModuleText { get; set; }
+
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int? LoginUserId { get; set; }
+
+        [SqlField("LoginUserText", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginUserText { get; set; }
+
+        [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
+        public int? RoadmapStateId { get; set; }
+
+        [SqlField("RoadmapStateText", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapStateText { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapModule")]

@@ -42,7 +42,7 @@ GO
 CREATE TABLE Demo.Roadmap
 (
 	Id INT PRIMARY KEY IDENTITY,
-	Text NVARCHAR(256),
+	Description NVARCHAR(256),
 	RoadmapModuleId INT FOREIGN KEY REFERENCES Demo.RoadmapModule(Id),
 	LoginUserId INT FOREIGN KEY REFERENCES Demo.LoginUser(Id),
 	RoadmapStateId INT FOREIGN KEY REFERENCES Demo.RoadmapState(Id),
@@ -54,9 +54,9 @@ GO
 CREATE VIEW Demo.RoadmapBuiltIn AS
 SELECT
 	Roadmap.Id,
-	Roadmap.Text,
+	Roadmap.Description,
 	Roadmap.RoadmapModuleId,
-	(SELECT Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapModuleIdName,
+	(SELECT Name FROM Demo.RoadmapModule RoadmapModule WHERE RoadmapModule.Id = Roadmap.RoadmapModuleId) AS RoadmapModuleIdName,
 	Roadmap.LoginUserId,
 	(SELECT Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId) AS LoginUserIdName,
 	Roadmap.RoadmapStateId,
@@ -65,3 +65,18 @@ SELECT
 	Roadmap.IsExist
 FROM
 	Demo.Roadmap Roadmap
+
+GO
+CREATE VIEW Demo.RoadmapDisplay AS
+SELECT
+	Roadmap.Id,
+	Roadmap.Description,
+	Roadmap.RoadmapModuleId,
+	(SELECT Name FROM Demo.RoadmapModule RoadmapModule WHERE RoadmapModule.Id = Roadmap.RoadmapModuleId) AS RoadmapModuleText,
+	Roadmap.LoginUserId,
+	(SELECT Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId) AS LoginUserText,
+	Roadmap.RoadmapStateId,
+	(SELECT Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateText
+FROM
+	Demo.Roadmap Roadmap
+
