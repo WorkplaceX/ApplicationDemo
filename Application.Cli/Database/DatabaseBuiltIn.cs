@@ -210,4 +210,19 @@ namespace DatabaseBuiltIn.Demo
             }
         }
     }
+
+    public static class RoadmapBuiltInTableApplicationCli
+    {
+        public static List<RoadmapBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapBuiltIn>();
+                result.Add(new RoadmapBuiltIn() { Id = 8, Description = "Method Data.Update(); if two users modified same record.", RoadmapModuleId = 1, RoadmapModuleIdName = "Framework", LoginUserId = 4, LoginUserIdName = "Administrator", RoadmapStateId = 2, RoadmapStateIdName = "Open", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapBuiltIn() { Id = 9, Description = "Cell multiline.", RoadmapModuleId = 1, RoadmapModuleIdName = "Framework", LoginUserId = null, LoginUserIdName = null, RoadmapStateId = 1, RoadmapStateIdName = "New", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapBuiltIn() { Id = 10, Description = "Upload image", RoadmapModuleId = 1, RoadmapModuleIdName = "Framework", LoginUserId = null, LoginUserIdName = null, RoadmapStateId = 1, RoadmapStateIdName = "New", IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
 }
