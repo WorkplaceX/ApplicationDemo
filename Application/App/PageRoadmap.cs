@@ -51,7 +51,7 @@
             {
                 return Data.Query<RoadmapState>();
             }
-            if (fieldName == nameof(RoadmapDisplay.LoginUserText))
+            if (fieldName == nameof(RoadmapDisplay.LoginUserName))
             {
                 return Data.Query<LoginUser>();
             }
@@ -126,12 +126,12 @@
             }
 
             // User
-            if (fieldName == nameof(RoadmapDisplay.LoginUserText))
+            if (fieldName == nameof(RoadmapDisplay.LoginUserName))
             {
                 if (text == "")
                 {
                     row.LoginUserId = null;
-                    row.LoginUserText = "";
+                    row.LoginUserName = "";
                 }
                 else
                 {
@@ -143,7 +143,7 @@
                     else
                     {
                         row.LoginUserId = loginUser.Id;
-                        row.LoginUserText = loginUser.Name;
+                        row.LoginUserName = loginUser.Name;
                     }
                 }
                 result.IsHandled = true;

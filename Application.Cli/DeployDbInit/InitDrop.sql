@@ -6,6 +6,8 @@ DROP VIEW Demo.RoadmapBuiltIn
 DROP TABLE Demo.Roadmap
 DROP VIEW Demo.RoadmapModuleBuiltIn
 DROP TABLE Demo.RoadmapModule
+DROP VIEW Demo.RoadmapPriorityBuiltIn
+DROP TABLE Demo.RoadmapPriority
 DROP VIEW Demo.RoadmapStateBuiltIn
 DROP TABLE Demo.RoadmapState
 
