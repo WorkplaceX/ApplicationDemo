@@ -18,7 +18,7 @@ namespace DatabaseBuiltIn.dbo
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 5, IdName = "Demo.RawOpenFlightsAirport; ", TableId = 34, TableIdName = "Demo.RawOpenFlightsAirport", TableNameCSharp = "Demo.RawOpenFlightsAirport", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 6, IdName = "Demo.RawWikipediaAircraft; ", TableId = 36, TableIdName = "Demo.RawWikipediaAircraft", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = null, RowCountMax = 5, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 7, IdName = "Demo.RawWikipediaAircraft; G", TableId = 36, TableIdName = "Demo.RawWikipediaAircraft", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = "G", RowCountMax = 5, IsAllowInsert = null, IsExist = true });
-                result.Add(new FrameworkConfigGridBuiltIn() { Id = 8, IdName = "Demo.RoadmapDisplay; ", TableId = 40, TableIdName = "Demo.RoadmapDisplay", TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
+                result.Add(new FrameworkConfigGridBuiltIn() { Id = 8, IdName = "Demo.RoadmapDisplay; ", TableId = 42, TableIdName = "Demo.RoadmapDisplay", TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 return result;
             }
         }
@@ -48,12 +48,12 @@ namespace DatabaseBuiltIn.dbo
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 33, ConfigGridId = 7, ConfigGridIdName = "Demo.RawWikipediaAircraft; G", FieldId = 229, FieldIdName = "Demo.RawWikipediaAircraft; ModelTitle", InstanceName = null, TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = "G", FieldNameCSharp = "ModelTitle", Text = "Title", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 34, ConfigGridId = 7, ConfigGridIdName = "Demo.RawWikipediaAircraft; G", FieldId = 228, FieldIdName = "Demo.RawWikipediaAircraft; ModelUrl", InstanceName = null, TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = "G", FieldNameCSharp = "ModelUrl", Text = "Url", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 35, ConfigGridId = 6, ConfigGridIdName = "Demo.RawWikipediaAircraft; ", FieldId = 228, FieldIdName = "Demo.RawWikipediaAircraft; ModelUrl", InstanceName = null, TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = null, FieldNameCSharp = "ModelUrl", Text = "Url", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 41, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 330, FieldIdName = "Demo.RoadmapDisplay; LoginUserText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "LoginUserText", Text = "User", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = false });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 36, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 263, FieldIdName = "Demo.RoadmapDisplay; Name", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "Name", Text = null, Description = null, IsVisible = false, IsReadOnly = null, Sort = null, IsExist = true });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 39, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 332, FieldIdName = "Demo.RoadmapDisplay; RoadmapCategoryText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapCategoryText", Text = "Category", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = false });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 37, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 266, FieldIdName = "Demo.RoadmapDisplay; RoadmapModuleText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapModuleText", Text = "Module", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 40, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 268, FieldIdName = "Demo.RoadmapDisplay; RoadmapPriorityText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapPriorityText", Text = "Priority", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = false });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 38, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 272, FieldIdName = "Demo.RoadmapDisplay; RoadmapStateText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapStateText", Text = "State", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 36, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 288, FieldIdName = "Demo.RoadmapDisplay; LoginUserText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "LoginUserText", Text = "User", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 37, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 279, FieldIdName = "Demo.RoadmapDisplay; Name", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "Name", Text = null, Description = null, IsVisible = false, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 38, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 282, FieldIdName = "Demo.RoadmapDisplay; RoadmapCategoryText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapCategoryText", Text = "Category", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 39, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 284, FieldIdName = "Demo.RoadmapDisplay; RoadmapModuleText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapModuleText", Text = "Module", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 40, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 286, FieldIdName = "Demo.RoadmapDisplay; RoadmapPriorityText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapPriorityText", Text = "Priority", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 41, ConfigGridId = 8, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 290, FieldIdName = "Demo.RoadmapDisplay; RoadmapStateText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapStateText", Text = "State", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 return result;
             }
         }
@@ -186,17 +186,15 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class RoadmapStateBuiltInTableApplicationCli
+    public static class RoadmapCategoryBuiltInTableApplicationCli
     {
-        public static List<RoadmapStateBuiltIn> RowList
+        public static List<RoadmapCategoryBuiltIn> RowList
         {
             get
             {
-                var result = new List<RoadmapStateBuiltIn>();
-                result.Add(new RoadmapStateBuiltIn() { Id = 1, IdName = "New", Name = "New", Text = null, Description = null, IsBuiltIn = true, IsExist = true });
-                result.Add(new RoadmapStateBuiltIn() { Id = 2, IdName = "Open", Name = "Open", Text = null, Description = null, IsBuiltIn = true, IsExist = true });
-                result.Add(new RoadmapStateBuiltIn() { Id = 3, IdName = "In Progress", Name = "In Progress", Text = null, Description = null, IsBuiltIn = true, IsExist = true });
-                result.Add(new RoadmapStateBuiltIn() { Id = 4, IdName = "Closed", Name = "Closed", Text = null, Description = null, IsBuiltIn = true, IsExist = true });
+                var result = new List<RoadmapCategoryBuiltIn>();
+                result.Add(new RoadmapCategoryBuiltIn() { Id = 1, IdName = "Feature", Name = "Feature", Text = "Feature", Description = "Software Feature", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapCategoryBuiltIn() { Id = 2, IdName = "Bug", Name = "Bug", Text = "Bug", Description = "Software Bug", IsBuiltIn = true, IsExist = true });
                 return result;
             }
         }
@@ -209,8 +207,40 @@ namespace DatabaseBuiltIn.Demo
             get
             {
                 var result = new List<RoadmapModuleBuiltIn>();
-                result.Add(new RoadmapModuleBuiltIn() { Id = 1, IdName = "Framework", Name = "Framework", Text = null, Description = null, IsBuiltIn = true, IsExist = true });
-                result.Add(new RoadmapModuleBuiltIn() { Id = 2, IdName = "Application", Name = "Application", Text = null, Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapModuleBuiltIn() { Id = 1, IdName = "Framework", Name = "Framework", Text = "Framework", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapModuleBuiltIn() { Id = 2, IdName = "Application", Name = "Application", Text = "Application", Description = null, IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
+
+    public static class RoadmapPriorityBuiltInTableApplicationCli
+    {
+        public static List<RoadmapPriorityBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapPriorityBuiltIn>();
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 1, IdName = "Low", Name = "Low", Text = "Low (Green)", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 2, IdName = "Medium", Name = "Medium", Text = "Medium (Blue)", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 3, IdName = "High", Name = "High", Text = "High (Orange)", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 4, IdName = "Critical", Name = "Critical", Text = "Critical (Red)", Description = null, IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
+
+    public static class RoadmapStateBuiltInTableApplicationCli
+    {
+        public static List<RoadmapStateBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapStateBuiltIn>();
+                result.Add(new RoadmapStateBuiltIn() { Id = 1, IdName = "New", Name = "New", Text = "New", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 2, IdName = "Open", Name = "Open", Text = "Open", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 3, IdName = "In Progress", Name = "In Progress", Text = "In Progress", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 4, IdName = "Closed", Name = "Closed", Text = "Closed", Description = null, IsBuiltIn = true, IsExist = true });
                 return result;
             }
         }
@@ -223,7 +253,7 @@ namespace DatabaseBuiltIn.Demo
             get
             {
                 var result = new List<RoadmapBuiltIn>();
-                result.Add(new RoadmapBuiltIn() { Id = 1, Name = Guid.Parse("c6e421fa-8f78-424d-9e0f-64da942e740f"), Description = "Method Data.Update(); if two users modified same record.", RoadmapCategoryId = null, RoadmapCategoryIdName = null, RoadmapModuleId = 1, RoadmapModuleIdName = "Framework", RoadmapPriorityId = null, RoadmapPriorityIdName = null, LoginUserId = 5, LoginUserIdName = "Developer", RoadmapStateId = 2, RoadmapStateIdName = "Open", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapBuiltIn() { Id = 1, Name = Guid.Parse("c6e421fa-8f78-424d-9e0f-64da942e740f"), Description = "Method Data.Update(); if two users modified same record.", RoadmapCategoryId = null, RoadmapCategoryIdName = null, RoadmapModuleId = null, RoadmapModuleIdName = null, RoadmapPriorityId = null, RoadmapPriorityIdName = null, LoginUserId = 5, LoginUserIdName = "Developer", RoadmapStateId = null, RoadmapStateIdName = null, IsBuiltIn = true, IsExist = true });
                 result.Add(new RoadmapBuiltIn() { Id = 2, Name = Guid.Parse("0acc2649-e499-4c3d-a329-7e6282747973"), Description = "Cell multiline.", RoadmapCategoryId = null, RoadmapCategoryIdName = null, RoadmapModuleId = 1, RoadmapModuleIdName = "Framework", RoadmapPriorityId = null, RoadmapPriorityIdName = null, LoginUserId = null, LoginUserIdName = null, RoadmapStateId = null, RoadmapStateIdName = null, IsBuiltIn = true, IsExist = true });
                 result.Add(new RoadmapBuiltIn() { Id = 3, Name = Guid.Parse("da61059f-e91b-4379-bb13-f69731a2ea4c"), Description = "Upload image", RoadmapCategoryId = null, RoadmapCategoryIdName = null, RoadmapModuleId = 1, RoadmapModuleIdName = "Framework", RoadmapPriorityId = null, RoadmapPriorityIdName = null, LoginUserId = 5, LoginUserIdName = "Developer", RoadmapStateId = 1, RoadmapStateIdName = "New", IsBuiltIn = true, IsExist = true });
                 return result;

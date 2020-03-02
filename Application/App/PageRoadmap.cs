@@ -47,9 +47,17 @@
 
         protected override IQueryable LookupQuery(RoadmapDisplay row, string fieldName, string text)
         {
+            if (fieldName == nameof(RoadmapDisplay.RoadmapCategoryText))
+            {
+                return Data.Query<RoadmapCategory>();
+            }
             if (fieldName == nameof(RoadmapDisplay.RoadmapModuleText))
             {
                 return Data.Query<RoadmapModule>();
+            }
+            if (fieldName == nameof(RoadmapDisplay.RoadmapPriorityText))
+            {
+                return Data.Query<RoadmapPriority>();
             }
             if (fieldName == nameof(RoadmapDisplay.RoadmapStateText))
             {
@@ -64,9 +72,17 @@
 
         protected override string LookupRowSelected(Grid gridLookup)
         {
+            if (gridLookup.RowSelected is RoadmapCategory roadmapCategory)
+            {
+                return roadmapCategory.Name;
+            }
             if (gridLookup.RowSelected is RoadmapModule roadmapModule)
             {
                 return roadmapModule.Name;
+            }
+            if (gridLookup.RowSelected is RoadmapPriority roadmapPriority)
+            {
+                return roadmapPriority.Name;
             }
             if (gridLookup.RowSelected is RoadmapState roadmapState)
             {
@@ -81,7 +97,31 @@
 
         protected override async Task CellParseAsync(RoadmapDisplay row, string fieldName, string text, CellParseResult result)
         {
-            // RoadmapModule
+            // Category
+            if (fieldName == nameof(RoadmapDisplay.RoadmapCategoryText))
+            {
+                if (text == "")
+                {
+                    row.RoadmapCategoryId = null;
+                    row.RoadmapCategoryText = "";
+                }
+                else
+                {
+                    var roadmapCategory = (await Data.SelectAsync(Data.Query<RoadmapCategory>().Where(item => item.Text == text))).FirstOrDefault();
+                    if (roadmapCategory == null)
+                    {
+                        result.ErrorParse = "Category not found!";
+                    }
+                    else
+                    {
+                        row.RoadmapCategoryId = roadmapCategory.Id;
+                        row.RoadmapCategoryText = roadmapCategory.Name;
+                    }
+                }
+                result.IsHandled = true;
+            }
+
+            // Module
             if (fieldName == nameof(RoadmapDisplay.RoadmapModuleText))
             {
                 if (text == "")
@@ -91,10 +131,10 @@
                 }
                 else
                 {
-                    var roadmapModule = (await Data.SelectAsync(Data.Query<RoadmapModule>().Where(item => item.Name == text))).FirstOrDefault();
+                    var roadmapModule = (await Data.SelectAsync(Data.Query<RoadmapModule>().Where(item => item.Text == text))).FirstOrDefault();
                     if (roadmapModule == null)
                     {
-                        result.ErrorParse = "Module name not found!";
+                        result.ErrorParse = "Module not found!";
                     }
                     else
                     {
@@ -105,7 +145,31 @@
                 result.IsHandled = true;
             }
 
-            // RoadmapState
+            // Priority
+            if (fieldName == nameof(RoadmapDisplay.RoadmapPriorityText))
+            {
+                if (text == "")
+                {
+                    row.RoadmapPriorityId = null;
+                    row.RoadmapPriorityText = "";
+                }
+                else
+                {
+                    var roadmapPriority = (await Data.SelectAsync(Data.Query<RoadmapPriority>().Where(item => item.Text == text))).FirstOrDefault();
+                    if (roadmapPriority == null)
+                    {
+                        result.ErrorParse = "Priority not found!";
+                    }
+                    else
+                    {
+                        row.RoadmapPriorityId = roadmapPriority.Id;
+                        row.RoadmapPriorityText = roadmapPriority.Name;
+                    }
+                }
+                result.IsHandled = true;
+            }
+
+            // State
             if (fieldName == nameof(RoadmapDisplay.RoadmapStateText))
             {
                 if (text == "")
@@ -115,10 +179,10 @@
                 }
                 else
                 {
-                    var roadmapState = (await Data.SelectAsync(Data.Query<RoadmapState>().Where(item => item.Name == text))).FirstOrDefault();
+                    var roadmapState = (await Data.SelectAsync(Data.Query<RoadmapState>().Where(item => item.Text == text))).FirstOrDefault();
                     if (roadmapState == null)
                     {
-                        result.ErrorParse = "State name not found!";
+                        result.ErrorParse = "State not found!";
                     }
                     else
                     {
