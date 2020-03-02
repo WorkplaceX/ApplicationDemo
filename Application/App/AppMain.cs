@@ -15,8 +15,8 @@
 
             await new PageMain(this).InitAsync();
 
-            this.Button = new Button(this) { TextHtml = "Click" };
-            new Button(this) { TextHtml = "Click2" };
+            // this.Button = new Button(this) { TextHtml = "Click" };
+            // new Button(this) { TextHtml = "Click2" };
         }
 
         public Button Button;
@@ -25,10 +25,10 @@
 
         protected override Task ProcessAsync()
         {
-            if (Button.IsClick)
-            {
-                Button.TextHtml += ".";
-            }
+            // if (Button.IsClick)
+            // {
+            //     Button.TextHtml += ".";
+            // }
             if (this.HtmlSessionExpired != null && this.IsSessionExpired == false)
             {
                 this.HtmlSessionExpired.ComponentRemove();

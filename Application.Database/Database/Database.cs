@@ -571,6 +571,9 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
+        [SqlField("Date", FrameworkTypeEnum.Date)]
+        public DateTime? Date { get; set; }
+
         [SqlField("RoadmapCategoryId", FrameworkTypeEnum.Int)]
         public int? RoadmapCategoryId { get; set; }
 
@@ -604,6 +607,9 @@ namespace Database.Demo
 
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
+
+        [SqlField("Date", FrameworkTypeEnum.Date)]
+        public DateTime? Date { get; set; }
 
         [SqlField("RoadmapCategoryId", FrameworkTypeEnum.Int)]
         public int? RoadmapCategoryId { get; set; }
@@ -731,11 +737,17 @@ namespace Database.Demo
         [SqlField("LoginUserText", FrameworkTypeEnum.Nvarcahr)]
         public string LoginUserText { get; set; }
 
+        [SqlField("Date", FrameworkTypeEnum.Date)]
+        public DateTime? Date { get; set; }
+
         [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
         public int? RoadmapStateId { get; set; }
 
         [SqlField("RoadmapStateText", FrameworkTypeEnum.Nvarcahr)]
         public string RoadmapStateText { get; set; }
+
+        [SqlField("RoadmapStateIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapStateIdName { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
         public bool IsBuiltIn { get; set; }

@@ -105,6 +105,7 @@ CREATE TABLE Demo.Roadmap
 	Id INT PRIMARY KEY IDENTITY,
 	Name UNIQUEIDENTIFIER NOT NULL UNIQUE,
 	Description NVARCHAR(256),
+	Date Date,
 	-- Category
 	RoadmapCategoryId INT FOREIGN KEY REFERENCES Demo.RoadmapCategory(Id),
 	-- Module
@@ -125,6 +126,7 @@ SELECT
 	Roadmap.Id,
 	Roadmap.Name,
 	Roadmap.Description,
+	Roadmap.Date,
 	-- Category
 	Roadmap.RoadmapCategoryId,
 	(SELECT RoadmapCategory.Name FROM Demo.RoadmapCategory RoadmapCategory WHERE RoadmapCategory.Id = Roadmap.RoadmapCategoryId) AS RoadmapCategoryIdName,
@@ -167,10 +169,13 @@ SELECT
 	-- User
 	Roadmap.LoginUserId,
 	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId) AS LoginUserText,
+	-- Roadmap
+	Roadmap.Date,
 	-- State
 	Roadmap.RoadmapStateId,
 	(SELECT RoadmapState.Text FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateText,
-	--
+	(SELECT RoadmapState.Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateIdName, -- Used for enum
+	-- Roadmap
 	Roadmap.IsBuiltIn,
 	Roadmap.IsExist
 FROM

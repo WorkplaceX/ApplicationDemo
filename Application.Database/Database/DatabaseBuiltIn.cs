@@ -84,7 +84,7 @@ namespace DatabaseBuiltIn.Demo
                 var result = new List<RoadmapCategoryBuiltIn>();
                 result.Add(new RoadmapCategoryBuiltIn() { Id = 1, IdName = "Feature", Name = "Feature", Text = "Feature", Description = "Software Feature", IsBuiltIn = true, IsExist = true });
                 result.Add(new RoadmapCategoryBuiltIn() { Id = 2, IdName = "Bug", Name = "Bug", Text = "Bug", Description = "Software Bug", IsBuiltIn = true, IsExist = true });
-                result.Add(new RoadmapCategoryBuiltIn() { Id = 4, IdName = "Analyze", Name = "Analyze", Text = "Analyze", Description = "Analyze", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapCategoryBuiltIn() { Id = 3, IdName = "Analyze", Name = "Analyze", Text = "Analyze", Description = "Analyze", IsBuiltIn = true, IsExist = true });
                 return result;
             }
         }
@@ -113,6 +113,34 @@ namespace DatabaseBuiltIn.Demo
                 result.Add(new RoadmapPriorityBuiltIn() { Id = 2, IdName = "Medium", Name = "Medium", Text = "Medium (Blue)", Description = null, IsBuiltIn = true, IsExist = true });
                 result.Add(new RoadmapPriorityBuiltIn() { Id = 3, IdName = "High", Name = "High", Text = "High (Orange)", Description = null, IsBuiltIn = true, IsExist = true });
                 result.Add(new RoadmapPriorityBuiltIn() { Id = 4, IdName = "Critical", Name = "Critical", Text = "Critical (Red)", Description = null, IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
+
+    public static class RoadmapStateBuiltInTableApplication
+    {
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("New")]New = 1, [IdNameEnum("Open")]Open = 2, [IdNameEnum("In Progress")]InProgress = 3, [IdNameEnum("Done")]Done = 4 }
+
+        public static RoadmapStateBuiltIn Row(IdNameEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
+        public static IdNameEnum IdName(string idName)
+        {
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+        }
+
+        public static List<RoadmapStateBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapStateBuiltIn>();
+                result.Add(new RoadmapStateBuiltIn() { Id = 1, IdName = "New", Name = "New", Text = "New", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 2, IdName = "Open", Name = "Open", Text = "Open", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 3, IdName = "In Progress", Name = "In Progress", Text = "In Progress", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapStateBuiltIn() { Id = 4, IdName = "Done", Name = "Done", Text = "Done", Description = null, IsBuiltIn = true, IsExist = true });
                 return result;
             }
         }

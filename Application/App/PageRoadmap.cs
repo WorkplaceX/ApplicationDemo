@@ -261,6 +261,18 @@
                         break;
                 }
             }
+
+            // State
+            {
+                if (fieldName == nameof(row.RoadmapStateText))
+                {
+                    var idEnum = RoadmapStateBuiltInTableApplication.IdName(row.RoadmapStateIdName);
+                    if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
+                    {
+                        result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
+                    }
+                }
+            }
         }
     }
 }
