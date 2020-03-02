@@ -2,6 +2,7 @@
 
 namespace DatabaseBuiltIn.dbo
 {
+    using System;
     using System.Collections.Generic;
     using Database.dbo;
 
