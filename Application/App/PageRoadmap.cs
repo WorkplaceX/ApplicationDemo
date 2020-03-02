@@ -3,6 +3,7 @@
     using Database.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -28,8 +29,10 @@
         {
             Roadmap roadmap = new Roadmap();
             Data.RowCopy(rowNew, roadmap);
+            roadmap.Name = Guid.NewGuid();
             await Data.InsertAsync(roadmap);
-            rowNew.Id = roadmap.Id;
+            rowNew.Id = roadmap.Id; // Get new id from db
+            rowNew.Name = roadmap.Name;
             result.IsHandled = true;
         }
 
