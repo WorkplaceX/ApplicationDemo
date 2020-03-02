@@ -571,6 +571,9 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
+        [SqlField("RoadmapCategoryId", FrameworkTypeEnum.Int)]
+        public int? RoadmapCategoryId { get; set; }
+
         [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
         public int? RoadmapModuleId { get; set; }
 
@@ -601,6 +604,12 @@ namespace Database.Demo
 
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
+
+        [SqlField("RoadmapCategoryId", FrameworkTypeEnum.Int)]
+        public int? RoadmapCategoryId { get; set; }
+
+        [SqlField("RoadmapCategoryIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapCategoryIdName { get; set; }
 
         [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
         public int? RoadmapModuleId { get; set; }
@@ -633,6 +642,53 @@ namespace Database.Demo
         public bool IsExist { get; set; }
     }
 
+    [SqlTable("Demo", "RoadmapCategory")]
+    public class RoadmapCategory : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapCategoryBuiltIn")]
+    public class RoadmapCategoryBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
     [SqlTable("Demo", "RoadmapDisplay")]
     public class RoadmapDisplay : Row
     {
@@ -644,6 +700,12 @@ namespace Database.Demo
 
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
+
+        [SqlField("RoadmapCategoryId", FrameworkTypeEnum.Int)]
+        public int? RoadmapCategoryId { get; set; }
+
+        [SqlField("RoadmapCategoryText", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapCategoryText { get; set; }
 
         [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
         public int? RoadmapModuleId { get; set; }
@@ -660,8 +722,8 @@ namespace Database.Demo
         [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
         public int? LoginUserId { get; set; }
 
-        [SqlField("LoginUserName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginUserName { get; set; }
+        [SqlField("LoginUserText", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginUserText { get; set; }
 
         [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
         public int? RoadmapStateId { get; set; }

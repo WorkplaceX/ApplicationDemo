@@ -1,4 +1,29 @@
-﻿-- State
+﻿-- Category
+GO
+CREATE TABLE Demo.RoadmapCategory
+(
+	Id INT PRIMARY KEY IDENTITY,
+	Name NVARCHAR(256) NOT NULL UNIQUE,
+	Text NVARCHAR(256),
+	Description NVARCHAR(256),
+	IsBuiltIn BIT NOT NULL,
+	IsExist BIT NOT NULL,
+)
+
+GO
+CREATE VIEW Demo.RoadmapCategoryBuiltIn AS
+SELECT
+	RoadmapCategory.Id,
+	RoadmapCategory.Name AS IdName,
+	RoadmapCategory.Name,
+	RoadmapCategory.Text,
+	RoadmapCategory.Description,
+	RoadmapCategory.IsBuiltIn,
+	RoadmapCategory.IsExist
+FROM
+	Demo.RoadmapCategory RoadmapCategory
+
+-- State
 GO
 CREATE TABLE Demo.RoadmapState
 (
@@ -80,6 +105,8 @@ CREATE TABLE Demo.Roadmap
 	Id INT PRIMARY KEY IDENTITY,
 	Name UNIQUEIDENTIFIER NOT NULL UNIQUE,
 	Description NVARCHAR(256),
+	-- Category
+	RoadmapCategoryId INT FOREIGN KEY REFERENCES Demo.RoadmapCategory(Id),
 	-- Module
 	RoadmapModuleId INT FOREIGN KEY REFERENCES Demo.RoadmapModule(Id),
 	-- Priority
@@ -98,6 +125,9 @@ SELECT
 	Roadmap.Id,
 	Roadmap.Name,
 	Roadmap.Description,
+	-- Category
+	Roadmap.RoadmapCategoryId,
+	(SELECT RoadmapCategory.Name FROM Demo.RoadmapCategory RoadmapCategory WHERE RoadmapCategory.Id = Roadmap.RoadmapCategoryId) AS RoadmapCategoryIdName,
 	-- Module
 	Roadmap.RoadmapModuleId,
 	(SELECT RoadmapModule.Name FROM Demo.RoadmapModule RoadmapModule WHERE RoadmapModule.Id = Roadmap.RoadmapModuleId) AS RoadmapModuleIdName,
@@ -123,6 +153,9 @@ SELECT
 	Roadmap.Id,
 	Roadmap.Name,
 	Roadmap.Description,
+	-- Category
+	Roadmap.RoadmapCategoryId,
+	(SELECT RoadmapCategory.Text FROM Demo.RoadmapCategory RoadmapCategory WHERE RoadmapCategory.Id = Roadmap.RoadmapCategoryId) AS RoadmapCategoryText,
 	-- Module
 	Roadmap.RoadmapModuleId,
 	(SELECT RoadmapModule.Text FROM Demo.RoadmapModule RoadmapModule WHERE RoadmapModule.Id = Roadmap.RoadmapModuleId) AS RoadmapModuleText,
@@ -131,7 +164,7 @@ SELECT
 	(SELECT RoadmapPriority.Text FROM Demo.RoadmapPriority RoadmapPriority WHERE RoadmapPriority.Id = Roadmap.RoadmapPriorityId) AS RoadmapPriorityText,
 	-- User
 	Roadmap.LoginUserId,
-	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId) AS LoginUserName,
+	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId) AS LoginUserText,
 	-- State
 	Roadmap.RoadmapStateId,
 	(SELECT RoadmapState.Text FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateText,

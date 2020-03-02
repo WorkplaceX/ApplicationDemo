@@ -10,6 +10,8 @@ DROP VIEW Demo.RoadmapPriorityBuiltIn
 DROP TABLE Demo.RoadmapPriority
 DROP VIEW Demo.RoadmapStateBuiltIn
 DROP TABLE Demo.RoadmapState
+DROP VIEW Demo.RoadmapCategoryBuiltIn
+DROP TABLE Demo.RoadmapCategory
 
 /* Application */
 DROP TABLE Demo.CountryDisplayCache
