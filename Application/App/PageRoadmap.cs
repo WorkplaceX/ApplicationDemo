@@ -1,6 +1,7 @@
 ﻿namespace Application
 {
     using Database.Demo;
+    using DatabaseBuiltIn.Demo;
     using Framework.DataAccessLayer;
     using Framework.Json;
     using System;
@@ -215,6 +216,50 @@
                     }
                 }
                 result.IsHandled = true;
+            }
+        }
+
+        protected override void CellAnnotation(RoadmapDisplay row, string fieldName, CellAnnotationResult result)
+        {
+            // Priority
+            if (fieldName == nameof(row.RoadmapPriorityText))
+            {
+                var idEnum = RoadmapPriorityBuiltInTableApplication.IdName(row.RoadmapPriorityIdName);
+                string bootstrapColor = null;
+                switch (idEnum)
+                {
+                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.Low:
+                        bootstrapColor = "text-success"; // Green
+                        break;
+                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.Medium:
+                        bootstrapColor = "text-primary"; // Blue
+                        break;
+                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.High:
+                        bootstrapColor = "text-warning"; // Orange
+                        break;
+                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.Critical:
+                        bootstrapColor = "text-danger"; // Red
+                        break;
+                }
+                result.HtmlLeft = $"<i class='fas fa-circle {bootstrapColor}'></i>";
+            }
+
+            // Category
+            if (fieldName == nameof(row.RoadmapCategoryText))
+            {
+                var idEnum = RoadmapCategoryBuiltInTableApplication.IdName(row.RoadmapCategoryIdName);
+                switch (idEnum)
+                {
+                    case RoadmapCategoryBuiltInTableApplication.IdNameEnum.Feature:
+                        result.HtmlLeft = "<i class='fas fa-box-open text-primary'></i>"; // Blue
+                        break;
+                    case RoadmapCategoryBuiltInTableApplication.IdNameEnum.Bug:
+                        result.HtmlLeft = "<i class='fas fa-bug text-danger'></i>"; // Red
+                        break;
+                    case RoadmapCategoryBuiltInTableApplication.IdNameEnum.Analyze:
+                        result.HtmlLeft = "<i class='fas fa-vial text-info'></i>"; // Green
+                        break;
+                }
             }
         }
     }

@@ -17,6 +17,11 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
+        public static IdNameEnum IdName(string idName)
+        {
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+        }
+
         public static List<LanguageBuiltIn> RowList
         {
             get
@@ -40,6 +45,11 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
+        public static IdNameEnum IdName(string idName)
+        {
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+        }
+
         public static List<LoginPermissionBuiltIn> RowList
         {
             get
@@ -48,6 +58,61 @@ namespace DatabaseBuiltIn.Demo
                 result.Add(new LoginPermissionBuiltIn() { Id = 1, IdName = "Guest", Name = "Guest", Description = "Guest permission", IsBuiltIn = true, IsExist = true });
                 result.Add(new LoginPermissionBuiltIn() { Id = 2, IdName = "Administrator", Name = "Administrator", Description = "Administrator permission", IsBuiltIn = true, IsExist = true });
                 result.Add(new LoginPermissionBuiltIn() { Id = 3, IdName = "Developer", Name = "Developer", Description = "Developer permission", IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
+
+    public static class RoadmapCategoryBuiltInTableApplication
+    {
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Feature")]Feature = 1, [IdNameEnum("Bug")]Bug = 2, [IdNameEnum("Analyze")]Analyze = 3 }
+
+        public static RoadmapCategoryBuiltIn Row(IdNameEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
+        public static IdNameEnum IdName(string idName)
+        {
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+        }
+
+        public static List<RoadmapCategoryBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapCategoryBuiltIn>();
+                result.Add(new RoadmapCategoryBuiltIn() { Id = 1, IdName = "Feature", Name = "Feature", Text = "Feature", Description = "Software Feature", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapCategoryBuiltIn() { Id = 2, IdName = "Bug", Name = "Bug", Text = "Bug", Description = "Software Bug", IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapCategoryBuiltIn() { Id = 4, IdName = "Analyze", Name = "Analyze", Text = "Analyze", Description = "Analyze", IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
+
+    public static class RoadmapPriorityBuiltInTableApplication
+    {
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Low")]Low = 1, [IdNameEnum("Medium")]Medium = 2, [IdNameEnum("High")]High = 3, [IdNameEnum("Critical")]Critical = 4 }
+
+        public static RoadmapPriorityBuiltIn Row(IdNameEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
+        public static IdNameEnum IdName(string idName)
+        {
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+        }
+
+        public static List<RoadmapPriorityBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapPriorityBuiltIn>();
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 1, IdName = "Low", Name = "Low", Text = "Low (Green)", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 2, IdName = "Medium", Name = "Medium", Text = "Medium (Blue)", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 3, IdName = "High", Name = "High", Text = "High (Orange)", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapPriorityBuiltIn() { Id = 4, IdName = "Critical", Name = "Critical", Text = "Critical (Red)", Description = null, IsBuiltIn = true, IsExist = true });
                 return result;
             }
         }

@@ -707,6 +707,9 @@ namespace Database.Demo
         [SqlField("RoadmapCategoryText", FrameworkTypeEnum.Nvarcahr)]
         public string RoadmapCategoryText { get; set; }
 
+        [SqlField("RoadmapCategoryIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapCategoryIdName { get; set; }
+
         [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
         public int? RoadmapModuleId { get; set; }
 
@@ -718,6 +721,9 @@ namespace Database.Demo
 
         [SqlField("RoadmapPriorityText", FrameworkTypeEnum.Nvarcahr)]
         public string RoadmapPriorityText { get; set; }
+
+        [SqlField("RoadmapPriorityIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapPriorityIdName { get; set; }
 
         [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
         public int? LoginUserId { get; set; }

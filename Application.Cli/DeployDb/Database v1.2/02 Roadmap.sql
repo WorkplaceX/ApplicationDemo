@@ -156,12 +156,14 @@ SELECT
 	-- Category
 	Roadmap.RoadmapCategoryId,
 	(SELECT RoadmapCategory.Text FROM Demo.RoadmapCategory RoadmapCategory WHERE RoadmapCategory.Id = Roadmap.RoadmapCategoryId) AS RoadmapCategoryText,
+	(SELECT RoadmapCategory.Name FROM Demo.RoadmapCategory RoadmapCategory WHERE RoadmapCategory.Id = Roadmap.RoadmapCategoryId) AS RoadmapCategoryIdName, -- Used for enum
 	-- Module
 	Roadmap.RoadmapModuleId,
 	(SELECT RoadmapModule.Text FROM Demo.RoadmapModule RoadmapModule WHERE RoadmapModule.Id = Roadmap.RoadmapModuleId) AS RoadmapModuleText,
 	-- Priority
 	Roadmap.RoadmapPriorityId,
 	(SELECT RoadmapPriority.Text FROM Demo.RoadmapPriority RoadmapPriority WHERE RoadmapPriority.Id = Roadmap.RoadmapPriorityId) AS RoadmapPriorityText,
+	(SELECT RoadmapPriority.Name FROM Demo.RoadmapPriority RoadmapPriority WHERE RoadmapPriority.Id = Roadmap.RoadmapPriorityId) AS RoadmapPriorityIdName, -- Used for enum
 	-- User
 	Roadmap.LoginUserId,
 	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId) AS LoginUserText,
