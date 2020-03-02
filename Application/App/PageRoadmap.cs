@@ -72,23 +72,23 @@
 
         protected override string LookupRowSelected(Grid gridLookup)
         {
-            if (gridLookup.RowSelected is RoadmapCategory roadmapCategory)
+            if (gridLookup.RowSelected is RoadmapCategory roadmapCategory) // Category
             {
-                return roadmapCategory.Name;
+                return roadmapCategory.Text;
             }
-            if (gridLookup.RowSelected is RoadmapModule roadmapModule)
+            if (gridLookup.RowSelected is RoadmapModule roadmapModule) // Module
             {
-                return roadmapModule.Name;
+                return roadmapModule.Text;
             }
-            if (gridLookup.RowSelected is RoadmapPriority roadmapPriority)
+            if (gridLookup.RowSelected is RoadmapPriority roadmapPriority) // Priority
             {
-                return roadmapPriority.Name;
+                return roadmapPriority.Text;
             }
-            if (gridLookup.RowSelected is RoadmapState roadmapState)
+            if (gridLookup.RowSelected is RoadmapState roadmapState) // State
             {
-                return roadmapState.Name;
+                return roadmapState.Text;
             }
-            if (gridLookup.RowSelected is LoginUser loginUser)
+            if (gridLookup.RowSelected is LoginUser loginUser) // User
             {
                 return loginUser.Name;
             }
@@ -115,7 +115,7 @@
                     else
                     {
                         row.RoadmapCategoryId = roadmapCategory.Id;
-                        row.RoadmapCategoryText = roadmapCategory.Name;
+                        row.RoadmapCategoryText = roadmapCategory.Text;
                     }
                 }
                 result.IsHandled = true;
@@ -139,7 +139,7 @@
                     else
                     {
                         row.RoadmapModuleId = roadmapModule.Id;
-                        row.RoadmapModuleText = roadmapModule.Name;
+                        row.RoadmapModuleText = roadmapModule.Text;
                     }
                 }
                 result.IsHandled = true;
@@ -163,7 +163,7 @@
                     else
                     {
                         row.RoadmapPriorityId = roadmapPriority.Id;
-                        row.RoadmapPriorityText = roadmapPriority.Name;
+                        row.RoadmapPriorityText = roadmapPriority.Text;
                     }
                 }
                 result.IsHandled = true;
@@ -187,7 +187,7 @@
                     else
                     {
                         row.RoadmapStateId = roadmapState.Id;
-                        row.RoadmapStateText = roadmapState.Name;
+                        row.RoadmapStateText = roadmapState.Text;
                     }
                 }
                 result.IsHandled = true;
