@@ -33,6 +33,7 @@
             await Data.InsertAsync(roadmap);
             rowNew.Id = roadmap.Id; // Get new id from db
             rowNew.Name = roadmap.Name;
+            rowNew.IsExist = true;
             result.IsHandled = true;
         }
 

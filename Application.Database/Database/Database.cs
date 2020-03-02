@@ -668,6 +668,12 @@ namespace Database.Demo
 
         [SqlField("RoadmapStateText", FrameworkTypeEnum.Nvarcahr)]
         public string RoadmapStateText { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapModule")]

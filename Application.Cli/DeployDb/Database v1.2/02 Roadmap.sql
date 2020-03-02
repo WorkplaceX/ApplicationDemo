@@ -134,7 +134,10 @@ SELECT
 	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId) AS LoginUserName,
 	-- State
 	Roadmap.RoadmapStateId,
-	(SELECT RoadmapState.Text FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateText
+	(SELECT RoadmapState.Text FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateText,
+	--
+	Roadmap.IsBuiltIn,
+	Roadmap.IsExist
 FROM
 	Demo.Roadmap Roadmap
 
