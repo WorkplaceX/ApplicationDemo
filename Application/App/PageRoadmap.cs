@@ -35,6 +35,7 @@
             rowNew.Id = roadmap.Id; // Get new id from db
             rowNew.Name = roadmap.Name;
             rowNew.IsExist = true;
+            rowNew.Date = DateTime.Today;
             result.IsHandled = true;
         }
 
