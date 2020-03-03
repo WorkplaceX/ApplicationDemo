@@ -51,45 +51,45 @@
         protected override void CommandGenerateBuiltIn(List<GenerateBuiltInItem> list)
         {
             // Language
-            var languageList = Data.Select(Data.Query<LanguageBuiltIn>());
+            var languageList = Data.Select(Data.Query<LanguageBuiltIn>().OrderBy(item => item.IdName));
             list.Add(GenerateBuiltInItem.Create(languageList, isApplication: true));
 
             // Navigation
-            var navigationList = Data.Select(Data.Query<NavigationBuiltIn>());
+            var navigationList = Data.Select(Data.Query<NavigationBuiltIn>().OrderBy(item => item.IdName));
             list.Add(GenerateBuiltInItem.Create(navigationList));
 
             // LoginPermission
-            var loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist));
+            var loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == true && item.IsExist).OrderBy(item => item.IdName));
             list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: true));
-            loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist));
+            loginPermissionList = Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist).OrderBy(item => item.IdName));
             list.Add(GenerateBuiltInItem.Create(loginPermissionList, isApplication: false));
 
             // LoginRole
-            var loginRoleList = Data.Select(Data.Query<LoginRoleBuiltIn>());
+            var loginRoleList = Data.Select(Data.Query<LoginRoleBuiltIn>().OrderBy(item => item.IdName));
             list.Add(GenerateBuiltInItem.Create(loginRoleList));
 
             // LoginRolePermission
-            var loginRolePermissionList = Data.Select(Data.Query<LoginRolePermissionBuiltIn>());
+            var loginRolePermissionList = Data.Select(Data.Query<LoginRolePermissionBuiltIn>().OrderBy(item => item.RoleIdName).ThenBy(item => item.PermissionIdName));
             list.Add(GenerateBuiltInItem.Create(loginRolePermissionList));
 
             // LoginUser
-            var loginUserList = Data.Select(Data.Query<LoginUserBuiltIn>());
+            var loginUserList = Data.Select(Data.Query<LoginUserBuiltIn>().OrderBy(item => item.IdName));
             list.Add(GenerateBuiltInItem.Create(loginUserList));
 
             // LoginUserRole
-            var loginUserRoleList = Data.Select(Data.Query<LoginUserRoleBuiltIn>());
+            var loginUserRoleList = Data.Select(Data.Query<LoginUserRoleBuiltIn>().OrderBy(item => item.UserIdName).ThenBy(item => item.RoleIdName));
             list.Add(GenerateBuiltInItem.Create(loginUserRoleList));
 
             // Roadmap
-            var roadmapCategoryList = Data.Select(Data.Query<RoadmapCategoryBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist)); // Category
+            var roadmapCategoryList = Data.Select(Data.Query<RoadmapCategoryBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // Category
             list.Add(GenerateBuiltInItem.Create(roadmapCategoryList, isApplication: true));
-            var roadmapModuleList = Data.Select(Data.Query<RoadmapModuleBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist)); // Module
+            var roadmapModuleList = Data.Select(Data.Query<RoadmapModuleBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // Module
             list.Add(GenerateBuiltInItem.Create(roadmapModuleList));
-            var roadmapPriorityList = Data.Select(Data.Query<RoadmapPriorityBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist)); // Priority
+            var roadmapPriorityList = Data.Select(Data.Query<RoadmapPriorityBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // Priority
             list.Add(GenerateBuiltInItem.Create(roadmapPriorityList, isApplication: true));
-            var roadmapStateList = Data.Select(Data.Query<RoadmapStateBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist)); // State
+            var roadmapStateList = Data.Select(Data.Query<RoadmapStateBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // State
             list.Add(GenerateBuiltInItem.Create(roadmapStateList, isApplication: true));
-            var roadmapList = Data.Select(Data.Query<RoadmapBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist)); // Roadmap
+            var roadmapList = Data.Select(Data.Query<RoadmapBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.Name)); // Roadmap
             list.Add(GenerateBuiltInItem.Create(roadmapList));
         }
 
