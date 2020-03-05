@@ -84,7 +84,7 @@
             var roadmapCategoryList = Data.Select(Data.Query<RoadmapCategoryBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // Category
             list.Add(GenerateBuiltInItem.Create(roadmapCategoryList, isApplication: true));
             var roadmapModuleList = Data.Select(Data.Query<RoadmapModuleBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // Module
-            list.Add(GenerateBuiltInItem.Create(roadmapModuleList));
+            list.Add(GenerateBuiltInItem.Create(roadmapModuleList, isApplication: true));
             var roadmapPriorityList = Data.Select(Data.Query<RoadmapPriorityBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // Priority
             list.Add(GenerateBuiltInItem.Create(roadmapPriorityList, isApplication: true));
             var roadmapStateList = Data.Select(Data.Query<RoadmapStateBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)); // State
@@ -146,7 +146,7 @@
 
             // Roadmap
             list.Add(DeployDbBuiltInItem.Create(RoadmapCategoryBuiltInTableApplication.RowList, nameof(RoadmapCategoryBuiltIn.Name))); // Category
-            list.Add(DeployDbBuiltInItem.Create(RoadmapModuleBuiltInTableApplicationCli.RowList, nameof(RoadmapModuleBuiltIn.Name))); // Module
+            list.Add(DeployDbBuiltInItem.Create(RoadmapModuleBuiltInTableApplication.RowList, nameof(RoadmapModuleBuiltIn.Name))); // Module
             list.Add(DeployDbBuiltInItem.Create(RoadmapPriorityBuiltInTableApplication.RowList, nameof(RoadmapPriorityBuiltIn.Name))); // Priority
             list.Add(DeployDbBuiltInItem.Create(RoadmapStateBuiltInTableApplication.RowList, nameof(RoadmapStateBuiltIn.Name))); // State
             list.Add(DeployDbBuiltInItem.Create(RoadmapBuiltInTableApplicationCli.RowList, nameof(RoadmapBuiltIn.Name))); // Roadmap

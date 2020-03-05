@@ -91,6 +91,35 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
+    public static class RoadmapModuleBuiltInTableApplication
+    {
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Application")]Application = 1, [IdNameEnum("ApplicationCms")]ApplicationCms = 2, [IdNameEnum("ApplicationLogin")]ApplicationLogin = 3, [IdNameEnum("ApplicationRoadmap")]ApplicationRoadmap = 4, [IdNameEnum("Framework")]Framework = 5 }
+
+        public static RoadmapModuleBuiltIn Row(IdNameEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
+        public static IdNameEnum IdName(string idName)
+        {
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+        }
+
+        public static List<RoadmapModuleBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<RoadmapModuleBuiltIn>();
+                result.Add(new RoadmapModuleBuiltIn() { Id = 1, IdName = "Application", Name = "Application", Text = "Application", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapModuleBuiltIn() { Id = 2, IdName = "ApplicationCms", Name = "ApplicationCms", Text = "Application / Cms", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapModuleBuiltIn() { Id = 3, IdName = "ApplicationLogin", Name = "ApplicationLogin", Text = "Application / Login", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapModuleBuiltIn() { Id = 4, IdName = "ApplicationRoadmap", Name = "ApplicationRoadmap", Text = "Application / Roadmap", Description = null, IsBuiltIn = true, IsExist = true });
+                result.Add(new RoadmapModuleBuiltIn() { Id = 5, IdName = "Framework", Name = "Framework", Text = "Framework", Description = null, IsBuiltIn = true, IsExist = true });
+                return result;
+            }
+        }
+    }
+
     public static class RoadmapPriorityBuiltInTableApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Critical")]Critical = 1, [IdNameEnum("High")]High = 2, [IdNameEnum("Low")]Low = 3, [IdNameEnum("Medium")]Medium = 4 }

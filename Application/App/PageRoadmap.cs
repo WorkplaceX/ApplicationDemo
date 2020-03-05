@@ -131,6 +131,7 @@
                 if (text == "")
                 {
                     row.RoadmapModuleId = null;
+                    row.RoadmapModuleIdName = null;
                     row.RoadmapModuleText = "";
                 }
                 else
@@ -143,6 +144,7 @@
                     else
                     {
                         row.RoadmapModuleId = roadmapModule.Id;
+                        row.RoadmapModuleIdName = roadmapModule.Name;
                         row.RoadmapModuleText = roadmapModule.Text;
                     }
                 }
@@ -284,6 +286,20 @@
                 if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
                 {
                     result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
+                }
+            }
+
+            // Module
+            if (fieldName == nameof(row.RoadmapModuleText))
+            {
+                var idEnum = RoadmapModuleBuiltInTableApplication.IdName(row.RoadmapModuleIdName);
+                if (idEnum == RoadmapModuleBuiltInTableApplication.IdNameEnum.Framework)
+                {
+                    result.HtmlLeft = "<i class='fas fa-microchip text-primary'></i>"; // Blue
+                }
+                else
+                {
+                    result.HtmlLeft = "<i class='fas fa-desktop text-info'></i>"; // Green
                 }
             }
         }

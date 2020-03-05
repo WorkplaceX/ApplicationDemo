@@ -162,6 +162,7 @@ SELECT
 	-- Module
 	Roadmap.RoadmapModuleId,
 	(SELECT RoadmapModule.Text FROM Demo.RoadmapModule RoadmapModule WHERE RoadmapModule.Id = Roadmap.RoadmapModuleId) AS RoadmapModuleText,
+	(SELECT RoadmapModule.Name FROM Demo.RoadmapModule RoadmapModule WHERE RoadmapModule.Id = Roadmap.RoadmapModuleId) AS RoadmapModuleIdName, -- Used for enum
 	-- Priority
 	Roadmap.RoadmapPriorityId,
 	(SELECT RoadmapPriority.Text FROM Demo.RoadmapPriority RoadmapPriority WHERE RoadmapPriority.Id = Roadmap.RoadmapPriorityId) AS RoadmapPriorityText,
