@@ -105,6 +105,7 @@
                 if (text == "")
                 {
                     row.RoadmapCategoryId = null;
+                    row.RoadmapCategoryIdName = null;
                     row.RoadmapCategoryText = "";
                 }
                 else
@@ -117,6 +118,7 @@
                     else
                     {
                         row.RoadmapCategoryId = roadmapCategory.Id;
+                        row.RoadmapCategoryIdName = roadmapCategory.Name;
                         row.RoadmapCategoryText = roadmapCategory.Text;
                     }
                 }
@@ -153,6 +155,7 @@
                 if (text == "")
                 {
                     row.RoadmapPriorityId = null;
+                    row.RoadmapPriorityIdName = null;
                     row.RoadmapPriorityText = "";
                 }
                 else
@@ -165,6 +168,7 @@
                     else
                     {
                         row.RoadmapPriorityId = roadmapPriority.Id;
+                        row.RoadmapPriorityIdName = roadmapPriority.Name;
                         row.RoadmapPriorityText = roadmapPriority.Text;
                     }
                 }
@@ -177,6 +181,7 @@
                 if (text == "")
                 {
                     row.RoadmapStateId = null;
+                    row.RoadmapStateIdName = null;
                     row.RoadmapStateText = "";
                 }
                 else
@@ -189,6 +194,7 @@
                     else
                     {
                         row.RoadmapStateId = roadmapState.Id;
+                        row.RoadmapStateIdName = roadmapState.Name;
                         row.RoadmapStateText = roadmapState.Text;
                     }
                 }
@@ -264,22 +270,20 @@
             }
 
             // State
+            if (fieldName == nameof(row.RoadmapStateText))
             {
-                if (fieldName == nameof(row.RoadmapStateText))
+                var idEnum = RoadmapStateBuiltInTableApplication.IdName(row.RoadmapStateIdName);
+                if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
                 {
-                    var idEnum = RoadmapStateBuiltInTableApplication.IdName(row.RoadmapStateIdName);
-                    if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
-                    {
-                        result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
-                    }
+                    result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
                 }
-                if (fieldName == nameof(row.Description))
+            }
+            if (fieldName == nameof(row.Description))
+            {
+                var idEnum = RoadmapStateBuiltInTableApplication.IdName(row.RoadmapStateIdName);
+                if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
                 {
-                    var idEnum = RoadmapStateBuiltInTableApplication.IdName(row.RoadmapStateIdName);
-                    if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
-                    {
-                        result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
-                    }
+                    result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
                 }
             }
         }
