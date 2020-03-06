@@ -1,6 +1,9 @@
 ﻿namespace Application
 {
+    using Database.Demo;
+    using Framework.DataAccessLayer;
     using Framework.Json;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class AppMain : AppJson
@@ -34,6 +37,12 @@
                 this.HtmlSessionExpired.ComponentRemove();
             }
             return base.ProcessAsync();
+        }
+
+        protected override async Task<byte[]> FileDownload(string fileName)
+        {
+            var result = (await Data.SelectAsync(Data.Query<File>().Where(item => item.FileName == fileName))).FirstOrDefault();
+            return result?.Data;
         }
     }
 

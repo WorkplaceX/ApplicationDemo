@@ -30,16 +30,21 @@
 
         protected override void CellAnnotation(File row, string fieldName, CellAnnotationResult result)
         {
-            if (fieldName == nameof(File.Description))
+            if (fieldName == nameof(File.Data))
             {
                 result.IsFileUpload = true;
+                result.Html = string.Format("<a href='{0}'>{1}</a>", row.FileName, row.FileName);
             }
         }
 
         protected override void CellParseFileUpload(File row, string fieldName, string fileName, byte[] data, CellParseResult result)
         {
-            row.Data = data;
-            result.IsHandled = true;
+            if (fieldName == nameof(File.Data))
+            {
+                row.Data = data;
+                row.FileName = fileName;
+                result.IsHandled = true;
+            }
         }
     }
 }
