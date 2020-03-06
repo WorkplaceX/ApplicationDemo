@@ -1,5 +1,8 @@
 ﻿/* For debug only! Reset DEV database */
 
+/* Application.File */
+DROP TABLE Demo.[File]
+
 /* Application.Roadmap */
 DROP VIEW Demo.RoadmapDisplay
 DROP VIEW Demo.RoadmapBuiltIn

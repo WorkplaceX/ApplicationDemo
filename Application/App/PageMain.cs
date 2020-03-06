@@ -106,6 +106,12 @@
                 pageMain.Content.ComponentListClear();
                 await new PageLoginProfile(pageMain.Content).InitAsync();
             }
+
+            if (RowSelected.Name == "FileManager")
+            {
+                pageMain.Content.ComponentListClear();
+                await new PageFileManager(pageMain.Content).InitAsync();
+            }
         }
     }
 
