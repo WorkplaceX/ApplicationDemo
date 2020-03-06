@@ -97,7 +97,7 @@
             return base.LookupRowSelected(gridLookup);
         }
 
-        protected override async Task CellParseAsync(RoadmapDisplay row, string fieldName, string text, CellParseResult result)
+        protected override async Task CellParseTextAsync(RoadmapDisplay row, string fieldName, string text, CellParseResult result)
         {
             // Category
             if (fieldName == nameof(RoadmapDisplay.RoadmapCategoryText))

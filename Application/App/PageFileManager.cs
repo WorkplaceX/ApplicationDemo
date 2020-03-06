@@ -27,5 +27,19 @@
     public class GridFile : Grid<File>
     {
         public GridFile(ComponentJson owner) : base(owner) { }
+
+        protected override void CellAnnotation(File row, string fieldName, CellAnnotationResult result)
+        {
+            if (fieldName == nameof(File.Description))
+            {
+                result.IsFileUpload = true;
+            }
+        }
+
+        protected override void CellParseFileUpload(File row, string fieldName, string fileName, byte[] data, CellParseResult result)
+        {
+            row.Data = data;
+            result.IsHandled = true;
+        }
     }
 }
