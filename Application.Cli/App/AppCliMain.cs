@@ -91,6 +91,10 @@
             list.Add(GenerateBuiltInItem.Create(roadmapStateList, isApplication: true));
             var roadmapList = Data.Select(Data.Query<RoadmapBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.Name)); // Roadmap
             list.Add(GenerateBuiltInItem.Create(roadmapList));
+
+            // FileManager
+            var fileList = Data.Select(Data.Query<File>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.FileName));
+            list.Add(GenerateBuiltInItem.Create(fileList));
         }
 
         /// <summary>
@@ -150,6 +154,9 @@
             list.Add(DeployDbBuiltInItem.Create(RoadmapPriorityBuiltInTableApplication.RowList, nameof(RoadmapPriorityBuiltIn.Name))); // Priority
             list.Add(DeployDbBuiltInItem.Create(RoadmapStateBuiltInTableApplication.RowList, nameof(RoadmapStateBuiltIn.Name))); // State
             list.Add(DeployDbBuiltInItem.Create(RoadmapBuiltInTableApplicationCli.RowList, nameof(RoadmapBuiltIn.Name))); // Roadmap
+
+            // FileManager
+            list.Add(DeployDbBuiltInItem.Create(FileTableApplicationCli.RowList, nameof(File.FileName)));
         }
     }
 
