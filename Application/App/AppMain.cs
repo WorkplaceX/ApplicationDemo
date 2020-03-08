@@ -41,8 +41,18 @@
 
         protected override async Task<byte[]> FileDownload(string fileName)
         {
-            var result = (await Data.SelectAsync(Data.Query<File>().Where(item => item.FileName == fileName))).FirstOrDefault();
-            return result?.Data;
+            if (fileName.StartsWith("shop/"))
+            {
+                string fileNameProduct = fileName.Substring("shop/".Length);
+                var result = (await Data.SelectAsync(Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct))).FirstOrDefault();
+                return result?.Data;
+
+            }
+            else
+            {
+                var result = (await Data.SelectAsync(Data.Query<File>().Where(item => item.FileName == fileName))).FirstOrDefault();
+                return result?.Data;
+            }
         }
     }
 

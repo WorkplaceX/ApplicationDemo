@@ -112,6 +112,18 @@
                 pageMain.Content.ComponentListClear();
                 await new PageFileManager(pageMain.Content).InitAsync();
             }
+
+            if (RowSelected.Name == "Shop")
+            {
+                pageMain.Content.ComponentListClear();
+                await new PageShop(pageMain.Content).InitAsync();
+            }
+
+            if (RowSelected.Name == "ShopCart")
+            {
+                pageMain.Content.ComponentListClear();
+                await new PageShopCart(pageMain.Content).InitAsync();
+            }
         }
     }
 

@@ -1,5 +1,8 @@
 ﻿/* For debug only! Reset DEV database */
 
+/* Shop */
+DROP TABLE [Demo].[ShopProductPhoto]
+
 /* Application.File */
 DROP TABLE Demo.[File]
 

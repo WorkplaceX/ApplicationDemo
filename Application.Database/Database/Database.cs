@@ -921,4 +921,17 @@ namespace Database.Demo
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
+
+    [SqlTable("Demo", "ShopProductPhoto")]
+    public class ShopProductPhoto : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Data", FrameworkTypeEnum.Varbinary)]
+        public byte[] Data { get; set; }
+
+        [SqlField("FileName", FrameworkTypeEnum.Nvarcahr)]
+        public string FileName { get; set; }
+    }
 }
