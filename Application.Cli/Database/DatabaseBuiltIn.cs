@@ -21,6 +21,7 @@ namespace DatabaseBuiltIn.dbo
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 7, IdName = "Demo.RawWikipediaAircraft; ", TableId = 37, TableIdName = "Demo.RawWikipediaAircraft", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = null, RowCountMax = 5, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 8, IdName = "Demo.RawWikipediaAircraft; G", TableId = 37, TableIdName = "Demo.RawWikipediaAircraft", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = "G", RowCountMax = 5, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 9, IdName = "Demo.RoadmapDisplay; ", TableId = 43, TableIdName = "Demo.RoadmapDisplay", TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, RowCountMax = 20, IsAllowInsert = null, IsExist = true });
+                result.Add(new FrameworkConfigGridBuiltIn() { Id = 10, IdName = "Demo.ShopProductPhoto; ", TableId = 142, TableIdName = "Demo.ShopProductPhoto", TableNameCSharp = "Demo.ShopProductPhoto", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 return result;
             }
         }
@@ -62,6 +63,8 @@ namespace DatabaseBuiltIn.dbo
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 45, ConfigGridId = 9, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 296, FieldIdName = "Demo.RoadmapDisplay; RoadmapPriorityText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapPriorityText", Text = "Priority", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 46, ConfigGridId = 9, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 303, FieldIdName = "Demo.RoadmapDisplay; RoadmapStateIdName", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapStateIdName", Text = null, Description = null, IsVisible = false, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 47, ConfigGridId = 9, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 302, FieldIdName = "Demo.RoadmapDisplay; RoadmapStateText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapStateText", Text = "State", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 49, ConfigGridId = 10, ConfigGridIdName = "Demo.ShopProductPhoto; ", FieldId = 1077, FieldIdName = "Demo.ShopProductPhoto; Data", InstanceName = null, TableNameCSharp = "Demo.ShopProductPhoto", ConfigName = null, FieldNameCSharp = "Data", Text = "Image", Description = null, IsVisible = null, IsReadOnly = null, Sort = 2, IsExist = false });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 48, ConfigGridId = 10, ConfigGridIdName = "Demo.ShopProductPhoto; ", FieldId = 1078, FieldIdName = "Demo.ShopProductPhoto; FileName", InstanceName = null, TableNameCSharp = "Demo.ShopProductPhoto", ConfigName = null, FieldNameCSharp = "FileName", Text = null, Description = null, IsVisible = null, IsReadOnly = null, Sort = 1, IsExist = true });
                 return result;
             }
         }
@@ -93,7 +96,9 @@ namespace DatabaseBuiltIn.Demo
                 result.Add(new NavigationBuiltIn() { Id = 11, IdName = "LoginSignOut", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginSignOut", TextHtml = "<i class=\"fas fa-sign-out-alt\"></i> Sign Out", PageName = null, Sort = 3 });
                 result.Add(new NavigationBuiltIn() { Id = 4, IdName = "LoginUser", ParentId = null, ParentIdName = null, Name = "LoginUser", TextHtml = "<i class=\"fas fa-user\"></i> User", PageName = null, Sort = 10 });
                 result.Add(new NavigationBuiltIn() { Id = 12, IdName = "LoginUserManagement", ParentId = 4, ParentIdName = "LoginUser", Name = "LoginUserManagement", TextHtml = "<i class=\"fas fa-user\"></i> User Management", PageName = "LoginUser", Sort = 2.4 });
-                result.Add(new NavigationBuiltIn() { Id = 5, IdName = "Roadmap", ParentId = null, ParentIdName = null, Name = "Roadmap", TextHtml = "<i class=\"fas fa-road\"></i> Roadmap", PageName = "Roadmap", Sort = 9 });
+                result.Add(new NavigationBuiltIn() { Id = 5, IdName = "Roadmap", ParentId = null, ParentIdName = null, Name = "Roadmap", TextHtml = "<i class=\"fas fa-road\"></i> Roadmap", PageName = "Roadmap", Sort = 9.55 });
+                result.Add(new NavigationBuiltIn() { Id = 13, IdName = "Shop", ParentId = null, ParentIdName = null, Name = "Shop", TextHtml = "<i class=\'fas fa-store\'></i> Shop", PageName = null, Sort = 8.9 });
+                result.Add(new NavigationBuiltIn() { Id = 14, IdName = "ShopCart", ParentId = 13, ParentIdName = "Shop", Name = "ShopCart", TextHtml = "<i class=\'fas fa-shopping-cart\'></i> Cart", PageName = null, Sort = 1 });
                 return result;
             }
         }
