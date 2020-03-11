@@ -163,6 +163,10 @@
 
             // FileManager
             list.Add(DeployDbBuiltInItem.Create(FileTableApplicationCli.RowList, nameof(File.FileName)));
+
+            // Cms
+            list.Add(DeployDbBuiltInItem.Create(CmsComponentEnumBuiltInTableApplicationCli.RowList, nameof(CmsComponentEnumBuiltIn.Name)));
+            list.Add(DeployDbBuiltInItem.Create(CmsCodeBlockEnumBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockEnumBuiltIn.Name)));
         }
     }
 
