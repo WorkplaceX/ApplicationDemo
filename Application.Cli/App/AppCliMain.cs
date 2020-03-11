@@ -95,6 +95,12 @@
             // FileManager
             var fileList = Data.Select(Data.Query<File>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.FileName));
             list.Add(GenerateBuiltInItem.Create(fileList));
+
+            // Cms
+            var componentEnumList = Data.Select(Data.Query<CmsCodeBlockEnumBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(componentEnumList));
+            var codeBlockEnumList = Data.Select(Data.Query<CmsComponentEnumBuiltIn>());
+            list.Add(GenerateBuiltInItem.Create(codeBlockEnumList));
         }
 
         /// <summary>

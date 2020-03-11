@@ -1,5 +1,13 @@
 ﻿/* For debug only! Reset DEV database */
 
+/* Cms */
+DROP VIEW Demo.CmsComponentBuiltIn
+DROP TABLE Demo.CmsComponent
+DROP VIEW Demo.CmsCodeBlockEnumBuiltIn
+DROP TABLE Demo.CmsCodeBlockEnum
+DROP VIEW Demo.CmsComponentEnumBuiltIn
+DROP TABLE Demo.CmsComponentEnum
+
 /* Shop */
 DROP TABLE [Demo].[ShopProductPhoto]
 

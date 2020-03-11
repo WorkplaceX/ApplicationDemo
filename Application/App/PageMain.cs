@@ -124,6 +124,18 @@
                 pageMain.Content.ComponentListClear();
                 await new PageShopCart(pageMain.Content).InitAsync();
             }
+
+            if (RowSelected.Name == "Cms")
+            {
+                pageMain.Content.ComponentListClear();
+                await new PageCms(pageMain.Content).InitAsync();
+            }
+
+            if (RowSelected.Name == "CmsDoc")
+            {
+                pageMain.Content.ComponentListClear();
+                await new PageCmsDoc(pageMain.Content).InitAsync();
+            }
         }
     }
 
