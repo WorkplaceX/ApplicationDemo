@@ -126,47 +126,47 @@
         /// <summary>
         /// Cli Deploy.
         /// </summary>
-        protected override void CommandDeployDbBuiltIn(List<DeployDbBuiltInItem> list)
+        protected override void CommandDeployDbBuiltIn(DeployDbBuiltInResult result)
         {
-            list.Add(DeployDbBuiltInItem.Create(LanguageBuiltInTableApplication.RowList, nameof(LanguageBuiltIn.Name), null));
+            result.Add(LanguageBuiltInTableApplication.RowList, nameof(LanguageBuiltIn.Name), null);
 
             var rowList = NavigationBuiltInTableApplicationCli.RowList;
 
             List<NavigationBuiltIn> rowLevelList = null;
             while (NavigationBuiltInLevel(rowList, ref rowLevelList)) // Step through all levels.
             {
-                list.Add(DeployDbBuiltInItem.Create(rowLevelList, nameof(NavigationBuiltIn.Name), null));
+                result.Add(rowLevelList, nameof(NavigationBuiltIn.Name), null);
             }
 
             // LoginPermission
-            list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplication.RowList, nameof(LoginPermissionBuiltIn.Name), "Login"));
-            list.Add(DeployDbBuiltInItem.Create(LoginPermissionBuiltInTableApplicationCli.RowList, nameof(LoginPermissionBuiltIn.Name), "Login"));
+            result.Add(LoginPermissionBuiltInTableApplication.RowList, nameof(LoginPermissionBuiltIn.Name), "Login");
+            result.Add(LoginPermissionBuiltInTableApplicationCli.RowList, nameof(LoginPermissionBuiltIn.Name), "Login");
 
             // LoginRole
-            list.Add(DeployDbBuiltInItem.Create(LoginRoleBuiltInTableApplicationCli.RowList, nameof(LoginRoleBuiltIn.Name), "Login"));
+            result.Add(LoginRoleBuiltInTableApplicationCli.RowList, nameof(LoginRoleBuiltIn.Name), "Login");
 
             // LoginRolePermission
-            list.Add(DeployDbBuiltInItem.Create(LoginRolePermissionBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginRolePermissionBuiltIn.RoleId), nameof(LoginRolePermissionBuiltIn.PermissionId) }, "Login"));
+            result.Add(LoginRolePermissionBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginRolePermissionBuiltIn.RoleId), nameof(LoginRolePermissionBuiltIn.PermissionId) }, "Login");
 
             // LoginUser
-            list.Add(DeployDbBuiltInItem.Create(LoginUserBuiltInTableApplicationCli.RowList, nameof(LoginUserBuiltIn.Name), "Login"));
+            result.Add(LoginUserBuiltInTableApplicationCli.RowList, nameof(LoginUserBuiltIn.Name), "Login");
 
             // LoginUserRole
-            list.Add(DeployDbBuiltInItem.Create(LoginUserRoleBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginUserRoleBuiltIn.UserId), nameof(LoginUserRoleBuiltIn.RoleId) }, "Login"));
+            result.Add(LoginUserRoleBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginUserRoleBuiltIn.UserId), nameof(LoginUserRoleBuiltIn.RoleId) }, "Login");
 
             // Roadmap
-            list.Add(DeployDbBuiltInItem.Create(RoadmapCategoryBuiltInTableApplication.RowList, nameof(RoadmapCategoryBuiltIn.Name))); // Category
-            list.Add(DeployDbBuiltInItem.Create(RoadmapModuleBuiltInTableApplication.RowList, nameof(RoadmapModuleBuiltIn.Name))); // Module
-            list.Add(DeployDbBuiltInItem.Create(RoadmapPriorityBuiltInTableApplication.RowList, nameof(RoadmapPriorityBuiltIn.Name))); // Priority
-            list.Add(DeployDbBuiltInItem.Create(RoadmapStateBuiltInTableApplication.RowList, nameof(RoadmapStateBuiltIn.Name))); // State
-            list.Add(DeployDbBuiltInItem.Create(RoadmapBuiltInTableApplicationCli.RowList, nameof(RoadmapBuiltIn.Name))); // Roadmap
+            result.Add(RoadmapCategoryBuiltInTableApplication.RowList, nameof(RoadmapCategoryBuiltIn.Name)); // Category
+            result.Add(RoadmapModuleBuiltInTableApplication.RowList, nameof(RoadmapModuleBuiltIn.Name)); // Module
+            result.Add(RoadmapPriorityBuiltInTableApplication.RowList, nameof(RoadmapPriorityBuiltIn.Name)); // Priority
+            result.Add(RoadmapStateBuiltInTableApplication.RowList, nameof(RoadmapStateBuiltIn.Name)); // State
+            result.Add(RoadmapBuiltInTableApplicationCli.RowList, nameof(RoadmapBuiltIn.Name)); // Roadmap
 
             // FileManager
-            list.Add(DeployDbBuiltInItem.Create(FileTableApplicationCli.RowList, nameof(File.FileName)));
+            result.Add(FileTableApplicationCli.RowList, nameof(File.FileName));
 
             // Cms
-            list.Add(DeployDbBuiltInItem.Create(CmsComponentEnumBuiltInTableApplicationCli.RowList, nameof(CmsComponentEnumBuiltIn.Name)));
-            list.Add(DeployDbBuiltInItem.Create(CmsCodeBlockEnumBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockEnumBuiltIn.Name)));
+            result.Add(CmsComponentEnumBuiltInTableApplicationCli.RowList, nameof(CmsComponentEnumBuiltIn.Name));
+            result.Add(CmsCodeBlockEnumBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockEnumBuiltIn.Name));
         }
     }
 
