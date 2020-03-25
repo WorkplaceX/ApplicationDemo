@@ -13,7 +13,7 @@
         public override async Task InitAsync()
         {
             new Html(this) { TextHtml = "<h1>Airplane <i class='fas fa-plane'></i></h1>" };
-            new Html(this) { TextHtml = "Browse airplanes from <a href='https://en.wikipedia.org/wiki/List_of_aircraft_type_designators' target='_blank'>wikipedia.org</a> data. On how to convert and import data into sql database see <a href='https://github.com/WorkplaceX/Research/tree/master/Wikipedia' target='_blank'>github.com/WorkplaceX/Research</a>.<br/><br/>" };
+            new Html(this) { TextHtml = "Browse airplanes from <a href='https://en.wikipedia.org/wiki/List_of_aircraft_type_designators' target='_blank'>wikipedia.org</a> data. On how to convert and import data into sql database see <a href='https://github.com/WorkplaceX/Util/tree/master/Wikipedia' target='_blank'>github.com/WorkplaceX/Util</a>.<br/><br/>" };
 
             await new GridAirplane(this).LoadAsync();
         }
