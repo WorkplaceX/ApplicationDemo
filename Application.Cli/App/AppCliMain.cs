@@ -169,6 +169,7 @@
             // Cms
             result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
             result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
+            result.Add(CmsTextTypeBuiltInTableApplicationCli.RowList, new string[] { nameof(CmsTextType.Name), nameof(CmsTextType.ComponentTypeId) }, "Cms");
         }
     }
 
