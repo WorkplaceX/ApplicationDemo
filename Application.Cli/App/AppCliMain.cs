@@ -97,9 +97,9 @@
             list.Add(GenerateBuiltInItem.Create(fileList));
 
             // Cms
-            var componentEnumList = Data.Select(Data.Query<CmsCodeBlockEnumBuiltIn>());
+            var componentEnumList = Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>());
             list.Add(GenerateBuiltInItem.Create(componentEnumList));
-            var codeBlockEnumList = Data.Select(Data.Query<CmsComponentEnumBuiltIn>());
+            var codeBlockEnumList = Data.Select(Data.Query<CmsComponentTypeBuiltIn>());
             list.Add(GenerateBuiltInItem.Create(codeBlockEnumList));
         }
 
@@ -165,8 +165,8 @@
             result.Add(FileTableApplicationCli.RowList, nameof(File.FileName));
 
             // Cms
-            result.Add(CmsComponentEnumBuiltInTableApplicationCli.RowList, nameof(CmsComponentEnumBuiltIn.Name));
-            result.Add(CmsCodeBlockEnumBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockEnumBuiltIn.Name));
+            result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
+            result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
         }
     }
 

@@ -270,36 +270,36 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class CmsCodeBlockEnumBuiltInTableApplicationCli
+    public static class CmsCodeBlockTypeBuiltInTableApplicationCli
     {
-        public static List<CmsCodeBlockEnumBuiltIn> RowList
+        public static List<CmsCodeBlockTypeBuiltIn> RowList
         {
             get
             {
-                var result = new List<CmsCodeBlockEnumBuiltIn>();
-                result.Add(new CmsCodeBlockEnumBuiltIn() { Id = 1, IdName = "CSharp", Name = "CSharp", FileExtension = "cs" });
-                result.Add(new CmsCodeBlockEnumBuiltIn() { Id = 2, IdName = "Html", Name = "Html", FileExtension = "html" });
-                result.Add(new CmsCodeBlockEnumBuiltIn() { Id = 3, IdName = "JavaScript", Name = "JavaScript", FileExtension = "js" });
-                result.Add(new CmsCodeBlockEnumBuiltIn() { Id = 4, IdName = "Shell", Name = "Shell", FileExtension = "sh" });
+                var result = new List<CmsCodeBlockTypeBuiltIn>();
+                result.Add(new CmsCodeBlockTypeBuiltIn() { Id = 1, IdName = "CSharp", Name = "CSharp", FileExtension = "cs" });
+                result.Add(new CmsCodeBlockTypeBuiltIn() { Id = 2, IdName = "Html", Name = "Html", FileExtension = "html" });
+                result.Add(new CmsCodeBlockTypeBuiltIn() { Id = 3, IdName = "JavaScript", Name = "JavaScript", FileExtension = "js" });
+                result.Add(new CmsCodeBlockTypeBuiltIn() { Id = 4, IdName = "Shell", Name = "Shell", FileExtension = "sh" });
                 return result;
             }
         }
     }
 
-    public static class CmsComponentEnumBuiltInTableApplicationCli
+    public static class CmsComponentTypeBuiltInTableApplicationCli
     {
-        public static List<CmsComponentEnumBuiltIn> RowList
+        public static List<CmsComponentTypeBuiltIn> RowList
         {
             get
             {
-                var result = new List<CmsComponentEnumBuiltIn>();
-                result.Add(new CmsComponentEnumBuiltIn() { Id = 1, IdName = "Bullet", Name = "Bullet" });
-                result.Add(new CmsComponentEnumBuiltIn() { Id = 2, IdName = "CodeBlock", Name = "CodeBlock" });
-                result.Add(new CmsComponentEnumBuiltIn() { Id = 3, IdName = "Image", Name = "Image" });
-                result.Add(new CmsComponentEnumBuiltIn() { Id = 4, IdName = "Note", Name = "Note" });
-                result.Add(new CmsComponentEnumBuiltIn() { Id = 5, IdName = "Page", Name = "Page" });
-                result.Add(new CmsComponentEnumBuiltIn() { Id = 6, IdName = "Paragraph", Name = "Paragraph" });
-                result.Add(new CmsComponentEnumBuiltIn() { Id = 7, IdName = "Youtube", Name = "Youtube" });
+                var result = new List<CmsComponentTypeBuiltIn>();
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 3, IdName = "Bullet", Name = "Bullet" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 6, IdName = "CodeBlock", Name = "CodeBlock" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 7, IdName = "Glossary", Name = "Glossary" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 4, IdName = "Image", Name = "Image" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 1, IdName = "Page", Name = "Page" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 2, IdName = "Paragraph", Name = "Paragraph" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 5, IdName = "Youtube", Name = "Youtube" });
                 return result;
             }
         }
