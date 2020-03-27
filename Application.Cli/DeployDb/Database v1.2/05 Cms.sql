@@ -5,14 +5,16 @@ GO
 CREATE TABLE Demo.CmsComponentType
 (
     Id INT PRIMARY KEY IDENTITY,
-    Name NVARCHAR(256) UNIQUE,
+    Name NVARCHAR(256) NOT NULL UNIQUE,
+    Sort FLOAT,
 )
 GO
 CREATE VIEW Demo.CmsComponentTypeBuiltIn AS
 SELECT
     Id,
     Name AS IdName,
-    Name
+    Name,
+    Sort
 FROM
     Demo.CmsComponentType
 
@@ -21,8 +23,9 @@ GO
 CREATE TABLE Demo.CmsCodeBlockType
 (
     Id INT PRIMARY KEY IDENTITY,
-    Name NVARCHAR(256) UNIQUE,
-    FileExtension NVARCHAR(256)
+    Name NVARCHAR(256) NOT NULL UNIQUE,
+    FileExtension NVARCHAR(256),
+    Sort FLOAT
 )
 GO
 CREATE VIEW Demo.CmsCodeBlockTypeBuiltIn AS
@@ -30,7 +33,8 @@ SELECT
     Id,
     Name AS IdName,
     Name,
-    FileExtension
+    FileExtension,
+    Sort
 FROM
     Demo.CmsCodeBlockType
 

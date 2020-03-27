@@ -16,6 +16,9 @@ namespace Database.Demo
 
         [SqlField("FileExtension", FrameworkTypeEnum.Nvarcahr)]
         public string FileExtension { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
     [SqlTable("Demo", "CmsCodeBlockTypeBuiltIn")]
@@ -32,6 +35,9 @@ namespace Database.Demo
 
         [SqlField("FileExtension", FrameworkTypeEnum.Nvarcahr)]
         public string FileExtension { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponent")]
@@ -175,6 +181,9 @@ namespace Database.Demo
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponentTypeBuiltIn")]
@@ -188,6 +197,9 @@ namespace Database.Demo
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
     [SqlTable("Demo", "CmsText")]

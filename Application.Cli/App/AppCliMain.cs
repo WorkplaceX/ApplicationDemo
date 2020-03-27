@@ -97,9 +97,9 @@
             list.Add(GenerateBuiltInItem.Create(fileList));
 
             // Cms
-            var componentEnumList = Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>());
+            var componentEnumList = Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort));
             list.Add(GenerateBuiltInItem.Create(componentEnumList));
-            var codeBlockEnumList = Data.Select(Data.Query<CmsComponentTypeBuiltIn>());
+            var codeBlockEnumList = Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort));
             list.Add(GenerateBuiltInItem.Create(codeBlockEnumList));
         }
 
