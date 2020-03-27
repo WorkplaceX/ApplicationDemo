@@ -305,4 +305,24 @@ namespace DatabaseBuiltIn.Demo
             }
         }
     }
+
+    public static class CmsTextTypeTableApplicationCli
+    {
+        public static List<CmsTextType> RowList
+        {
+            get
+            {
+                var result = new List<CmsTextType>();
+                result.Add(new CmsTextType() { Id = 1, Name = "PageTitle", ComponentTypeId = 1, Sort = 1 });
+                result.Add(new CmsTextType() { Id = 2, Name = "ParagraphTitle", ComponentTypeId = 2, Sort = 2 });
+                result.Add(new CmsTextType() { Id = 3, Name = "ParagraphText", ComponentTypeId = 2, Sort = 3 });
+                result.Add(new CmsTextType() { Id = 4, Name = "BulletText", ComponentTypeId = 3, Sort = 4 });
+                result.Add(new CmsTextType() { Id = 5, Name = "ImageText", ComponentTypeId = 4, Sort = 5 });
+                result.Add(new CmsTextType() { Id = 6, Name = "CodeBlockText", ComponentTypeId = 6, Sort = 6 });
+                result.Add(new CmsTextType() { Id = 7, Name = "GlossaryTerm", ComponentTypeId = 7, Sort = 7 });
+                result.Add(new CmsTextType() { Id = 8, Name = "GlossaryText", ComponentTypeId = 7, Sort = 8 });
+                return result;
+            }
+        }
+    }
 }

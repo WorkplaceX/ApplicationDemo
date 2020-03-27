@@ -97,10 +97,12 @@
             list.Add(GenerateBuiltInItem.Create(fileList));
 
             // Cms
-            var componentEnumList = Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort));
-            list.Add(GenerateBuiltInItem.Create(componentEnumList));
-            var codeBlockEnumList = Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort));
-            list.Add(GenerateBuiltInItem.Create(codeBlockEnumList));
+            var componentTypeList = Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort));
+            list.Add(GenerateBuiltInItem.Create(componentTypeList));
+            var codeBlockTypeList = Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort));
+            list.Add(GenerateBuiltInItem.Create(codeBlockTypeList));
+            var textTypeList = Data.Select(Data.Query<CmsTextType>().OrderBy(item => item.Sort));
+            list.Add(GenerateBuiltInItem.Create(textTypeList));
         }
 
         /// <summary>

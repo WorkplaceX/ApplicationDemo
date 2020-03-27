@@ -254,6 +254,9 @@ namespace Database.Demo
 
         [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
         public int? ComponentTypeId { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
     [SqlTable("Demo", "CmsTextTypeBuiltIn")]
@@ -270,6 +273,9 @@ namespace Database.Demo
 
         [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
         public int? ComponentTypeId { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
 
         [SqlField("ComponentTypeIdName", FrameworkTypeEnum.Nvarcahr)]
         public string ComponentTypeIdName { get; set; }

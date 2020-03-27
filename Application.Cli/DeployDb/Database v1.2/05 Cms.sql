@@ -93,8 +93,9 @@ GO
 CREATE TABLE Demo.CmsTextType
 (
     Id INT PRIMARY KEY IDENTITY,
-    Name NVARCHAR(256),
-    ComponentTypeId INT FOREIGN KEY REFERENCES Demo.CmsComponentType(Id), -- (Page, Paragraph, Bullet, Image, Youtube, CodeBlock, Glossary)
+    Name NVARCHAR(256) NOT NULL,
+    ComponentTypeId INT NOT NULL FOREIGN KEY REFERENCES Demo.CmsComponentType(Id), -- (Page, Paragraph, Bullet, Image, Youtube, CodeBlock, Glossary)
+    Sort FLOAT,
     INDEX IX_CmsTextType UNIQUE (Name, ComponentTypeId)
 )
 GO
@@ -104,6 +105,7 @@ SELECT
     CONCAT(Name, '; ', (SELECT Name FROM Demo.CmsComponentTypeBuiltIn WHERE Id = Data.ComponentTypeId)) AS IdName,
     Name,
     ComponentTypeId,
+    Sort,
     (SELECT Name FROM Demo.CmsComponentTypeBuiltIn WHERE Id = Data.ComponentTypeId) AS ComponentTypeIdName
 FROM
     Demo.CmsTextType Data
