@@ -101,7 +101,7 @@
             list.Add(GenerateBuiltInItem.Create(componentTypeList));
             var codeBlockTypeList = Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort));
             list.Add(GenerateBuiltInItem.Create(codeBlockTypeList));
-            var textTypeList = Data.Select(Data.Query<CmsTextType>().OrderBy(item => item.Sort));
+            var textTypeList = Data.Select(Data.Query<CmsTextTypeBuiltIn>().OrderBy(item => item.Sort));
             list.Add(GenerateBuiltInItem.Create(textTypeList));
         }
 
