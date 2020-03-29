@@ -1,12 +1,18 @@
 ﻿/* For debug only! Reset DEV database */
 
 /* Cms */
+DROP VIEW Demo.CmsComponentTextBuiltIn
+DROP TABLE Demo.CmsComponentText
+DROP VIEW Demo.CmsTextBuiltIn
+DROP TABLE Demo.CmsText
+DROP VIEW Demo.CmsTextTypeBuiltIn
+DROP TABLE Demo.CmsTextType
 DROP VIEW Demo.CmsComponentBuiltIn
 DROP TABLE Demo.CmsComponent
-DROP VIEW Demo.CmsCodeBlockEnumBuiltIn
-DROP TABLE Demo.CmsCodeBlockEnum
-DROP VIEW Demo.CmsComponentEnumBuiltIn
-DROP TABLE Demo.CmsComponentEnum
+DROP VIEW Demo.CmsCodeBlockTypeBuiltIn
+DROP TABLE Demo.CmsCodeBlockType
+DROP VIEW Demo.CmsComponentTypeBuiltIn
+DROP TABLE Demo.CmsComponentType
 
 /* Shop */
 DROP TABLE [Demo].[ShopProductPhoto]

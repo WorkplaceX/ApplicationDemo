@@ -97,10 +97,12 @@
             list.Add(GenerateBuiltInItem.Create(fileList));
 
             // Cms
-            var componentEnumList = Data.Select(Data.Query<CmsCodeBlockEnumBuiltIn>());
-            list.Add(GenerateBuiltInItem.Create(componentEnumList));
-            var codeBlockEnumList = Data.Select(Data.Query<CmsComponentEnumBuiltIn>());
-            list.Add(GenerateBuiltInItem.Create(codeBlockEnumList));
+            var componentTypeList = Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort));
+            list.Add(GenerateBuiltInItem.Create(componentTypeList));
+            var codeBlockTypeList = Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort));
+            list.Add(GenerateBuiltInItem.Create(codeBlockTypeList));
+            var textTypeList = Data.Select(Data.Query<CmsTextTypeBuiltIn>().OrderBy(item => item.Sort));
+            list.Add(GenerateBuiltInItem.Create(textTypeList));
         }
 
         /// <summary>
@@ -165,8 +167,9 @@
             result.Add(FileTableApplicationCli.RowList, nameof(File.FileName));
 
             // Cms
-            result.Add(CmsComponentEnumBuiltInTableApplicationCli.RowList, nameof(CmsComponentEnumBuiltIn.Name));
-            result.Add(CmsCodeBlockEnumBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockEnumBuiltIn.Name));
+            result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
+            result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
+            result.Add(CmsTextTypeBuiltInTableApplicationCli.RowList, new string[] { nameof(CmsTextType.Name), nameof(CmsTextType.ComponentTypeId) }, "Cms");
         }
     }
 

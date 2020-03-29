@@ -5,8 +5,8 @@ namespace Database.Demo
     using Framework.DataAccessLayer;
     using System;
 
-    [SqlTable("Demo", "CmsCodeBlockEnum")]
-    public class CmsCodeBlockEnum : Row
+    [SqlTable("Demo", "CmsCodeBlockType")]
+    public class CmsCodeBlockType : Row
     {
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -16,10 +16,13 @@ namespace Database.Demo
 
         [SqlField("FileExtension", FrameworkTypeEnum.Nvarcahr)]
         public string FileExtension { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
-    [SqlTable("Demo", "CmsCodeBlockEnumBuiltIn")]
-    public class CmsCodeBlockEnumBuiltIn : Row
+    [SqlTable("Demo", "CmsCodeBlockTypeBuiltIn")]
+    public class CmsCodeBlockTypeBuiltIn : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -32,6 +35,9 @@ namespace Database.Demo
 
         [SqlField("FileExtension", FrameworkTypeEnum.Nvarcahr)]
         public string FileExtension { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponent")]
@@ -46,44 +52,23 @@ namespace Database.Demo
         [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
         public Guid Name { get; set; }
 
-        [SqlField("CmsComponentEnum", FrameworkTypeEnum.Int)]
-        public int? CmsComponentEnum { get; set; }
-
-        [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
-        public string PageTitle { get; set; }
+        [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
+        public int? ComponentTypeId { get; set; }
 
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
 
-        [SqlField("IsBlog", FrameworkTypeEnum.Bit)]
-        public bool? IsBlog { get; set; }
-
-        [SqlField("ParagraphTitle", FrameworkTypeEnum.Nvarcahr)]
-        public string ParagraphTitle { get; set; }
-
-        [SqlField("ParagraphText", FrameworkTypeEnum.Nvarcahr)]
-        public string ParagraphText { get; set; }
-
-        [SqlField("BulletText", FrameworkTypeEnum.Nvarcahr)]
-        public string BulletText { get; set; }
+        [SqlField("ParagrpahIsNote", FrameworkTypeEnum.Bit)]
+        public bool? ParagrpahIsNote { get; set; }
 
         [SqlField("ImageLink", FrameworkTypeEnum.Nvarcahr)]
         public string ImageLink { get; set; }
 
-        [SqlField("ImageText", FrameworkTypeEnum.Nvarcahr)]
-        public string ImageText { get; set; }
-
-        [SqlField("NoteText", FrameworkTypeEnum.Nvarcahr)]
-        public string NoteText { get; set; }
-
         [SqlField("YoutubeLink", FrameworkTypeEnum.Nvarcahr)]
         public string YoutubeLink { get; set; }
 
-        [SqlField("CmsCodeBlockEnumId", FrameworkTypeEnum.Int)]
-        public int? CmsCodeBlockEnumId { get; set; }
-
-        [SqlField("CodeBlockText", FrameworkTypeEnum.Nvarcahr)]
-        public string CodeBlockText { get; set; }
+        [SqlField("CodeBlockTypeId", FrameworkTypeEnum.Int)]
+        public int? CodeBlockTypeId { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
         public bool IsBuiltIn { get; set; }
@@ -110,41 +95,20 @@ namespace Database.Demo
         [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
         public Guid Name { get; set; }
 
-        [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
-        public string PageTitle { get; set; }
-
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
-
-        [SqlField("ParagraphTitle", FrameworkTypeEnum.Nvarcahr)]
-        public string ParagraphTitle { get; set; }
-
-        [SqlField("ParagraphText", FrameworkTypeEnum.Nvarcahr)]
-        public string ParagraphText { get; set; }
-
-        [SqlField("BulletText", FrameworkTypeEnum.Nvarcahr)]
-        public string BulletText { get; set; }
 
         [SqlField("ImageLink", FrameworkTypeEnum.Nvarcahr)]
         public string ImageLink { get; set; }
 
-        [SqlField("ImageText", FrameworkTypeEnum.Nvarcahr)]
-        public string ImageText { get; set; }
-
-        [SqlField("NoteText", FrameworkTypeEnum.Nvarcahr)]
-        public string NoteText { get; set; }
-
         [SqlField("YoutubeLink", FrameworkTypeEnum.Nvarcahr)]
         public string YoutubeLink { get; set; }
 
-        [SqlField("CmsCodeBlockEnumId", FrameworkTypeEnum.Int)]
-        public int? CmsCodeBlockEnumId { get; set; }
+        [SqlField("CodeBlockTypeId", FrameworkTypeEnum.Int)]
+        public int? CodeBlockTypeId { get; set; }
 
-        [SqlField("CmsCodeBlockEnumIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string CmsCodeBlockEnumIdName { get; set; }
-
-        [SqlField("CodeBlockText", FrameworkTypeEnum.Nvarcahr)]
-        public string CodeBlockText { get; set; }
+        [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string CodeBlockTypeIdName { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
         public bool IsBuiltIn { get; set; }
@@ -153,18 +117,77 @@ namespace Database.Demo
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "CmsComponentEnum")]
-    public class CmsComponentEnum : Row
+    [SqlTable("Demo", "CmsComponentText")]
+    public class CmsComponentText : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("ComponentId", FrameworkTypeEnum.Int)]
+        public int? ComponentId { get; set; }
+
+        [SqlField("TextTypeId", FrameworkTypeEnum.Int)]
+        public int? TextTypeId { get; set; }
+
+        [SqlField("TextId", FrameworkTypeEnum.Int)]
+        public int? TextId { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsComponentTextBuiltIn")]
+    public class CmsComponentTextBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("ComponentId", FrameworkTypeEnum.Int)]
+        public int? ComponentId { get; set; }
+
+        [SqlField("ComponentIdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid? ComponentIdName { get; set; }
+
+        [SqlField("TextTypeId", FrameworkTypeEnum.Int)]
+        public int? TextTypeId { get; set; }
+
+        [SqlField("TextTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string TextTypeIdName { get; set; }
+
+        [SqlField("TextId", FrameworkTypeEnum.Int)]
+        public int? TextId { get; set; }
+
+        [SqlField("TextIdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid? TextIdName { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsComponentType")]
+    public class CmsComponentType : Row
     {
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
-    [SqlTable("Demo", "CmsComponentEnumBuiltIn")]
-    public class CmsComponentEnumBuiltIn : Row
+    [SqlTable("Demo", "CmsComponentTypeBuiltIn")]
+    public class CmsComponentTypeBuiltIn : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -174,6 +197,88 @@ namespace Database.Demo
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsText")]
+    public class CmsText : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid Name { get; set; }
+
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsTextBuiltIn")]
+    public class CmsTextBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid IdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid Name { get; set; }
+
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsTextType")]
+    public class CmsTextType : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
+        public int ComponentTypeId { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsTextTypeBuiltIn")]
+    public class CmsTextTypeBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
+        public int ComponentTypeId { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
+
+        [SqlField("ComponentTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ComponentTypeIdName { get; set; }
     }
 
     [SqlTable("Demo", "CountryDisplay")]
