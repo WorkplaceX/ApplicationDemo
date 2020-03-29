@@ -85,7 +85,6 @@
             // Cms
             result.Add(Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort)));
             result.Add(Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort)));
-            result.Add(Data.Select(Data.Query<CmsTextTypeBuiltIn>().OrderBy(item => item.Sort)));
         }
 
         /// <summary>
@@ -152,7 +151,6 @@
             // Cms
             result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
             result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
-            result.Add(CmsTextTypeBuiltInTableApplicationCli.RowList, new string[] { nameof(CmsTextType.Name), nameof(CmsTextType.ComponentTypeId) }, "Cms");
         }
     }
 

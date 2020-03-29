@@ -52,10 +52,10 @@ CREATE TABLE Demo.CmsComponent
     PageDate DATETIME,
     -- Paragraph
     ParagraphTitle NVARCHAR(256),
-    ParagraphText NAVARCHAR(MAX),
-    ParagrpahIsNote BIT,
+    ParagraphText NVARCHAR(MAX),
+    ParagraphIsNote BIT,
     -- Bullet
-    BulletText NAVARCHAR(256),
+    BulletText NVARCHAR(256),
     -- Image
     ImageLink NVARCHAR(256),
     ImageText NVARCHAR(256),

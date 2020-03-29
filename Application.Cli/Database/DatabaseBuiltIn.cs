@@ -305,24 +305,4 @@ namespace DatabaseBuiltIn.Demo
             }
         }
     }
-
-    public static class CmsTextTypeBuiltInTableApplicationCli
-    {
-        public static List<CmsTextTypeBuiltIn> RowList
-        {
-            get
-            {
-                var result = new List<CmsTextTypeBuiltIn>();
-                result.Add(new CmsTextTypeBuiltIn() { Id = 1, IdName = "PageTitle; Page", Name = "PageTitle", ComponentTypeId = 1, Sort = 1, ComponentTypeIdName = "Page" });
-                result.Add(new CmsTextTypeBuiltIn() { Id = 2, IdName = "ParagraphTitle; Paragraph", Name = "ParagraphTitle", ComponentTypeId = 2, Sort = 2, ComponentTypeIdName = "Paragraph" });
-                result.Add(new CmsTextTypeBuiltIn() { Id = 3, IdName = "ParagraphText; Paragraph", Name = "ParagraphText", ComponentTypeId = 2, Sort = 3, ComponentTypeIdName = "Paragraph" });
-                result.Add(new CmsTextTypeBuiltIn() { Id = 4, IdName = "BulletText; Bullet", Name = "BulletText", ComponentTypeId = 3, Sort = 4, ComponentTypeIdName = "Bullet" });
-                result.Add(new CmsTextTypeBuiltIn() { Id = 5, IdName = "ImageText; Image", Name = "ImageText", ComponentTypeId = 4, Sort = 5, ComponentTypeIdName = "Image" });
-                result.Add(new CmsTextTypeBuiltIn() { Id = 6, IdName = "CodeBlockText; CodeBlock", Name = "CodeBlockText", ComponentTypeId = 6, Sort = 6, ComponentTypeIdName = "CodeBlock" });
-                result.Add(new CmsTextTypeBuiltIn() { Id = 7, IdName = "GlossaryTerm; Glossary", Name = "GlossaryTerm", ComponentTypeId = 7, Sort = 7, ComponentTypeIdName = "Glossary" });
-                result.Add(new CmsTextTypeBuiltIn() { Id = 8, IdName = "GlossaryText; Glossary", Name = "GlossaryText", ComponentTypeId = 7, Sort = 8, ComponentTypeIdName = "Glossary" });
-                return result;
-            }
-        }
-    }
 }
