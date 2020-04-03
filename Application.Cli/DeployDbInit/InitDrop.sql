@@ -1,6 +1,7 @@
 ﻿/* For debug only! Reset DEV database */
 
 /* Cms */
+DROP VIEW Demo.CmsComponentDisplay
 DROP VIEW Demo.CmsComponentBuiltIn
 DROP TABLE Demo.CmsComponent
 DROP VIEW Demo.CmsCodeBlockTypeBuiltIn

@@ -62,7 +62,7 @@ CREATE TABLE Demo.CmsComponent
     -- Youtube
     YoutubeLink NVARCHAR(256),
     -- CodeBlock
-    CodeText NVARCHAR(MAX),
+    CodeBlockText NVARCHAR(MAX),
     CodeBlockTypeId INT FOREIGN KEY REFERENCES Demo.CmsCodeBlockType(Id),
     -- Glossary
     GlossaryTerm NVARCHAR(256),
@@ -95,9 +95,46 @@ SELECT
     -- Youtube
     YoutubeLink,
     -- CodeBlock
-    CodeText,
+    CodeBlockText,
     CodeBlockTypeId,
     (SELECT IdName FROM CmsCodeBlockTypeBuiltIn WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeIdName,
+    -- Glossary
+    GlossaryTerm,
+    GlossaryText,
+    -- BuiltIn
+    IsBuiltIn,
+    IsExist
+FROM
+    Demo.CmsComponent Data
+
+GO
+CREATE VIEW Demo.CmsComponentDisplay AS
+SELECT
+    Id,
+    ParentId,
+    (SELECT PageTitle FROM Demo.CmsComponent WHERE Id = Data.ParentId) AS ParentText,
+    Name,
+    ComponentTypeId,
+    (SELECT Name FROM Demo.CmsComponentType WHERE Id = Data.ComponentTypeId) AS ComponentType,
+    -- Page
+    PageTitle,
+    PageImageLink,
+    PageDate,
+    -- Paragraph
+    ParagraphTitle,
+    ParagraphText,
+    ParagraphIsNote,
+    -- Bullet
+    BulletText,
+    -- Image
+    ImageLink,
+    ImageText,
+    -- Youtube
+    YoutubeLink,
+    -- CodeBlock
+    CodeBlockText,
+    CodeBlockTypeId,
+    (SELECT CONCAT(Name, ' (', FileExtension, ')') FROM Demo.CmsCodeBlockType WHERE Id = Data.CodeBlockTypeId) AS CodeBlockType,
     -- Glossary
     GlossaryTerm,
     GlossaryText,
