@@ -16,6 +16,8 @@
                 this.IsScrollToTop = true;
             }
 
+            new Custom01(this) { TextHtml = "Hello <b>World</b>" };
+
             await new PageMain(this).InitAsync();
 
             // this.Button = new Button(this) { TextHtml = "Click" };
