@@ -1,0 +1,1 @@
+﻿DROP TABLE [Demo].[Raw.OpenFlights.Airport]

@@ -1,0 +1,13 @@
+﻿DROP VIEW Demo.LoginUserPermissionDisplay
+DROP VIEW Demo.LoginRolePermissionDisplay
+DROP VIEW Demo.LoginUserRoleDisplay
+DROP VIEW Demo.LoginRolePermissionBuiltIn
+DROP TABLE Demo.LoginRolePermission
+DROP VIEW Demo.LoginUserRoleBuiltIn
+DROP TABLE Demo.LoginUserRole
+DROP VIEW Demo.LoginPermissionBuiltIn
+DROP TABLE Demo.LoginPermission
+DROP VIEW Demo.LoginRoleBuiltIn
+DROP TABLE Demo.LoginRole
+DROP VIEW Demo.LoginUserBuiltIn
+DROP TABLE Demo.LoginUser
