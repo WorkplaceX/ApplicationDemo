@@ -3,9 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin') // Used for index.html
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Extracts CSS into separate files
 
 module.exports = [{
-  output: {
-    path: path.resolve(__dirname, 'dist'), /* Output */
-  },
   module: {
     rules: [
       {
