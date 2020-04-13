@@ -38,7 +38,6 @@
             string appTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace;
             configCli.EnvironmentGet().WebsiteList.Add(new ConfigCliWebsite()
             {
-                FolderNameServer = "Application.Server/Framework/Application.Website/Default/",
                 DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { DomainName = "localhost", AppTypeName = appTypeName } }),
                 FolderNameNpmBuild = "Application.Website/Default/",
                 FolderNameDist = "Application.Website/Default/dist/",
