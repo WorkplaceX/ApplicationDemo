@@ -97,131 +97,131 @@
             return base.LookupRowSelected(gridLookup);
         }
 
-        protected override async Task CellParseAsync(RoadmapDisplay row, string fieldName, string text, CellParseResult result)
+        protected override async Task CellParseAsync(CellParseArgs args, CellParseResult result)
         {
             // Category
-            if (fieldName == nameof(RoadmapDisplay.RoadmapCategoryText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapCategoryText))
             {
-                if (text == "")
+                if (args.Text == "")
                 {
-                    row.RoadmapCategoryId = null;
-                    row.RoadmapCategoryIdName = null;
-                    row.RoadmapCategoryText = "";
+                    args.Row.RoadmapCategoryId = null;
+                    args.Row.RoadmapCategoryIdName = null;
+                    args.Row.RoadmapCategoryText = "";
                 }
                 else
                 {
-                    var roadmapCategory = (await Data.SelectAsync(Data.Query<RoadmapCategory>().Where(item => item.Text == text))).FirstOrDefault();
+                    var roadmapCategory = (await Data.SelectAsync(Data.Query<RoadmapCategory>().Where(item => item.Text == args.Text))).FirstOrDefault();
                     if (roadmapCategory == null)
                     {
                         result.ErrorParse = "Category not found!";
                     }
                     else
                     {
-                        row.RoadmapCategoryId = roadmapCategory.Id;
-                        row.RoadmapCategoryIdName = roadmapCategory.Name;
-                        row.RoadmapCategoryText = roadmapCategory.Text;
+                        args.Row.RoadmapCategoryId = roadmapCategory.Id;
+                        args.Row.RoadmapCategoryIdName = roadmapCategory.Name;
+                        args.Row.RoadmapCategoryText = roadmapCategory.Text;
                     }
                 }
                 result.IsHandled = true;
             }
 
             // Module
-            if (fieldName == nameof(RoadmapDisplay.RoadmapModuleText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapModuleText))
             {
-                if (text == "")
+                if (args.Text == "")
                 {
-                    row.RoadmapModuleId = null;
-                    row.RoadmapModuleIdName = null;
-                    row.RoadmapModuleText = "";
+                    args.Row.RoadmapModuleId = null;
+                    args.Row.RoadmapModuleIdName = null;
+                    args.Row.RoadmapModuleText = "";
                 }
                 else
                 {
-                    var roadmapModule = (await Data.SelectAsync(Data.Query<RoadmapModule>().Where(item => item.Text == text))).FirstOrDefault();
+                    var roadmapModule = (await Data.SelectAsync(Data.Query<RoadmapModule>().Where(item => item.Text == args.Text))).FirstOrDefault();
                     if (roadmapModule == null)
                     {
                         result.ErrorParse = "Module not found!";
                     }
                     else
                     {
-                        row.RoadmapModuleId = roadmapModule.Id;
-                        row.RoadmapModuleIdName = roadmapModule.Name;
-                        row.RoadmapModuleText = roadmapModule.Text;
+                        args.Row.RoadmapModuleId = roadmapModule.Id;
+                        args.Row.RoadmapModuleIdName = roadmapModule.Name;
+                        args.Row.RoadmapModuleText = roadmapModule.Text;
                     }
                 }
                 result.IsHandled = true;
             }
 
             // Priority
-            if (fieldName == nameof(RoadmapDisplay.RoadmapPriorityText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapPriorityText))
             {
-                if (text == "")
+                if (args.Text == "")
                 {
-                    row.RoadmapPriorityId = null;
-                    row.RoadmapPriorityIdName = null;
-                    row.RoadmapPriorityText = "";
+                    args.Row.RoadmapPriorityId = null;
+                    args.Row.RoadmapPriorityIdName = null;
+                    args.Row.RoadmapPriorityText = "";
                 }
                 else
                 {
-                    var roadmapPriority = (await Data.SelectAsync(Data.Query<RoadmapPriority>().Where(item => item.Text == text))).FirstOrDefault();
+                    var roadmapPriority = (await Data.SelectAsync(Data.Query<RoadmapPriority>().Where(item => item.Text == args.Text))).FirstOrDefault();
                     if (roadmapPriority == null)
                     {
                         result.ErrorParse = "Priority not found!";
                     }
                     else
                     {
-                        row.RoadmapPriorityId = roadmapPriority.Id;
-                        row.RoadmapPriorityIdName = roadmapPriority.Name;
-                        row.RoadmapPriorityText = roadmapPriority.Text;
+                        args.Row.RoadmapPriorityId = roadmapPriority.Id;
+                        args.Row.RoadmapPriorityIdName = roadmapPriority.Name;
+                        args.Row.RoadmapPriorityText = roadmapPriority.Text;
                     }
                 }
                 result.IsHandled = true;
             }
 
             // State
-            if (fieldName == nameof(RoadmapDisplay.RoadmapStateText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapStateText))
             {
-                if (text == "")
+                if (args.Text == "")
                 {
-                    row.RoadmapStateId = null;
-                    row.RoadmapStateIdName = null;
-                    row.RoadmapStateText = "";
+                    args.Row.RoadmapStateId = null;
+                    args.Row.RoadmapStateIdName = null;
+                    args.Row.RoadmapStateText = "";
                 }
                 else
                 {
-                    var roadmapState = (await Data.SelectAsync(Data.Query<RoadmapState>().Where(item => item.Text == text))).FirstOrDefault();
+                    var roadmapState = (await Data.SelectAsync(Data.Query<RoadmapState>().Where(item => item.Text == args.Text))).FirstOrDefault();
                     if (roadmapState == null)
                     {
                         result.ErrorParse = "State not found!";
                     }
                     else
                     {
-                        row.RoadmapStateId = roadmapState.Id;
-                        row.RoadmapStateIdName = roadmapState.Name;
-                        row.RoadmapStateText = roadmapState.Text;
+                        args.Row.RoadmapStateId = roadmapState.Id;
+                        args.Row.RoadmapStateIdName = roadmapState.Name;
+                        args.Row.RoadmapStateText = roadmapState.Text;
                     }
                 }
                 result.IsHandled = true;
             }
 
             // User
-            if (fieldName == nameof(RoadmapDisplay.LoginUserText))
+            if (args.FieldName == nameof(RoadmapDisplay.LoginUserText))
             {
-                if (text == "")
+                if (args.Text == "")
                 {
-                    row.LoginUserId = null;
-                    row.LoginUserText = "";
+                    args.Row.LoginUserId = null;
+                    args.Row.LoginUserText = "";
                 }
                 else
                 {
-                    var loginUser = (await Data.SelectAsync(Data.Query<LoginUser>().Where(item => item.Name == text))).FirstOrDefault();
+                    var loginUser = (await Data.SelectAsync(Data.Query<LoginUser>().Where(item => item.Name == args.Text))).FirstOrDefault();
                     if (loginUser == null)
                     {
                         result.ErrorParse = "User name not found!";
                     }
                     else
                     {
-                        row.LoginUserId = loginUser.Id;
-                        row.LoginUserText = loginUser.Name; // Without database row reload!
+                        args.Row.LoginUserId = loginUser.Id;
+                        args.Row.LoginUserText = loginUser.Name; // Without database row reload!
                     }
                 }
                 result.IsHandled = true;

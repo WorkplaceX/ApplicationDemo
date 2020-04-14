@@ -37,12 +37,12 @@
             }
         }
 
-        protected override void CellParseFileUpload(File row, string fieldName, string fileName, byte[] data, CellParseResult result)
+        protected override void CellParseFileUpload(CellParseFileUploadArgs args, CellParseResult result)
         {
-            if (fieldName == nameof(File.Data))
+            if (args.FieldName == nameof(File.Data))
             {
-                row.Data = data;
-                row.FileName = fileName;
+                args.Row.Data = args.Data;
+                args.Row.FileName = args.FileName;
                 result.IsHandled = true;
             }
         }
