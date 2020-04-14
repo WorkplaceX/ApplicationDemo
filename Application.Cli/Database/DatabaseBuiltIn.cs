@@ -14,6 +14,7 @@ namespace DatabaseBuiltIn.dbo
             get
             {
                 var result = new List<FrameworkConfigGridBuiltIn>();
+                result.Add(new FrameworkConfigGridBuiltIn() { Id = 11, IdName = "Demo.CmsComponentDisplay; ", TableId = 16, TableIdName = "Demo.CmsComponentDisplay", TableNameCSharp = "Demo.CmsComponentDisplay", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 3, IdName = "Demo.File; ", TableId = 21, TableIdName = "Demo.File", TableNameCSharp = "Demo.File", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 4, IdName = "Demo.Language; ", TableId = 22, TableIdName = "Demo.Language", TableNameCSharp = "Demo.Language", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 5, IdName = "Demo.Navigation; ", TableId = 37, TableIdName = "Demo.Navigation", TableNameCSharp = "Demo.Navigation", ConfigName = null, RowCountMax = 20, IsAllowInsert = null, IsExist = true });
@@ -34,6 +35,8 @@ namespace DatabaseBuiltIn.dbo
             get
             {
                 var result = new List<FrameworkConfigFieldBuiltIn>();
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 50, ConfigGridId = 11, ConfigGridIdName = "Demo.CmsComponentDisplay; ", FieldId = 141, FieldIdName = "Demo.CmsComponentDisplay; Id", InstanceName = null, TableNameCSharp = "Demo.CmsComponentDisplay", ConfigName = null, FieldNameCSharp = "Id", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 51, ConfigGridId = 11, ConfigGridIdName = "Demo.CmsComponentDisplay; ", FieldId = 142, FieldIdName = "Demo.CmsComponentDisplay; ParentId", InstanceName = null, TableNameCSharp = "Demo.CmsComponentDisplay", ConfigName = null, FieldNameCSharp = "ParentId", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 19, ConfigGridId = 3, ConfigGridIdName = "Demo.File; ", FieldId = 189, FieldIdName = "Demo.File; FileName", InstanceName = "Link", TableNameCSharp = "Demo.File", ConfigName = null, FieldNameCSharp = "FileName", Text = "Link", Description = "Link to file", IsVisible = false, IsReadOnly = true, Sort = 1, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 20, ConfigGridId = 3, ConfigGridIdName = "Demo.File; ", FieldId = 189, FieldIdName = "Demo.File; FileName", InstanceName = null, TableNameCSharp = "Demo.File", ConfigName = null, FieldNameCSharp = "FileName", Text = null, Description = null, IsVisible = null, IsReadOnly = null, Sort = 0, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 21, ConfigGridId = 5, ConfigGridIdName = "Demo.Navigation; ", FieldId = 266, FieldIdName = "Demo.Navigation; Id", InstanceName = null, TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "Id", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });

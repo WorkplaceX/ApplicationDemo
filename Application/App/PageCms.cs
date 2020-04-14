@@ -36,6 +36,7 @@
         protected override async Task InsertAsync(InsertArgs args, InsertResult result)
         {
             args.RowNew.Name = Guid.NewGuid();
+            args.RowNew.IsExist = true;
 
             var row = Data.RowCopy<CmsComponent>(args.RowNew);
             await Data.InsertAsync(row);
