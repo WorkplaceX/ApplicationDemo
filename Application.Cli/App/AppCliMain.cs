@@ -2,6 +2,7 @@
 {
     using Database.Demo; // Framework and Application contain same namespace.
     using DatabaseBuiltIn.Demo;
+    using Framework.Cli;
     using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Framework.DataAccessLayer;
