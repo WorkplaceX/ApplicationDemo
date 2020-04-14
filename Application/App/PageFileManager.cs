@@ -28,12 +28,12 @@
     {
         public GridFile(ComponentJson owner) : base(owner) { }
 
-        protected override void CellAnnotation(File row, string fieldName, CellAnnotationResult result)
+        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
         {
-            if (fieldName == nameof(File.Data))
+            if (args.FieldName == nameof(File.Data))
             {
                 result.IsFileUpload = true;
-                result.Html = string.Format("<a href='{0}'>{1}</a>", row.FileName, row.FileName);
+                result.Html = string.Format("<a href='{0}'>{1}</a>", args.Row.FileName, args.Row.FileName);
             }
         }
 

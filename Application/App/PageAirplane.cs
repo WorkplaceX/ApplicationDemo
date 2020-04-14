@@ -23,30 +23,31 @@
     {
         public GridAirplane(ComponentJson owner) : base(owner) { }
 
-        protected override Task UpdateAsync(RawWikipediaAircraft row, RawWikipediaAircraft rowNew, DatabaseEnum databaseEnum, UpdateResult result)
+
+        protected override Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
             result.IsHandled = true;
-            return base.UpdateAsync(row, rowNew, databaseEnum, result);
+            return base.UpdateAsync(args, result);
         }
 
         /// <summary>
         /// Add some annotation to the grid data like hyperlink or render as image.
         /// </summary>
-        protected override void CellAnnotation(RawWikipediaAircraft row, string fieldName, CellAnnotationResult result)
+        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
         {
-            if (fieldName == nameof(RawWikipediaAircraft.Model) && row?.ModelImageUrl != null)
+            if (args.FieldName == nameof(RawWikipediaAircraft.Model) && args.Row?.ModelImageUrl != null)
             {
-                result.HtmlLeft = string.Format("<img src='{0}' width='128' />", row.ModelImageUrl);
+                result.HtmlLeft = string.Format("<img src='{0}' width='128' />", args.Row.ModelImageUrl);
             }
 
-            if (fieldName == nameof(RawWikipediaAircraft.ModelUrl) && row?.ModelUrl != null)
+            if (args.FieldName == nameof(RawWikipediaAircraft.ModelUrl) && args.Row?.ModelUrl != null)
             {
-                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", row.ModelUrl, "Wikipedia");
+                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", args.Row.ModelUrl, "Wikipedia");
             }
 
-            if (fieldName == nameof(RawWikipediaAircraft.ModelImageUrl) && row?.ModelImageUrl != null)
+            if (args.FieldName == nameof(RawWikipediaAircraft.ModelImageUrl) && args.Row?.ModelImageUrl != null)
             {
-                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", row.ModelImageUrl, "Image");
+                result.Html = string.Format("<a href='{0}' target='_blank'>{1}", args.Row.ModelImageUrl, "Image");
             }
         }
 

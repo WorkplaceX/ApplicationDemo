@@ -26,23 +26,23 @@
     {
         public GridRoadmap(ComponentJson owner) : base(owner) { }
 
-        protected override async Task InsertAsync(RoadmapDisplay rowNew, DatabaseEnum databaseEnum, InsertResult result)
+        protected override async Task InsertAsync(InsertArgs args, InsertResult result)
         {
             Roadmap roadmap = new Roadmap();
-            Data.RowCopy(rowNew, roadmap);
+            Data.RowCopy(args.RowNew, roadmap);
             roadmap.Name = Guid.NewGuid();
             await Data.InsertAsync(roadmap);
-            rowNew.Id = roadmap.Id; // Get new id from db
-            rowNew.Name = roadmap.Name;
-            rowNew.IsExist = true;
-            rowNew.Date = DateTime.Today;
+            args.RowNew.Id = roadmap.Id; // Get new id from db
+            args.RowNew.Name = roadmap.Name;
+            args.RowNew.IsExist = true;
+            args.RowNew.Date = DateTime.Today;
             result.IsHandled = true;
         }
 
-        protected override async Task UpdateAsync(RoadmapDisplay row, RoadmapDisplay rowNew, DatabaseEnum databaseEnum, UpdateResult result)
+        protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
             Roadmap roadmapNew = new Roadmap();
-            Data.RowCopy(rowNew, roadmapNew);
+            Data.RowCopy(args.RowNew, roadmapNew);
             await Data.UpdateAsync(roadmapNew);
             result.IsHandled = true;
         }
@@ -228,12 +228,12 @@
             }
         }
 
-        protected override void CellAnnotation(RoadmapDisplay row, string fieldName, CellAnnotationResult result)
+        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
         {
             // Priority
-            if (fieldName == nameof(row.RoadmapPriorityText))
+            if (args.FieldName == nameof(args.Row.RoadmapPriorityText))
             {
-                var idEnum = RoadmapPriorityBuiltInTableApplication.IdName(row.RoadmapPriorityIdName);
+                var idEnum = RoadmapPriorityBuiltInTableApplication.IdName(args.Row.RoadmapPriorityIdName);
                 string bootstrapColor = null;
                 switch (idEnum)
                 {
@@ -254,9 +254,9 @@
             }
 
             // Category
-            if (fieldName == nameof(row.RoadmapCategoryText))
+            if (args.FieldName == nameof(args.Row.RoadmapCategoryText))
             {
-                var idEnum = RoadmapCategoryBuiltInTableApplication.IdName(row.RoadmapCategoryIdName);
+                var idEnum = RoadmapCategoryBuiltInTableApplication.IdName(args.Row.RoadmapCategoryIdName);
                 switch (idEnum)
                 {
                     case RoadmapCategoryBuiltInTableApplication.IdNameEnum.Feature:
@@ -272,17 +272,17 @@
             }
 
             // State
-            if (fieldName == nameof(row.RoadmapStateText))
+            if (args.FieldName == nameof(args.Row.RoadmapStateText))
             {
-                var idEnum = RoadmapStateBuiltInTableApplication.IdName(row.RoadmapStateIdName);
+                var idEnum = RoadmapStateBuiltInTableApplication.IdName(args.Row.RoadmapStateIdName);
                 if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
                 {
                     result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
                 }
             }
-            if (fieldName == nameof(row.Description))
+            if (args.FieldName == nameof(args.Row.Description))
             {
-                var idEnum = RoadmapStateBuiltInTableApplication.IdName(row.RoadmapStateIdName);
+                var idEnum = RoadmapStateBuiltInTableApplication.IdName(args.Row.RoadmapStateIdName);
                 if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
                 {
                     result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
@@ -290,9 +290,9 @@
             }
 
             // Module
-            if (fieldName == nameof(row.RoadmapModuleText))
+            if (args.FieldName == nameof(args.Row.RoadmapModuleText))
             {
-                var idEnum = RoadmapModuleBuiltInTableApplication.IdName(row.RoadmapModuleIdName);
+                var idEnum = RoadmapModuleBuiltInTableApplication.IdName(args.Row.RoadmapModuleIdName);
                 if (idEnum == RoadmapModuleBuiltInTableApplication.IdNameEnum.Framework)
                 {
                     result.HtmlLeft = "<i class='fas fa-microchip text-primary'></i>"; // Blue

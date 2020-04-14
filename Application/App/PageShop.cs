@@ -27,11 +27,11 @@
     {
         public GridProduct(ComponentJson owner) : base(owner) { }
 
-        protected override void CellAnnotation(ShopProductPhoto row, string fieldName, CellAnnotationResult result)
+        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
         {
-            if (fieldName == nameof(ShopProductPhoto.Data))
+            if (args.FieldName == nameof(ShopProductPhoto.Data))
             {
-                result.Html = string.Format("<img src='{0}'/>", "shop/" + row.FileName);
+                result.Html = string.Format("<img src='{0}'/>", "shop/" + args.Row.FileName);
             }
         }
     }

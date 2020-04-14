@@ -26,10 +26,22 @@
     {
         public GridCmsComponent(ComponentJson owner) : base(owner) { }
 
-        protected override Task InsertAsync(CmsComponentDisplay rowNew, DatabaseEnum databaseEnum, InsertResult result)
+        protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
-            rowNew.Name = Guid.NewGuid();
-            return base.InsertAsync(rowNew, databaseEnum, result);
+            await Data.UpdateAsync(Data.RowCopy<CmsComponent>(args.RowNew));
+
+            result.IsHandled = true;
+        }
+
+        protected override async Task InsertAsync(InsertArgs args, InsertResult result)
+        {
+            args.RowNew.Name = Guid.NewGuid();
+
+            var row = Data.RowCopy<CmsComponent>(args.RowNew);
+            await Data.InsertAsync(row);
+            args.RowNew.Id = row.Id;
+
+            result.IsHandled = true;
         }
     }
 }
