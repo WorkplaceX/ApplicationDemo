@@ -24,13 +24,6 @@
 
         }
 
-        protected override void RegisterCommand()
-        {
-            new MyCommand(this);
-
-            base.RegisterCommand();
-        }
-
         /// <summary>
         /// Set default values if file ConfigCli.json does not exist.
         /// </summary>
@@ -151,34 +144,6 @@
             // Cms
             result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
             result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
-        }
-    }
-
-    /// <summary>
-    /// Custom cli command.
-    /// </summary>
-    public class MyCommand : CommandBase
-    {
-        public MyCommand(AppCli appCli) 
-            : base(appCli, "my", "My custom cli command")
-        {
-
-        }
-
-        public CommandOption My;
-
-        protected override void Register(CommandLineApplication configuration)
-        {
-            this.My = configuration.Option("-m", "My Option", CommandOptionType.NoValue);
-        }
-
-        protected override void Execute()
-        {
-            Console.WriteLine("My");
-            if (My.Value() == "on")
-            {
-                Console.WriteLine("With option");
-            }
         }
     }
 }
