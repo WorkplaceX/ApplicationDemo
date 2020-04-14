@@ -36,9 +36,9 @@
         protected override void InitConfigCli(ConfigCli configCli)
         {
             string appTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace;
-            configCli.EnvironmentGet().WebsiteList.Add(new ConfigCliWebsite()
+            configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
-                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { DomainName = "localhost", AppTypeName = appTypeName } }),
+                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName="DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
                 FolderNameNpmBuild = "Application.Website/Default/",
                 FolderNameDist = "Application.Website/Default/dist/",
             });
