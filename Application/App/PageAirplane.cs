@@ -59,9 +59,9 @@
             }
         }
 
-        protected override string LookupRowSelected(Grid gridLookup)
+        protected override void LookupRowSelected(LookupRowSelectedArgs args, LookupRowSelectedResult result)
         {
-            return ((CountryDisplayCache)gridLookup.RowSelected).Code;
+            result.Text = ((CountryDisplayCache)args.RowSelected).Code;
         }
     }
 }

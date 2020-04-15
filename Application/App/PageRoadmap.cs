@@ -71,29 +71,28 @@
             }
         }
 
-        protected override string LookupRowSelected(Grid gridLookup)
+        protected override void LookupRowSelected(LookupRowSelectedArgs args, LookupRowSelectedResult result)
         {
-            if (gridLookup.RowSelected is RoadmapCategory roadmapCategory) // Category
+            if (args.RowSelected is RoadmapCategory roadmapCategory) // Category
             {
-                return roadmapCategory.Text;
+                result.Text = roadmapCategory.Text;
             }
-            if (gridLookup.RowSelected is RoadmapModule roadmapModule) // Module
+            if (args.RowSelected is RoadmapModule roadmapModule) // Module
             {
-                return roadmapModule.Text;
+                result.Text = roadmapModule.Text;
             }
-            if (gridLookup.RowSelected is RoadmapPriority roadmapPriority) // Priority
+            if (args.RowSelected is RoadmapPriority roadmapPriority) // Priority
             {
-                return roadmapPriority.Text;
+                result.Text = roadmapPriority.Text;
             }
-            if (gridLookup.RowSelected is RoadmapState roadmapState) // State
+            if (args.RowSelected is RoadmapState roadmapState) // State
             {
-                return roadmapState.Text;
+                result.Text = roadmapState.Text;
             }
-            if (gridLookup.RowSelected is LoginUser loginUser) // User
+            if (args.RowSelected is LoginUser loginUser) // User
             {
-                return loginUser.Name;
+                result.Text = loginUser.Name;
             }
-            return base.LookupRowSelected(gridLookup);
         }
 
         protected override async Task CellParseAsync(CellParseArgs args, CellParseResult result)

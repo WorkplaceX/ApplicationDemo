@@ -16,7 +16,7 @@
     /// </summary>
     public class AppCliMain : AppCli
     {
-        public AppCliMain() : 
+        public AppCliMain() :
             base(
                 typeof(CountryDisplayCache).Assembly, // Register Application.Database dll
                 typeof(AppMain).Assembly) // Register Application dll
@@ -32,7 +32,7 @@
             string appTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace;
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
-                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName="DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
+                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
                 FolderNameNpmBuild = "Application.Website/Default/",
                 FolderNameDist = "Application.Website/Default/dist/",
             });
@@ -78,6 +78,7 @@
             // Cms
             result.Add(Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort)));
             result.Add(Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort)));
+            result.Add(Data.Query<CmsComponentBuiltIn>().OrderBy(item => item.Name).SelectExecute());
         }
 
         /// <summary>
@@ -144,6 +145,7 @@
             // Cms
             result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
             result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
+            // result.Add(CmsComponentBuiltInTableApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null); // TODO
         }
     }
 }

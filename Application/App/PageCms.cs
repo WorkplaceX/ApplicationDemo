@@ -53,5 +53,31 @@
                 result.Query = Data.Query<CmsComponentType>();
             }
         }
+
+        protected override void LookupRowSelected(LookupRowSelectedArgs args, LookupRowSelectedResult result)
+        {
+            if (args.RowSelected is CmsComponentType row)
+            {
+                result.Text = row.Name;
+            }
+        }
+
+        protected override async Task CellParseAsync(CellParseArgs args, CellParseResult result)
+        {
+            if (args.FieldName == nameof(args.Row.ComponentType))
+            {
+                var row = (await Data.Query<CmsComponentType>().Where(item => item.Name == args.Text).SelectExecuteAsync()).FirstOrDefault();
+                if (row != null)
+                {
+                    result.Row.ComponentTypeId = row.Id;
+                    result.Row.ComponentType = row.Name;
+                }
+                else
+                {
+                    result.ErrorParse = "Component not found!";
+                }
+                result.IsHandled = true;
+            }
+        }
     }
 }
