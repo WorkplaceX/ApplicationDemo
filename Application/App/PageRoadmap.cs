@@ -108,7 +108,7 @@
                 }
                 else
                 {
-                    var roadmapCategory = (await Data.SelectAsync(Data.Query<RoadmapCategory>().Where(item => item.Text == args.Text))).FirstOrDefault();
+                    var roadmapCategory = (await Data.Query<RoadmapCategory>().Where(item => item.Text == args.Text).QueryExecuteAsync()).FirstOrDefault();
                     if (roadmapCategory == null)
                     {
                         result.ErrorParse = "Category not found!";
@@ -134,7 +134,7 @@
                 }
                 else
                 {
-                    var roadmapModule = (await Data.SelectAsync(Data.Query<RoadmapModule>().Where(item => item.Text == args.Text))).FirstOrDefault();
+                    var roadmapModule = (await Data.Query<RoadmapModule>().Where(item => item.Text == args.Text).QueryExecuteAsync()).FirstOrDefault();
                     if (roadmapModule == null)
                     {
                         result.ErrorParse = "Module not found!";
@@ -160,7 +160,7 @@
                 }
                 else
                 {
-                    var roadmapPriority = (await Data.SelectAsync(Data.Query<RoadmapPriority>().Where(item => item.Text == args.Text))).FirstOrDefault();
+                    var roadmapPriority = (await Data.Query<RoadmapPriority>().Where(item => item.Text == args.Text).QueryExecuteAsync()).FirstOrDefault();
                     if (roadmapPriority == null)
                     {
                         result.ErrorParse = "Priority not found!";
@@ -186,7 +186,7 @@
                 }
                 else
                 {
-                    var roadmapState = (await Data.SelectAsync(Data.Query<RoadmapState>().Where(item => item.Text == args.Text))).FirstOrDefault();
+                    var roadmapState = (await Data.Query<RoadmapState>().Where(item => item.Text == args.Text).QueryExecuteAsync()).FirstOrDefault();
                     if (roadmapState == null)
                     {
                         result.ErrorParse = "State not found!";
@@ -211,7 +211,7 @@
                 }
                 else
                 {
-                    var loginUser = (await Data.SelectAsync(Data.Query<LoginUser>().Where(item => item.Name == args.Text))).FirstOrDefault();
+                    var loginUser = (await Data.Query<LoginUser>().Where(item => item.Name == args.Text).QueryExecuteAsync()).FirstOrDefault();
                     if (loginUser == null)
                     {
                         result.ErrorParse = "User name not found!";

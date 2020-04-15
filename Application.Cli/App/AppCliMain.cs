@@ -44,41 +44,41 @@
         protected override void CommandGenerateBuiltIn(GenerateBuiltInResult result)
         {
             // Language
-            result.Add(Data.Select(Data.Query<LanguageBuiltIn>().OrderBy(item => item.IdName)), isApplication: true);
+            result.Add(Data.Query<LanguageBuiltIn>().OrderBy(item => item.IdName).QueryExecute(), isApplication: true);
 
             // Navigation
-            result.Add(Data.Select(Data.Query<NavigationBuiltIn>().OrderBy(item => item.IdName)));
+            result.Add(Data.Query<NavigationBuiltIn>().OrderBy(item => item.IdName).QueryExecute());
 
             // LoginPermission
-            result.Add(Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == true && item.IsExist).OrderBy(item => item.IdName)), isApplication: true);
-            result.Add(Data.Select(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist).OrderBy(item => item.IdName)), isApplication: false);
+            result.Add(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == true && item.IsExist).OrderBy(item => item.IdName).QueryExecute(), isApplication: true);
+            result.Add(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist).OrderBy(item => item.IdName).QueryExecute(), isApplication: false);
 
             // LoginRole
-            result.Add(Data.Select(Data.Query<LoginRoleBuiltIn>().OrderBy(item => item.IdName)));
+            result.Add(Data.Query<LoginRoleBuiltIn>().OrderBy(item => item.IdName).QueryExecute());
 
             // LoginRolePermission
-            result.Add(Data.Select(Data.Query<LoginRolePermissionBuiltIn>().OrderBy(item => item.RoleIdName).ThenBy(item => item.PermissionIdName)));
+            result.Add(Data.Query<LoginRolePermissionBuiltIn>().OrderBy(item => item.RoleIdName).ThenBy(item => item.PermissionIdName).QueryExecute());
 
             // LoginUser
-            result.Add(Data.Select(Data.Query<LoginUserBuiltIn>().OrderBy(item => item.IdName)));
+            result.Add(Data.Query<LoginUserBuiltIn>().OrderBy(item => item.IdName).QueryExecute());
 
             // LoginUserRole
-            result.Add(Data.Select(Data.Query<LoginUserRoleBuiltIn>().OrderBy(item => item.UserIdName).ThenBy(item => item.RoleIdName)));
+            result.Add(Data.Query<LoginUserRoleBuiltIn>().OrderBy(item => item.UserIdName).ThenBy(item => item.RoleIdName).QueryExecute());
 
             // Roadmap
-            result.Add(Data.Select(Data.Query<RoadmapCategoryBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)), isApplication: true); // Category
-            result.Add(Data.Select(Data.Query<RoadmapModuleBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)), isApplication: true); // Module
-            result.Add(Data.Select(Data.Query<RoadmapPriorityBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)), isApplication: true); // Priority
-            result.Add(Data.Select(Data.Query<RoadmapStateBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName)), isApplication: true); // State
-            result.Add(Data.Select(Data.Query<RoadmapBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.Name))); // Roadmap
+            result.Add(Data.Query<RoadmapCategoryBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName).QueryExecute(), isApplication: true); // Category
+            result.Add(Data.Query<RoadmapModuleBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName).QueryExecute(), isApplication: true); // Module
+            result.Add(Data.Query<RoadmapPriorityBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName).QueryExecute(), isApplication: true); // Priority
+            result.Add(Data.Query<RoadmapStateBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName).QueryExecute(), isApplication: true); // State
+            result.Add(Data.Query<RoadmapBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.Name).QueryExecute()); // Roadmap
 
             // FileManager
-            result.Add(Data.Select(Data.Query<File>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.FileName)));
+            result.Add(Data.Query<File>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.FileName).QueryExecute());
 
             // Cms
-            result.Add(Data.Select(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort)));
-            result.Add(Data.Select(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort)));
-            result.Add(Data.Query<CmsComponentBuiltIn>().OrderBy(item => item.Name).SelectExecute());
+            result.Add(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort).QueryExecute());
+            result.Add(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort).QueryExecute());
+            result.Add(Data.Query<CmsComponentBuiltIn>().OrderBy(item => item.Name).QueryExecute());
         }
 
         /// <summary>

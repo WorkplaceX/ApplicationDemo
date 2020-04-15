@@ -66,7 +66,7 @@
         {
             if (args.FieldName == nameof(args.Row.ComponentType))
             {
-                var row = (await Data.Query<CmsComponentType>().Where(item => item.Name == args.Text).SelectExecuteAsync()).FirstOrDefault();
+                var row = (await Data.Query<CmsComponentType>().Where(item => item.Name == args.Text).QueryExecuteAsync()).FirstOrDefault();
                 if (row != null)
                 {
                     result.Row.ComponentTypeId = row.Id;

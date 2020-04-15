@@ -32,7 +32,7 @@
             if (Button.IsClick)
             {
                 var loginUserSession = (LoginUser)Grid.RowSelected;
-                var loginUser = (await Data.SelectAsync(Data.Query<LoginUser>().Where(item => item.Name == loginUserSession.Name))).SingleOrDefault();
+                var loginUser = (await Data.Query<LoginUser>().Where(item => item.Name == loginUserSession.Name).QueryExecuteAsync()).SingleOrDefault();
                 if (loginUser == null)
                 {
                     this.AlertError = this.BootstrapAlert("Username or password wrong!", BootstrapAlertEnum.Error);
@@ -41,7 +41,7 @@
                 {
                     var pageMain = this.ComponentOwner<PageMain>();
                     pageMain.LoginUser = loginUser;
-                    pageMain.LoginUserPermissionDisplayList = await Data.SelectAsync<LoginUserPermissionDisplay>(Data.Query<LoginUserPermissionDisplay>().Where(item => item.UserName == loginUser.Name));
+                    pageMain.LoginUserPermissionDisplayList = await Data.Query<LoginUserPermissionDisplay>().Where(item => item.UserName == loginUser.Name).QueryExecuteAsync();
                 }
                 Button.TextHtml = string.Format("User={0};", ((LoginUser)Grid.RowSelected).Name);
             }

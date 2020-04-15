@@ -46,13 +46,13 @@
             if (fileName.StartsWith("shop/"))
             {
                 string fileNameProduct = fileName.Substring("shop/".Length);
-                var result = (await Data.SelectAsync(Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct))).FirstOrDefault();
+                var result = (await Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct).QueryExecuteAsync()).FirstOrDefault();
                 return result?.Data;
 
             }
             else
             {
-                var result = (await Data.SelectAsync(Data.Query<File>().Where(item => item.FileName == fileName))).FirstOrDefault();
+                var result = (await Data.Query<File>().Where(item => item.FileName == fileName).QueryExecuteAsync()).FirstOrDefault();
                 return result?.Data;
             }
         }
