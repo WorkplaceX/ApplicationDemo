@@ -67,6 +67,8 @@ CREATE TABLE Demo.CmsComponent
     -- Glossary
     GlossaryTerm NVARCHAR(256),
     GlossaryText NVARCHAR(MAX),
+    -- Sort
+    Sort FLOAT,
     -- BuiltIn
     IsBuiltIn BIT NOT NULL,
     IsExist BIT NOT NULL,
@@ -101,6 +103,8 @@ SELECT
     -- Glossary
     GlossaryTerm,
     GlossaryText,
+    -- Sort
+    Sort,
     -- BuiltIn
     IsBuiltIn,
     IsExist
@@ -138,6 +142,8 @@ SELECT
     -- Glossary
     GlossaryTerm,
     GlossaryText,
+    -- Sort
+    Sort,
     -- BuiltIn
     IsBuiltIn,
     IsExist
