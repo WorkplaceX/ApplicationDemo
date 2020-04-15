@@ -47,29 +47,28 @@
             result.IsHandled = true;
         }
 
-        protected override IQueryable LookupQuery(RoadmapDisplay row, string fieldName, string text)
+        protected override void LookupQuery(LookupQueryArgs args, LookupQueryResult result)
         {
-            if (fieldName == nameof(RoadmapDisplay.RoadmapCategoryText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapCategoryText))
             {
-                return Data.Query<RoadmapCategory>();
+                result.Query = Data.Query<RoadmapCategory>();
             }
-            if (fieldName == nameof(RoadmapDisplay.RoadmapModuleText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapModuleText))
             {
-                return Data.Query<RoadmapModule>();
+                result.Query = Data.Query<RoadmapModule>();
             }
-            if (fieldName == nameof(RoadmapDisplay.RoadmapPriorityText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapPriorityText))
             {
-                return Data.Query<RoadmapPriority>();
+                result.Query = Data.Query<RoadmapPriority>();
             }
-            if (fieldName == nameof(RoadmapDisplay.RoadmapStateText))
+            if (args.FieldName == nameof(RoadmapDisplay.RoadmapStateText))
             {
-                return Data.Query<RoadmapState>();
+                result.Query = Data.Query<RoadmapState>();
             }
-            if (fieldName == nameof(RoadmapDisplay.LoginUserText))
+            if (args.FieldName == nameof(RoadmapDisplay.LoginUserText))
             {
-                return Data.Query<LoginUser>();
+                result.Query = Data.Query<LoginUser>();
             }
-            return null;
         }
 
         protected override string LookupRowSelected(Grid gridLookup)

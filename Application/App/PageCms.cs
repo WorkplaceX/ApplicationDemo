@@ -5,6 +5,7 @@
     using Framework.Json;
     using Framework.Json.Bootstrap;
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class PageCms : Page
@@ -43,6 +44,14 @@
             args.RowNew.Id = row.Id;
 
             result.IsHandled = true;
+        }
+
+        protected override void LookupQuery(LookupQueryArgs args, LookupQueryResult result)
+        {
+            if (args.FieldName == nameof(args.Row.ComponentType))
+            {
+                result.Query = Data.Query<CmsComponentType>();
+            }
         }
     }
 }

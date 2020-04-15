@@ -51,13 +51,12 @@
             }
         }
 
-        protected override IQueryable LookupQuery(RawWikipediaAircraft row, string fieldNameCSharp, string text)
+        protected override void LookupQuery(LookupQueryArgs args, LookupQueryResult result)
         {
-            if (fieldNameCSharp == nameof(RawWikipediaAircraft.IataCode))
+            if (args.FieldName == nameof(RawWikipediaAircraft.IataCode))
             {
-                return Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code.StartsWith(text == null ? "" : text)));
+                result.Query = Data.Query<CountryDisplayCache>().Where(item => item.IsFlagIconCss == true && (item.Code.StartsWith(args.Text == null ? "" : args.Text)));
             }
-            return base.LookupQuery(row, fieldNameCSharp, text);
         }
 
         protected override string LookupRowSelected(Grid gridLookup)
