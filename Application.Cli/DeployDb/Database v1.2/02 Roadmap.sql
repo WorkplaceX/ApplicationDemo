@@ -104,7 +104,7 @@ CREATE TABLE Demo.Roadmap
 (
 	Id INT PRIMARY KEY IDENTITY,
 	Name UNIQUEIDENTIFIER NOT NULL UNIQUE,
-	Description NVARCHAR(256),
+	Description NVARCHAR(MAX),
 	Date Date,
 	-- Category
 	RoadmapCategoryId INT FOREIGN KEY REFERENCES Demo.RoadmapCategory(Id),
