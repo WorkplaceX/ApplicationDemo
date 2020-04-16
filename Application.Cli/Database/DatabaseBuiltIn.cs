@@ -319,6 +319,37 @@ namespace DatabaseBuiltIn.Demo
             get
             {
                 var result = new List<CmsComponentBuiltIn>();
+
+                result.Add(new CmsComponentBuiltIn() { Id = 6, IdName = Guid.Parse("0687af27-90d0-4bb5-a6a4-16858d2b7cb9"), ParentId = 5, ParentIdName = Guid.Parse("7a5cf05e-cf7f-417e-8a77-e6b3c64c7690"), Name = Guid.Parse("0687af27-90d0-4bb5-a6a4-16858d2b7cb9"), PageTitle = null, PageImageLink = null, PageDate = null, ParagraphTitle = null, ParagraphText = null, ParagraphIsNote = null, BulletText = "[.NET Core](https://dotnet.microsoft.com/download) (Version 3.1)", ImageLink = null, ImageText = null, YoutubeLink = null, CodeBlockText = null, CodeBlockTypeId = null, CodeBlockTypeIdName = null, GlossaryTerm = null, GlossaryText = null, IsBuiltIn = false, IsExist = true });
+                result.Add(new CmsComponentBuiltIn() { Id = 2, IdName = Guid.Parse("ff06741f-0e2b-4237-98fd-73b2195735ba"), ParentId = null, ParentIdName = null, Name = Guid.Parse("ff06741f-0e2b-4237-98fd-73b2195735ba"), PageTitle = "Home", PageImageLink = null, PageDate = null, ParagraphTitle = null, ParagraphText = null, ParagraphIsNote = null, BulletText = null, ImageLink = null, ImageText = null, YoutubeLink = null, CodeBlockText = null, CodeBlockTypeId = null, CodeBlockTypeIdName = null, GlossaryTerm = null, GlossaryText = null, IsBuiltIn = false, IsExist = true });
+                result.Add(new CmsComponentBuiltIn()
+                {
+                    Id = 4,
+                    IdName = Guid.Parse("caca7d48-0cc5-45c2-9c6d-b552f3218253"),
+                    ParentId = 3,
+                    ParentIdName = Guid.Parse("2cfe2bd4-34eb-48d7-ab7b-de145a8256a2"),
+                    Name = Guid.Parse("caca7d48-0cc5-45c2-9c6d-b552f3218253"),
+                    PageTitle = null,
+                    PageImageLink = null,
+                    PageDate = null,
+                    ParagraphTitle = "Getting Started",
+                    ParagraphText = "Web “Demo Application” is a comprehensive example to get started with. The follow" +
+    "ing two components need to be installed on the machine as prerequisite:",
+                    ParagraphIsNote = null,
+                    BulletText = null,
+                    ImageLink = null,
+                    ImageText = null,
+                    YoutubeLink = null,
+                    CodeBlockText = null,
+                    CodeBlockTypeId = null,
+                    CodeBlockTypeIdName = null,
+                    GlossaryTerm = null,
+                    GlossaryText = null,
+                    IsBuiltIn = false,
+                    IsExist = true
+                });
+                result.Add(new CmsComponentBuiltIn() { Id = 3, IdName = Guid.Parse("2cfe2bd4-34eb-48d7-ab7b-de145a8256a2"), ParentId = 2, ParentIdName = Guid.Parse("ff06741f-0e2b-4237-98fd-73b2195735ba"), Name = Guid.Parse("2cfe2bd4-34eb-48d7-ab7b-de145a8256a2"), PageTitle = "Install", PageImageLink = null, PageDate = null, ParagraphTitle = null, ParagraphText = null, ParagraphIsNote = null, BulletText = null, ImageLink = null, ImageText = null, YoutubeLink = null, CodeBlockText = null, CodeBlockTypeId = null, CodeBlockTypeIdName = null, GlossaryTerm = null, GlossaryText = null, IsBuiltIn = false, IsExist = true });
+                result.Add(new CmsComponentBuiltIn() { Id = 5, IdName = Guid.Parse("7a5cf05e-cf7f-417e-8a77-e6b3c64c7690"), ParentId = 4, ParentIdName = Guid.Parse("caca7d48-0cc5-45c2-9c6d-b552f3218253"), Name = Guid.Parse("7a5cf05e-cf7f-417e-8a77-e6b3c64c7690"), PageTitle = null, PageImageLink = null, PageDate = null, ParagraphTitle = null, ParagraphText = null, ParagraphIsNote = null, BulletText = "[Node.js](https://nodejs.org/en/) (LTS Version)", ImageLink = null, ImageText = null, YoutubeLink = null, CodeBlockText = null, CodeBlockTypeId = null, CodeBlockTypeIdName = null, GlossaryTerm = null, GlossaryText = null, IsBuiltIn = false, IsExist = true });
                 return result;
             }
         }

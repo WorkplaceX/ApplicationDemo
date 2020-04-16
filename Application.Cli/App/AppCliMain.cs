@@ -145,7 +145,7 @@
             // Cms
             result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
             result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
-            // result.Add(CmsComponentBuiltInTableApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null); // TODO
+            result.Add(CmsComponentBuiltInTableApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null); // TODO
         }
     }
 }
