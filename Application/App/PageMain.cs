@@ -136,6 +136,12 @@
                 pageMain.Content.ComponentListClear();
                 await new PageCmsDoc(pageMain.Content).InitAsync();
             }
+
+            if (RowSelected.Name == "CmsFile")
+            {
+                pageMain.Content.ComponentListClear();
+                await new PageCmsFile(pageMain.Content).InitAsync();
+            }
         }
     }
 

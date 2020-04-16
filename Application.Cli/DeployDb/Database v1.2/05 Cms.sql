@@ -31,6 +31,25 @@ SELECT
 FROM
     Demo.CmsCodeBlockType
 
+-- Cms File (Images)
+GO
+CREATE TABLE Demo.CmsFile
+(
+	Id INT PRIMARY KEY IDENTITY,
+	FileName NVARCHAR(256) UNIQUE,
+	Data VARBINARY(MAX),
+	Description NVARCHAR(256),
+	IsBuiltIn BIT NOT NULL,
+	IsExist BIT NOT NULL,
+)
+GO
+CREATE VIEW Demo.CmsFileBuiltIn AS
+SELECT
+    *,
+    FileName AS IdName
+FROM
+    Demo.CmsFile
+
 -- Component
 GO
 CREATE TABLE Demo.CmsComponent
@@ -42,7 +61,7 @@ CREATE TABLE Demo.CmsComponent
     ComponentTypeId INT FOREIGN KEY REFERENCES Demo.CmsComponentType(Id), -- Discriminator
     -- Page
     PageTitle NVARCHAR(256),
-    PageImageLink NVARCHAR(256),
+    PageImageFileId INT FOREIGN KEY REFERENCES Demo.CmsFile(Id),
     PageDate DATETIME,
     -- Paragraph
     ParagraphTitle NVARCHAR(256),
@@ -77,6 +96,8 @@ SELECT
     (SELECT DataParent.Name FROM Demo.CmsComponent DataParent WHERE DataParent.Id = Data.ParentId) AS ParentIdName,
     /* ComponentTypeId */
     (SELECT IdName FROM CmsComponentTypeBuiltIn WHERE Id = Data.ComponentTypeId) AS ComponentTypeIdName,
+    /* PageImageFileId */
+    (SELECT IdName FROM Demo.CmsFileBuiltIn WHERE Id = Data.PageImageFileId) AS PageImageFileIdName,
     /* CodeBlockTypeId */
     (SELECT IdName FROM CmsCodeBlockTypeBuiltIn WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeIdName
 FROM
@@ -93,7 +114,8 @@ SELECT
     (SELECT Name FROM Demo.CmsComponentType WHERE Id = Data.ComponentTypeId) AS ComponentType,
     -- Page
     PageTitle,
-    PageImageLink,
+    PageImageFileId,
+    (SELECT FileName FROM Demo.CmsFile WHERE Id = Data.PageImageFileId) AS PageImageFileText,
     PageDate,
     -- Paragraph
     ParagraphTitle,

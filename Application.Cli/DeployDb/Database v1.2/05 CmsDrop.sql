@@ -1,6 +1,8 @@
 ﻿DROP VIEW Demo.CmsComponentDisplay
 DROP VIEW Demo.CmsComponentBuiltIn
 DROP TABLE Demo.CmsComponent
+DROP VIEW Demo.CmsFileBuiltIn
+DROP TABLE Demo.CmsFile
 DROP VIEW Demo.CmsCodeBlockTypeBuiltIn
 DROP TABLE Demo.CmsCodeBlockType
 DROP VIEW Demo.CmsComponentTypeBuiltIn

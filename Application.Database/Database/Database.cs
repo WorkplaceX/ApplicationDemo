@@ -58,8 +58,8 @@ namespace Database.Demo
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
 
-        [SqlField("PageImageLink", FrameworkTypeEnum.Nvarcahr)]
-        public string PageImageLink { get; set; }
+        [SqlField("PageImageFileId", FrameworkTypeEnum.Int)]
+        public int? PageImageFileId { get; set; }
 
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
@@ -125,8 +125,8 @@ namespace Database.Demo
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
 
-        [SqlField("PageImageLink", FrameworkTypeEnum.Nvarcahr)]
-        public string PageImageLink { get; set; }
+        [SqlField("PageImageFileId", FrameworkTypeEnum.Int)]
+        public int? PageImageFileId { get; set; }
 
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
@@ -182,6 +182,9 @@ namespace Database.Demo
         [SqlField("ComponentTypeIdName", FrameworkTypeEnum.Nvarcahr)]
         public string ComponentTypeIdName { get; set; }
 
+        [SqlField("PageImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string PageImageFileIdName { get; set; }
+
         [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
         public string CodeBlockTypeIdName { get; set; }
     }
@@ -210,8 +213,11 @@ namespace Database.Demo
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
 
-        [SqlField("PageImageLink", FrameworkTypeEnum.Nvarcahr)]
-        public string PageImageLink { get; set; }
+        [SqlField("PageImageFileId", FrameworkTypeEnum.Int)]
+        public int? PageImageFileId { get; set; }
+
+        [SqlField("PageImageFileText", FrameworkTypeEnum.Nvarcahr)]
+        public string PageImageFileText { get; set; }
 
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
@@ -286,6 +292,53 @@ namespace Database.Demo
 
         [SqlField("Sort", FrameworkTypeEnum.Float)]
         public double? Sort { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsFile")]
+    public class CmsFile : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("FileName", FrameworkTypeEnum.Nvarcahr)]
+        public string FileName { get; set; }
+
+        [SqlField("Data", FrameworkTypeEnum.Varbinary)]
+        public byte[] Data { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsFileBuiltIn")]
+    public class CmsFileBuiltIn : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("FileName", FrameworkTypeEnum.Nvarcahr)]
+        public string FileName { get; set; }
+
+        [SqlField("Data", FrameworkTypeEnum.Varbinary)]
+        public byte[] Data { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
 
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
