@@ -24,13 +24,13 @@
         public GridFile GridFile;
     }
 
-    public class GridFile : Grid<File>
+    public class GridFile : Grid<StorageFile>
     {
         public GridFile(ComponentJson owner) : base(owner) { }
 
         protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
         {
-            if (args.FieldName == nameof(File.Data))
+            if (args.FieldName == nameof(StorageFile.Data))
             {
                 result.IsFileUpload = true;
                 result.Html = string.Format("<a href='{0}'>{1}</a>", args.Row.FileName, args.Row.FileName);
@@ -39,7 +39,7 @@
 
         protected override void CellParseFileUpload(CellParseFileUploadArgs args, CellParseResult result)
         {
-            if (args.FieldName == nameof(File.Data))
+            if (args.FieldName == nameof(StorageFile.Data))
             {
                 args.Row.Data = args.Data;
                 args.Row.FileName = args.FileName;

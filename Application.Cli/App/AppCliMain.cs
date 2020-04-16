@@ -73,7 +73,7 @@
             result.Add(Data.Query<RoadmapBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.Name).QueryExecute()); // Roadmap
 
             // FileManager
-            result.Add(Data.Query<File>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.FileName).QueryExecute());
+            result.Add(Data.Query<StorageFile>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.FileName).QueryExecute());
 
             // Cms
             result.Add(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort).QueryExecute());
@@ -115,7 +115,7 @@
             result.Add(RoadmapBuiltInTableApplicationCli.RowList, nameof(RoadmapBuiltIn.Name)); // Roadmap
 
             // FileManager
-            result.Add(FileTableApplicationCli.RowList, nameof(File.FileName));
+            result.Add(FileTableApplicationCli.RowList, nameof(StorageFile.FileName));
 
             // Cms
             result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));

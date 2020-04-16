@@ -1,6 +1,5 @@
-﻿-- File
-GO
-CREATE TABLE Demo.[File]
+﻿GO
+CREATE TABLE Demo.StorageFile
 (
 	Id INT PRIMARY KEY IDENTITY,
 	FileName NVARCHAR(256) UNIQUE,

@@ -350,8 +350,8 @@ namespace Database.Demo
         public string ASFlagIcon { get; set; }
     }
 
-    [SqlTable("Demo", "File")]
-    public class File : Row
+    [SqlTable("Demo", "StorageFile")]
+    public class StorageFile : Row
     {
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }

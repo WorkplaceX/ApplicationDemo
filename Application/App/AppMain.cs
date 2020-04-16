@@ -52,7 +52,7 @@
             }
             else
             {
-                var result = (await Data.Query<File>().Where(item => item.FileName == fileName).QueryExecuteAsync()).FirstOrDefault();
+                var result = (await Data.Query<StorageFile>().Where(item => item.FileName == fileName).QueryExecuteAsync()).FirstOrDefault();
                 return result?.Data;
             }
         }
