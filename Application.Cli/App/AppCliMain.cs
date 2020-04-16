@@ -82,26 +82,6 @@
         }
 
         /// <summary>
-        /// Returns true if a next level exists.
-        /// </summary>
-        /// <param name="rowAllList">All rows.</param>
-        /// <param name="rowLevelList">Rows of current level.</param>
-        /// <returns>Returns rows of next level.</returns>
-        private static bool NavigationBuiltInLevel(List<NavigationBuiltIn> rowAllList, ref List<NavigationBuiltIn> rowLevelList)
-        {
-            if (rowLevelList == null)
-            {
-                rowLevelList = rowAllList.Where(row => row.ParentId == null).ToList();
-            }
-            else
-            {
-                var idList = rowLevelList.Select(row => (int?)row.Id).ToList();
-                rowLevelList = rowAllList.Where(row => idList.Contains(row.ParentId)).ToList();
-            }
-            return rowLevelList.Count() != 0;
-        }
-
-        /// <summary>
         /// Cli Deploy.
         /// </summary>
         protected override void CommandDeployDbBuiltIn(DeployDbBuiltInResult result)
@@ -109,12 +89,7 @@
             result.Add(LanguageBuiltInTableApplication.RowList, nameof(LanguageBuiltIn.Name), null);
 
             var rowList = NavigationBuiltInTableApplicationCli.RowList;
-
-            List<NavigationBuiltIn> rowLevelList = null;
-            while (NavigationBuiltInLevel(rowList, ref rowLevelList)) // Step through all levels.
-            {
-                result.Add(rowLevelList, nameof(NavigationBuiltIn.Name), null);
-            }
+            result.Add(rowList, nameof(NavigationBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => item.Sort);
 
             // LoginPermission
             result.Add(LoginPermissionBuiltInTableApplication.RowList, nameof(LoginPermissionBuiltIn.Name), "Login");
