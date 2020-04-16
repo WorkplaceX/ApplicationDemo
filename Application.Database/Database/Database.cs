@@ -27,9 +27,6 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
-        public string IdName { get; set; }
-
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
@@ -38,6 +35,9 @@ namespace Database.Demo
 
         [SqlField("Sort", FrameworkTypeEnum.Float)]
         public double? Sort { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponent")]
@@ -113,17 +113,14 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("IdName", FrameworkTypeEnum.Uniqueidentifier)]
-        public Guid IdName { get; set; }
-
         [SqlField("ParentId", FrameworkTypeEnum.Int)]
         public int? ParentId { get; set; }
 
-        [SqlField("ParentIdName", FrameworkTypeEnum.Uniqueidentifier)]
-        public Guid? ParentIdName { get; set; }
-
         [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
         public Guid Name { get; set; }
+
+        [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
+        public int? ComponentTypeId { get; set; }
 
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
@@ -161,9 +158,6 @@ namespace Database.Demo
         [SqlField("CodeBlockTypeId", FrameworkTypeEnum.Int)]
         public int? CodeBlockTypeId { get; set; }
 
-        [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string CodeBlockTypeIdName { get; set; }
-
         [SqlField("GlossaryTerm", FrameworkTypeEnum.Nvarcahr)]
         public string GlossaryTerm { get; set; }
 
@@ -178,6 +172,18 @@ namespace Database.Demo
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid IdName { get; set; }
+
+        [SqlField("ParentIdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid? ParentIdName { get; set; }
+
+        [SqlField("ComponentTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ComponentTypeIdName { get; set; }
+
+        [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string CodeBlockTypeIdName { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponentDisplay")]
@@ -275,14 +281,14 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
-        public string IdName { get; set; }
-
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
         [SqlField("Sort", FrameworkTypeEnum.Float)]
         public double? Sort { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
     }
 
     [SqlTable("Demo", "CountryDisplay")]

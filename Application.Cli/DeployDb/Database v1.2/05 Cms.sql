@@ -1,6 +1,4 @@
-﻿-- Cms
-
--- ComponentType (Page, Paragraph, Bullet, Image, Youtube, CodeBlock, Glossary)
+﻿-- ComponentType (Page, Paragraph, Bullet, Image, Youtube, CodeBlock, Glossary)
 GO
 CREATE TABLE Demo.CmsComponentType
 (
@@ -11,10 +9,8 @@ CREATE TABLE Demo.CmsComponentType
 GO
 CREATE VIEW Demo.CmsComponentTypeBuiltIn AS
 SELECT
-    Id,
-    Name AS IdName,
-    Name,
-    Sort
+    *,
+    Name AS IdName
 FROM
     Demo.CmsComponentType
 
@@ -30,11 +26,8 @@ CREATE TABLE Demo.CmsCodeBlockType
 GO
 CREATE VIEW Demo.CmsCodeBlockTypeBuiltIn AS
 SELECT
-    Id,
-    Name AS IdName,
-    Name,
-    FileExtension,
-    Sort
+    *,
+    Name AS IdName
 FROM
     Demo.CmsCodeBlockType
 
@@ -45,6 +38,7 @@ CREATE TABLE Demo.CmsComponent
     Id INT PRIMARY KEY IDENTITY,
     ParentId INT FOREIGN KEY REFERENCES Demo.CmsComponent(Id), -- ParentId BuiltIn naming convention for hierarchical structure.
     Name UNIQUEIDENTIFIER NOT NULL UNIQUE,
+    /* ComponentType */
     ComponentTypeId INT FOREIGN KEY REFERENCES Demo.CmsComponentType(Id), -- Discriminator
     -- Page
     PageTitle NVARCHAR(256),
@@ -76,38 +70,15 @@ CREATE TABLE Demo.CmsComponent
 GO
 CREATE VIEW Demo.CmsComponentBuiltIn AS
 SELECT
-    Id,
+    *,
+    /* Id */
     Name AS IdName,
-    ParentId,
+    /* ParentId */
     (SELECT DataParent.Name FROM Demo.CmsComponent DataParent WHERE DataParent.Id = Data.ParentId) AS ParentIdName,
-    Name,
-    -- Page
-    PageTitle,
-    PageImageLink,
-    PageDate,
-    -- Paragraph
-    ParagraphTitle,
-    ParagraphText,
-    ParagraphIsNote,
-    -- Bullet,
-    BulletText,
-    -- Image
-    ImageLink,
-    ImageText,
-    -- Youtube
-    YoutubeLink,
-    -- CodeBlock
-    CodeBlockText,
-    CodeBlockTypeId,
-    (SELECT IdName FROM CmsCodeBlockTypeBuiltIn WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeIdName,
-    -- Glossary
-    GlossaryTerm,
-    GlossaryText,
-    -- Sort
-    Sort,
-    -- BuiltIn
-    IsBuiltIn,
-    IsExist
+    /* ComponentTypeId */
+    (SELECT IdName FROM CmsComponentTypeBuiltIn WHERE Id = Data.ComponentTypeId) AS ComponentTypeIdName,
+    /* CodeBlockTypeId */
+    (SELECT IdName FROM CmsCodeBlockTypeBuiltIn WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeIdName
 FROM
     Demo.CmsComponent Data
 
