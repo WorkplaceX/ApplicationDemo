@@ -350,28 +350,6 @@ namespace Database.Demo
         public string ASFlagIcon { get; set; }
     }
 
-    [SqlTable("Demo", "StorageFile")]
-    public class StorageFile : Row
-    {
-        [SqlField("Id", true, FrameworkTypeEnum.Int)]
-        public int Id { get; set; }
-
-        [SqlField("FileName", FrameworkTypeEnum.Nvarcahr)]
-        public string FileName { get; set; }
-
-        [SqlField("Data", FrameworkTypeEnum.Varbinary)]
-        public byte[] Data { get; set; }
-
-        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
-        public string Description { get; set; }
-
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
-
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
-    }
-
     [SqlTable("Demo", "Language")]
     public class Language : Row
     {
@@ -1219,5 +1197,27 @@ namespace Database.Demo
 
         [SqlField("FileName", FrameworkTypeEnum.Nvarcahr)]
         public string FileName { get; set; }
+    }
+
+    [SqlTable("Demo", "StorageFile")]
+    public class StorageFile : Row
+    {
+        [SqlField("Id", true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("FileName", FrameworkTypeEnum.Nvarcahr)]
+        public string FileName { get; set; }
+
+        [SqlField("Data", FrameworkTypeEnum.Varbinary)]
+        public byte[] Data { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+
+        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
+        public bool IsBuiltIn { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
     }
 }

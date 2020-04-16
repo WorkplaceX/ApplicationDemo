@@ -15,7 +15,6 @@ namespace DatabaseBuiltIn.dbo
             {
                 var result = new List<FrameworkConfigGridBuiltIn>();
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 3, IdName = "Demo.CmsComponentDisplay; ", TableId = 16, TableIdName = "Demo.CmsComponentDisplay", TableNameCSharp = "Demo.CmsComponentDisplay", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
-                result.Add(new FrameworkConfigGridBuiltIn() { Id = 4, IdName = "Demo.StorageFile; ", TableId = 21, TableIdName = "Demo.StorageFile", TableNameCSharp = "Demo.File", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 5, IdName = "Demo.Language; ", TableId = 22, TableIdName = "Demo.Language", TableNameCSharp = "Demo.Language", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 6, IdName = "Demo.Navigation; ", TableId = 37, TableIdName = "Demo.Navigation", TableNameCSharp = "Demo.Navigation", ConfigName = null, RowCountMax = 20, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 7, IdName = "Demo.RawOpenFlightsAirport; ", TableId = 42, TableIdName = "Demo.RawOpenFlightsAirport", TableNameCSharp = "Demo.RawOpenFlightsAirport", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
@@ -23,6 +22,7 @@ namespace DatabaseBuiltIn.dbo
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 9, IdName = "Demo.RawWikipediaAircraft; G", TableId = 44, TableIdName = "Demo.RawWikipediaAircraft", TableNameCSharp = "Demo.RawWikipediaAircraft", ConfigName = "G", RowCountMax = 5, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 10, IdName = "Demo.RoadmapDisplay; ", TableId = 50, TableIdName = "Demo.RoadmapDisplay", TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, RowCountMax = 20, IsAllowInsert = null, IsExist = true });
                 result.Add(new FrameworkConfigGridBuiltIn() { Id = 11, IdName = "Demo.ShopProductPhoto; ", TableId = 57, TableIdName = "Demo.ShopProductPhoto", TableNameCSharp = "Demo.ShopProductPhoto", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
+                result.Add(new FrameworkConfigGridBuiltIn() { Id = 4, IdName = "Demo.StorageFile; ", TableId = 21, TableIdName = "Demo.StorageFile", TableNameCSharp = "Demo.StorageFile", ConfigName = null, RowCountMax = null, IsAllowInsert = null, IsExist = true });
                 return result;
             }
         }
@@ -37,8 +37,6 @@ namespace DatabaseBuiltIn.dbo
                 var result = new List<FrameworkConfigFieldBuiltIn>();
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 19, ConfigGridId = 3, ConfigGridIdName = "Demo.CmsComponentDisplay; ", FieldId = 145, FieldIdName = "Demo.CmsComponentDisplay; Id", InstanceName = null, TableNameCSharp = "Demo.CmsComponentDisplay", ConfigName = null, FieldNameCSharp = "Id", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 20, ConfigGridId = 3, ConfigGridIdName = "Demo.CmsComponentDisplay; ", FieldId = 146, FieldIdName = "Demo.CmsComponentDisplay; ParentId", InstanceName = null, TableNameCSharp = "Demo.CmsComponentDisplay", ConfigName = null, FieldNameCSharp = "ParentId", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 21, ConfigGridId = 4, ConfigGridIdName = "Demo.StorageFile; ", FieldId = 194, FieldIdName = "Demo.StorageFile; FileName", InstanceName = "Link", TableNameCSharp = "Demo.File", ConfigName = null, FieldNameCSharp = "FileName", Text = "Link", Description = "Link to file", IsVisible = false, IsReadOnly = true, Sort = 1, IsExist = true });
-                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 22, ConfigGridId = 4, ConfigGridIdName = "Demo.StorageFile; ", FieldId = 194, FieldIdName = "Demo.StorageFile; FileName", InstanceName = null, TableNameCSharp = "Demo.File", ConfigName = null, FieldNameCSharp = "FileName", Text = null, Description = null, IsVisible = null, IsReadOnly = null, Sort = 0, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 23, ConfigGridId = 6, ConfigGridIdName = "Demo.Navigation; ", FieldId = 271, FieldIdName = "Demo.Navigation; Id", InstanceName = null, TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "Id", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 24, ConfigGridId = 6, ConfigGridIdName = "Demo.Navigation; ", FieldId = 275, FieldIdName = "Demo.Navigation; PageName", InstanceName = null, TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "PageName", Text = "PAGE", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 25, ConfigGridId = 6, ConfigGridIdName = "Demo.Navigation; ", FieldId = 272, FieldIdName = "Demo.Navigation; ParentId", InstanceName = null, TableNameCSharp = "Demo.Navigation", ConfigName = null, FieldNameCSharp = "ParentId", Text = null, Description = null, IsVisible = true, IsReadOnly = null, Sort = null, IsExist = true });
@@ -68,6 +66,8 @@ namespace DatabaseBuiltIn.dbo
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 49, ConfigGridId = 10, ConfigGridIdName = "Demo.RoadmapDisplay; ", FieldId = 388, FieldIdName = "Demo.RoadmapDisplay; RoadmapStateText", InstanceName = null, TableNameCSharp = "Demo.RoadmapDisplay", ConfigName = null, FieldNameCSharp = "RoadmapStateText", Text = "State", Description = null, IsVisible = null, IsReadOnly = null, Sort = null, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 50, ConfigGridId = 11, ConfigGridIdName = "Demo.ShopProductPhoto; ", FieldId = 432, FieldIdName = "Demo.ShopProductPhoto; Data", InstanceName = null, TableNameCSharp = "Demo.ShopProductPhoto", ConfigName = null, FieldNameCSharp = "Data", Text = "Image", Description = null, IsVisible = null, IsReadOnly = null, Sort = 2, IsExist = true });
                 result.Add(new FrameworkConfigFieldBuiltIn() { Id = 51, ConfigGridId = 11, ConfigGridIdName = "Demo.ShopProductPhoto; ", FieldId = 433, FieldIdName = "Demo.ShopProductPhoto; FileName", InstanceName = null, TableNameCSharp = "Demo.ShopProductPhoto", ConfigName = null, FieldNameCSharp = "FileName", Text = null, Description = null, IsVisible = null, IsReadOnly = null, Sort = 1, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 21, ConfigGridId = 4, ConfigGridIdName = "Demo.StorageFile; ", FieldId = 194, FieldIdName = "Demo.StorageFile; FileName", InstanceName = "Link", TableNameCSharp = "Demo.StorageFile", ConfigName = null, FieldNameCSharp = "FileName", Text = "Link", Description = "Link to file", IsVisible = false, IsReadOnly = true, Sort = 1, IsExist = true });
+                result.Add(new FrameworkConfigFieldBuiltIn() { Id = 22, ConfigGridId = 4, ConfigGridIdName = "Demo.StorageFile; ", FieldId = 194, FieldIdName = "Demo.StorageFile; FileName", InstanceName = null, TableNameCSharp = "Demo.StorageFile", ConfigName = null, FieldNameCSharp = "FileName", Text = null, Description = null, IsVisible = null, IsReadOnly = null, Sort = 0, IsExist = true });
                 return result;
             }
         }
@@ -260,7 +260,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class FileTableApplicationCli
+    public static class StorageFileTableApplicationCli
     {
         public static List<StorageFile> RowList
         {

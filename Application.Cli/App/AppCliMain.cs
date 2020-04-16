@@ -115,7 +115,7 @@
             result.Add(RoadmapBuiltInTableApplicationCli.RowList, nameof(RoadmapBuiltIn.Name)); // Roadmap
 
             // FileManager
-            result.Add(FileTableApplicationCli.RowList, nameof(StorageFile.FileName));
+            result.Add(StorageFileTableApplicationCli.RowList, nameof(StorageFile.FileName));
 
             // Cms
             result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
