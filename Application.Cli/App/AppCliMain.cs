@@ -33,8 +33,8 @@
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
                 DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
-                FolderNameNpmBuild = "Application.Website/Default/",
-                FolderNameDist = "Application.Website/Default/dist/",
+                FolderNameNpmBuild = "Application.Website/MasterDefault/",
+                FolderNameDist = "Application.Website/MasterDefault/dist/",
             });
         }
 
