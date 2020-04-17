@@ -95,7 +95,7 @@
             }
         }
 
-        protected override async Task CellParseAsync(CellParseArgs args, CellParseResult result)
+        protected override async Task CellParseAsync(CellParseArgs args, ParseResult result)
         {
             // Category
             if (args.FieldName == nameof(RoadmapDisplay.RoadmapCategoryText))
@@ -226,7 +226,7 @@
             }
         }
 
-        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
+        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
         {
             // Priority
             if (args.FieldName == nameof(args.Row.RoadmapPriorityText))

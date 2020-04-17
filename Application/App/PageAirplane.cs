@@ -33,7 +33,7 @@
         /// <summary>
         /// Add some annotation to the grid data like hyperlink or render as image.
         /// </summary>
-        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
+        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
         {
             if (args.FieldName == nameof(RawWikipediaAircraft.Model) && args.Row?.ModelImageUrl != null)
             {

@@ -27,7 +27,7 @@
     {
         public GridProduct(ComponentJson owner) : base(owner) { }
 
-        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
+        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
         {
             if (args.FieldName == nameof(ShopProductPhoto.Data))
             {

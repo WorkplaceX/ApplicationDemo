@@ -25,12 +25,41 @@
     {
         public GridCmsFile(ComponentJson owner) : base(owner) { }
 
-        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
+        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
         {
-            if (args.FieldName == nameof(args.Row.Data))
+            if (args.FieldName == nameof(StorageFile.Data))
+            {
+                if (args.Row.Data == null)
+                {
+                    result.IsFileUpload = true;
+                }
+                result.Html = string.Format("<a href='cms/{0}'>{1}</a>", args.Row.FileName, args.Row.FileName);
+            }
+        }
+
+        protected override void CellAnnotation(AnnotationArgs args, AnnotationResult result)
+        {
+            if (args.FieldName == nameof(args.Row.Data) && args.IsNew)
             {
                 result.IsFileUpload = true;
             }
+        }
+
+        protected override void CellParseFileUpload(FileUploadArgs args, ParseResult result)
+        {
+            if (args.FieldName == nameof(StorageFile.Data))
+            {
+                args.Row.Data = args.Data;
+                args.Row.FileName = args.FileName;
+                result.IsHandled = true;
+            }
+        }
+
+        protected override Task InsertAsync(InsertArgs args, InsertResult result)
+        {
+            args.RowNew.IsExist = true;
+
+            return base.InsertAsync(args, result);
         }
     }
 }

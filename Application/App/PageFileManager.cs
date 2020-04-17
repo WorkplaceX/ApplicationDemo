@@ -28,7 +28,7 @@
     {
         public GridFile(ComponentJson owner) : base(owner) { }
 
-        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
+        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
         {
             if (args.FieldName == nameof(StorageFile.Data))
             {
@@ -37,7 +37,7 @@
             }
         }
 
-        protected override void CellParseFileUpload(CellParseFileUploadArgs args, CellParseResult result)
+        protected override void CellParseFileUpload(FileUploadArgs args, ParseResult result)
         {
             if (args.FieldName == nameof(StorageFile.Data))
             {

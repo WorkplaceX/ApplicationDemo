@@ -28,7 +28,7 @@
             result.Query = args.Query.Where(item => item.IsFlagIconCss == true);
         }
 
-        private void CellAnnotationBool(string fieldName, Row row, Type typeRow, string nameof, CellAnnotationResult result)
+        private void CellAnnotationBool(string fieldName, Row row, Type typeRow, string nameof, AnnotationResult result)
         {
             if (fieldName == nameof)
             {
@@ -49,7 +49,7 @@
             }
         }
 
-        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
+        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
         {
             var countryDisplay = args.Row as CountryDisplayCache;
             if (args.FieldName == nameof(CountryDisplayCache.Country) && countryDisplay?.ASFlagIcon != null)

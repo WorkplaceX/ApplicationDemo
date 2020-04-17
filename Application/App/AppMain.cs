@@ -43,17 +43,26 @@
 
         protected override async Task<byte[]> FileDownload(string fileName)
         {
-            if (fileName.StartsWith("shop/"))
+            if (fileName.StartsWith("cms/"))
             {
-                string fileNameProduct = fileName.Substring("shop/".Length);
-                var result = (await Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct).QueryExecuteAsync()).FirstOrDefault();
+                string fileNameCms = fileName.Substring("cms/".Length);
+                var result = (await Data.Query<CmsFile>().Where(item => item.FileName == fileNameCms).QueryExecuteAsync()).FirstOrDefault();
                 return result?.Data;
-
             }
             else
             {
-                var result = (await Data.Query<StorageFile>().Where(item => item.FileName == fileName).QueryExecuteAsync()).FirstOrDefault();
-                return result?.Data;
+                if (fileName.StartsWith("shop/"))
+                {
+                    string fileNameProduct = fileName.Substring("shop/".Length);
+                    var result = (await Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct).QueryExecuteAsync()).FirstOrDefault();
+                    return result?.Data;
+
+                }
+                else
+                {
+                    var result = (await Data.Query<StorageFile>().Where(item => item.FileName == fileName).QueryExecuteAsync()).FirstOrDefault();
+                    return result?.Data;
+                }
             }
         }
     }

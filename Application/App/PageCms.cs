@@ -62,7 +62,7 @@
             }
         }
 
-        protected override async Task CellParseAsync(CellParseArgs args, CellParseResult result)
+        protected override async Task CellParseAsync(CellParseArgs args, ParseResult result)
         {
             if (args.FieldName == nameof(args.Row.ComponentType))
             {
