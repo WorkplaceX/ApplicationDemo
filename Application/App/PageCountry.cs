@@ -23,9 +23,9 @@
     {
         public GridCountry(ComponentJson owner) : base(owner) { }
 
-        protected override IQueryable<CountryDisplayCache> Query()
+        protected override void Query(QueryArgs args, QueryResult result)
         {
-            return base.Query().Where(item => item.IsFlagIconCss == true);
+            result.Query = args.Query.Where(item => item.IsFlagIconCss == true);
         }
 
         private void CellAnnotationBool(string fieldName, Row row, Type typeRow, string nameof, CellAnnotationResult result)

@@ -61,11 +61,11 @@
     {
         public GridLoginUserRole(ComponentJson owner) : base(owner) { }
 
-        protected override IQueryable<LoginUserRoleDisplay> Query()
+        protected override void Query(QueryArgs args, QueryResult result)
         {
             var page = this.ComponentOwner<PageLoginUser>();
 
-            return base.Query().Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
+            result.Query = args.Query.Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
         }
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
@@ -83,11 +83,11 @@
     {
         public GridLoginUserPermission(ComponentJson owner) : base(owner) { }
 
-        protected override IQueryable<LoginUserPermissionDisplay> Query()
+        protected override void Query(QueryArgs args, QueryResult result)
         {
             var page = this.ComponentOwner<PageLoginUser>();
 
-            return base.Query().Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
+            result.Query = args.Query.Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
         }
     }
 }

@@ -58,9 +58,9 @@
     {
         public GridSignIn(ComponentJson owner) : base(owner) { }
 
-        protected override IQueryable<LoginUser> Query()
+        protected override void Query(QueryArgs args, QueryResult result)
         {
-            return Data.Query<LoginUser>(DatabaseEnum.MemorySingleton);
+            result.Query = Data.Query<LoginUser>(DatabaseEnum.MemorySingleton);
         }
     }
 }

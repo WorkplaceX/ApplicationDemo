@@ -69,11 +69,11 @@
     {
         public GridLoginRolePermission(ComponentJson owner) : base(owner) { }
 
-        protected override IQueryable<LoginRolePermissionDisplay> Query()
+        protected override void Query(QueryArgs args, QueryResult result)
         {
             var page = this.ComponentOwner<PageLoginRole>();
 
-            return base.Query().Where(item => item.RoleId == page.GridLoginRole.RowSelected.Id);
+            result.Query = args.Query.Where(item => item.RoleId == page.GridLoginRole.RowSelected.Id);
         }
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)

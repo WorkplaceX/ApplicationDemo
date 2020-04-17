@@ -44,9 +44,9 @@
     {
         public GridNavigation(ComponentJson owner) : base(owner) { }
 
-        protected override IQueryable<Navigation> Query()
+        protected override void Query(QueryArgs args, QueryResult result)
         {
-            return base.Query().OrderBy(item => item.Sort);
+            result.Query = args.Query.OrderBy(item => item.Sort);
         }
 
         protected override async Task RowSelectedAsync()

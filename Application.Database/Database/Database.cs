@@ -309,8 +309,14 @@ namespace Database.Demo
         [SqlField("Data", FrameworkTypeEnum.Varbinary)]
         public byte[] Data { get; set; }
 
-        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
-        public string Description { get; set; }
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("SourceText", FrameworkTypeEnum.Nvarcahr)]
+        public string SourceText { get; set; }
+
+        [SqlField("SourceLink", FrameworkTypeEnum.Nvarcahr)]
+        public string SourceLink { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
         public bool IsBuiltIn { get; set; }
@@ -331,8 +337,14 @@ namespace Database.Demo
         [SqlField("Data", FrameworkTypeEnum.Varbinary)]
         public byte[] Data { get; set; }
 
-        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
-        public string Description { get; set; }
+        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
+        public string Text { get; set; }
+
+        [SqlField("SourceText", FrameworkTypeEnum.Nvarcahr)]
+        public string SourceText { get; set; }
+
+        [SqlField("SourceLink", FrameworkTypeEnum.Nvarcahr)]
+        public string SourceLink { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
         public bool IsBuiltIn { get; set; }

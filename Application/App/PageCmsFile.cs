@@ -1,7 +1,6 @@
 ﻿namespace Application
 {
     using Database.Demo;
-    using Framework.DataAccessLayer;
     using Framework.Json;
     using Framework.Json.Bootstrap;
     using System;
@@ -14,6 +13,24 @@
         {
             var container = new BootstrapContainer(this);
             new Html(container) { TextHtml = "<h1>Cms File <i class='far fa-file'></i></h1>" };
+        }
+
+        public override async Task InitAsync()
+        {
+            await new GridCmsFile(this).LoadAsync();
+        }
+    }
+
+    public class GridCmsFile : Grid<CmsFile>
+    {
+        public GridCmsFile(ComponentJson owner) : base(owner) { }
+
+        protected override void CellAnnotation(CellAnnotationArgs args, CellAnnotationResult result)
+        {
+            if (args.FieldName == nameof(args.Row.Data))
+            {
+                result.IsFileUpload = true;
+            }
         }
     }
 }
