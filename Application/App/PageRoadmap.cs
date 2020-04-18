@@ -95,7 +95,7 @@
             }
         }
 
-        protected override async Task CellParseAsync(CellParseArgs args, ParseResult result)
+        protected override async Task CellParseAsync(ParseArgs args, ParseResult result)
         {
             // Category
             if (args.FieldName == nameof(RoadmapDisplay.RoadmapCategoryText))

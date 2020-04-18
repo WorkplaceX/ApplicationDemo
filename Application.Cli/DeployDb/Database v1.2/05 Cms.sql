@@ -51,6 +51,21 @@ SELECT
     FileName AS IdName
 FROM
     Demo.CmsFile
+GO
+CREATE VIEW Demo.CmsFileDisplay AS
+SELECT
+    Id,
+    FileName,
+    -- Data, -- Do not load file data into session state
+    CASE WHEN (Data IS NULL) THEN CAST(0 AS BIT) ELSE CAST(1 AS BIT) END AS IsData, -- Do not load file data into session state
+    CAST(NULL AS VARBINARY(MAX)) AS DataUpload, -- Field to store temporarily upload data between CellParseFileUpload and Insert.
+    Text,
+    SourceText,
+    SourceLink,
+    IsBuiltIn,
+    IsExist
+FROM
+    Demo.CmsFile
 
 -- Component
 GO
