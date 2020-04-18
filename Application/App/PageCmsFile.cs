@@ -36,7 +36,7 @@
                 }
                 else
                 {
-                    result.Html = string.Format("<a href='cms/{0}'><i class='fas fa-external-link-alt'></i></a>", args.Row.FileName);
+                    result.HtmlRight = string.Format("<a href='cms/{0}'><i class='fas fa-external-link-alt'></i></a>", args.Row.FileName);
                 }
             }
             // result.Html = string.Format("<a href='cms/{0}'>{1}</a>", args.Row.FileName, args.Row.FileName);
@@ -54,7 +54,12 @@
         {
             if (args.FieldName == nameof(args.Row.FileName))
             {
+                if (args.IsNew)
+                {
+                    result.Row.FileName = args.FileName;
+                }
                 result.Row.DataUpload = args.Data;
+                result.Row.IsData = true;
                 result.IsHandled = true;
             }
         }
@@ -62,10 +67,10 @@
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
             var row = (await Data.Query<CmsFile>().Where(item => item.Id == args.Row.Id).QueryExecuteAsync()).Single(); // Load data row
-            Data.RowCopy(args.Row, row);
-            if (args.Row.DataUpload != null)
+            Data.RowCopy(args.RowNew, row);
+            if (args.RowNew.DataUpload != null)
             {
-                row.Data = args.Row.DataUpload;
+                row.Data = args.RowNew.DataUpload;
             }
 
             await Data.UpdateAsync(row);
@@ -79,6 +84,11 @@
 
             // Insert
             var row = Data.RowCopy<CmsFile>(args.RowNew);
+            if (args.RowNew.DataUpload != null)
+            {
+                row.Data = args.RowNew.DataUpload;
+                args.RowNew.IsData = true;
+            }
             await Data.InsertAsync(row);
             args.RowNew.Id = row.Id;
 
