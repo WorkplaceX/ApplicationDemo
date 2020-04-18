@@ -79,7 +79,7 @@
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
             var loginRolePermission = new LoginRolePermission();
-            Data.RowCopy(args.RowNew, loginRolePermission);
+            Data.RowCopy(args.Row, loginRolePermission);
 
             await Data.UpsertAsync(loginRolePermission, new string[] { nameof(LoginRolePermission.RoleId), nameof(LoginRolePermission.PermissionId) });
 

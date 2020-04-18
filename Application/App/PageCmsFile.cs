@@ -66,11 +66,11 @@
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
-            var row = (await Data.Query<CmsFile>().Where(item => item.Id == args.Row.Id).QueryExecuteAsync()).Single(); // Load data row
-            Data.RowCopy(args.RowNew, row);
-            if (args.RowNew.DataUpload != null)
+            var row = (await Data.Query<CmsFile>().Where(item => item.Id == args.RowOld.Id).QueryExecuteAsync()).Single(); // Load data row
+            Data.RowCopy(args.Row, row);
+            if (args.Row.DataUpload != null)
             {
-                row.Data = args.RowNew.DataUpload;
+                row.Data = args.Row.DataUpload;
             }
 
             await Data.UpdateAsync(row);
@@ -80,19 +80,19 @@
 
         protected override async Task InsertAsync(InsertArgs args, InsertResult result)
         {
-            args.RowNew.IsExist = true;
+            args.Row.IsExist = true;
 
             // Insert
-            var row = Data.RowCopy<CmsFile>(args.RowNew);
-            if (args.RowNew.DataUpload != null)
+            var row = Data.RowCopy<CmsFile>(args.Row);
+            if (args.Row.DataUpload != null)
             {
-                row.Data = args.RowNew.DataUpload;
-                args.RowNew.IsData = true;
+                row.Data = args.Row.DataUpload;
+                args.Row.IsData = true;
             }
             await Data.InsertAsync(row);
-            args.RowNew.Id = row.Id;
+            args.Row.Id = row.Id;
 
-            args.RowNew.DataUpload = null; // Do not store in session state.
+            args.Row.DataUpload = null; // Do not store in session state.
 
             result.IsHandled = true;
         }

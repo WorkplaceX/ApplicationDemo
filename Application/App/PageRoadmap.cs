@@ -29,20 +29,20 @@
         protected override async Task InsertAsync(InsertArgs args, InsertResult result)
         {
             Roadmap roadmap = new Roadmap();
-            Data.RowCopy(args.RowNew, roadmap);
+            Data.RowCopy(args.Row, roadmap);
             roadmap.Name = Guid.NewGuid();
             await Data.InsertAsync(roadmap);
-            args.RowNew.Id = roadmap.Id; // Get new id from db
-            args.RowNew.Name = roadmap.Name;
-            args.RowNew.IsExist = true;
-            args.RowNew.Date = DateTime.Today;
+            args.Row.Id = roadmap.Id; // Get new id from db
+            args.Row.Name = roadmap.Name;
+            args.Row.IsExist = true;
+            args.Row.Date = DateTime.Today;
             result.IsHandled = true;
         }
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
             Roadmap roadmapNew = new Roadmap();
-            Data.RowCopy(args.RowNew, roadmapNew);
+            Data.RowCopy(args.Row, roadmapNew);
             await Data.UpdateAsync(roadmapNew);
             result.IsHandled = true;
         }

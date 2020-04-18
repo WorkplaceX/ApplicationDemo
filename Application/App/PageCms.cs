@@ -29,19 +29,19 @@
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
         {
-            await Data.UpdateAsync(Data.RowCopy<CmsComponent>(args.RowNew));
+            await Data.UpdateAsync(Data.RowCopy<CmsComponent>(args.Row));
 
             result.IsHandled = true;
         }
 
         protected override async Task InsertAsync(InsertArgs args, InsertResult result)
         {
-            args.RowNew.Name = Guid.NewGuid();
-            args.RowNew.IsExist = true;
+            args.Row.Name = Guid.NewGuid();
+            args.Row.IsExist = true;
 
-            var row = Data.RowCopy<CmsComponent>(args.RowNew);
+            var row = Data.RowCopy<CmsComponent>(args.Row);
             await Data.InsertAsync(row);
-            args.RowNew.Id = row.Id;
+            args.Row.Id = row.Id;
 
             result.IsHandled = true;
         }
