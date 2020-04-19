@@ -30,7 +30,7 @@ Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
 * "Application.Database/" (Generated C# database dto objects like tables and views)
 * "Application.Doc/" (Documentation images)
 * "Application.Server/" (ASP.NET Core to start application)
-* "Application.Website/" (Custom html and css websites used as theme template)
+* "Application.Website/" (Custom html and css websites used as masters)
 * "Framework/" (External WorkplaceX framework)
 * "ConfigCli.json" (Configuration file used by Application.Cli command line interface)
 * "ConfigServer.json" (Generated configuration used by Application.Server web server)
