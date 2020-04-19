@@ -175,4 +175,35 @@ namespace DatabaseBuiltIn.Demo
             }
         }
     }
+
+    public static class CmsComponentTypeBuiltInTableApplication
+    {
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Page")]Page = 1, [IdNameEnum("Paragraph")]Paragraph = 2, [IdNameEnum("Bullet")]Bullet = 3, [IdNameEnum("Image")]Image = 4, [IdNameEnum("Youtube")]Youtube = 5, [IdNameEnum("CodeBlock")]CodeBlock = 6, [IdNameEnum("Glossary")]Glossary = 7 }
+
+        public static CmsComponentTypeBuiltIn Row(IdNameEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
+        public static IdNameEnum IdName(string idName)
+        {
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+        }
+
+        public static List<CmsComponentTypeBuiltIn> RowList
+        {
+            get
+            {
+                var result = new List<CmsComponentTypeBuiltIn>();
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 1, Name = "Page", Sort = 1, IdName = "Page" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 2, Name = "Paragraph", Sort = 2, IdName = "Paragraph" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 3, Name = "Bullet", Sort = 3, IdName = "Bullet" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 4, Name = "Image", Sort = 4, IdName = "Image" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 5, Name = "Youtube", Sort = 5, IdName = "Youtube" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 6, Name = "CodeBlock", Sort = 6, IdName = "CodeBlock" });
+                result.Add(new CmsComponentTypeBuiltIn() { Id = 7, Name = "Glossary", Sort = 7, IdName = "Glossary" });
+                return result;
+            }
+        }
+    }
 }

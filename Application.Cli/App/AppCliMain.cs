@@ -77,7 +77,7 @@
 
             // Cms
             result.Add(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort).QueryExecute());
-            result.Add(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort).QueryExecute());
+            result.Add(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort).QueryExecute(), isApplication: true);
             result.Add(Data.Query<CmsComponentBuiltIn>().OrderBy(item => item.Name).QueryExecute());
             result.Add(Data.Query<CmsFile>().OrderBy(item => item.FileName).QueryExecute());
         }
@@ -119,7 +119,7 @@
             result.Add(StorageFileTableApplicationCli.RowList, nameof(StorageFile.FileName));
 
             // Cms
-            result.Add(CmsComponentTypeBuiltInTableApplicationCli.RowList, nameof(CmsComponentTypeBuiltIn.Name));
+            result.Add(CmsComponentTypeBuiltInTableApplication.RowList, nameof(CmsComponentTypeBuiltIn.Name));
             result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
             result.Add(CmsComponentBuiltInTableApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null);
             result.Add(CmsFileTableApplicationCli.RowList, nameof(CmsFile.FileName));

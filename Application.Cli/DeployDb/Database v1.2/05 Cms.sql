@@ -65,6 +65,7 @@ CREATE TABLE Demo.CmsComponent
     PageTitle NVARCHAR(256),
     PageImageFileId INT FOREIGN KEY REFERENCES Demo.CmsFile(Id),
     PageDate DATETIME,
+    PageTextMd NVARCHAR(MAX),
     -- Paragraph
     ParagraphTitle NVARCHAR(256),
     ParagraphText NVARCHAR(MAX),

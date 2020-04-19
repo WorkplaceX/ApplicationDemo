@@ -64,6 +64,9 @@ namespace Database.Demo
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
 
+        [SqlField("PageTextMd", FrameworkTypeEnum.Nvarcahr)]
+        public string PageTextMd { get; set; }
+
         [SqlField("ParagraphTitle", FrameworkTypeEnum.Nvarcahr)]
         public string ParagraphTitle { get; set; }
 
@@ -130,6 +133,9 @@ namespace Database.Demo
 
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
+
+        [SqlField("PageTextMd", FrameworkTypeEnum.Nvarcahr)]
+        public string PageTextMd { get; set; }
 
         [SqlField("ParagraphTitle", FrameworkTypeEnum.Nvarcahr)]
         public string ParagraphTitle { get; set; }
