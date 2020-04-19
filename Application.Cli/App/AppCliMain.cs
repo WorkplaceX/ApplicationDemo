@@ -87,42 +87,42 @@
         /// </summary>
         protected override void CommandDeployDbBuiltIn(DeployDbBuiltInResult result)
         {
-            result.Add(LanguageBuiltInTableApplication.RowList, nameof(LanguageBuiltIn.Name), null);
+            result.Add(LanguageBuiltInApplication.RowList, nameof(LanguageBuiltIn.Name), null);
 
-            var rowList = NavigationBuiltInTableApplicationCli.RowList;
+            var rowList = NavigationBuiltInApplicationCli.RowList;
             result.Add(rowList, nameof(NavigationBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => item.Sort);
 
             // LoginPermission
-            result.Add(LoginPermissionBuiltInTableApplication.RowList, nameof(LoginPermissionBuiltIn.Name), "Login");
-            result.Add(LoginPermissionBuiltInTableApplicationCli.RowList, nameof(LoginPermissionBuiltIn.Name), "Login");
+            result.Add(LoginPermissionBuiltInApplication.RowList, nameof(LoginPermissionBuiltIn.Name), "Login");
+            result.Add(LoginPermissionBuiltInApplicationCli.RowList, nameof(LoginPermissionBuiltIn.Name), "Login");
 
             // LoginRole
-            result.Add(LoginRoleBuiltInTableApplicationCli.RowList, nameof(LoginRoleBuiltIn.Name), "Login");
+            result.Add(LoginRoleBuiltInApplicationCli.RowList, nameof(LoginRoleBuiltIn.Name), "Login");
 
             // LoginRolePermission
-            result.Add(LoginRolePermissionBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginRolePermissionBuiltIn.RoleId), nameof(LoginRolePermissionBuiltIn.PermissionId) }, "Login");
+            result.Add(LoginRolePermissionBuiltInApplicationCli.RowList, new string[] { nameof(LoginRolePermissionBuiltIn.RoleId), nameof(LoginRolePermissionBuiltIn.PermissionId) }, "Login");
 
             // LoginUser
-            result.Add(LoginUserBuiltInTableApplicationCli.RowList, nameof(LoginUserBuiltIn.Name), "Login");
+            result.Add(LoginUserBuiltInApplicationCli.RowList, nameof(LoginUserBuiltIn.Name), "Login");
 
             // LoginUserRole
-            result.Add(LoginUserRoleBuiltInTableApplicationCli.RowList, new string[] { nameof(LoginUserRoleBuiltIn.UserId), nameof(LoginUserRoleBuiltIn.RoleId) }, "Login");
+            result.Add(LoginUserRoleBuiltInApplicationCli.RowList, new string[] { nameof(LoginUserRoleBuiltIn.UserId), nameof(LoginUserRoleBuiltIn.RoleId) }, "Login");
 
             // Roadmap
-            result.Add(RoadmapCategoryBuiltInTableApplication.RowList, nameof(RoadmapCategoryBuiltIn.Name)); // Category
-            result.Add(RoadmapModuleBuiltInTableApplication.RowList, nameof(RoadmapModuleBuiltIn.Name)); // Module
-            result.Add(RoadmapPriorityBuiltInTableApplication.RowList, nameof(RoadmapPriorityBuiltIn.Name)); // Priority
-            result.Add(RoadmapStateBuiltInTableApplication.RowList, nameof(RoadmapStateBuiltIn.Name)); // State
-            result.Add(RoadmapBuiltInTableApplicationCli.RowList, nameof(RoadmapBuiltIn.Name)); // Roadmap
+            result.Add(RoadmapCategoryBuiltInApplication.RowList, nameof(RoadmapCategoryBuiltIn.Name)); // Category
+            result.Add(RoadmapModuleBuiltInApplication.RowList, nameof(RoadmapModuleBuiltIn.Name)); // Module
+            result.Add(RoadmapPriorityBuiltInApplication.RowList, nameof(RoadmapPriorityBuiltIn.Name)); // Priority
+            result.Add(RoadmapStateBuiltInApplication.RowList, nameof(RoadmapStateBuiltIn.Name)); // State
+            result.Add(RoadmapBuiltInApplicationCli.RowList, nameof(RoadmapBuiltIn.Name)); // Roadmap
 
             // FileManager
-            result.Add(StorageFileTableApplicationCli.RowList, nameof(StorageFile.FileName));
+            result.Add(StorageFileApplicationCli.RowList, nameof(StorageFile.FileName));
 
             // Cms
-            result.Add(CmsComponentTypeBuiltInTableApplication.RowList, nameof(CmsComponentTypeBuiltIn.Name));
-            result.Add(CmsCodeBlockTypeBuiltInTableApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
-            result.Add(CmsComponentBuiltInTableApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null);
-            result.Add(CmsFileTableApplicationCli.RowList, nameof(CmsFile.FileName));
+            result.Add(CmsComponentTypeBuiltInApplication.RowList, nameof(CmsComponentTypeBuiltIn.Name));
+            result.Add(CmsCodeBlockTypeBuiltInApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
+            result.Add(CmsComponentBuiltInApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null);
+            result.Add(CmsFileApplicationCli.RowList, nameof(CmsFile.FileName));
         }
     }
 }

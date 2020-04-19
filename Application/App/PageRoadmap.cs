@@ -231,20 +231,20 @@
             // Priority
             if (args.FieldName == nameof(args.Row.RoadmapPriorityText))
             {
-                var idEnum = RoadmapPriorityBuiltInTableApplication.IdName(args.Row.RoadmapPriorityIdName);
+                var idEnum = RoadmapPriorityBuiltInApplication.IdName(args.Row.RoadmapPriorityIdName);
                 string bootstrapColor = null;
                 switch (idEnum)
                 {
-                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.Low:
+                    case RoadmapPriorityBuiltInApplication.IdNameEnum.Low:
                         bootstrapColor = "text-success"; // Green
                         break;
-                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.Medium:
+                    case RoadmapPriorityBuiltInApplication.IdNameEnum.Medium:
                         bootstrapColor = "text-primary"; // Blue
                         break;
-                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.High:
+                    case RoadmapPriorityBuiltInApplication.IdNameEnum.High:
                         bootstrapColor = "text-warning"; // Orange
                         break;
-                    case RoadmapPriorityBuiltInTableApplication.IdNameEnum.Critical:
+                    case RoadmapPriorityBuiltInApplication.IdNameEnum.Critical:
                         bootstrapColor = "text-danger"; // Red
                         break;
                 }
@@ -254,16 +254,16 @@
             // Category
             if (args.FieldName == nameof(args.Row.RoadmapCategoryText))
             {
-                var idEnum = RoadmapCategoryBuiltInTableApplication.IdName(args.Row.RoadmapCategoryIdName);
+                var idEnum = RoadmapCategoryBuiltInApplication.IdName(args.Row.RoadmapCategoryIdName);
                 switch (idEnum)
                 {
-                    case RoadmapCategoryBuiltInTableApplication.IdNameEnum.Feature:
+                    case RoadmapCategoryBuiltInApplication.IdNameEnum.Feature:
                         result.HtmlLeft = "<i class='fas fa-box-open text-primary'></i>"; // Blue
                         break;
-                    case RoadmapCategoryBuiltInTableApplication.IdNameEnum.Bug:
+                    case RoadmapCategoryBuiltInApplication.IdNameEnum.Bug:
                         result.HtmlLeft = "<i class='fas fa-bug text-danger'></i>"; // Red
                         break;
-                    case RoadmapCategoryBuiltInTableApplication.IdNameEnum.Analyze:
+                    case RoadmapCategoryBuiltInApplication.IdNameEnum.Analyze:
                         result.HtmlLeft = "<i class='fas fa-vial text-info'></i>"; // Green
                         break;
                 }
@@ -272,16 +272,16 @@
             // State
             if (args.FieldName == nameof(args.Row.RoadmapStateText))
             {
-                var idEnum = RoadmapStateBuiltInTableApplication.IdName(args.Row.RoadmapStateIdName);
-                if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
+                var idEnum = RoadmapStateBuiltInApplication.IdName(args.Row.RoadmapStateIdName);
+                if (idEnum == RoadmapStateBuiltInApplication.IdNameEnum.Done)
                 {
                     result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
                 }
             }
             if (args.FieldName == nameof(args.Row.Description))
             {
-                var idEnum = RoadmapStateBuiltInTableApplication.IdName(args.Row.RoadmapStateIdName);
-                if (idEnum == RoadmapStateBuiltInTableApplication.IdNameEnum.Done)
+                var idEnum = RoadmapStateBuiltInApplication.IdName(args.Row.RoadmapStateIdName);
+                if (idEnum == RoadmapStateBuiltInApplication.IdNameEnum.Done)
                 {
                     result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
                 }
@@ -290,8 +290,8 @@
             // Module
             if (args.FieldName == nameof(args.Row.RoadmapModuleText))
             {
-                var idEnum = RoadmapModuleBuiltInTableApplication.IdName(args.Row.RoadmapModuleIdName);
-                if (idEnum == RoadmapModuleBuiltInTableApplication.IdNameEnum.Framework)
+                var idEnum = RoadmapModuleBuiltInApplication.IdName(args.Row.RoadmapModuleIdName);
+                if (idEnum == RoadmapModuleBuiltInApplication.IdNameEnum.Framework)
                 {
                     result.HtmlLeft = "<i class='fas fa-microchip text-primary'></i>"; // Blue
                 }

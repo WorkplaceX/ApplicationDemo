@@ -9,11 +9,11 @@ namespace DatabaseBuiltIn.Demo
     using Framework.DataAccessLayer;
     using Database.Demo;
 
-    public static class LanguageBuiltInTableApplication
+    public static class LanguageBuiltInApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("English")]English = 1, [IdNameEnum("French")]French = 2, [IdNameEnum("German")]German = 3, [IdNameEnum("Italian")]Italian = 4 }
 
-        public static LanguageBuiltIn Row(IdNameEnum value)
+        public static LanguageBuiltIn Row(this IdNameEnum value)
         {
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
@@ -37,11 +37,11 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class LoginPermissionBuiltInTableApplication
+    public static class LoginPermissionBuiltInApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Administrator")]Administrator = 1, [IdNameEnum("Developer")]Developer = 2, [IdNameEnum("Guest")]Guest = 3 }
 
-        public static LoginPermissionBuiltIn Row(IdNameEnum value)
+        public static LoginPermissionBuiltIn Row(this IdNameEnum value)
         {
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
@@ -64,11 +64,11 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class RoadmapCategoryBuiltInTableApplication
+    public static class RoadmapCategoryBuiltInApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Analyze")]Analyze = 1, [IdNameEnum("Bug")]Bug = 2, [IdNameEnum("Feature")]Feature = 3 }
 
-        public static RoadmapCategoryBuiltIn Row(IdNameEnum value)
+        public static RoadmapCategoryBuiltIn Row(this IdNameEnum value)
         {
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
@@ -91,11 +91,11 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class RoadmapModuleBuiltInTableApplication
+    public static class RoadmapModuleBuiltInApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Application")]Application = 1, [IdNameEnum("ApplicationCms")]ApplicationCms = 2, [IdNameEnum("ApplicationLogin")]ApplicationLogin = 3, [IdNameEnum("ApplicationRoadmap")]ApplicationRoadmap = 4, [IdNameEnum("Framework")]Framework = 5 }
 
-        public static RoadmapModuleBuiltIn Row(IdNameEnum value)
+        public static RoadmapModuleBuiltIn Row(this IdNameEnum value)
         {
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
@@ -120,11 +120,11 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class RoadmapPriorityBuiltInTableApplication
+    public static class RoadmapPriorityBuiltInApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Critical")]Critical = 1, [IdNameEnum("High")]High = 2, [IdNameEnum("Low")]Low = 3, [IdNameEnum("Medium")]Medium = 4 }
 
-        public static RoadmapPriorityBuiltIn Row(IdNameEnum value)
+        public static RoadmapPriorityBuiltIn Row(this IdNameEnum value)
         {
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
@@ -148,11 +148,11 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class RoadmapStateBuiltInTableApplication
+    public static class RoadmapStateBuiltInApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Done")]Done = 1, [IdNameEnum("In Progress")]InProgress = 2, [IdNameEnum("New")]New = 3, [IdNameEnum("Open")]Open = 4 }
 
-        public static RoadmapStateBuiltIn Row(IdNameEnum value)
+        public static RoadmapStateBuiltIn Row(this IdNameEnum value)
         {
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
@@ -176,11 +176,11 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class CmsComponentTypeBuiltInTableApplication
+    public static class CmsComponentTypeBuiltInApplication
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Page")]Page = 1, [IdNameEnum("Paragraph")]Paragraph = 2, [IdNameEnum("Bullet")]Bullet = 3, [IdNameEnum("Image")]Image = 4, [IdNameEnum("Youtube")]Youtube = 5, [IdNameEnum("CodeBlock")]CodeBlock = 6, [IdNameEnum("Glossary")]Glossary = 7 }
 
-        public static CmsComponentTypeBuiltIn Row(IdNameEnum value)
+        public static CmsComponentTypeBuiltIn Row(this IdNameEnum value)
         {
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }

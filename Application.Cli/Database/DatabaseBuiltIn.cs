@@ -7,7 +7,7 @@ namespace DatabaseBuiltIn.dbo
     using System.Globalization;
     using Database.dbo;
 
-    public static class FrameworkConfigGridBuiltInTableApplicationCli
+    public static class FrameworkConfigGridBuiltInApplicationCli
     {
         public static List<FrameworkConfigGridBuiltIn> RowList
         {
@@ -29,7 +29,7 @@ namespace DatabaseBuiltIn.dbo
         }
     }
 
-    public static class FrameworkConfigFieldBuiltInTableApplicationCli
+    public static class FrameworkConfigFieldBuiltInApplicationCli
     {
         public static List<FrameworkConfigFieldBuiltIn> RowList
         {
@@ -83,7 +83,7 @@ namespace DatabaseBuiltIn.Demo
     using System.Globalization;
     using Database.Demo;
 
-    public static class NavigationBuiltInTableApplicationCli
+    public static class NavigationBuiltInApplicationCli
     {
         public static List<NavigationBuiltIn> RowList
         {
@@ -112,7 +112,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class LoginPermissionBuiltInTableApplicationCli
+    public static class LoginPermissionBuiltInApplicationCli
     {
         public static List<LoginPermissionBuiltIn> RowList
         {
@@ -128,7 +128,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class LoginRoleBuiltInTableApplicationCli
+    public static class LoginRoleBuiltInApplicationCli
     {
         public static List<LoginRoleBuiltIn> RowList
         {
@@ -144,7 +144,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class LoginRolePermissionBuiltInTableApplicationCli
+    public static class LoginRolePermissionBuiltInApplicationCli
     {
         public static List<LoginRolePermissionBuiltIn> RowList
         {
@@ -170,7 +170,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class LoginUserBuiltInTableApplicationCli
+    public static class LoginUserBuiltInApplicationCli
     {
         public static List<LoginUserBuiltIn> RowList
         {
@@ -187,7 +187,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class LoginUserRoleBuiltInTableApplicationCli
+    public static class LoginUserRoleBuiltInApplicationCli
     {
         public static List<LoginUserRoleBuiltIn> RowList
         {
@@ -209,7 +209,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class RoadmapBuiltInTableApplicationCli
+    public static class RoadmapBuiltInApplicationCli
     {
         public static List<RoadmapBuiltIn> RowList
         {
@@ -266,7 +266,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class StorageFileTableApplicationCli
+    public static class StorageFileApplicationCli
     {
         public static List<StorageFile> RowList
         {
@@ -1661,7 +1661,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class CmsCodeBlockTypeBuiltInTableApplicationCli
+    public static class CmsCodeBlockTypeBuiltInApplicationCli
     {
         public static List<CmsCodeBlockTypeBuiltIn> RowList
         {
@@ -1678,7 +1678,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class CmsComponentBuiltInTableApplicationCli
+    public static class CmsComponentBuiltInApplicationCli
     {
         public static List<CmsComponentBuiltIn> RowList
         {
@@ -1695,7 +1695,7 @@ namespace DatabaseBuiltIn.Demo
         }
     }
 
-    public static class CmsFileTableApplicationCli
+    public static class CmsFileApplicationCli
     {
         public static List<CmsFile> RowList
         {
