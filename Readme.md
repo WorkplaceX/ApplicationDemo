@@ -10,11 +10,13 @@ This demo shows the capabilities of the WorkplaceX framework. It uses airplanes 
 ![Screenshot](Application.Doc/Screenshot.png)
 
 ## Getting Started
+Clone repo and start command line interface.
 ```cmd
 git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
 cd ApplicationDemo
 .\cli.cmd
 ```
+![Cli](Application.Doc/Cli.png)
 
 For ConnectionString, deploy sql scripts to database and start the application see: https://workplacex.org/install#git-clone
 
