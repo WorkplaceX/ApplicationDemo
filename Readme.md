@@ -1,5 +1,5 @@
 # Application Demo
-This is a template to get started with an ASP.NET Core application with Angular 8 client and MS-SQL Server database.
+This is a template to get started with an ASP.NET Core application with Angular 9 client and MS-SQL Server database.
 
 ![Build Status](https://github.com/WorkplaceX/ApplicationDemo/workflows/CI/badge.svg) (ApplicationDemo; github actions;)
 
@@ -10,11 +10,14 @@ This demo shows the capabilities of the WorkplaceX framework. It uses airplanes 
 ![Screenshot](Application.Doc/Screenshot.png)
 
 ## Getting Started
+Clone repo and start command line interface.
 ```cmd
 git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
 cd ApplicationDemo
 .\cli.cmd
 ```
+Command line interface CLI contains all necessary framework commands:
+![Cli](Application.Doc/Cli.png)
 
 For ConnectionString, deploy sql scripts to database and start the application see: https://workplacex.org/install#git-clone
 
@@ -27,7 +30,7 @@ Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
 * "Application.Database/" (Generated C# database dto objects like tables and views)
 * "Application.Doc/" (Documentation images)
 * "Application.Server/" (ASP.NET Core to start application)
-* "Application.Website/" (Custom html and css websites used as theme template)
+* "Application.Website/" (Custom html and css websites used as masters)
 * "Framework/" (External WorkplaceX framework)
 * "ConfigCli.json" (Configuration file used by Application.Cli command line interface)
-* "ConfigWebServer.json" (Generated configuration used by Application.Server web server)
+* "ConfigServer.json" (Generated configuration used by Application.Server web server)
