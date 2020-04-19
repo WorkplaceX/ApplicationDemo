@@ -22,15 +22,26 @@
         }
     }
 
-    public class GridCmsFile : Grid<CmsFileDisplay>
+    public class GridCmsFile : Grid<CmsFile>
     {
         public GridCmsFile(ComponentJson owner) : base(owner) { }
+
+        protected override void Truncate(TruncateArgs args)
+        {
+            foreach (var item in args.RowList)
+            {
+                if (item.Data != null && item.Data.Length != 0)
+                {
+                    item.Data = new byte[0];
+                }
+            }
+        }
 
         protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
         {
             if (args.FieldName == nameof(args.Row.FileName))
             {
-                if (args.Row.IsData == false)
+                if (args.Row.Data == null)
                 {
                     result.IsFileUpload = true;
                 }
@@ -39,7 +50,6 @@
                     result.HtmlRight = string.Format("<a href='cms/{0}'><i class='fas fa-external-link-alt'></i></a>", args.Row.FileName);
                 }
             }
-            // result.Html = string.Format("<a href='cms/{0}'>{1}</a>", args.Row.FileName, args.Row.FileName);
         }
 
         protected override void CellAnnotation(AnnotationArgs args, AnnotationResult result)
@@ -54,47 +64,14 @@
         {
             if (args.FieldName == nameof(args.Row.FileName))
             {
-                if (args.IsNew)
+                result.Row.Data = args.Data;
+                if (args.Row.FileName == null)
                 {
                     result.Row.FileName = args.FileName;
                 }
-                result.Row.DataUpload = args.Data;
-                result.Row.IsData = true;
+
                 result.IsHandled = true;
             }
-        }
-
-        protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
-        {
-            var row = (await Data.Query<CmsFile>().Where(item => item.Id == args.RowOld.Id).QueryExecuteAsync()).Single(); // Load data row
-            Data.RowCopy(args.Row, row);
-            if (args.Row.DataUpload != null)
-            {
-                row.Data = args.Row.DataUpload;
-            }
-
-            await Data.UpdateAsync(row);
-
-            result.IsHandled = true;
-        }
-
-        protected override async Task InsertAsync(InsertArgs args, InsertResult result)
-        {
-            args.Row.IsExist = true;
-
-            // Insert
-            var row = Data.RowCopy<CmsFile>(args.Row);
-            if (args.Row.DataUpload != null)
-            {
-                row.Data = args.Row.DataUpload;
-                args.Row.IsData = true;
-            }
-            await Data.InsertAsync(row);
-            args.Row.Id = row.Id;
-
-            args.Row.DataUpload = null; // Do not store in session state.
-
-            result.IsHandled = true;
         }
     }
 }

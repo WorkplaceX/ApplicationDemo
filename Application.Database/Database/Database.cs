@@ -356,37 +356,6 @@ namespace Database.Demo
         public string IdName { get; set; }
     }
 
-    [SqlTable("Demo", "CmsFileDisplay")]
-    public class CmsFileDisplay : Row
-    {
-        [SqlField("Id", FrameworkTypeEnum.Int)]
-        public int Id { get; set; }
-
-        [SqlField("FileName", FrameworkTypeEnum.Nvarcahr)]
-        public string FileName { get; set; }
-
-        [SqlField("IsData", FrameworkTypeEnum.Bit)]
-        public bool? IsData { get; set; }
-
-        [SqlField("DataUpload", FrameworkTypeEnum.Varbinary)]
-        public byte[] DataUpload { get; set; }
-
-        [SqlField("Text", FrameworkTypeEnum.Nvarcahr)]
-        public string Text { get; set; }
-
-        [SqlField("SourceText", FrameworkTypeEnum.Nvarcahr)]
-        public string SourceText { get; set; }
-
-        [SqlField("SourceLink", FrameworkTypeEnum.Nvarcahr)]
-        public string SourceLink { get; set; }
-
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
-
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
-    }
-
     [SqlTable("Demo", "CountryDisplay")]
     public class CountryDisplay : Row
     {
