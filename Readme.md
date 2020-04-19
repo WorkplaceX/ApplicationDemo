@@ -16,6 +16,7 @@ git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
 cd ApplicationDemo
 .\cli.cmd
 ```
+Command line interface CLI contains all necessary framework commands:
 ![Cli](Application.Doc/Cli.png)
 
 For ConnectionString, deploy sql scripts to database and start the application see: https://workplacex.org/install#git-clone
