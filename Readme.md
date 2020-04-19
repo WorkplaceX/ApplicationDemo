@@ -30,4 +30,4 @@ Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
 * "Application.Website/" (Custom html and css websites used as theme template)
 * "Framework/" (External WorkplaceX framework)
 * "ConfigCli.json" (Configuration file used by Application.Cli command line interface)
-* "ConfigWebServer.json" (Generated configuration used by Application.Server web server)
+* "ConfigServer.json" (Generated configuration used by Application.Server web server)
