@@ -18,9 +18,14 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
-        public static IdNameEnum IdName(string idName)
+        public static IdNameEnum IdName(string value)
         {
-            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(value);
+        }
+
+        public static string IdName(this IdNameEnum value)
+        {
+            return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
         public static List<LanguageBuiltIn> RowList
@@ -46,9 +51,14 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
-        public static IdNameEnum IdName(string idName)
+        public static IdNameEnum IdName(string value)
         {
-            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(value);
+        }
+
+        public static string IdName(this IdNameEnum value)
+        {
+            return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
         public static List<LoginPermissionBuiltIn> RowList
@@ -73,9 +83,14 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
-        public static IdNameEnum IdName(string idName)
+        public static IdNameEnum IdName(string value)
         {
-            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(value);
+        }
+
+        public static string IdName(this IdNameEnum value)
+        {
+            return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
         public static List<RoadmapCategoryBuiltIn> RowList
@@ -100,9 +115,14 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
-        public static IdNameEnum IdName(string idName)
+        public static IdNameEnum IdName(string value)
         {
-            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(value);
+        }
+
+        public static string IdName(this IdNameEnum value)
+        {
+            return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
         public static List<RoadmapModuleBuiltIn> RowList
@@ -129,9 +149,14 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
-        public static IdNameEnum IdName(string idName)
+        public static IdNameEnum IdName(string value)
         {
-            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(value);
+        }
+
+        public static string IdName(this IdNameEnum value)
+        {
+            return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
         public static List<RoadmapPriorityBuiltIn> RowList
@@ -157,9 +182,14 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
-        public static IdNameEnum IdName(string idName)
+        public static IdNameEnum IdName(string value)
         {
-            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(value);
+        }
+
+        public static string IdName(this IdNameEnum value)
+        {
+            return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
         public static List<RoadmapStateBuiltIn> RowList
@@ -185,9 +215,14 @@ namespace DatabaseBuiltIn.Demo
             return RowList.Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
         }
 
-        public static IdNameEnum IdName(string idName)
+        public static IdNameEnum IdName(string value)
         {
-            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(idName);
+            return IdNameEnumAttribute.IdNameToEnum<IdNameEnum>(value);
+        }
+
+        public static string IdName(this IdNameEnum value)
+        {
+            return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
         public static List<CmsComponentTypeBuiltIn> RowList
