@@ -7,6 +7,7 @@ namespace DatabaseBuiltIn.Demo
     using System.Globalization;
     using System.Linq;
     using Framework.DataAccessLayer;
+    using Framework.DataAccessLayer.BuiltIn;
     using Database.Demo;
 
     public static class LanguageBuiltInApplication

@@ -48,7 +48,7 @@
 
         protected override void LookupQuery(LookupQueryArgs args, LookupQueryResult result)
         {
-            if (args.FieldName == nameof(args.Row.ComponentType))
+            if (args.FieldName == nameof(args.Row.ComponentTypeText))
             {
                 result.Query = Data.Query<CmsComponentType>();
             }
@@ -64,13 +64,13 @@
 
         protected override async Task CellParseAsync(ParseArgs args, ParseResult result)
         {
-            if (args.FieldName == nameof(args.Row.ComponentType))
+            if (args.FieldName == nameof(args.Row.ComponentTypeText))
             {
                 var row = (await Data.Query<CmsComponentType>().Where(item => item.Name == args.Text).QueryExecuteAsync()).FirstOrDefault();
                 if (row != null)
                 {
                     result.Row.ComponentTypeId = row.Id;
-                    result.Row.ComponentType = row.Name;
+                    result.Row.ComponentTypeText = row.Name;
                 }
                 else
                 {

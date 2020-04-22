@@ -18,7 +18,13 @@
                     {
                         if (item.ComponentTypeIdName == CmsComponentTypeBuiltInApplication.IdNameEnum.Page.IdName())
                         {
-
+                            // Render sub page as card.
+                            result.Append("<div class='card'>");
+                            result.Append($"<img src='{""}' class='card-img-top'>");
+                            result.Append("<div class='card-body'>");
+                            result.Append($"<p><{item.PageTitle}/p>");
+                            result.Append("</div>");
+                            result.Append("</div>");
                         }
                         else
                         {

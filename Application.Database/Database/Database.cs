@@ -79,8 +79,8 @@ namespace Database.Demo
         [SqlField("BulletText", FrameworkTypeEnum.Nvarcahr)]
         public string BulletText { get; set; }
 
-        [SqlField("ImageLink", FrameworkTypeEnum.Nvarcahr)]
-        public string ImageLink { get; set; }
+        [SqlField("ImageFileId", FrameworkTypeEnum.Int)]
+        public int? ImageFileId { get; set; }
 
         [SqlField("ImageText", FrameworkTypeEnum.Nvarcahr)]
         public string ImageText { get; set; }
@@ -149,8 +149,8 @@ namespace Database.Demo
         [SqlField("BulletText", FrameworkTypeEnum.Nvarcahr)]
         public string BulletText { get; set; }
 
-        [SqlField("ImageLink", FrameworkTypeEnum.Nvarcahr)]
-        public string ImageLink { get; set; }
+        [SqlField("ImageFileId", FrameworkTypeEnum.Int)]
+        public int? ImageFileId { get; set; }
 
         [SqlField("ImageText", FrameworkTypeEnum.Nvarcahr)]
         public string ImageText { get; set; }
@@ -191,6 +191,9 @@ namespace Database.Demo
         [SqlField("PageImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
         public string PageImageFileIdName { get; set; }
 
+        [SqlField("ImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ImageFileIdName { get; set; }
+
         [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
         public string CodeBlockTypeIdName { get; set; }
     }
@@ -201,8 +204,14 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
+        [SqlField("IdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid IdName { get; set; }
+
         [SqlField("ParentId", FrameworkTypeEnum.Int)]
         public int? ParentId { get; set; }
+
+        [SqlField("ParentIdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid? ParentIdName { get; set; }
 
         [SqlField("ParentText", FrameworkTypeEnum.Nvarcahr)]
         public string ParentText { get; set; }
@@ -213,8 +222,11 @@ namespace Database.Demo
         [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
         public int? ComponentTypeId { get; set; }
 
-        [SqlField("ComponentType", FrameworkTypeEnum.Nvarcahr)]
-        public string ComponentType { get; set; }
+        [SqlField("ComponentTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ComponentTypeIdName { get; set; }
+
+        [SqlField("ComponentTypeText", FrameworkTypeEnum.Nvarcahr)]
+        public string ComponentTypeText { get; set; }
 
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
@@ -222,11 +234,17 @@ namespace Database.Demo
         [SqlField("PageImageFileId", FrameworkTypeEnum.Int)]
         public int? PageImageFileId { get; set; }
 
-        [SqlField("PageImageFileText", FrameworkTypeEnum.Nvarcahr)]
-        public string PageImageFileText { get; set; }
+        [SqlField("PageImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string PageImageFileIdName { get; set; }
+
+        [SqlField("PageImageFileName", FrameworkTypeEnum.Nvarcahr)]
+        public string PageImageFileName { get; set; }
 
         [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
         public DateTime? PageDate { get; set; }
+
+        [SqlField("PageTextMd", FrameworkTypeEnum.Nvarcahr)]
+        public string PageTextMd { get; set; }
 
         [SqlField("ParagraphTitle", FrameworkTypeEnum.Nvarcahr)]
         public string ParagraphTitle { get; set; }
@@ -240,8 +258,11 @@ namespace Database.Demo
         [SqlField("BulletText", FrameworkTypeEnum.Nvarcahr)]
         public string BulletText { get; set; }
 
-        [SqlField("ImageLink", FrameworkTypeEnum.Nvarcahr)]
-        public string ImageLink { get; set; }
+        [SqlField("ImageFileId", FrameworkTypeEnum.Int)]
+        public int? ImageFileId { get; set; }
+
+        [SqlField("ImageFileName", FrameworkTypeEnum.Nvarcahr)]
+        public string ImageFileName { get; set; }
 
         [SqlField("ImageText", FrameworkTypeEnum.Nvarcahr)]
         public string ImageText { get; set; }
@@ -255,8 +276,11 @@ namespace Database.Demo
         [SqlField("CodeBlockTypeId", FrameworkTypeEnum.Int)]
         public int? CodeBlockTypeId { get; set; }
 
-        [SqlField("CodeBlockType", FrameworkTypeEnum.Nvarcahr)]
-        public string CodeBlockType { get; set; }
+        [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string CodeBlockTypeIdName { get; set; }
+
+        [SqlField("CodeBlockTypeText", FrameworkTypeEnum.Nvarcahr)]
+        public string CodeBlockTypeText { get; set; }
 
         [SqlField("GlossaryTerm", FrameworkTypeEnum.Nvarcahr)]
         public string GlossaryTerm { get; set; }
@@ -264,8 +288,8 @@ namespace Database.Demo
         [SqlField("GlossaryText", FrameworkTypeEnum.Nvarcahr)]
         public string GlossaryText { get; set; }
 
-        [SqlField("Sort", FrameworkTypeEnum.Float)]
-        public double? Sort { get; set; }
+        [SqlField("FLOAT", FrameworkTypeEnum.Float)]
+        public double? FLOAT { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
         public bool IsBuiltIn { get; set; }

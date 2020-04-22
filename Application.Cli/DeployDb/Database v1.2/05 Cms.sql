@@ -73,7 +73,7 @@ CREATE TABLE Demo.CmsComponent
     -- Bullet
     BulletText NVARCHAR(256),
     -- Image
-    ImageLink NVARCHAR(256),
+    ImageFileId INT FOREIGN KEY REFERENCES Demo.CmsFile(Id),
     ImageText NVARCHAR(256),
     -- Youtube
     YoutubeLink NVARCHAR(256),
@@ -101,6 +101,8 @@ SELECT
     (SELECT IdName FROM CmsComponentTypeBuiltIn WHERE Id = Data.ComponentTypeId) AS ComponentTypeIdName,
     /* PageImageFileId */
     (SELECT IdName FROM Demo.CmsFileBuiltIn WHERE Id = Data.PageImageFileId) AS PageImageFileIdName,
+    /* ImageFileId */
+    (SELECT IdName FROM Demo.CmsFileBuiltIn WHERE Id = Data.ImageFileId) AS ImageFileIdName,
     /* CodeBlockTypeId */
     (SELECT IdName FROM CmsCodeBlockTypeBuiltIn WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeIdName
 FROM
@@ -109,17 +111,26 @@ FROM
 GO
 CREATE VIEW Demo.CmsComponentDisplay AS
 SELECT
+    -- Id
     Id,
+    IdName,
+    -- Parent
     ParentId,
+    ParentIdName,
     (SELECT PageTitle FROM Demo.CmsComponent WHERE Id = Data.ParentId) AS ParentText,
+    -- Name
     Name,
+    -- ComponentType
     ComponentTypeId,
-    (SELECT Name FROM Demo.CmsComponentType WHERE Id = Data.ComponentTypeId) AS ComponentType,
+    ComponentTypeIdName,
+    ComponentTypeIdName AS ComponentTypeText,
     -- Page
     PageTitle,
     PageImageFileId,
-    (SELECT FileName FROM Demo.CmsFile WHERE Id = Data.PageImageFileId) AS PageImageFileText,
+    PageImageFileIdName,
+    (SELECT FileName FROM Demo.CmsFile WHERE Id = Data.PageImageFileId) AS PageImageFileName,
     PageDate,
+    PageTextMd,
     -- Paragraph
     ParagraphTitle,
     ParagraphText,
@@ -127,21 +138,23 @@ SELECT
     -- Bullet
     BulletText,
     -- Image
-    ImageLink,
+    ImageFileId,
+    ImageFileIdName AS ImageFileName,
     ImageText,
     -- Youtube
     YoutubeLink,
     -- CodeBlock
     CodeBlockText,
     CodeBlockTypeId,
-    (SELECT CONCAT(Name, ' (', FileExtension, ')') FROM Demo.CmsCodeBlockType WHERE Id = Data.CodeBlockTypeId) AS CodeBlockType,
+    CodeBlockTypeIdName,
+    (SELECT CONCAT(Name, ' (', FileExtension, ')') FROM Demo.CmsCodeBlockType WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeText,
     -- Glossary
     GlossaryTerm,
     GlossaryText,
     -- Sort
-    Sort,
+    Sort FLOAT,
     -- BuiltIn
     IsBuiltIn,
     IsExist
 FROM
-    Demo.CmsComponent Data
+    Demo.CmsComponentBuiltIn Data
