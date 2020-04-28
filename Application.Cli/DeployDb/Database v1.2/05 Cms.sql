@@ -62,6 +62,7 @@ CREATE TABLE Demo.CmsComponent
     /* ComponentType */
     ComponentTypeId INT FOREIGN KEY REFERENCES Demo.CmsComponentType(Id), -- Discriminator
     -- Page
+    PageFileName NVARCHAR(256), -- for example contact.html or contact/
     PageTitle NVARCHAR(256),
     PageImageFileId INT FOREIGN KEY REFERENCES Demo.CmsFile(Id),
     PageDate DATETIME,
@@ -125,6 +126,7 @@ SELECT
     ComponentTypeIdName,
     ComponentTypeIdName AS ComponentTypeText,
     -- Page
+    PageFileName,
     PageTitle,
     PageImageFileId,
     PageImageFileIdName,
@@ -139,7 +141,7 @@ SELECT
     BulletText,
     -- Image
     ImageFileId,
-    ImageFileIdName AS ImageFileName,
+    (SELECT FileName FROM Demo.CmsFile WHERE Id = Data.ImageFileId) AS ImageFileName,
     ImageText,
     -- Youtube
     YoutubeLink,

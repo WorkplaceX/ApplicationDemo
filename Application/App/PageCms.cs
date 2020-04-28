@@ -12,14 +12,17 @@
     {
         public PageCms(ComponentJson owner) : base(owner) 
         {
-            var container = new BootstrapContainer(this);
-            new Html(container) { TextHtml = "<h1>Cms <i class='fas fa-pencil-alt'></i></h1>" };
-            new Html(container) { TextHtml = "Content management v0.2" };
         }
 
         public override async Task InitAsync()
         {
-            await new GridCmsComponent(this).LoadAsync();
+            var container = new BootstrapContainer(this);
+            new Html(container) { TextHtml = "<h1>Cms <i class='fas fa-pencil-alt'></i></h1>" };
+            new Html(container) { TextHtml = "Content management v0.2" };
+            var grid = new GridCmsComponent(this);
+            var html = new Html(this);
+            grid.Html = html;
+            await grid.LoadAsync();
         }
     }
 
@@ -77,6 +80,17 @@
                     result.ErrorParse = "Component not found!";
                 }
                 result.IsHandled = true;
+            }
+        }
+
+        public Html Html;
+
+        protected override async Task RowSelectedAsync()
+        {
+            if (Html != null)
+            {
+                var componentList = await Data.Query<CmsComponentBuiltIn>().Where(item => item.Id == RowSelected.Id || item.ParentId == RowSelected.Id).QueryExecuteAsync();
+                Html.TextHtml = UtilCms.HtmlText(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
             }
         }
     }

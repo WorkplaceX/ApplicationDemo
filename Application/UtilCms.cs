@@ -8,11 +8,63 @@
 
     public static class UtilCms
     {
-        private static void HtmlText(CmsComponentBuiltIn component, List<CmsComponentBuiltIn> componentList, StringBuilder result)
+        private static string HtmlText(string text)
+        {
+            var result = new StringBuilder();
+
+            int? indexBracketStart = null;
+            int? indexBracketStop = null;
+            int? indexParentheseStart = null;
+            int? indexParentheseStop = null;
+            int index = 0;
+            for (int i = 0; i < text.Length; i++)
+            {
+                var c = text[i];
+                if (c == '[' && indexBracketStart == null)
+                {
+                    indexBracketStart = i;
+                }
+                if (c == ']' && indexBracketStart != null)
+                {
+                    indexBracketStop = i;
+                }
+                if (c =='(' && indexBracketStop == i - 1)
+                {
+                    indexParentheseStart = i;
+                }
+                if (c == ')' && indexParentheseStart != null)
+                {
+                    indexParentheseStop = i;
+                    var linkText = text.Substring(indexBracketStart.Value + 1, (indexBracketStop.Value - indexBracketStart.Value) - 1);
+                    var link = text.Substring(indexParentheseStart.Value + 1, (indexParentheseStop.Value - indexParentheseStart.Value) - 1);
+                    result.Append($"<a href='{ link }'>{ linkText }</a>");
+                    indexBracketStart = null;
+                    indexBracketStop = null;
+                    indexParentheseStart = null;
+                    indexParentheseStop = null;
+                    index = i + 1;
+                }
+            }
+            result.Append(text.Substring(index));
+            var resultText = result.ToString();
+            return resultText;
+        }
+
+        private static void HtmlText(CmsComponentBuiltIn component, List<CmsComponentBuiltIn> componentList, ref bool isUl, StringBuilder result)
         {
             var componentType = CmsComponentTypeBuiltInApplication.IdName(component.ComponentTypeIdName);
+
+            // Ul close
+            if (componentType != CmsComponentTypeBuiltInApplication.IdNameEnum.Bullet && isUl)
+            {
+                result.Append("</ul>");
+                isUl = false;
+            }
+
+            // Render
             switch (componentType)
             {
+                // Page
                 case CmsComponentTypeBuiltInApplication.IdNameEnum.Page:
                     foreach (var item in componentList.Where(item => item.ParentId == component.Id).OrderBy(item => item.Sort))
                     {
@@ -22,32 +74,27 @@
                             result.Append("<div class='card'>");
                             result.Append($"<img src='{""}' class='card-img-top'>");
                             result.Append("<div class='card-body'>");
-                            result.Append($"<p><{item.PageTitle}/p>");
+                            result.Append($"<p class='card-text'>{ HtmlText(item.PageTitle) }</p>");
                             result.Append("</div>");
                             result.Append("</div>");
                         }
                         else
                         {
-                            HtmlText(item, componentList, result);
+                            HtmlText(item, componentList, ref isUl, result);
                         }
                     }
                     break;
                 case CmsComponentTypeBuiltInApplication.IdNameEnum.Paragraph:
-                    result.Append($"<h1>{component.ParagraphTitle}<h1>");
-                    result.Append($"<p>{component.ParagraphText}</p>");
+                    result.Append($"<h1>{HtmlText(component.ParagraphTitle)}</h1>");
+                    result.Append($"<p>{HtmlText(component.ParagraphText)}</p>");
                     break;
                 case CmsComponentTypeBuiltInApplication.IdNameEnum.Bullet:
-                    result.Append("<ul>");
-                    result.Append($"<li>{component.BulletText}</li>");
-                    for (int i = componentList.IndexOf(component) + 1; i < componentList.Count; i++)
+                    if (!isUl)
                     {
-                        var componentNext = componentList[i];
-                        if (componentNext.ComponentTypeIdName == CmsComponentTypeBuiltInApplication.IdNameEnum.Bullet.IdName())
-                        {
-                            result.Append($"<li>{componentNext.BulletText}</li>");
-                        }
+                        result.Append("<ul>");
+                        isUl = true;
                     }
-                    result.Append("</ul>");
+                    result.Append($"<li>{ HtmlText(component.BulletText) }</li>");
                     break;
                 case CmsComponentTypeBuiltInApplication.IdNameEnum.Image:
                     break;
@@ -60,12 +107,20 @@
                 default:
                     break;
             }
-
         }
 
-        public static string HtmlText(CmsComponentBuiltIn component, List<CmsComponent> componentList)
+        public static string HtmlText(CmsComponentBuiltIn component, List<CmsComponentBuiltIn> componentList)
         {
             StringBuilder result = new StringBuilder();
+            bool isUl = false;
+            HtmlText(component, componentList, ref isUl, result);
+            
+            // Ul close
+            if (isUl)
+            {
+                result.Append("</ul>");
+                isUl = false;
+            }
 
             return result.ToString();
         }
