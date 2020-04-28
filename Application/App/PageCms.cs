@@ -20,9 +20,9 @@
             new Html(container) { TextHtml = "<h1>Cms <i class='fas fa-pencil-alt'></i></h1>" };
             new Html(container) { TextHtml = "Content management v0.2" };
             var grid = new GridCmsComponent(this);
-            await grid.LoadAsync();
             var html = new Html(this);
             grid.Html = html;
+            await grid.LoadAsync();
         }
     }
 
@@ -89,7 +89,7 @@
         {
             if (Html != null)
             {
-                var componentList = (await Data.Query<CmsComponentBuiltIn>().Where(item => item.Id == RowSelected.Id || item.Id == RowSelected.ParentId).QueryExecuteAsync());
+                var componentList = await Data.Query<CmsComponentBuiltIn>().Where(item => item.Id == RowSelected.Id || item.ParentId == RowSelected.Id).QueryExecuteAsync();
                 Html.TextHtml = UtilCms.HtmlText(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
             }
         }
