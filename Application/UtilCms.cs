@@ -60,13 +60,12 @@
                 default:
                     break;
             }
-
         }
 
-        public static string HtmlText(CmsComponentBuiltIn component, List<CmsComponent> componentList)
+        public static string HtmlText(CmsComponentBuiltIn component, List<CmsComponentBuiltIn> componentList)
         {
             StringBuilder result = new StringBuilder();
-
+            HtmlText(component, componentList, result);
             return result.ToString();
         }
     }
