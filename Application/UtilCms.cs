@@ -13,6 +13,7 @@
             var componentType = CmsComponentTypeBuiltInApplication.IdName(component.ComponentTypeIdName);
             switch (componentType)
             {
+                // Page
                 case CmsComponentTypeBuiltInApplication.IdNameEnum.Page:
                     foreach (var item in componentList.Where(item => item.ParentId == component.Id).OrderBy(item => item.Sort))
                     {
@@ -33,7 +34,7 @@
                     }
                     break;
                 case CmsComponentTypeBuiltInApplication.IdNameEnum.Paragraph:
-                    result.Append($"<h1>{component.ParagraphTitle}<h1>");
+                    result.Append($"<h1>{component.ParagraphTitle}</h1>");
                     result.Append($"<p>{component.ParagraphText}</p>");
                     break;
                 case CmsComponentTypeBuiltInApplication.IdNameEnum.Bullet:
