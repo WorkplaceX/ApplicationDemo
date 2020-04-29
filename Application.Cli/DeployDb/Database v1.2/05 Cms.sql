@@ -118,13 +118,17 @@ SELECT
     -- Parent
     ParentId,
     ParentIdName,
-    (SELECT PageTitle FROM Demo.CmsComponent WHERE Id = Data.ParentId) AS ParentText,
+    CONCAT(
+        (SELECT Name FROM Demo.CmsComponentType WHERE Id = (SELECT ComponentTypeId FROM Demo.CmsComponent WHERE Id = Data.ParentId)),
+        ' ',
+        (SELECT PageTitle FROM Demo.CmsComponent WHERE Id = Data.ParentId)
+    ) AS ParentText,
     -- Name
     Name,
     -- ComponentType
     ComponentTypeId,
     ComponentTypeIdName,
-    ComponentTypeIdName AS ComponentTypeText,
+    (SELECT Name FROM Demo.CmsComponentType WHERE Id = Data.ComponentTypeId) AS ComponentTypeText,
     -- Page
     PageFileName,
     PageTitle,
@@ -154,7 +158,7 @@ SELECT
     GlossaryTerm,
     GlossaryText,
     -- Sort
-    Sort FLOAT,
+    Sort,
     -- BuiltIn
     IsBuiltIn,
     IsExist

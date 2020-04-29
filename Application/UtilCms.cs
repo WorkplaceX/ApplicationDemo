@@ -8,6 +8,8 @@
 
     public static class UtilCms
     {
+        public static readonly string FolderNameCms = "cms/";
+
         private static string HtmlText(string text)
         {
             var result = new StringBuilder();
@@ -50,7 +52,7 @@
             return resultText;
         }
 
-        private static void HtmlText(CmsComponentBuiltIn component, List<CmsComponentBuiltIn> componentList, ref bool isUl, StringBuilder result)
+        private static void HtmlText(CmsComponentDisplay component, List<CmsComponentDisplay> componentList, ref bool isUl, StringBuilder result)
         {
             var componentType = CmsComponentTypeBuiltInApplication.IdName(component.ComponentTypeIdName);
 
@@ -72,7 +74,10 @@
                         {
                             // Render sub page as card.
                             result.Append("<div class='card'>");
-                            result.Append($"<img src='{""}' class='card-img-top'>");
+                            if (item.PageImageFileName != null)
+                            {
+                                result.Append($"<img src='{ FolderNameCms + item.PageImageFileName}' class='card-img-top'>");
+                            }
                             result.Append("<div class='card-body'>");
                             result.Append($"<p class='card-text'>{ HtmlText(item.PageTitle) }</p>");
                             result.Append("</div>");
@@ -109,7 +114,7 @@
             }
         }
 
-        public static string HtmlText(CmsComponentBuiltIn component, List<CmsComponentBuiltIn> componentList)
+        public static string HtmlText(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
         {
             StringBuilder result = new StringBuilder();
             bool isUl = false;

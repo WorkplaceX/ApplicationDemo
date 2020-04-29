@@ -297,8 +297,8 @@ namespace Database.Demo
         [SqlField("GlossaryText", FrameworkTypeEnum.Nvarcahr)]
         public string GlossaryText { get; set; }
 
-        [SqlField("FLOAT", FrameworkTypeEnum.Float)]
-        public double? FLOAT { get; set; }
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
 
         [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
         public bool IsBuiltIn { get; set; }

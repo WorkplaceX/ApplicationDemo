@@ -55,13 +55,21 @@
             {
                 result.Query = Data.Query<CmsComponentType>();
             }
+            if (args.FieldName == nameof(args.Row.PageImageFileName))
+            {
+                result.Query = Data.Query<CmsFile>();
+            }
         }
 
         protected override void LookupRowSelected(LookupRowSelectedArgs args, LookupRowSelectedResult result)
         {
-            if (args.RowSelected is CmsComponentType row)
+            if (args.RowSelected is CmsComponentType componentType)
             {
-                result.Text = row.Name;
+                result.Text = componentType.Name;
+            }
+            if (args.RowSelected is CmsFile cmsFile)
+            {
+                result.Text = cmsFile.FileName;
             }
         }
 
@@ -81,6 +89,21 @@
                 }
                 result.IsHandled = true;
             }
+
+            if (args.FieldName == nameof(args.Row.PageImageFileName))
+            {
+                var row = (await Data.Query<CmsFile>().Where(item => item.FileName == args.Text).QueryExecuteAsync()).FirstOrDefault();
+                if (row != null)
+                {
+                    result.Row.PageImageFileId = row.Id;
+                    result.Row.PageImageFileName = row.FileName;
+                }
+                else
+                {
+                    result.ErrorParse = "File not found!";
+                    result.IsHandled = true;
+                }
+            }
         }
 
         public Html Html;
@@ -89,7 +112,7 @@
         {
             if (Html != null)
             {
-                var componentList = await Data.Query<CmsComponentBuiltIn>().Where(item => item.Id == RowSelected.Id || item.ParentId == RowSelected.Id).QueryExecuteAsync();
+                var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.Id == RowSelected.Id || item.ParentId == RowSelected.Id).QueryExecuteAsync();
                 Html.TextHtml = UtilCms.HtmlText(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
             }
         }
