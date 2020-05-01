@@ -73,6 +73,7 @@
                         if (item.ComponentTypeIdName == CmsComponentTypeBuiltInApplication.IdNameEnum.Page.IdName())
                         {
                             // Render sub page as card.
+                            result.Append($"<a class='linkPost' href='{ FolderNameCms + item.PageFileName }'>");
                             result.Append("<div class='card'>");
                             if (item.PageImageFileName != null)
                             {
@@ -82,6 +83,7 @@
                             result.Append($"<p class='card-text'>{ HtmlText(item.PageTitle) }</p>");
                             result.Append("</div>");
                             result.Append("</div>");
+                            result.Append($"</a>");
                         }
                         else
                         {

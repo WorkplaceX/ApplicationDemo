@@ -18,11 +18,18 @@
 
             // new Custom01(this) { TextHtml = "Hello <b>World</b>" };
 
-            await new PageMain(this).InitAsync();
+            PageMain = new PageMain(this);
+            await PageMain.InitAsync();
+
+            PageCmsContent = new PageCmsContent(this) { IsHide = true };
 
             // this.Button = new Button(this) { TextHtml = "Click" };
             // new Button(this) { TextHtml = "Click2" };
         }
+
+        public PageMain PageMain;
+
+        public PageCmsContent PageCmsContent;
 
         public Button Button;
 
@@ -41,29 +48,58 @@
             return base.ProcessAsync();
         }
 
-        protected override async Task<byte[]> FileDownload(string fileName)
+        protected override async Task FileDownloadAsync(FileDownloadArgs args, FileDownloadResult result)
         {
-            if (fileName.StartsWith("cms/"))
+            if (args.FileName?.StartsWith("cms/") == true)
             {
-                string fileNameCms = fileName.Substring("cms/".Length);
-                var result = (await Data.Query<CmsFile>().Where(item => item.FileName == fileNameCms).QueryExecuteAsync()).FirstOrDefault();
-                return result?.Data;
+                string fileNameCms = args.FileName.Substring("cms/".Length);
+                var row = (await Data.Query<CmsFile>().Where(item => item.FileName == fileNameCms).QueryExecuteAsync()).FirstOrDefault();
+                result.Data = row?.Data;
+                if (result.Data == null)
+                {
+                    result.IsSession = true;
+                }
             }
             else
             {
-                if (fileName.StartsWith("shop/"))
+                if (args.FileName?.StartsWith("shop/") == true)
                 {
-                    string fileNameProduct = fileName.Substring("shop/".Length);
-                    var result = (await Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct).QueryExecuteAsync()).FirstOrDefault();
-                    return result?.Data;
+                    string fileNameProduct = args.FileName.Substring("shop/".Length);
+                    var row = (await Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct).QueryExecuteAsync()).FirstOrDefault();
+                    result.Data = row?.Data;
 
                 }
                 else
                 {
-                    var result = (await Data.Query<StorageFile>().Where(item => item.FileName == fileName).QueryExecuteAsync()).FirstOrDefault();
-                    return result?.Data;
+                    if (args.Path.StartsWith("/cms/"))
+                    {
+                        result.IsSession = true;
+                    }
+                    else
+                    {
+                        var row = (await Data.Query<StorageFile>().Where(item => item.FileName == args.FileName).QueryExecuteAsync()).FirstOrDefault();
+                        result.Data = row?.Data;
+                    }
                 }
             }
+        }
+
+        protected override Task FileDownloadSessionAsync(FileDownloadArgs args, FileDownloadSessionResult result)
+        {
+            if (args.Path == "/")
+            {
+                result.IsPage = true;
+                PageMain.IsHide = false;
+                PageCmsContent.IsHide = true;
+            }
+            if (args.Path == "/cms/install/")
+            {
+                result.IsPage = true;
+                PageMain.IsHide = true;
+                PageCmsContent.IsHide = false;
+            }
+
+            return base.FileDownloadSessionAsync(args, result);
         }
     }
 
