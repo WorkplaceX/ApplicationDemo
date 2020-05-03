@@ -5,6 +5,6 @@ CREATE TABLE Demo.StorageFile
 	FileName NVARCHAR(256) UNIQUE,
 	Data VARBINARY(MAX),
 	Description NVARCHAR(256),
-	IsBuiltIn BIT NOT NULL,
+	IsIntegrate BIT NOT NULL,
 	IsExist BIT NOT NULL,
 )

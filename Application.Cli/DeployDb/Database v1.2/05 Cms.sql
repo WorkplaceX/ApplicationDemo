@@ -7,7 +7,7 @@ CREATE TABLE Demo.CmsComponentType
     Sort FLOAT,
 )
 GO
-CREATE VIEW Demo.CmsComponentTypeBuiltIn AS
+CREATE VIEW Demo.CmsComponentTypeIntegrate AS
 SELECT
     *,
     Name AS IdName
@@ -24,7 +24,7 @@ CREATE TABLE Demo.CmsCodeBlockType
     Sort FLOAT
 )
 GO
-CREATE VIEW Demo.CmsCodeBlockTypeBuiltIn AS
+CREATE VIEW Demo.CmsCodeBlockTypeIntegrate AS
 SELECT
     *,
     Name AS IdName
@@ -41,11 +41,11 @@ CREATE TABLE Demo.CmsFile
 	Text NVARCHAR(256),
     SourceText NVARCHAR(512),
 	SourceLink NVARCHAR(512),
-	IsBuiltIn BIT NOT NULL,
+	IsIntegrate BIT NOT NULL,
 	IsExist BIT NOT NULL,
 )
 GO
-CREATE VIEW Demo.CmsFileBuiltIn AS
+CREATE VIEW Demo.CmsFileIntegrate AS
 SELECT
     *,
     FileName AS IdName
@@ -57,7 +57,7 @@ GO
 CREATE TABLE Demo.CmsComponent
 (
     Id INT PRIMARY KEY IDENTITY,
-    ParentId INT FOREIGN KEY REFERENCES Demo.CmsComponent(Id), -- ParentId BuiltIn naming convention for hierarchical structure.
+    ParentId INT FOREIGN KEY REFERENCES Demo.CmsComponent(Id), -- ParentId Integrate naming convention for hierarchical structure.
     Name UNIQUEIDENTIFIER NOT NULL UNIQUE,
     /* ComponentType */
     ComponentTypeId INT FOREIGN KEY REFERENCES Demo.CmsComponentType(Id), -- Discriminator
@@ -86,12 +86,12 @@ CREATE TABLE Demo.CmsComponent
     GlossaryText NVARCHAR(MAX),
     -- Sort
     Sort FLOAT,
-    -- BuiltIn
-    IsBuiltIn BIT NOT NULL,
+    -- Integrate
+    IsIntegrate BIT NOT NULL,
     IsExist BIT NOT NULL,
 )
 GO
-CREATE VIEW Demo.CmsComponentBuiltIn AS
+CREATE VIEW Demo.CmsComponentIntegrate AS
 SELECT
     *,
     /* Id */
@@ -99,13 +99,13 @@ SELECT
     /* ParentId */
     (SELECT DataParent.Name FROM Demo.CmsComponent DataParent WHERE DataParent.Id = Data.ParentId) AS ParentIdName,
     /* ComponentTypeId */
-    (SELECT IdName FROM CmsComponentTypeBuiltIn WHERE Id = Data.ComponentTypeId) AS ComponentTypeIdName,
+    (SELECT IdName FROM CmsComponentTypeIntegrate WHERE Id = Data.ComponentTypeId) AS ComponentTypeIdName,
     /* PageImageFileId */
-    (SELECT IdName FROM Demo.CmsFileBuiltIn WHERE Id = Data.PageImageFileId) AS PageImageFileIdName,
+    (SELECT IdName FROM Demo.CmsFileIntegrate WHERE Id = Data.PageImageFileId) AS PageImageFileIdName,
     /* ImageFileId */
-    (SELECT IdName FROM Demo.CmsFileBuiltIn WHERE Id = Data.ImageFileId) AS ImageFileIdName,
+    (SELECT IdName FROM Demo.CmsFileIntegrate WHERE Id = Data.ImageFileId) AS ImageFileIdName,
     /* CodeBlockTypeId */
-    (SELECT IdName FROM CmsCodeBlockTypeBuiltIn WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeIdName
+    (SELECT IdName FROM CmsCodeBlockTypeIntegrate WHERE Id = Data.CodeBlockTypeId) AS CodeBlockTypeIdName
 FROM
     Demo.CmsComponent Data
 
@@ -159,8 +159,8 @@ SELECT
     GlossaryText,
     -- Sort
     Sort,
-    -- BuiltIn
-    IsBuiltIn,
+    -- Integrate
+    IsIntegrate,
     IsExist
 FROM
-    Demo.CmsComponentBuiltIn Data
+    Demo.CmsComponentIntegrate Data

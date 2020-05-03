@@ -6,7 +6,7 @@
 )
 
 GO
-CREATE VIEW Demo.LanguageBuiltIn AS
+CREATE VIEW Demo.LanguageIntegrate AS
 SELECT
 	Id,
 	Name AS IdName,

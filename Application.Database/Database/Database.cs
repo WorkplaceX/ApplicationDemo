@@ -21,8 +21,8 @@ namespace Database.Demo
         public double? Sort { get; set; }
     }
 
-    [SqlTable("Demo", "CmsCodeBlockTypeBuiltIn")]
-    public class CmsCodeBlockTypeBuiltIn : Row
+    [SqlTable("Demo", "CmsCodeBlockTypeIntegrate")]
+    public class CmsCodeBlockTypeIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -106,102 +106,11 @@ namespace Database.Demo
         [SqlField("Sort", FrameworkTypeEnum.Float)]
         public double? Sort { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
-    }
-
-    [SqlTable("Demo", "CmsComponentBuiltIn")]
-    public class CmsComponentBuiltIn : Row
-    {
-        [SqlField("Id", FrameworkTypeEnum.Int)]
-        public int Id { get; set; }
-
-        [SqlField("ParentId", FrameworkTypeEnum.Int)]
-        public int? ParentId { get; set; }
-
-        [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
-        public Guid Name { get; set; }
-
-        [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
-        public int? ComponentTypeId { get; set; }
-
-        [SqlField("PageFileName", FrameworkTypeEnum.Nvarcahr)]
-        public string PageFileName { get; set; }
-
-        [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
-        public string PageTitle { get; set; }
-
-        [SqlField("PageImageFileId", FrameworkTypeEnum.Int)]
-        public int? PageImageFileId { get; set; }
-
-        [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
-        public DateTime? PageDate { get; set; }
-
-        [SqlField("PageTextMd", FrameworkTypeEnum.Nvarcahr)]
-        public string PageTextMd { get; set; }
-
-        [SqlField("ParagraphTitle", FrameworkTypeEnum.Nvarcahr)]
-        public string ParagraphTitle { get; set; }
-
-        [SqlField("ParagraphText", FrameworkTypeEnum.Nvarcahr)]
-        public string ParagraphText { get; set; }
-
-        [SqlField("ParagraphIsNote", FrameworkTypeEnum.Bit)]
-        public bool? ParagraphIsNote { get; set; }
-
-        [SqlField("BulletText", FrameworkTypeEnum.Nvarcahr)]
-        public string BulletText { get; set; }
-
-        [SqlField("ImageFileId", FrameworkTypeEnum.Int)]
-        public int? ImageFileId { get; set; }
-
-        [SqlField("ImageText", FrameworkTypeEnum.Nvarcahr)]
-        public string ImageText { get; set; }
-
-        [SqlField("YoutubeLink", FrameworkTypeEnum.Nvarcahr)]
-        public string YoutubeLink { get; set; }
-
-        [SqlField("CodeBlockText", FrameworkTypeEnum.Nvarcahr)]
-        public string CodeBlockText { get; set; }
-
-        [SqlField("CodeBlockTypeId", FrameworkTypeEnum.Int)]
-        public int? CodeBlockTypeId { get; set; }
-
-        [SqlField("GlossaryTerm", FrameworkTypeEnum.Nvarcahr)]
-        public string GlossaryTerm { get; set; }
-
-        [SqlField("GlossaryText", FrameworkTypeEnum.Nvarcahr)]
-        public string GlossaryText { get; set; }
-
-        [SqlField("Sort", FrameworkTypeEnum.Float)]
-        public double? Sort { get; set; }
-
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
-
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
-
-        [SqlField("IdName", FrameworkTypeEnum.Uniqueidentifier)]
-        public Guid IdName { get; set; }
-
-        [SqlField("ParentIdName", FrameworkTypeEnum.Uniqueidentifier)]
-        public Guid? ParentIdName { get; set; }
-
-        [SqlField("ComponentTypeIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string ComponentTypeIdName { get; set; }
-
-        [SqlField("PageImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string PageImageFileIdName { get; set; }
-
-        [SqlField("ImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string ImageFileIdName { get; set; }
-
-        [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string CodeBlockTypeIdName { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponentDisplay")]
@@ -300,11 +209,102 @@ namespace Database.Demo
         [SqlField("Sort", FrameworkTypeEnum.Float)]
         public double? Sort { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "CmsComponentIntegrate")]
+    public class CmsComponentIntegrate : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("ParentId", FrameworkTypeEnum.Int)]
+        public int? ParentId { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid Name { get; set; }
+
+        [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
+        public int? ComponentTypeId { get; set; }
+
+        [SqlField("PageFileName", FrameworkTypeEnum.Nvarcahr)]
+        public string PageFileName { get; set; }
+
+        [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
+        public string PageTitle { get; set; }
+
+        [SqlField("PageImageFileId", FrameworkTypeEnum.Int)]
+        public int? PageImageFileId { get; set; }
+
+        [SqlField("PageDate", FrameworkTypeEnum.Datetime)]
+        public DateTime? PageDate { get; set; }
+
+        [SqlField("PageTextMd", FrameworkTypeEnum.Nvarcahr)]
+        public string PageTextMd { get; set; }
+
+        [SqlField("ParagraphTitle", FrameworkTypeEnum.Nvarcahr)]
+        public string ParagraphTitle { get; set; }
+
+        [SqlField("ParagraphText", FrameworkTypeEnum.Nvarcahr)]
+        public string ParagraphText { get; set; }
+
+        [SqlField("ParagraphIsNote", FrameworkTypeEnum.Bit)]
+        public bool? ParagraphIsNote { get; set; }
+
+        [SqlField("BulletText", FrameworkTypeEnum.Nvarcahr)]
+        public string BulletText { get; set; }
+
+        [SqlField("ImageFileId", FrameworkTypeEnum.Int)]
+        public int? ImageFileId { get; set; }
+
+        [SqlField("ImageText", FrameworkTypeEnum.Nvarcahr)]
+        public string ImageText { get; set; }
+
+        [SqlField("YoutubeLink", FrameworkTypeEnum.Nvarcahr)]
+        public string YoutubeLink { get; set; }
+
+        [SqlField("CodeBlockText", FrameworkTypeEnum.Nvarcahr)]
+        public string CodeBlockText { get; set; }
+
+        [SqlField("CodeBlockTypeId", FrameworkTypeEnum.Int)]
+        public int? CodeBlockTypeId { get; set; }
+
+        [SqlField("GlossaryTerm", FrameworkTypeEnum.Nvarcahr)]
+        public string GlossaryTerm { get; set; }
+
+        [SqlField("GlossaryText", FrameworkTypeEnum.Nvarcahr)]
+        public string GlossaryText { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
+
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid IdName { get; set; }
+
+        [SqlField("ParentIdName", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid? ParentIdName { get; set; }
+
+        [SqlField("ComponentTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ComponentTypeIdName { get; set; }
+
+        [SqlField("PageImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string PageImageFileIdName { get; set; }
+
+        [SqlField("ImageFileIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ImageFileIdName { get; set; }
+
+        [SqlField("CodeBlockTypeIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string CodeBlockTypeIdName { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponentType")]
@@ -320,8 +320,8 @@ namespace Database.Demo
         public double? Sort { get; set; }
     }
 
-    [SqlTable("Demo", "CmsComponentTypeBuiltIn")]
-    public class CmsComponentTypeBuiltIn : Row
+    [SqlTable("Demo", "CmsComponentTypeIntegrate")]
+    public class CmsComponentTypeIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -357,15 +357,15 @@ namespace Database.Demo
         [SqlField("SourceLink", FrameworkTypeEnum.Nvarcahr)]
         public string SourceLink { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "CmsFileBuiltIn")]
-    public class CmsFileBuiltIn : Row
+    [SqlTable("Demo", "CmsFileIntegrate")]
+    public class CmsFileIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -385,8 +385,8 @@ namespace Database.Demo
         [SqlField("SourceLink", FrameworkTypeEnum.Nvarcahr)]
         public string SourceLink { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -467,8 +467,8 @@ namespace Database.Demo
         public string TextHtml { get; set; }
     }
 
-    [SqlTable("Demo", "LanguageBuiltIn")]
-    public class LanguageBuiltIn : Row
+    [SqlTable("Demo", "LanguageIntegrate")]
+    public class LanguageIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -495,15 +495,15 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "LoginPermissionBuiltIn")]
-    public class LoginPermissionBuiltIn : Row
+    [SqlTable("Demo", "LoginPermissionIntegrate")]
+    public class LoginPermissionIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -517,8 +517,8 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -537,8 +537,8 @@ namespace Database.Demo
         public string Description { get; set; }
     }
 
-    [SqlTable("Demo", "LoginRoleBuiltIn")]
-    public class LoginRoleBuiltIn : Row
+    [SqlTable("Demo", "LoginRoleIntegrate")]
+    public class LoginRoleIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -569,28 +569,6 @@ namespace Database.Demo
         public bool? IsActive { get; set; }
     }
 
-    [SqlTable("Demo", "LoginRolePermissionBuiltIn")]
-    public class LoginRolePermissionBuiltIn : Row
-    {
-        [SqlField("Id", FrameworkTypeEnum.Int)]
-        public int Id { get; set; }
-
-        [SqlField("RoleId", FrameworkTypeEnum.Int)]
-        public int RoleId { get; set; }
-
-        [SqlField("RoleIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string RoleIdName { get; set; }
-
-        [SqlField("PermissionId", FrameworkTypeEnum.Int)]
-        public int PermissionId { get; set; }
-
-        [SqlField("PermissionIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string PermissionIdName { get; set; }
-
-        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
-        public bool? IsActive { get; set; }
-    }
-
     [SqlTable("Demo", "LoginRolePermissionDisplay")]
     public class LoginRolePermissionDisplay : Row
     {
@@ -616,6 +594,28 @@ namespace Database.Demo
         public bool? IsActive { get; set; }
     }
 
+    [SqlTable("Demo", "LoginRolePermissionIntegrate")]
+    public class LoginRolePermissionIntegrate : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
+
+        [SqlField("RoleIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoleIdName { get; set; }
+
+        [SqlField("PermissionId", FrameworkTypeEnum.Int)]
+        public int PermissionId { get; set; }
+
+        [SqlField("PermissionIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string PermissionIdName { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
     [SqlTable("Demo", "LoginUser")]
     public class LoginUser : Row
     {
@@ -628,15 +628,15 @@ namespace Database.Demo
         [SqlField("Password", FrameworkTypeEnum.Nvarcahr)]
         public string Password { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "LoginUserBuiltIn")]
-    public class LoginUserBuiltIn : Row
+    [SqlTable("Demo", "LoginUserIntegrate")]
+    public class LoginUserIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -650,8 +650,8 @@ namespace Database.Demo
         [SqlField("Password", FrameworkTypeEnum.Nvarcahr)]
         public string Password { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -689,8 +689,27 @@ namespace Database.Demo
         public bool? IsActive { get; set; }
     }
 
-    [SqlTable("Demo", "LoginUserRoleBuiltIn")]
-    public class LoginUserRoleBuiltIn : Row
+    [SqlTable("Demo", "LoginUserRoleDisplay")]
+    public class LoginUserRoleDisplay : Row
+    {
+        [SqlField("UserId", FrameworkTypeEnum.Int)]
+        public int UserId { get; set; }
+
+        [SqlField("UserName", FrameworkTypeEnum.Nvarcahr)]
+        public string UserName { get; set; }
+
+        [SqlField("RoleId", FrameworkTypeEnum.Int)]
+        public int RoleId { get; set; }
+
+        [SqlField("RoleName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoleName { get; set; }
+
+        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
+    [SqlTable("Demo", "LoginUserRoleIntegrate")]
+    public class LoginUserRoleIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -711,25 +730,6 @@ namespace Database.Demo
         public bool? IsActive { get; set; }
     }
 
-    [SqlTable("Demo", "LoginUserRoleDisplay")]
-    public class LoginUserRoleDisplay : Row
-    {
-        [SqlField("UserId", FrameworkTypeEnum.Int)]
-        public int UserId { get; set; }
-
-        [SqlField("UserName", FrameworkTypeEnum.Nvarcahr)]
-        public string UserName { get; set; }
-
-        [SqlField("RoleId", FrameworkTypeEnum.Int)]
-        public int RoleId { get; set; }
-
-        [SqlField("RoleName", FrameworkTypeEnum.Nvarcahr)]
-        public string RoleName { get; set; }
-
-        [SqlField("IsActive", FrameworkTypeEnum.Bit)]
-        public bool? IsActive { get; set; }
-    }
-
     [SqlTable("Demo", "Navigation")]
     public class Navigation : Row
     {
@@ -738,34 +738,6 @@ namespace Database.Demo
 
         [SqlField("ParentId", FrameworkTypeEnum.Int)]
         public int? ParentId { get; set; }
-
-        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
-        public string Name { get; set; }
-
-        [SqlField("TextHtml", FrameworkTypeEnum.Nvarcahr)]
-        public string TextHtml { get; set; }
-
-        [SqlField("PageName", FrameworkTypeEnum.Nvarcahr)]
-        public string PageName { get; set; }
-
-        [SqlField("Sort", FrameworkTypeEnum.Float)]
-        public double? Sort { get; set; }
-    }
-
-    [SqlTable("Demo", "NavigationBuiltIn")]
-    public class NavigationBuiltIn : Row
-    {
-        [SqlField("Id", FrameworkTypeEnum.Int)]
-        public int Id { get; set; }
-
-        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
-        public string IdName { get; set; }
-
-        [SqlField("ParentId", FrameworkTypeEnum.Int)]
-        public int? ParentId { get; set; }
-
-        [SqlField("ParentIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string ParentIdName { get; set; }
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -797,6 +769,34 @@ namespace Database.Demo
 
         [SqlField("Path", FrameworkTypeEnum.Nvarcahr)]
         public string Path { get; set; }
+    }
+
+    [SqlTable("Demo", "NavigationIntegrate")]
+    public class NavigationIntegrate : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("ParentId", FrameworkTypeEnum.Int)]
+        public int? ParentId { get; set; }
+
+        [SqlField("ParentIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ParentIdName { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
+        public string Name { get; set; }
+
+        [SqlField("TextHtml", FrameworkTypeEnum.Nvarcahr)]
+        public string TextHtml { get; set; }
+
+        [SqlField("PageName", FrameworkTypeEnum.Nvarcahr)]
+        public string PageName { get; set; }
+
+        [SqlField("Sort", FrameworkTypeEnum.Float)]
+        public double? Sort { get; set; }
     }
 
     [SqlTable("Demo", "Raw.FlagIconCss.Country")]
@@ -979,60 +979,8 @@ namespace Database.Demo
         [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
         public int? RoadmapStateId { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
-
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
-    }
-
-    [SqlTable("Demo", "RoadmapBuiltIn")]
-    public class RoadmapBuiltIn : Row
-    {
-        [SqlField("Id", FrameworkTypeEnum.Int)]
-        public int Id { get; set; }
-
-        [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
-        public Guid Name { get; set; }
-
-        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
-        public string Description { get; set; }
-
-        [SqlField("Date", FrameworkTypeEnum.Date)]
-        public DateTime? Date { get; set; }
-
-        [SqlField("RoadmapCategoryId", FrameworkTypeEnum.Int)]
-        public int? RoadmapCategoryId { get; set; }
-
-        [SqlField("RoadmapCategoryIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string RoadmapCategoryIdName { get; set; }
-
-        [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
-        public int? RoadmapModuleId { get; set; }
-
-        [SqlField("RoadmapModuleIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string RoadmapModuleIdName { get; set; }
-
-        [SqlField("RoadmapPriorityId", FrameworkTypeEnum.Int)]
-        public int? RoadmapPriorityId { get; set; }
-
-        [SqlField("RoadmapPriorityIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string RoadmapPriorityIdName { get; set; }
-
-        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
-        public int? LoginUserId { get; set; }
-
-        [SqlField("LoginUserIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string LoginUserIdName { get; set; }
-
-        [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
-        public int? RoadmapStateId { get; set; }
-
-        [SqlField("RoadmapStateIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string RoadmapStateIdName { get; set; }
-
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -1053,15 +1001,15 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "RoadmapCategoryBuiltIn")]
-    public class RoadmapCategoryBuiltIn : Row
+    [SqlTable("Demo", "RoadmapCategoryIntegrate")]
+    public class RoadmapCategoryIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -1078,8 +1026,8 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -1142,8 +1090,60 @@ namespace Database.Demo
         [SqlField("RoadmapStateIdName", FrameworkTypeEnum.Nvarcahr)]
         public string RoadmapStateIdName { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
+
+        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
+        public bool IsExist { get; set; }
+    }
+
+    [SqlTable("Demo", "RoadmapIntegrate")]
+    public class RoadmapIntegrate : Row
+    {
+        [SqlField("Id", FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
+        public Guid Name { get; set; }
+
+        [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
+        public string Description { get; set; }
+
+        [SqlField("Date", FrameworkTypeEnum.Date)]
+        public DateTime? Date { get; set; }
+
+        [SqlField("RoadmapCategoryId", FrameworkTypeEnum.Int)]
+        public int? RoadmapCategoryId { get; set; }
+
+        [SqlField("RoadmapCategoryIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapCategoryIdName { get; set; }
+
+        [SqlField("RoadmapModuleId", FrameworkTypeEnum.Int)]
+        public int? RoadmapModuleId { get; set; }
+
+        [SqlField("RoadmapModuleIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapModuleIdName { get; set; }
+
+        [SqlField("RoadmapPriorityId", FrameworkTypeEnum.Int)]
+        public int? RoadmapPriorityId { get; set; }
+
+        [SqlField("RoadmapPriorityIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapPriorityIdName { get; set; }
+
+        [SqlField("LoginUserId", FrameworkTypeEnum.Int)]
+        public int? LoginUserId { get; set; }
+
+        [SqlField("LoginUserIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string LoginUserIdName { get; set; }
+
+        [SqlField("RoadmapStateId", FrameworkTypeEnum.Int)]
+        public int? RoadmapStateId { get; set; }
+
+        [SqlField("RoadmapStateIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string RoadmapStateIdName { get; set; }
+
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -1164,15 +1164,15 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "RoadmapModuleBuiltIn")]
-    public class RoadmapModuleBuiltIn : Row
+    [SqlTable("Demo", "RoadmapModuleIntegrate")]
+    public class RoadmapModuleIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -1189,8 +1189,8 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -1211,15 +1211,15 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "RoadmapPriorityBuiltIn")]
-    public class RoadmapPriorityBuiltIn : Row
+    [SqlTable("Demo", "RoadmapPriorityIntegrate")]
+    public class RoadmapPriorityIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -1236,8 +1236,8 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -1258,15 +1258,15 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
     }
 
-    [SqlTable("Demo", "RoadmapStateBuiltIn")]
-    public class RoadmapStateBuiltIn : Row
+    [SqlTable("Demo", "RoadmapStateIntegrate")]
+    public class RoadmapStateIntegrate : Row
     {
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
@@ -1283,8 +1283,8 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }
@@ -1318,8 +1318,8 @@ namespace Database.Demo
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("IsBuiltIn", FrameworkTypeEnum.Bit)]
-        public bool IsBuiltIn { get; set; }
+        [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
+        public bool IsIntegrate { get; set; }
 
         [SqlField("IsExist", FrameworkTypeEnum.Bit)]
         public bool IsExist { get; set; }

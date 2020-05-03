@@ -5,18 +5,18 @@ CREATE TABLE Demo.LoginUser
 	Id INT PRIMARY KEY IDENTITY,
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Password NVARCHAR(256),
-	IsBuiltIn BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
+	IsIntegrate BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
 	IsExist BIT NOT NULL,
 )
 
 GO
-CREATE VIEW Demo.LoginUserBuiltIn AS
+CREATE VIEW Demo.LoginUserIntegrate AS
 SELECT
 	LoginUser.Id,
 	LoginUser.Name AS IdName,
 	LoginUser.Name,
 	LoginUser.Password,
-	LoginUser.IsBuiltIn,
+	LoginUser.IsIntegrate,
 	LoginUser.IsExist
 FROM
 	Demo.LoginUser LoginUser
@@ -31,7 +31,7 @@ CREATE TABLE Demo.LoginRole
 )
 
 GO
-CREATE VIEW Demo.LoginRoleBuiltIn AS
+CREATE VIEW Demo.LoginRoleIntegrate AS
 SELECT
 	LoginRole.Id,
 	LoginRole.Name AS IdName,
@@ -47,18 +47,18 @@ CREATE TABLE Demo.LoginPermission
 	Id INT PRIMARY KEY IDENTITY,
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Description NVARCHAR(256),
-	IsBuiltIn BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
+	IsIntegrate BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
 	IsExist BIT NOT NULL,
 )
 
 GO
-CREATE VIEW Demo.LoginPermissionBuiltIn AS
+CREATE VIEW Demo.LoginPermissionIntegrate AS
 SELECT
 	LoginPermission.Id,
 	LoginPermission.Name AS IdName,
 	LoginPermission.Name,
 	LoginPermission.Description,
-	LoginPermission.IsBuiltIn,
+	LoginPermission.IsIntegrate,
 	LoginPermission.IsExist
 FROM
 	Demo.LoginPermission LoginPermission
@@ -75,7 +75,7 @@ CREATE TABLE Demo.LoginUserRole
 )
 
 GO
-CREATE VIEW Demo.LoginUserRoleBuiltIn AS
+CREATE VIEW Demo.LoginUserRoleIntegrate AS
 SELECT
 	LoginUserRole.Id,
 	LoginUserRole.UserId,
@@ -98,7 +98,7 @@ CREATE TABLE Demo.LoginRolePermission
 )
 
 GO
-CREATE VIEW Demo.LoginRolePermissionBuiltIn AS
+CREATE VIEW Demo.LoginRolePermissionIntegrate AS
 SELECT
 	LoginRolePermission.Id,
 	LoginRolePermission.RoleId,

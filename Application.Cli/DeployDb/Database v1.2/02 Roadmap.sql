@@ -6,19 +6,19 @@ CREATE TABLE Demo.RoadmapCategory
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
-	IsBuiltIn BIT NOT NULL,
+	IsIntegrate BIT NOT NULL,
 	IsExist BIT NOT NULL,
 )
 
 GO
-CREATE VIEW Demo.RoadmapCategoryBuiltIn AS
+CREATE VIEW Demo.RoadmapCategoryIntegrate AS
 SELECT
 	RoadmapCategory.Id,
 	RoadmapCategory.Name AS IdName,
 	RoadmapCategory.Name,
 	RoadmapCategory.Text,
 	RoadmapCategory.Description,
-	RoadmapCategory.IsBuiltIn,
+	RoadmapCategory.IsIntegrate,
 	RoadmapCategory.IsExist
 FROM
 	Demo.RoadmapCategory RoadmapCategory
@@ -31,19 +31,19 @@ CREATE TABLE Demo.RoadmapState
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
-	IsBuiltIn BIT NOT NULL,
+	IsIntegrate BIT NOT NULL,
 	IsExist BIT NOT NULL,
 )
 
 GO
-CREATE VIEW Demo.RoadmapStateBuiltIn AS
+CREATE VIEW Demo.RoadmapStateIntegrate AS
 SELECT
 	RoadmapState.Id,
 	RoadmapState.Name AS IdName,
 	RoadmapState.Name,
 	RoadmapState.Text,
 	RoadmapState.Description,
-	RoadmapState.IsBuiltIn,
+	RoadmapState.IsIntegrate,
 	RoadmapState.IsExist
 FROM
 	Demo.RoadmapState RoadmapState
@@ -56,19 +56,19 @@ CREATE TABLE Demo.RoadmapModule
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
-	IsBuiltIn BIT NOT NULL,
+	IsIntegrate BIT NOT NULL,
 	IsExist BIT NOT NULL,
 )
 
 GO
-CREATE VIEW Demo.RoadmapModuleBuiltIn AS
+CREATE VIEW Demo.RoadmapModuleIntegrate AS
 SELECT
 	RoadmapModule.Id,
 	RoadmapModule.Name AS IdName,
 	RoadmapModule.Name,
 	RoadmapModule.Text,
 	RoadmapModule.Description,
-	RoadmapModule.IsBuiltIn,
+	RoadmapModule.IsIntegrate,
 	RoadmapModule.IsExist
 FROM
 	Demo.RoadmapModule RoadmapModule
@@ -81,19 +81,19 @@ CREATE TABLE Demo.RoadmapPriority
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
-	IsBuiltIn BIT NOT NULL,
+	IsIntegrate BIT NOT NULL,
 	IsExist BIT NOT NULL,
 )
 
 GO
-CREATE VIEW Demo.RoadmapPriorityBuiltIn AS
+CREATE VIEW Demo.RoadmapPriorityIntegrate AS
 SELECT
 	RoadmapPriority.Id,
 	RoadmapPriority.Name AS IdName,
 	RoadmapPriority.Name,
 	RoadmapPriority.Text,
 	RoadmapPriority.Description,
-	RoadmapPriority.IsBuiltIn,
+	RoadmapPriority.IsIntegrate,
 	RoadmapPriority.IsExist
 FROM
 	Demo.RoadmapPriority RoadmapPriority
@@ -116,12 +116,12 @@ CREATE TABLE Demo.Roadmap
 	LoginUserId INT FOREIGN KEY REFERENCES Demo.LoginUser(Id),
 	-- State
 	RoadmapStateId INT FOREIGN KEY REFERENCES Demo.RoadmapState(Id),
-	IsBuiltIn BIT NOT NULL,
+	IsIntegrate BIT NOT NULL,
 	IsExist BIT NOT NULL,
 )
 
 GO
-CREATE VIEW Demo.RoadmapBuiltIn AS
+CREATE VIEW Demo.RoadmapIntegrate AS
 SELECT
 	Roadmap.Id,
 	Roadmap.Name,
@@ -138,12 +138,12 @@ SELECT
 	(SELECT RoadmapPriority.Name FROM Demo.RoadmapPriority RoadmapPriority WHERE RoadmapPriority.Id = Roadmap.RoadmapPriorityId) AS RoadmapPriorityIdName,
 	-- User
 	Roadmap.LoginUserId,
-	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId AND LoginUser.IsBuiltIn = 1 AND LoginUser.IsExist = 1) AS LoginUserIdName,
+	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId AND LoginUser.IsIntegrate = 1 AND LoginUser.IsExist = 1) AS LoginUserIdName,
 	-- State
 	Roadmap.RoadmapStateId,
 	(SELECT RoadmapState.Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateIdName,
 	-- Roadmap
-	Roadmap.IsBuiltIn,
+	Roadmap.IsIntegrate,
 	Roadmap.IsExist
 FROM
 	Demo.Roadmap Roadmap
@@ -177,7 +177,7 @@ SELECT
 	(SELECT RoadmapState.Text FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateText,
 	(SELECT RoadmapState.Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateIdName, -- Used for enum
 	-- Roadmap
-	Roadmap.IsBuiltIn,
+	Roadmap.IsIntegrate,
 	Roadmap.IsExist
 FROM
 	Demo.Roadmap Roadmap

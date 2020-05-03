@@ -1,3 +1,3 @@
 ﻿DROP VIEW Demo.NavigationDisplay
-DROP VIEW Demo.NavigationBuiltIn
+DROP VIEW Demo.NavigationIntegrate
 DROP TABLE Demo.Navigation

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE Demo.Navigation
 (
 	Id INT PRIMARY KEY IDENTITY,
-	ParentId INT FOREIGN KEY REFERENCES Demo.Navigation(Id), -- ParentId BuiltIn naming convention for hierarchical structure.
+	ParentId INT FOREIGN KEY REFERENCES Demo.Navigation(Id), -- ParentId Integrate naming convention for hierarchical structure.
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	TextHtml NVARCHAR(256),
 	PageName NVARCHAR(256),
@@ -9,7 +9,7 @@
 )
 
 GO
-CREATE VIEW Demo.NavigationBuiltIn AS
+CREATE VIEW Demo.NavigationIntegrate AS
 SELECT
 	Navigation.Id,
 	Navigation.Name AS IdName,

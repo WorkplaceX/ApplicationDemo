@@ -1,9 +1,9 @@
 ﻿DROP VIEW Demo.CmsComponentDisplay
-DROP VIEW Demo.CmsComponentBuiltIn
+DROP VIEW Demo.CmsComponentIntegrate
 DROP TABLE Demo.CmsComponent
-DROP VIEW Demo.CmsFileBuiltIn
+DROP VIEW Demo.CmsFileIntegrate
 DROP TABLE Demo.CmsFile
-DROP VIEW Demo.CmsCodeBlockTypeBuiltIn
+DROP VIEW Demo.CmsCodeBlockTypeIntegrate
 DROP TABLE Demo.CmsCodeBlockType
-DROP VIEW Demo.CmsComponentTypeBuiltIn
+DROP VIEW Demo.CmsComponentTypeIntegrate
 DROP TABLE Demo.CmsComponentType

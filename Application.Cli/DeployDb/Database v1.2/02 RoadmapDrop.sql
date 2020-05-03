@@ -1,11 +1,11 @@
 ﻿DROP VIEW Demo.RoadmapDisplay
-DROP VIEW Demo.RoadmapBuiltIn
+DROP VIEW Demo.RoadmapIntegrate
 DROP TABLE Demo.Roadmap
-DROP VIEW Demo.RoadmapModuleBuiltIn
+DROP VIEW Demo.RoadmapModuleIntegrate
 DROP TABLE Demo.RoadmapModule
-DROP VIEW Demo.RoadmapPriorityBuiltIn
+DROP VIEW Demo.RoadmapPriorityIntegrate
 DROP TABLE Demo.RoadmapPriority
-DROP VIEW Demo.RoadmapStateBuiltIn
+DROP VIEW Demo.RoadmapStateIntegrate
 DROP TABLE Demo.RoadmapState
-DROP VIEW Demo.RoadmapCategoryBuiltIn
+DROP VIEW Demo.RoadmapCategoryIntegrate
 DROP TABLE Demo.RoadmapCategory

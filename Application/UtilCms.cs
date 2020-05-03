@@ -1,7 +1,7 @@
 ﻿namespace Application
 {
     using Database.Demo;
-    using DatabaseBuiltIn.Demo;
+    using DatabaseIntegrate.Demo;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -54,10 +54,10 @@
 
         private static void HtmlText(CmsComponentDisplay component, List<CmsComponentDisplay> componentList, ref bool isUl, StringBuilder result)
         {
-            var componentType = CmsComponentTypeBuiltInApplication.IdName(component.ComponentTypeIdName);
+            var componentType = CmsComponentTypeIntegrateApplication.IdName(component.ComponentTypeIdName);
 
             // Ul close
-            if (componentType != CmsComponentTypeBuiltInApplication.IdNameEnum.Bullet && isUl)
+            if (componentType != CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet && isUl)
             {
                 result.Append("</ul>");
                 isUl = false;
@@ -67,10 +67,10 @@
             switch (componentType)
             {
                 // Page
-                case CmsComponentTypeBuiltInApplication.IdNameEnum.Page:
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Page:
                     foreach (var item in componentList.Where(item => item.ParentId == component.Id).OrderBy(item => item.Sort))
                     {
-                        if (item.ComponentTypeIdName == CmsComponentTypeBuiltInApplication.IdNameEnum.Page.IdName())
+                        if (item.ComponentTypeIdName == CmsComponentTypeIntegrateApplication.IdNameEnum.Page.IdName())
                         {
                             // Render sub page as card.
                             result.Append($"<a class='linkPost' href='{ FolderNameCms + item.PageFileName }'>");
@@ -91,11 +91,11 @@
                         }
                     }
                     break;
-                case CmsComponentTypeBuiltInApplication.IdNameEnum.Paragraph:
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Paragraph:
                     result.Append($"<h1>{HtmlText(component.ParagraphTitle)}</h1>");
                     result.Append($"<p>{HtmlText(component.ParagraphText)}</p>");
                     break;
-                case CmsComponentTypeBuiltInApplication.IdNameEnum.Bullet:
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet:
                     if (!isUl)
                     {
                         result.Append("<ul>");
@@ -103,13 +103,13 @@
                     }
                     result.Append($"<li>{ HtmlText(component.BulletText) }</li>");
                     break;
-                case CmsComponentTypeBuiltInApplication.IdNameEnum.Image:
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Image:
                     break;
-                case CmsComponentTypeBuiltInApplication.IdNameEnum.Youtube:
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Youtube:
                     break;
-                case CmsComponentTypeBuiltInApplication.IdNameEnum.CodeBlock:
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.CodeBlock:
                     break;
-                case CmsComponentTypeBuiltInApplication.IdNameEnum.Glossary:
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Glossary:
                     break;
                 default:
                     break;
