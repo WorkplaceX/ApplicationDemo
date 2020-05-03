@@ -62,7 +62,7 @@ CREATE TABLE Demo.CmsComponent
     /* ComponentType */
     ComponentTypeId INT FOREIGN KEY REFERENCES Demo.CmsComponentType(Id), -- Discriminator
     -- Page
-    PageFileName NVARCHAR(256), -- for example contact.html or contact/
+    PagePath NVARCHAR(256), -- for example /contact.html or /contact/
     PageTitle NVARCHAR(256),
     PageImageFileId INT FOREIGN KEY REFERENCES Demo.CmsFile(Id),
     PageDate DATETIME,
@@ -123,6 +123,7 @@ SELECT
         ' ',
         (SELECT PageTitle FROM Demo.CmsComponent WHERE Id = Data.ParentId)
     ) AS ParentText,
+    (SELECT PagePath FROM Demo.CmsComponent WHERE Id = Data.ParentId) AS ParentPagePath,
     -- Name
     Name,
     -- ComponentType
@@ -130,7 +131,7 @@ SELECT
     ComponentTypeIdName,
     (SELECT Name FROM Demo.CmsComponentType WHERE Id = Data.ComponentTypeId) AS ComponentTypeText,
     -- Page
-    PageFileName,
+    PagePath,
     PageTitle,
     PageImageFileId,
     PageImageFileIdName,

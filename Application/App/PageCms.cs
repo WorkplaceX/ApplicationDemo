@@ -113,7 +113,7 @@
             if (Html != null)
             {
                 var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.Id == RowSelected.Id || item.ParentId == RowSelected.Id).QueryExecuteAsync();
-                Html.TextHtml = UtilCms.HtmlText(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
+                Html.TextHtml = UtilCms.TextHtml(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
             }
         }
     }

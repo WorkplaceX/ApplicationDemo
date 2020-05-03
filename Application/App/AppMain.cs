@@ -84,7 +84,7 @@
             }
         }
 
-        protected override Task FileDownloadSessionAsync(FileDownloadArgs args, FileDownloadSessionResult result)
+        protected override async Task FileDownloadSessionAsync(FileDownloadArgs args, FileDownloadSessionResult result)
         {
             if (args.Path == "/")
             {
@@ -97,9 +97,8 @@
                 result.IsPage = true;
                 PageMain.IsHide = true;
                 PageCmsContent.IsHide = false;
+                await PageCmsContent.Load(args.Path);
             }
-
-            return base.FileDownloadSessionAsync(args, result);
         }
     }
 
