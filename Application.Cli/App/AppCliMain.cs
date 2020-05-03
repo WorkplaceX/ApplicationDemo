@@ -106,7 +106,7 @@
 
             // Navigation
             var rowList = NavigationIntegrateApplicationCli.RowList;
-            result.Add(rowList, nameof(NavigationIntegrate.Name), (item) => item.Id, (item) => item.ParentId, (item) => item.Sort);
+            result.Add(rowList, nameof(NavigationIntegrate.Name), (item) => item.IdName, (item) => item.ParentIdName, (item) => item.Sort);
 
             // LoginPermission
             result.Add(LoginPermissionIntegrateApplication.RowList, nameof(LoginPermissionIntegrate.Name));
@@ -138,7 +138,7 @@
             result.Add(CmsComponentTypeIntegrateApplication.RowList, nameof(CmsComponentTypeIntegrate.Name));
             result.Add(CmsCodeBlockTypeIntegrateApplicationCli.RowList, nameof(CmsCodeBlockTypeIntegrate.Name));
             result.Add(CmsFileApplicationCli.RowList, nameof(CmsFile.FileName));
-            result.Add(CmsComponentIntegrateApplicationCli.RowList, nameof(CmsComponentIntegrate.Name), (item) => item.Id, (item) => item.ParentId, (item) => null);
+            result.Add(CmsComponentIntegrateApplicationCli.RowList, nameof(CmsComponentIntegrate.Name), (item) => item.IdName, (item) => item.ParentIdName, (item) => null);
         }
     }
 }

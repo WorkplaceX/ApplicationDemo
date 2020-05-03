@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Application.Cli": {
-      "commandName": "Project",
-      "commandLineArgs": "deploydb"
+      "commandName": "Project"
     }
   }
 }
