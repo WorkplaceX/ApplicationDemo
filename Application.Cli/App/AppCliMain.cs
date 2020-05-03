@@ -45,28 +45,35 @@
         {
             // Language
             result.Add(Data.Query<LanguageIntegrate>().OrderBy(item => item.IdName), isApplication: true);
+            result.AddKey<Language>(nameof(Language.Name));
 
             // Navigation
             result.Add(Data.Query<NavigationIntegrate>().OrderBy(item => item.IdName));
+            result.AddKey<Navigation>(nameof(Navigation.Name));
             result.AddReference<Navigation, Navigation>(nameof(Navigation.ParentId));
 
             // LoginPermission
             result.Add(Data.Query<LoginPermissionIntegrate>().Where(item => item.IsIntegrate == true && item.IsExist).OrderBy(item => item.IdName), isApplication: true);
             result.Add(Data.Query<LoginPermissionIntegrate>().Where(item => item.IsIntegrate == false && item.IsExist).OrderBy(item => item.IdName), isApplication: false);
+            result.AddKey<LoginPermission>(nameof(LoginPermission.Name));
 
             // LoginRole
             result.Add(Data.Query<LoginRoleIntegrate>().OrderBy(item => item.IdName));
+            result.AddKey<LoginRole>(nameof(LoginRole.Name));
 
             // LoginRolePermission
             result.Add(Data.Query<LoginRolePermissionIntegrate>().OrderBy(item => item.RoleIdName).ThenBy(item => item.PermissionIdName));
+            result.AddKey<LoginRolePermission>(nameof(LoginRolePermission.RoleId), nameof(LoginRolePermission.PermissionId));
             result.AddReference<LoginRolePermission, LoginPermission>(nameof(LoginRolePermission.PermissionId));
             result.AddReference<LoginRolePermission, LoginRole>(nameof(LoginRolePermission.RoleId));
 
             // LoginUser
             result.Add(Data.Query<LoginUserIntegrate>().OrderBy(item => item.IdName));
+            result.AddKey<LoginUser>(nameof(LoginUser.Name));
 
             // LoginUserRole
             result.Add(Data.Query<LoginUserRoleIntegrate>().OrderBy(item => item.UserIdName).ThenBy(item => item.RoleIdName));
+            result.AddKey<LoginUserRole>(nameof(LoginUserRole.UserId), nameof(LoginUserRole.RoleId));
             result.AddReference<LoginUserRole, LoginRole>(nameof(LoginUserRole.RoleId));
             result.AddReference<LoginUserRole, LoginUser>(nameof(LoginUserRole.UserId));
 
@@ -76,6 +83,11 @@
             result.Add(Data.Query<RoadmapPriorityIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Priority
             result.Add(Data.Query<RoadmapStateIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // State
             result.Add(Data.Query<RoadmapIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.Name)); // Roadmap
+            result.AddKey<RoadmapCategory>(nameof(RoadmapCategory.Name));
+            result.AddKey<RoadmapModule>(nameof(RoadmapModule.Name));
+            result.AddKey<RoadmapPriority>(nameof(RoadmapPriority.Name));
+            result.AddKey<RoadmapState>(nameof(RoadmapState.Name));
+            result.AddKey<Roadmap>(nameof(Roadmap.Name));
             result.AddReference<Roadmap, LoginUser>(nameof(Roadmap.LoginUserId));
             result.AddReference<Roadmap, RoadmapCategory>(nameof(Roadmap.RoadmapCategoryId));
             result.AddReference<Roadmap, RoadmapModule>(nameof(Roadmap.RoadmapModuleId));
@@ -84,12 +96,17 @@
 
             // FileManager
             result.Add(Data.Query<StorageFile>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.FileName));
+            result.AddKey<StorageFile>(nameof(StorageFile.FileName));
 
             // Cms
             result.Add(Data.Query<CmsCodeBlockTypeIntegrate>().OrderBy(item => item.Sort));
             result.Add(Data.Query<CmsComponentTypeIntegrate>().OrderBy(item => item.Sort), isApplication: true);
             result.Add(Data.Query<CmsComponentIntegrate>().OrderBy(item => item.Name));
             result.Add(Data.Query<CmsFile>().OrderBy(item => item.FileName));
+            result.AddKey<CmsCodeBlockType>(nameof(CmsCodeBlockType.Name));
+            result.AddKey<CmsComponentType>(nameof(CmsComponentType.Name));
+            result.AddKey<CmsFile>(nameof(CmsFile.FileName));
+            result.AddKey<CmsComponent>(nameof(CmsComponent.Name));
             result.AddReference<CmsComponent, CmsCodeBlockType>(nameof(CmsComponent.CodeBlockTypeId));
             result.AddReference<CmsComponent, CmsComponentType>(nameof(CmsComponent.ComponentTypeId));
             result.AddReference<CmsComponent, CmsFile>(nameof(CmsComponent.ImageFileId));
@@ -102,43 +119,43 @@
         /// </summary>
         protected override void CommandDeployDbIntegrate(DeployDbIntegrateResult result)
         {
-            result.Add(LanguageIntegrateApplication.RowList, nameof(LanguageIntegrate.Name));
+            result.Add(LanguageIntegrateApplication.RowList);
 
             // Navigation
             var rowList = NavigationIntegrateApplicationCli.RowList;
-            result.Add(rowList, nameof(NavigationIntegrate.Name), (item) => item.IdName, (item) => item.ParentIdName, (item) => item.Sort);
+            result.Add(rowList, (item) => item.IdName, (item) => item.ParentIdName, (item) => item.Sort);
 
             // LoginPermission
-            result.Add(LoginPermissionIntegrateApplication.RowList, nameof(LoginPermissionIntegrate.Name));
-            result.Add(LoginPermissionIntegrateApplicationCli.RowList, nameof(LoginPermissionIntegrate.Name));
+            result.Add(LoginPermissionIntegrateApplication.RowList);
+            result.Add(LoginPermissionIntegrateApplicationCli.RowList);
 
             // LoginRole
-            result.Add(LoginRoleIntegrateApplicationCli.RowList, nameof(LoginRoleIntegrate.Name));
+            result.Add(LoginRoleIntegrateApplicationCli.RowList);
 
             // LoginRolePermission
-            result.Add(LoginRolePermissionIntegrateApplicationCli.RowList, new string[] { nameof(LoginRolePermissionIntegrate.RoleId), nameof(LoginRolePermissionIntegrate.PermissionId) });
+            result.Add(LoginRolePermissionIntegrateApplicationCli.RowList);
 
             // LoginUser
-            result.Add(LoginUserIntegrateApplicationCli.RowList, nameof(LoginUserIntegrate.Name));
+            result.Add(LoginUserIntegrateApplicationCli.RowList);
 
             // LoginUserRole
-            result.Add(LoginUserRoleIntegrateApplicationCli.RowList, new string[] { nameof(LoginUserRoleIntegrate.UserId), nameof(LoginUserRoleIntegrate.RoleId) });
+            result.Add(LoginUserRoleIntegrateApplicationCli.RowList);
 
             // Roadmap
-            result.Add(RoadmapCategoryIntegrateApplication.RowList, nameof(RoadmapCategoryIntegrate.Name)); // Category
-            result.Add(RoadmapModuleIntegrateApplication.RowList, nameof(RoadmapModuleIntegrate.Name)); // Module
-            result.Add(RoadmapPriorityIntegrateApplication.RowList, nameof(RoadmapPriorityIntegrate.Name)); // Priority
-            result.Add(RoadmapStateIntegrateApplication.RowList, nameof(RoadmapStateIntegrate.Name)); // State
-            result.Add(RoadmapIntegrateApplicationCli.RowList, nameof(RoadmapIntegrate.Name)); // Roadmap
+            result.Add(RoadmapCategoryIntegrateApplication.RowList); // Category
+            result.Add(RoadmapModuleIntegrateApplication.RowList); // Module
+            result.Add(RoadmapPriorityIntegrateApplication.RowList); // Priority
+            result.Add(RoadmapStateIntegrateApplication.RowList); // State
+            result.Add(RoadmapIntegrateApplicationCli.RowList); // Roadmap
 
             // FileManager
-            result.Add(StorageFileApplicationCli.RowList, nameof(StorageFile.FileName));
+            result.Add(StorageFileApplicationCli.RowList);
 
             // Cms
-            result.Add(CmsComponentTypeIntegrateApplication.RowList, nameof(CmsComponentTypeIntegrate.Name));
-            result.Add(CmsCodeBlockTypeIntegrateApplicationCli.RowList, nameof(CmsCodeBlockTypeIntegrate.Name));
-            result.Add(CmsFileApplicationCli.RowList, nameof(CmsFile.FileName));
-            result.Add(CmsComponentIntegrateApplicationCli.RowList, nameof(CmsComponentIntegrate.Name), (item) => item.IdName, (item) => item.ParentIdName, (item) => null);
+            result.Add(CmsComponentTypeIntegrateApplication.RowList);
+            result.Add(CmsCodeBlockTypeIntegrateApplicationCli.RowList);
+            result.Add(CmsFileApplicationCli.RowList);
+            result.Add(CmsComponentIntegrateApplicationCli.RowList, (item) => item.IdName, (item) => item.ParentIdName, (item) => null);
         }
     }
 }
