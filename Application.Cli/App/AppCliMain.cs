@@ -48,22 +48,27 @@
 
             // Navigation
             result.Add(Data.Query<NavigationBuiltIn>().OrderBy(item => item.IdName));
+            result.AddReference<Navigation, Navigation>(nameof(Navigation.ParentId));
 
             // LoginPermission
-            result.Add(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == true && item.IsExist).OrderBy(item => item.IdName), tableNameSqlReferencePrefix: "Login", isApplication: true);
-            result.Add(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist).OrderBy(item => item.IdName), tableNameSqlReferencePrefix: "Login", isApplication: false);
+            result.Add(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == true && item.IsExist).OrderBy(item => item.IdName), isApplication: true);
+            result.Add(Data.Query<LoginPermissionBuiltIn>().Where(item => item.IsBuiltIn == false && item.IsExist).OrderBy(item => item.IdName), isApplication: false);
 
             // LoginRole
-            result.Add(Data.Query<LoginRoleBuiltIn>().OrderBy(item => item.IdName), tableNameSqlReferencePrefix: "Login");
+            result.Add(Data.Query<LoginRoleBuiltIn>().OrderBy(item => item.IdName));
 
             // LoginRolePermission
-            result.Add(Data.Query<LoginRolePermissionBuiltIn>().OrderBy(item => item.RoleIdName).ThenBy(item => item.PermissionIdName), tableNameSqlReferencePrefix: "Login");
+            result.Add(Data.Query<LoginRolePermissionBuiltIn>().OrderBy(item => item.RoleIdName).ThenBy(item => item.PermissionIdName));
+            result.AddReference<LoginRolePermission, LoginPermission>(nameof(LoginRolePermission.PermissionId));
+            result.AddReference<LoginRolePermission, LoginRole>(nameof(LoginRolePermission.RoleId));
 
             // LoginUser
-            result.Add(Data.Query<LoginUserBuiltIn>().OrderBy(item => item.IdName), tableNameSqlReferencePrefix: "Login");
+            result.Add(Data.Query<LoginUserBuiltIn>().OrderBy(item => item.IdName));
 
             // LoginUserRole
-            result.Add(Data.Query<LoginUserRoleBuiltIn>().OrderBy(item => item.UserIdName).ThenBy(item => item.RoleIdName), tableNameSqlReferencePrefix: "Login");
+            result.Add(Data.Query<LoginUserRoleBuiltIn>().OrderBy(item => item.UserIdName).ThenBy(item => item.RoleIdName));
+            result.AddReference<LoginUserRole, LoginRole>(nameof(LoginUserRole.RoleId));
+            result.AddReference<LoginUserRole, LoginUser>(nameof(LoginUserRole.UserId));
 
             // Roadmap
             result.Add(Data.Query<RoadmapCategoryBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Category
@@ -71,6 +76,11 @@
             result.Add(Data.Query<RoadmapPriorityBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Priority
             result.Add(Data.Query<RoadmapStateBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // State
             result.Add(Data.Query<RoadmapBuiltIn>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.Name)); // Roadmap
+            result.AddReference<Roadmap, LoginUser>(nameof(Roadmap.LoginUserId));
+            result.AddReference<Roadmap, RoadmapCategory>(nameof(Roadmap.RoadmapCategoryId));
+            result.AddReference<Roadmap, RoadmapModule>(nameof(Roadmap.RoadmapModuleId));
+            result.AddReference<Roadmap, RoadmapPriority>(nameof(Roadmap.RoadmapPriorityId));
+            result.AddReference<Roadmap, RoadmapState>(nameof(Roadmap.RoadmapStateId));
 
             // FileManager
             result.Add(Data.Query<StorageFile>().Where(item => item.IsBuiltIn && item.IsExist).OrderBy(item => item.FileName));
@@ -78,8 +88,13 @@
             // Cms
             result.Add(Data.Query<CmsCodeBlockTypeBuiltIn>().OrderBy(item => item.Sort));
             result.Add(Data.Query<CmsComponentTypeBuiltIn>().OrderBy(item => item.Sort), isApplication: true);
-            result.Add(Data.Query<CmsComponentBuiltIn>().OrderBy(item => item.Name), tableNameSqlReferencePrefix: "Cms");
+            result.Add(Data.Query<CmsComponentBuiltIn>().OrderBy(item => item.Name));
             result.Add(Data.Query<CmsFile>().OrderBy(item => item.FileName));
+            result.AddReference<CmsComponent, CmsCodeBlockType>(nameof(CmsComponent.CodeBlockTypeId));
+            result.AddReference<CmsComponent, CmsComponentType>(nameof(CmsComponent.ComponentTypeId));
+            result.AddReference<CmsComponent, CmsFile>(nameof(CmsComponent.ImageFileId));
+            result.AddReference<CmsComponent, CmsFile>(nameof(CmsComponent.PageImageFileId));
+            result.AddReference<CmsComponent, CmsComponent>(nameof(CmsComponent.ParentId));
         }
 
         /// <summary>
@@ -89,6 +104,7 @@
         {
             result.Add(LanguageBuiltInApplication.RowList, nameof(LanguageBuiltIn.Name));
 
+            // Navigation
             var rowList = NavigationBuiltInApplicationCli.RowList;
             result.Add(rowList, nameof(NavigationBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => item.Sort);
 
@@ -121,8 +137,8 @@
             // Cms
             result.Add(CmsComponentTypeBuiltInApplication.RowList, nameof(CmsComponentTypeBuiltIn.Name));
             result.Add(CmsCodeBlockTypeBuiltInApplicationCli.RowList, nameof(CmsCodeBlockTypeBuiltIn.Name));
-            result.Add(CmsComponentBuiltInApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null);
             result.Add(CmsFileApplicationCli.RowList, nameof(CmsFile.FileName));
+            result.Add(CmsComponentBuiltInApplicationCli.RowList, nameof(CmsComponentBuiltIn.Name), (item) => item.Id, (item) => item.ParentId, (item) => null);
         }
     }
 }
