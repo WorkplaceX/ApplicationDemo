@@ -3,11 +3,8 @@
     using Database.Demo; // Framework and Application contain same namespace.
     using DatabaseIntegrate.Demo;
     using Framework.Cli;
-    using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Framework.DataAccessLayer;
-    using Microsoft.Extensions.CommandLineUtils;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -101,8 +98,8 @@
             // Cms
             result.Add(Data.Query<CmsCodeBlockTypeIntegrate>().OrderBy(item => item.Sort));
             result.Add(Data.Query<CmsComponentTypeIntegrate>().OrderBy(item => item.Sort), isApplication: true);
-            result.Add(Data.Query<CmsComponentIntegrate>().OrderBy(item => item.Name));
             result.Add(Data.Query<CmsFile>().OrderBy(item => item.FileName));
+            result.Add(Data.Query<CmsComponentIntegrate>().OrderBy(item => item.PagePath).ThenBy(item => item.Sort).ThenBy(item => item.Name));
             result.AddKey<CmsCodeBlockType>(nameof(CmsCodeBlockType.Name));
             result.AddKey<CmsComponentType>(nameof(CmsComponentType.Name));
             result.AddKey<CmsFile>(nameof(CmsFile.FileName));

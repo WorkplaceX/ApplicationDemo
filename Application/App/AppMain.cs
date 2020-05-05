@@ -50,28 +50,21 @@
 
         protected override async Task FileDownloadAsync(FileDownloadArgs args, FileDownloadResult result)
         {
-            if (args.FileName?.StartsWith("cms/") == true)
+            if (args.IsFileName(UtilCms.PathCmsFile(), out string fileName))
             {
-                string fileNameCms = args.FileName.Substring("cms/".Length);
-                var row = (await Data.Query<CmsFile>().Where(item => item.FileName == fileNameCms).QueryExecuteAsync()).FirstOrDefault();
+                var row = (await Data.Query<CmsFile>().Where(item => item.FileName == fileName).QueryExecuteAsync()).FirstOrDefault();
                 result.Data = row?.Data;
-                if (result.Data == null)
-                {
-                    result.IsSession = true;
-                }
             }
             else
             {
-                if (args.FileName?.StartsWith("shop/") == true)
+                if (args.IsFileName("/shop/", out string fileNameShop))
                 {
-                    string fileNameProduct = args.FileName.Substring("shop/".Length);
-                    var row = (await Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameProduct).QueryExecuteAsync()).FirstOrDefault();
+                    var row = (await Data.Query<ShopProductPhoto>().Where(item => item.FileName == fileNameShop).QueryExecuteAsync()).FirstOrDefault();
                     result.Data = row?.Data;
-
                 }
                 else
                 {
-                    if (args.Path.StartsWith("/cms/"))
+                    if (args.IsPath(UtilCms.PathCmsPage(), out _))
                     {
                         result.IsSession = true;
                     }
@@ -92,12 +85,12 @@
                 PageMain.IsHide = false;
                 PageCmsContent.IsHide = true;
             }
-            if (args.Path == "/cms/install/")
+            if (args.IsPath(UtilCms.PathCmsPage(), out string path))
             {
                 result.IsPage = true;
                 PageMain.IsHide = true;
                 PageCmsContent.IsHide = false;
-                await PageCmsContent.Load(args.Path);
+                await PageCmsContent.Load(path);
             }
         }
     }

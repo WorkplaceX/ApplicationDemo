@@ -20,13 +20,9 @@
 
         public async Task Load(string path)
         {
-            if (path.StartsWith(UtilCms.PathCms))
-            {
-                string pathCms = path.Substring(UtilCms.PathCms.Length - 1);
-                var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.PagePath == pathCms || item.ParentPagePath == pathCms).QueryExecuteAsync();
-                string textHtml = UtilCms.TextHtml(componentList.Single(item => item.PagePath == path), componentList);
-                Html.TextHtml = textHtml;
-            }
+            var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.PagePath == path || item.ParentPagePath == path).QueryExecuteAsync();
+            string textHtml = UtilCms.TextHtml(componentList.Single(item => item.PagePath == path), componentList);
+            Html.TextHtml = textHtml;
         }
     }
 }

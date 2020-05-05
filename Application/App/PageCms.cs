@@ -59,6 +59,14 @@
             {
                 result.Query = Data.Query<CmsFile>();
             }
+            if (args.FieldName == nameof(args.Row.ImageFileName))
+            {
+                result.Query = Data.Query<CmsFile>();
+            }
+            if (args.FieldName == nameof(args.Row.CodeBlockTypeText))
+            {
+                result.Query = Data.Query<CmsCodeBlockType>();
+            }
         }
 
         protected override void LookupRowSelected(LookupRowSelectedArgs args, LookupRowSelectedResult result)
@@ -70,6 +78,10 @@
             if (args.RowSelected is CmsFile cmsFile)
             {
                 result.Text = cmsFile.FileName;
+            }
+            if (args.RowSelected is CmsCodeBlockType codeBlockType)
+            {
+                result.Text = codeBlockType.Name;
             }
         }
 
@@ -101,6 +113,36 @@
                 else
                 {
                     result.ErrorParse = "File not found!";
+                    result.IsHandled = true;
+                }
+            }
+
+            if (args.FieldName == nameof(args.Row.ImageFileName))
+            {
+                var row = (await Data.Query<CmsFile>().Where(item => item.FileName == args.Text).QueryExecuteAsync()).FirstOrDefault();
+                if (row != null)
+                {
+                    result.Row.ImageFileId = row.Id;
+                    result.Row.ImageFileName = row.FileName;
+                }
+                else
+                {
+                    result.ErrorParse = "File not found!";
+                    result.IsHandled = true;
+                }
+            }
+
+            if (args.FieldName == nameof(args.Row.CodeBlockTypeText))
+            {
+                var row = (await Data.Query<CmsCodeBlockType>().Where(item => item.Name == args.Text).QueryExecuteAsync()).FirstOrDefault();
+                if (row != null)
+                {
+                    result.Row.CodeBlockTypeId = row.Id;
+                    result.Row.CodeBlockTypeText = row.Name;
+                }
+                else
+                {
+                    result.ErrorParse = "CodeBlockType not found!";
                     result.IsHandled = true;
                 }
             }

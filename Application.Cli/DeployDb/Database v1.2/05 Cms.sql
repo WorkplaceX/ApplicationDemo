@@ -72,7 +72,7 @@ CREATE TABLE Demo.CmsComponent
     ParagraphText NVARCHAR(MAX),
     ParagraphIsNote BIT,
     -- Bullet
-    BulletText NVARCHAR(256),
+    BulletText NVARCHAR(1024),
     -- Image
     ImageFileId INT FOREIGN KEY REFERENCES Demo.CmsFile(Id),
     ImageText NVARCHAR(256),
