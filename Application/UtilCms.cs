@@ -8,10 +8,42 @@
 
     public static class UtilCms
     {
-        public static readonly string FolderNameCms = "cms/";
+        private static string Path(string pathPrefix, string path)
+        {
+            if (path?.StartsWith("/") == true)
+            {
+                path = path.Substring("/".Length);
+            }
+            return pathPrefix + path;
+        }
+
+        public static string PathCmsPage(string path)
+        {
+            return Path("/cms/", path);
+        }
+
+        public static string PathCmsPage()
+        {
+            return PathCmsPage(null);
+        }
+
+        public static string PathCmsFile(string path)
+        {
+            return Path("/cmsfile/", path);
+        }
+
+        public static string PathCmsFile()
+        {
+            return PathCmsFile(null);
+        }
 
         private static string HtmlText(string text)
         {
+            if (text == null)
+            {
+                return null;
+            }
+
             var result = new StringBuilder();
 
             int? indexBracketStart = null;
@@ -46,8 +78,14 @@
                     indexParentheseStop = null;
                     index = i + 1;
                 }
+                else
+                {
+                    if (indexBracketStart == null)
+                    {
+                        result.Append(c);
+                    }
+                }
             }
-            result.Append(text.Substring(index));
             var resultText = result.ToString();
             return resultText;
         }
@@ -73,11 +111,11 @@
                         if (item.ComponentTypeIdName == CmsComponentTypeIntegrateApplication.IdNameEnum.Page.IdName())
                         {
                             // Render sub page as card.
-                            result.Append($"<a class='linkPost' href='{ FolderNameCms + item.PageFileName }'>");
+                            result.Append($"<a class='linkPost' href='{ UtilCms.PathCmsPage(item.PagePath) }'>");
                             result.Append("<div class='card'>");
                             if (item.PageImageFileName != null)
                             {
-                                result.Append($"<img src='{ FolderNameCms + item.PageImageFileName}' class='card-img-top'>");
+                                result.Append($"<img src='{ UtilCms.PathCmsFile(item.PageImageFileName) }' class='card-img-top'>");
                             }
                             result.Append("<div class='card-body'>");
                             result.Append($"<p class='card-text'>{ HtmlText(item.PageTitle) }</p>");
@@ -92,8 +130,14 @@
                     }
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Paragraph:
-                    result.Append($"<h1>{HtmlText(component.ParagraphTitle)}</h1>");
-                    result.Append($"<p>{HtmlText(component.ParagraphText)}</p>");
+                    if (component.ParagraphTitle != null)
+                    {
+                        result.Append($"<h1>{ HtmlText(component.ParagraphTitle) }</h1>");
+                    }
+                    if (component.ParagraphText != null)
+                    {
+                        result.Append($"<p>{ HtmlText(component.ParagraphText) }</p>");
+                    }
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet:
                     if (!isUl)
@@ -104,10 +148,13 @@
                     result.Append($"<li>{ HtmlText(component.BulletText) }</li>");
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Image:
+                     result.Append($"<img src='{ UtilCms.PathCmsFile(component.ImageFileName) }'>");
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Youtube:
+                    result.Append(string.Format("<iframe width='560' height='315' src='{0}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>", component.YoutubeLink));
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.CodeBlock:
+                    result.Append(string.Format("<pre><code class='{0}'>{1}</code></pre>", component.CodeBlockTypeText, component.CodeBlockText));
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Glossary:
                     break;
@@ -116,7 +163,7 @@
             }
         }
 
-        public static string HtmlText(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
+        public static string TextHtml(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
         {
             StringBuilder result = new StringBuilder();
             bool isUl = false;

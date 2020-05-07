@@ -55,8 +55,8 @@ namespace Database.Demo
         [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
         public int? ComponentTypeId { get; set; }
 
-        [SqlField("PageFileName", FrameworkTypeEnum.Nvarcahr)]
-        public string PageFileName { get; set; }
+        [SqlField("PagePath", FrameworkTypeEnum.Nvarcahr)]
+        public string PagePath { get; set; }
 
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
@@ -131,6 +131,9 @@ namespace Database.Demo
         [SqlField("ParentText", FrameworkTypeEnum.Nvarcahr)]
         public string ParentText { get; set; }
 
+        [SqlField("ParentPagePath", FrameworkTypeEnum.Nvarcahr)]
+        public string ParentPagePath { get; set; }
+
         [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
         public Guid Name { get; set; }
 
@@ -143,8 +146,8 @@ namespace Database.Demo
         [SqlField("ComponentTypeText", FrameworkTypeEnum.Nvarcahr)]
         public string ComponentTypeText { get; set; }
 
-        [SqlField("PageFileName", FrameworkTypeEnum.Nvarcahr)]
-        public string PageFileName { get; set; }
+        [SqlField("PagePath", FrameworkTypeEnum.Nvarcahr)]
+        public string PagePath { get; set; }
 
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
@@ -231,8 +234,8 @@ namespace Database.Demo
         [SqlField("ComponentTypeId", FrameworkTypeEnum.Int)]
         public int? ComponentTypeId { get; set; }
 
-        [SqlField("PageFileName", FrameworkTypeEnum.Nvarcahr)]
-        public string PageFileName { get; set; }
+        [SqlField("PagePath", FrameworkTypeEnum.Nvarcahr)]
+        public string PagePath { get; set; }
 
         [SqlField("PageTitle", FrameworkTypeEnum.Nvarcahr)]
         public string PageTitle { get; set; }
