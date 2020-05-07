@@ -23,6 +23,7 @@
             var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.PagePath == path || item.ParentPagePath == path).QueryExecuteAsync();
             string textHtml = UtilCms.TextHtml(componentList.Single(item => item.PagePath == path), componentList);
             Html.TextHtml = textHtml;
+            Html.IsNoSanatize = true;
         }
     }
 }

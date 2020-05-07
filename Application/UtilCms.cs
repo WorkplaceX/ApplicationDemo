@@ -151,7 +151,7 @@
                      result.Append($"<img src='{ UtilCms.PathCmsFile(component.ImageFileName) }'>");
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Youtube:
-                    result.Append(string.Format("Youtube<iframe width='560' height='315' src='{0}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>", component.YoutubeLink));
+                    result.Append(string.Format("<iframe width='560' height='315' src='{0}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>", component.YoutubeLink));
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.CodeBlock:
                     result.Append(string.Format("<pre><code class='{0}'>{1}</code></pre>", component.CodeBlockTypeText, component.CodeBlockText));
