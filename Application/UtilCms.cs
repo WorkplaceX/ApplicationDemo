@@ -2,9 +2,13 @@
 {
     using Database.Demo;
     using DatabaseIntegrate.Demo;
+    using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Text.Json;
+    using System.Web;
 
     public static class UtilCms
     {
@@ -177,6 +181,139 @@
             }
 
             return result.ToString();
+        }
+
+        private static void TextMdParameter(TextMdArgs args, string parameterName, string parameterValue)
+        {
+            if (parameterValue != null)
+            {
+                args.Result.Append($" { parameterName }={ parameterValue }");
+            }
+        }
+
+        private static void TextMdNewLine(TextMdArgs args)
+        {
+            if (args.IsFirst)
+            {
+                args.IsFirst = false;
+            }
+            else
+            {
+                args.Result.AppendLine();
+            }
+        }
+
+        private class TextMdArgs
+        {
+            public CmsComponentDisplay Component;
+
+            public List<CmsComponentDisplay> ComponentList;
+
+            public CmsComponentDisplay ComponentPrevious;
+
+            public bool IsFirst;
+
+            public StringBuilder Result;
+        }
+
+        private static void TextMd(TextMdArgs args)
+        {
+            var componentType = CmsComponentTypeIntegrateApplication.IdName(args.Component.ComponentTypeIdName);
+            var componentPreviousType = CmsComponentTypeIntegrateApplication.IdName(args.ComponentPrevious?.ComponentTypeIdName);
+            switch (componentType)
+            {
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.None:
+                    break;
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Page:
+                    TextMdNewLine(args);
+                    args.Result.Append("(Page");
+                    TextMdParameter(args, "Path", args.Component.PagePath);
+                    TextMdParameter(args, "Date", args.Component.PageDate?.ToString("yyyy-MM-dd"));
+                    TextMdParameter(args, "ImageFileName", args.Component.PageImageFileName);
+                    args.Result.AppendLine(")");
+                    TextMdArgs argsLocal = new TextMdArgs { ComponentList = args.ComponentList, IsFirst = args.IsFirst, Result = args.Result };
+                    foreach (var item in args.ComponentList.Where(item => item.ParentId == args.Component.Id).OrderBy(item => item.Sort))
+                    {
+                        argsLocal.Component = item;
+                        TextMd(argsLocal);
+                        argsLocal.ComponentPrevious = item;
+                    }
+                    break;
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Paragraph:
+                    TextMdNewLine(args);
+                    if (args.Component.ParagraphTitle != null)
+                    {
+                        args.Result.AppendLine("# " + args.Component.ParagraphTitle);
+                    }
+                    if (args.Component.ParagraphText != null)
+                    {
+                        args.Result.AppendLine(args.Component.ParagraphText);
+                    }
+                    break;
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet:
+                    if (componentPreviousType != CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet)
+                    {
+                        TextMdNewLine(args);
+                    }
+                    args.Result.AppendLine("* " + args.Component.BulletText);
+                    break;
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Image:
+                    TextMdNewLine(args);
+                    args.Result.AppendLine($"![{ args.Component.ImageText }]({ args.Component.ImageFileName })");
+                    break;
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Youtube:
+                    TextMdNewLine(args);
+                    args.Result.AppendLine("(Youtube)");
+                    if (args.Component.YoutubeLink != null)
+                    {
+                        args.Result.AppendLine(args.Component.YoutubeLink);
+                    }
+                    break;
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.CodeBlock:
+                    TextMdNewLine(args);
+                    args.Result.AppendLine("```" + args.Component.CodeBlockTypeText);
+                    args.Result.AppendLine(args.Component.CodeBlockText);
+                    args.Result.AppendLine("```");
+                    break;
+                case CmsComponentTypeIntegrateApplication.IdNameEnum.Glossary:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public static string TextMd(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
+        {
+            TextMdArgs args = new TextMdArgs { Component = component, ComponentList = componentList, IsFirst = true, Result = new StringBuilder() };
+            TextMd(args);
+            return args.Result.ToString();
+        }
+
+        private class TextMdParseArgs
+        {
+            public List<string> LineList;
+
+            public int IndexLine;
+
+            public int IndexCol;
+        }
+
+        public static List<CmsComponentDisplay> TextMdParse(string textMd)
+        {
+            List<CmsComponentDisplay> result = new List<CmsComponentDisplay>();
+
+            TextMdParseArgs args = new TextMdParseArgs { LineList = new List<string>() };
+            StringReader reader = new StringReader(textMd);
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (string.IsNullOrEmpty(line))
+                {
+                    line = null;
+                    args.LineList.Add(line);
+                }
+            }
+            return result;
         }
     }
 }
