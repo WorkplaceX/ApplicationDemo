@@ -79,7 +79,7 @@
             result.Add(Data.Query<RoadmapModuleIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Module
             result.Add(Data.Query<RoadmapPriorityIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Priority
             result.Add(Data.Query<RoadmapStateIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // State
-            result.Add(Data.Query<RoadmapIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.Name)); // Roadmap
+            result.Add(Data.Query<RoadmapIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.Number).ThenBy(item => item.Name)); // Roadmap
             result.AddKey<RoadmapCategory>(nameof(RoadmapCategory.Name));
             result.AddKey<RoadmapModule>(nameof(RoadmapModule.Name));
             result.AddKey<RoadmapPriority>(nameof(RoadmapPriority.Name));

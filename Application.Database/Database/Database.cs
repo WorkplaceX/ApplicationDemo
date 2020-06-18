@@ -958,6 +958,9 @@ namespace Database.Demo
         [SqlField("Id", true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
+        [SqlField("Number", FrameworkTypeEnum.Int)]
+        public int? Number { get; set; }
+
         [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
         public Guid Name { get; set; }
 
@@ -1108,6 +1111,9 @@ namespace Database.Demo
 
         [SqlField("Name", FrameworkTypeEnum.Uniqueidentifier)]
         public Guid Name { get; set; }
+
+        [SqlField("Number", FrameworkTypeEnum.Int)]
+        public int? Number { get; set; }
 
         [SqlField("Description", FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }

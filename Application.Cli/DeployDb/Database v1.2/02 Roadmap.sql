@@ -104,6 +104,7 @@ CREATE TABLE Demo.Roadmap
 (
 	Id INT PRIMARY KEY IDENTITY,
 	Name UNIQUEIDENTIFIER NOT NULL UNIQUE,
+	Number INT NOT NULL UNIQUE,
 	Description NVARCHAR(MAX),
 	Date Date,
 	-- Category
@@ -125,6 +126,7 @@ CREATE VIEW Demo.RoadmapIntegrate AS
 SELECT
 	Roadmap.Id,
 	Roadmap.Name,
+	Roadmap.Number,
 	Roadmap.Description,
 	Roadmap.Date,
 	-- Category
@@ -154,6 +156,7 @@ SELECT
 	-- Roadmap
 	Roadmap.Id,
 	Roadmap.Name,
+	Roadmap.Number,
 	Roadmap.Description,
 	-- Category
 	Roadmap.RoadmapCategoryId,
