@@ -155,9 +155,10 @@
             if (Html != null)
             {
                 var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.Id == RowSelected.Id || item.ParentId == RowSelected.Id).QueryExecuteAsync();
-                string text = UtilCms.TextHtml(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
-                // text = UtilCms.TextMd(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList).Replace("\r\n", "<br/>");
-                Html.TextHtml = text;
+                string textHtml = UtilCms.ComponentToTextHtml(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
+                string textMd = UtilCms.ComponentToTextMd(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList).Replace("\r\n", "<br/>");
+                UtilCms.ComponentFromTextMd(textMd);
+                Html.TextHtml = textHtml;
                 Html.IsNoSanatize = true;
             }
         }

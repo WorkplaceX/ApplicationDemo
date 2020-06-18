@@ -3,14 +3,9 @@
     using Database.Demo;
     using DatabaseIntegrate.Demo;
     using Framework.Util;
-    using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
-    using System.Security.Cryptography;
     using System.Text;
-    using System.Text.Json;
-    using System.Web;
 
     public static class UtilCms
     {
@@ -43,7 +38,7 @@
             return PathCmsFile(null);
         }
 
-        private static string HtmlText(string text)
+        private static string ComponentToHtmlText(string text)
         {
             if (text == null)
             {
@@ -96,7 +91,7 @@
             return resultText;
         }
 
-        private static void HtmlText(CmsComponentDisplay component, List<CmsComponentDisplay> componentList, ref bool isUl, StringBuilder result)
+        private static void ComponentToHtmlText(CmsComponentDisplay component, List<CmsComponentDisplay> componentList, ref bool isUl, StringBuilder result)
         {
             var componentType = CmsComponentTypeIntegrateApplication.IdName(component.ComponentTypeIdName);
 
@@ -124,25 +119,25 @@
                                 result.Append($"<img src='{ UtilCms.PathCmsFile(item.PageImageFileName) }' class='card-img-top'>");
                             }
                             result.Append("<div class='card-body'>");
-                            result.Append($"<p class='card-text'>{ HtmlText(item.PageTitle) }</p>");
+                            result.Append($"<p class='card-text'>{ ComponentToHtmlText(item.PageTitle) }</p>");
                             result.Append("</div>");
                             result.Append("</div>");
                             result.Append($"</a>");
                         }
                         else
                         {
-                            HtmlText(item, componentList, ref isUl, result);
+                            ComponentToHtmlText(item, componentList, ref isUl, result);
                         }
                     }
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Paragraph:
                     if (component.ParagraphTitle != null)
                     {
-                        result.Append($"<h1>{ HtmlText(component.ParagraphTitle) }</h1>");
+                        result.Append($"<h1>{ ComponentToHtmlText(component.ParagraphTitle) }</h1>");
                     }
                     if (component.ParagraphText != null)
                     {
-                        result.Append($"<p>{ HtmlText(component.ParagraphText) }</p>");
+                        result.Append($"<p>{ ComponentToHtmlText(component.ParagraphText) }</p>");
                     }
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet:
@@ -151,7 +146,7 @@
                         result.Append("<ul>");
                         isUl = true;
                     }
-                    result.Append($"<li>{ HtmlText(component.BulletText) }</li>");
+                    result.Append($"<li>{ ComponentToHtmlText(component.BulletText) }</li>");
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Image:
                      result.Append($"<img src='{ UtilCms.PathCmsFile(component.ImageFileName) }'>");
@@ -169,11 +164,11 @@
             }
         }
 
-        public static string TextHtml(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
+        public static string ComponentToTextHtml(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
         {
             StringBuilder result = new StringBuilder();
             bool isUl = false;
-            HtmlText(component, componentList, ref isUl, result);
+            ComponentToHtmlText(component, componentList, ref isUl, result);
             
             // Ul close
             if (isUl)
@@ -185,7 +180,7 @@
             return result.ToString();
         }
 
-        private static void TextMdParameter(TextMdArgs args, string parameterName, string parameterValue)
+        private static void ComponentToTextMdParameter(TextMdArgs args, string parameterName, string parameterValue)
         {
             if (parameterValue != null)
             {
@@ -193,7 +188,7 @@
             }
         }
 
-        private static void TextMdNewLine(TextMdArgs args)
+        private static void ComponentToTextMdNewLine(TextMdArgs args)
         {
             if (args.IsFirst)
             {
@@ -218,7 +213,7 @@
             public StringBuilder Result;
         }
 
-        private static void TextMd(TextMdArgs args)
+        private static void ComponentToTextMd(TextMdArgs args)
         {
             var componentType = CmsComponentTypeIntegrateApplication.IdName(args.Component.ComponentTypeIdName);
             var componentPreviousType = CmsComponentTypeIntegrateApplication.IdName(args.ComponentPrevious?.ComponentTypeIdName);
@@ -227,22 +222,22 @@
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.None:
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Page:
-                    TextMdNewLine(args);
+                    ComponentToTextMdNewLine(args);
                     args.Result.Append("(Page");
-                    TextMdParameter(args, "Path", args.Component.PagePath);
-                    TextMdParameter(args, "Date", args.Component.PageDate?.ToString("yyyy-MM-dd"));
-                    TextMdParameter(args, "ImageFileName", args.Component.PageImageFileName);
+                    ComponentToTextMdParameter(args, "Path", args.Component.PagePath);
+                    ComponentToTextMdParameter(args, "Date", args.Component.PageDate?.ToString("yyyy-MM-dd"));
+                    ComponentToTextMdParameter(args, "ImageFileName", args.Component.PageImageFileName);
                     args.Result.AppendLine(")");
                     TextMdArgs argsLocal = new TextMdArgs { ComponentList = args.ComponentList, IsFirst = args.IsFirst, Result = args.Result };
                     foreach (var item in args.ComponentList.Where(item => item.ParentId == args.Component.Id).OrderBy(item => item.Sort))
                     {
                         argsLocal.Component = item;
-                        TextMd(argsLocal);
+                        ComponentToTextMd(argsLocal);
                         argsLocal.ComponentPrevious = item;
                     }
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Paragraph:
-                    TextMdNewLine(args);
+                    ComponentToTextMdNewLine(args);
                     if (args.Component.ParagraphTitle != null)
                     {
                         args.Result.AppendLine("# " + args.Component.ParagraphTitle);
@@ -255,16 +250,16 @@
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet:
                     if (componentPreviousType != CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet)
                     {
-                        TextMdNewLine(args);
+                        ComponentToTextMdNewLine(args);
                     }
                     args.Result.AppendLine("* " + args.Component.BulletText);
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Image:
-                    TextMdNewLine(args);
+                    ComponentToTextMdNewLine(args);
                     args.Result.AppendLine($"![{ args.Component.ImageText }]({ args.Component.ImageFileName })");
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.Youtube:
-                    TextMdNewLine(args);
+                    ComponentToTextMdNewLine(args);
                     args.Result.AppendLine("(Youtube)");
                     if (args.Component.YoutubeLink != null)
                     {
@@ -272,7 +267,7 @@
                     }
                     break;
                 case CmsComponentTypeIntegrateApplication.IdNameEnum.CodeBlock:
-                    TextMdNewLine(args);
+                    ComponentToTextMdNewLine(args);
                     args.Result.AppendLine("```" + args.Component.CodeBlockTypeText);
                     args.Result.AppendLine(args.Component.CodeBlockText);
                     args.Result.AppendLine("```");
@@ -284,11 +279,78 @@
             }
         }
 
-        public static string TextMd(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
+        public static string ComponentToTextMd(CmsComponentDisplay component, List<CmsComponentDisplay> componentList)
         {
             TextMdArgs args = new TextMdArgs { Component = component, ComponentList = componentList, IsFirst = true, Result = new StringBuilder() };
-            TextMd(args);
+            ComponentToTextMd(args);
             return args.Result.ToString();
         }
+
+        public static List<CmsComponentDisplay> ComponentFromTextMd(string textMd)
+        {
+            new ComponentFromTextMdDocument(textMd);
+            return null;
+
+        }
+
+        private class ComponentFromTextMdDocument : TextParseDocument
+        {
+            public ComponentFromTextMdDocument(string text) 
+                : base(text)
+            {
+
+            }
+        }
+
+        private class ComponentFromTextMdParagraph : TextParseComponent
+        {
+            public ComponentFromTextMdParagraph(TextParseComponent owner) 
+                : base(owner)
+            {
+
+            }
+
+            protected override bool Parse()
+            {
+                return base.Parse();
+            }
+        }
+
+        private class ComponentFromTextMdBullet : TextParseComponent
+        {
+            public ComponentFromTextMdBullet(TextParseComponent owner) 
+                : base(owner)
+            {
+
+            }
+        }
+
+        private class ComponentFromTextMdCodeBlock : TextParseComponent
+        {
+            public ComponentFromTextMdCodeBlock(TextParseComponent owner)
+                : base(owner)
+            {
+
+            }
+        }
+
+        private class ComponentFromTextMdLink : TextParseComponent
+        {
+            public ComponentFromTextMdLink(TextParseComponent owner)
+                : base(owner)
+            {
+
+            }
+        }
+
+        private class ComponentFromTextMdBold : TextParseComponent
+        {
+            public ComponentFromTextMdBold(TextParseComponent owner)
+                : base(owner)
+            {
+
+            }
+        }
+
     }
 }
