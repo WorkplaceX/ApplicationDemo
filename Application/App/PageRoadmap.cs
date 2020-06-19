@@ -316,14 +316,12 @@
             }
         }
 
-        protected override string CellText(RoadmapDisplay row, string fieldName)
+        protected override void CellText(CellTextArgs args, CellTextResult result)
         {
-            if (fieldName == nameof(RoadmapDisplay.Number))
+            if (args.FieldName == nameof(args.Row.Number))
             {
-                return "#" + row.Number.ToString();
+                result.Text = "#" + args.Row.Number.ToString();
             }
-            return base.CellText(row, fieldName);
         }
-
     }
 }
