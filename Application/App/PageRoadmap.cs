@@ -224,6 +224,14 @@
                 }
                 result.IsHandled = true;
             }
+
+            // Number
+            if (args.FieldName == nameof(RoadmapDisplay.Number))
+            {
+                string text = args.Text.Replace("#", "");
+                result.Row.Number = int.Parse(text);
+                result.IsHandled = true;
+            }
         }
 
         protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
@@ -300,6 +308,22 @@
                     result.HtmlLeft = "<i class='fas fa-desktop text-info'></i>"; // Green
                 }
             }
+
+            // Number
+            if (args.FieldName == nameof(args.Row.Number))
+            {
+                result.Align = CellAnnotationAlignEnum.Right;
+            }
         }
+
+        protected override string CellText(RoadmapDisplay row, string fieldName)
+        {
+            if (fieldName == nameof(RoadmapDisplay.Number))
+            {
+                return "#" + row.Number.ToString();
+            }
+            return base.CellText(row, fieldName);
+        }
+
     }
 }
