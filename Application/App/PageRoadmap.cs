@@ -320,7 +320,7 @@
         {
             if (args.FieldName == nameof(args.Row.Number))
             {
-                result.Text = "#" + args.Row.Number.ToString();
+                result.Text = "#" + args.Row.Number.ToString("000");
             }
         }
     }
