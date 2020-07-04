@@ -91,7 +91,7 @@
             {
                 PageMain.IsHide = false;
                 PageCmsContent.IsHide = true;
-                // PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First(); // TODO
+                PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First();
             }
             if (args.IsPath(UtilCms.PathCmsPage(), out string path))
             {
@@ -101,11 +101,11 @@
             }
             if (args.IsPath("/filemanager/"))
             {
-
+                PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First(item => item.Name == "FileManager");
             }
             if (args.IsPath("/roadmap/"))
             {
-
+                PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First(item => item.Name == "Roadmap");
             }
         }
     }

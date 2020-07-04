@@ -14,16 +14,18 @@
         public override async Task InitAsync()
         {
             NavBar = new BootstrapNavbarMain(this);
-            var gridNavigation = new GridNavigation (this) { IsHide = true };
+            GridNavigation = new GridNavigation (this) { IsHide = true };
             var gridLanguage = new GridLanguage(this) { IsHide = true };
             Content = new Div(this);
 
-            await Task.WhenAll(gridNavigation.LoadAsync(), gridLanguage.LoadAsync());
+            await Task.WhenAll(GridNavigation.LoadAsync(), gridLanguage.LoadAsync());
 
-            NavBar.GridAdd(gridNavigation);
+            NavBar.GridAdd(GridNavigation);
             NavBar.GridAdd(gridLanguage, isSelectedMode: true);
             NavBar.BrandTextHtml = "Demo<b>App</b>";
         }
+
+        public GridNavigation GridNavigation;
 
         public BootstrapNavbar NavBar;
 
