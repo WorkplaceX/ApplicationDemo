@@ -48,7 +48,7 @@
             return base.ProcessAsync();
         }
 
-        protected override async Task FileDownloadAsync(FileDownloadArgs args, FileDownloadResult result)
+        protected override async Task NavigateAsync(NavigateArgs args, NavigateResult result)
         {
             if (args.IsFileName(UtilCms.PathCmsFile(), out string fileName))
             {
@@ -85,7 +85,7 @@
             }
         }
 
-        protected override async Task FileDownloadSessionAsync(FileDownloadArgs args, FileDownloadSessionResult result)
+        protected override async Task NavigateSessionAsync(NavigateArgs args, NavigateSessionResult result)
         {
             if (args.Path == "/")
             {

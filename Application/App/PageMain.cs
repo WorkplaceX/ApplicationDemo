@@ -75,7 +75,7 @@
             {
                 pageMain.Content.ComponentListClear();
                 await new PageRoadmap(pageMain.Content).InitAsync();
-                this.ComponentOwner<AppJson>().FileDownloadSessionNavigate("/roadmap/");
+                this.ComponentOwner<AppJson>().Navigate("/roadmap/");
             }
 
             if (RowSelected.PageName == "LoginUser")
@@ -112,7 +112,7 @@
             {
                 pageMain.Content.ComponentListClear();
                 await new PageFileManager(pageMain.Content).InitAsync();
-                this.ComponentOwner<AppJson>().FileDownloadSessionNavigate("/filemanager/");
+                this.ComponentOwner<AppJson>().Navigate("/filemanager/");
             }
 
             if (RowSelected.Name == "Shop")
