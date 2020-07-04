@@ -75,22 +75,37 @@
                     }
                 }
             }
+            if (args.IsPath("/filemanager/"))
+            {
+                result.IsSession = true;
+            }
+            if (args.IsPath("/roadmap/"))
+            {
+                result.IsSession = true;
+            }
         }
 
         protected override async Task FileDownloadSessionAsync(FileDownloadArgs args, FileDownloadSessionResult result)
         {
             if (args.Path == "/")
             {
-                result.IsPage = true;
                 PageMain.IsHide = false;
                 PageCmsContent.IsHide = true;
+                // PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First(); // TODO
             }
             if (args.IsPath(UtilCms.PathCmsPage(), out string path))
             {
-                result.IsPage = true;
                 PageMain.IsHide = true;
                 PageCmsContent.IsHide = false;
                 await PageCmsContent.Load(path);
+            }
+            if (args.IsPath("/filemanager/"))
+            {
+
+            }
+            if (args.IsPath("/roadmap/"))
+            {
+
             }
         }
     }
