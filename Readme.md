@@ -6,7 +6,7 @@ A template to get started with ASP.NET Core 3.1 application with Angular 10 clie
 [![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo) (ApplicationDemo; travis;)
 
 ## Screenshot
-This demo shows the capabilities of the WorkplaceX framework. It uses airplanes and a countries stored in the database.
+This demo shows the capabilities of the WorkplaceX.org framework. It uses airplanes and a countries stored in the database.
 ![Screenshot](Application.Doc/Screenshot.png)
 
 ## Getting Started
@@ -27,7 +27,7 @@ Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
 * "Application/" (Application with custom business logic in C#)
 * "Application.Cli/" (Command line interface to build and deploy in C#)
 * "Application.Cli/DeployDb/" (SQL scripts to deploy to SQL server)
-* "Application.Database/" (Generated C# database dto objects like tables and views)
+* "Application.Database/" (From database generated C# database dto objects like tables and views)
 * "Application.Doc/" (Documentation images)
 * "Application.Server/" (ASP.NET Core to start application)
 * "Application.Website/" (Custom html and css websites used as masters)
