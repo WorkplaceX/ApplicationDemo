@@ -1,5 +1,5 @@
 # Application Demo
-This is a template to get started with an ASP.NET Core application with Angular 9 client and MS-SQL Server database.
+A template to get started with ASP.NET Core 3.1 application with Angular 10 client and MS-SQL Server database.
 
 ![Build Status](https://github.com/WorkplaceX/ApplicationDemo/workflows/CI/badge.svg) (ApplicationDemo; github actions;)
 
