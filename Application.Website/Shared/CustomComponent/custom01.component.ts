@@ -33,7 +33,7 @@ export class Custom01Component implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.ngZone.runOutsideAngular(() => this.tick());
     setInterval(() =>{
-      this.http.get("http://localhost:5721/", {responseType: 'text'}).subscribe((data) => {
+      this.http.get("http://localhost:5721/?HostNameOrAddress=185.17.70.106", {responseType: 'text'}).subscribe((data) => {
         let timeResult = <TimeResult>JSON.parse(data);
         this.offsetMillisecond = timeResult.OffsetMillisecond;
         this.lastUpdate = timeResult.LastUpdate;
