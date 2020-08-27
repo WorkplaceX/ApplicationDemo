@@ -8,8 +8,9 @@ import { HttpClient } from '@angular/common/http';
     <p>
       TextHtml=(<span [innerHtml]="json.TextHtml"></span>);
     </p>
+    <input type="text" placeholder="HostNameOrAddress" [(ngModel)]="hostNameOrAddress">
     <p>
-    OffsetMillisecond={{ offsetMillisecond }}; LastUpdate={{ lastUpdate }};
+    OffsetMillisecond={{ offsetMillisecond }}; LastUpdate={{ lastUpdate }}; Address={{ address }};
     </p>
     <canvas #canvas width="300" height="300"></canvas>
   `,
@@ -23,6 +24,8 @@ export class Custom01Component implements OnInit {
 
   offsetMillisecond: number = 0;
   lastUpdate: string = "";  
+  address: string = "";
+  hostNameOrAddress;
 
   ctx: CanvasRenderingContext2D;
 
@@ -33,23 +36,34 @@ export class Custom01Component implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.ngZone.runOutsideAngular(() => this.tick());
     setInterval(() =>{
-      this.http.get("http://localhost:5721/?HostNameOrAddress=185.17.70.106", {responseType: 'text'}).subscribe((data) => {
+      this.http.get("http://localhost:5721/?HostNameOrAddress=" + this.hostNameOrAddress, {responseType: 'text'}).subscribe((data) => {
         let timeResult = <TimeResult>JSON.parse(data);
         this.offsetMillisecond = timeResult.OffsetMillisecond;
         this.lastUpdate = timeResult.LastUpdate;
+        this.address = timeResult.Address;
       });
     }, 10000);
   }
 
   tick() {
-    let timeMillisecond = new Date().getTime();
-    timeMillisecond += this.offsetMillisecond;
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+
+    let date = new Date();
+    let timeMillisecond = date.getTime();
+
+    timeMillisecond -= this.offsetMillisecond;
+
+    let dateNtp = new Date(timeMillisecond);
 
     let pixel = ((timeMillisecond % 1000) / 1000) * this.ctx.canvas.height;
 
-    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    this.ctx.fillStyle = 'blue';
+    this.ctx.fillStyle = 'lightblue';
     this.ctx.fillRect(0, 0, this.ctx.canvas.width, pixel);
+
+    this.ctx.fillStyle = 'black';
+    this.ctx.font = "30px Arial";
+    this.ctx.fillText("JS=" + date.getMinutes() + ":" + date.getSeconds(), 10, 50);
+    this.ctx.fillText("NTP=" + dateNtp.getMinutes() + ":" + dateNtp.getSeconds(), 10, 100);
 
     window.requestAnimationFrame(() => this.tick());
   }
@@ -62,4 +76,6 @@ class TimeResult
   OffsetMillisecond: number;
 
   LastUpdate: string;
+
+  Address: string;
 }
