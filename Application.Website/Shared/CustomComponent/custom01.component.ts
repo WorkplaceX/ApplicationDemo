@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
     <p>
       TextHtml=(<span [innerHtml]="json.TextHtml"></span>);
     </p>
-    <input type="text" placeholder="HostNameOrAddress" [(ngModel)]="hostNameOrAddress">
+    <input type="text" placeholder="NtpServer" [(ngModel)]="ntpServer">
     <p>
-    OffsetMillisecond={{ offsetMillisecond }}; LastUpdate={{ lastUpdate }}; Address={{ address }};
+    Offset={{ offset }}; TimeResult={{ timeResult }};
     </p>
     <canvas #canvas width="300" height="300"></canvas>
   `,
@@ -22,10 +22,9 @@ export class Custom01Component implements OnInit {
 
   constructor(private http: HttpClient, private ngZone: NgZone) { }
 
-  offsetMillisecond: number = 0;
-  lastUpdate: string = "";  
-  address: string = "";
-  hostNameOrAddress;
+  ntpServer: string = "";
+  offset: number = 0;
+  timeResult: string = null;
 
   ctx: CanvasRenderingContext2D;
 
@@ -36,11 +35,10 @@ export class Custom01Component implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.ngZone.runOutsideAngular(() => this.tick());
     setInterval(() =>{
-      this.http.get("http://localhost:5721/?HostNameOrAddress=" + this.hostNameOrAddress, {responseType: 'text'}).subscribe((data) => {
+      this.http.get("http://localhost:5721/?command=trigger&ntpServer=" + this.ntpServer, {responseType: 'text'}).subscribe((data) => {
+        this.timeResult = data;
         let timeResult = <TimeResult>JSON.parse(data);
-        this.offsetMillisecond = timeResult.OffsetMillisecond;
-        this.lastUpdate = timeResult.LastUpdate;
-        this.address = timeResult.Address;
+        this.offset = timeResult.Offset;
       });
     }, 10000);
   }
@@ -51,7 +49,7 @@ export class Custom01Component implements OnInit {
     let date = new Date();
     let timeMillisecond = date.getTime();
 
-    timeMillisecond -= this.offsetMillisecond;
+    timeMillisecond += this.offset;
 
     let dateNtp = new Date(timeMillisecond);
 
@@ -62,8 +60,8 @@ export class Custom01Component implements OnInit {
 
     this.ctx.fillStyle = 'black';
     this.ctx.font = "30px Arial";
-    this.ctx.fillText("JS=" + date.getMinutes() + ":" + date.getSeconds(), 10, 50);
-    this.ctx.fillText("NTP=" + dateNtp.getMinutes() + ":" + dateNtp.getSeconds(), 10, 100);
+    this.ctx.fillText("Local=" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(), 10, 50);
+    this.ctx.fillText("NTP=" + date.getHours() + ":" + dateNtp.getMinutes() + ":" + dateNtp.getSeconds(), 10, 100);
 
     window.requestAnimationFrame(() => this.tick());
   }
@@ -73,9 +71,5 @@ export class Custom01Component implements OnInit {
 
 class TimeResult
 {
-  OffsetMillisecond: number;
-
-  LastUpdate: string;
-
-  Address: string;
+  Offset: number;
 }
