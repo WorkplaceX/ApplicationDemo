@@ -1,8 +1,5 @@
-# Master Websites
-This folder containes web site masters
-* /MasterDefault/ (Website master with bootstrap and fontawesome. Modify this master to change look and feel of your sites)
-* /MasterEmpty/ (Empty website master. Modify this master to change look and feel of your sites)
-
-Framework templates can be copied from to:
-* Framework/Framework.Cli/Template/Application.Website/ (Source, do not modify)
-* Application.Website/ (Dest)
+# Website Layouts
+* LayoutBootstrap/ (Simple layout website with Bootstrap https://getbootstrap.com/)
+* LayoutEmpty/ (Simple empty layout website)
+* LayoutHtml5Boilerplate (Simple empty layout website with Html5Boilerplate on https://html5boilerplate.com/)
+* Shared/ (Shared between all layout websites. Custom components and frameworkStyle.scss)
