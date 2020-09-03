@@ -4,6 +4,7 @@
     using DatabaseIntegrate.Demo;
     using Framework.Cli;
     using Framework.Cli.Config;
+    using Framework.Cli.Generate;
     using Framework.DataAccessLayer;
     using System.Collections.Generic;
     using System.Linq;
@@ -36,7 +37,7 @@
         }
 
         /// <summary>
-        /// Cli Generate.
+        /// Cli Generate command.
         /// </summary>
         protected override void CommandGenerateIntegrate(GenerateIntegrateResult result)
         {
@@ -112,7 +113,15 @@
         }
 
         /// <summary>
-        /// Cli Deploy.
+        /// Cli Generate command.
+        /// </summary>
+        protected override MetaSqlSchema[] CommandGenerateFilter(MetaSqlSchema[] list)
+        {
+            return list.Where(item => item.SchemaName == "Demo").ToArray();
+        }
+
+        /// <summary>
+        /// Cli Deploy command.
         /// </summary>
         protected override void CommandDeployDbIntegrate(DeployDbIntegrateResult result)
         {
