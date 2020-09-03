@@ -2,3 +2,6 @@
 /ConfigCli.json
 /ConfigServer.json
 /ExternalGit/
+/Application/App/ExternalGit/
+/Application.Database/Database/ExternalGit/
+/Application.Website/ExternalGit/

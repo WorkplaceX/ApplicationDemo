@@ -9,7 +9,8 @@
 	],
 	"settings": {
 		"workbench.colorCustomizations": {
-			"terminal.background": "#000055"
+			"terminal.background": "#000055",
+			"activityBar.background": "#000983",
 		},
 		"html.format.wrapLineLength": 0
 	}
