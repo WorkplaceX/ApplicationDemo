@@ -25,6 +25,8 @@
 
             // this.Button = new Button(this) { TextHtml = "Click" };
             // new Button(this) { TextHtml = "Click2" };
+
+            Title = "Demo Application";
         }
 
         public PageMain PageMain;
