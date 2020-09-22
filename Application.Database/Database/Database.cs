@@ -780,14 +780,8 @@ namespace Database.Demo
         [SqlField("Id", FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
-        public string IdName { get; set; }
-
         [SqlField("ParentId", FrameworkTypeEnum.Int)]
         public int? ParentId { get; set; }
-
-        [SqlField("ParentIdName", FrameworkTypeEnum.Nvarcahr)]
-        public string ParentIdName { get; set; }
 
         [SqlField("Name", FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -800,6 +794,12 @@ namespace Database.Demo
 
         [SqlField("Sort", FrameworkTypeEnum.Float)]
         public double? Sort { get; set; }
+
+        [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
+        public string IdName { get; set; }
+
+        [SqlField("ParentIdName", FrameworkTypeEnum.Nvarcahr)]
+        public string ParentIdName { get; set; }
     }
 
     [SqlTable("Demo", "Raw.FlagIconCss.Country")]
