@@ -125,6 +125,7 @@
         /// </summary>
         protected override void CommandDeployDbIntegrate(DeployDbIntegrateResult result)
         {
+            // Language
             result.Add(LanguageIntegrateApplication.RowList);
 
             // Navigation
