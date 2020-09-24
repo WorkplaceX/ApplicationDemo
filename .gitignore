@@ -4,4 +4,5 @@
 /ExternalGit/
 /Application/App/ExternalGit/
 /Application.Database/Database/ExternalGit/
+/Application.Cli/DeployDb/ExternalGit/
 /Application.Website/ExternalGit/
