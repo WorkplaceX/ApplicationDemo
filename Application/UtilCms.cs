@@ -117,7 +117,7 @@
                         if (item.ComponentTypeIdName == CmsComponentTypeIntegrateApplication.IdNameEnum.Page.IdName())
                         {
                             // Render sub page as card.
-                            result.Append($"<a class='linkPost' href='{ UtilCms.PathCmsPage(item.PagePath) }'>");
+                            result.Append($"<a class='navigatePost' href='{ UtilCms.PathCmsPage(item.PagePath) }'>");
                             result.Append("<div class='card'>");
                             if (item.PageImageFileName != null)
                             {

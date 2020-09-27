@@ -66,7 +66,7 @@
                 }
                 else
                 {
-                    if (args.IsPath(UtilCms.PathCmsPage(), out _))
+                    if (args.IsNavigatePath(UtilCms.PathCmsPage(), out _))
                     {
                         result.IsSession = true;
                     }
@@ -77,11 +77,11 @@
                     }
                 }
             }
-            if (args.IsPath("/filemanager/"))
+            if (args.IsNavigatePath("/filemanager/"))
             {
                 result.IsSession = true;
             }
-            if (args.IsPath("/roadmap/"))
+            if (args.IsNavigatePath("/roadmap/"))
             {
                 result.IsSession = true;
             }
@@ -89,23 +89,23 @@
 
         protected override async Task NavigateSessionAsync(NavigateArgs args, NavigateSessionResult result)
         {
-            if (args.Path == "/")
+            if (args.NavigatePath == "/")
             {
                 PageMain.IsHide = false;
                 PageCmsContent.IsHide = true;
                 PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First();
             }
-            if (args.IsPath(UtilCms.PathCmsPage(), out string path))
+            if (args.IsNavigatePath(UtilCms.PathCmsPage(), out string path))
             {
                 PageMain.IsHide = true;
                 PageCmsContent.IsHide = false;
                 await PageCmsContent.Load(path);
             }
-            if (args.IsPath("/filemanager/"))
+            if (args.IsNavigatePath("/filemanager/"))
             {
                 PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First(item => item.Name == "FileManager");
             }
-            if (args.IsPath("/roadmap/"))
+            if (args.IsNavigatePath("/roadmap/"))
             {
                 PageMain.GridNavigation.RowSelected = PageMain.GridNavigation.RowList.First(item => item.Name == "Roadmap");
             }
