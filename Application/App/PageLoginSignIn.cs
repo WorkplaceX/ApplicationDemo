@@ -35,7 +35,7 @@
                 var loginUser = (await Data.Query<LoginUser>().Where(item => item.Name == loginUserSession.Name).QueryExecuteAsync()).SingleOrDefault();
                 if (loginUser == null)
                 {
-                    this.AlertError = this.BootstrapAlert("Username or password wrong!", BootstrapAlertEnum.Error);
+                    this.AlertError = this.CreateAlert("Username or password wrong!", AlertEnum.Error);
                 }
                 else
                 {
@@ -60,7 +60,7 @@
 
         protected override void Query(QueryArgs args, QueryResult result)
         {
-            result.Query = Data.Query<LoginUser>(DatabaseEnum.MemorySingleton);
+            result.Query = Data.Query<LoginUser>(DatabaseEnum.Memory);
         }
     }
 }

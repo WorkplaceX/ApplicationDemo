@@ -10,10 +10,12 @@
     {
         public override async Task InitAsync()
         {
-            if (this.IsSessionExpired)
+            SettingEnum = SettingEnum.Bootstrap;
+         
+            if (IsSessionExpired)
             {
-                this.HtmlSessionExpired = this.BootstrapAlert("Session expired!", BootstrapAlertEnum.Warning);
-                this.IsScrollToTop = true;
+                HtmlSessionExpired = this.CreateAlert("Session expired!", AlertEnum.Warning);
+                IsScrollToTop = true;
             }
 
             // new Custom01(this) { TextHtml = "Hello <b>World</b>" };
