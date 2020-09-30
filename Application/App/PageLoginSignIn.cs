@@ -35,7 +35,7 @@
                 var loginUser = (await Data.Query<LoginUser>().Where(item => item.Name == loginUserSession.Name).QueryExecuteAsync()).SingleOrDefault();
                 if (loginUser == null)
                 {
-                    this.AlertError = this.CreateAlert("Username or password wrong!", AlertEnum.Error);
+                    this.AlertError = new Alert(this, "Username or password wrong!", AlertEnum.Error);
                 }
                 else
                 {

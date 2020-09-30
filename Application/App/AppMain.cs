@@ -10,11 +10,11 @@
     {
         public override async Task InitAsync()
         {
-            SettingEnum = SettingEnum.Bootstrap;
+            CssFrameworkEnum = CssFrameworkEnum.Bootstrap;
          
             if (IsSessionExpired)
             {
-                HtmlSessionExpired = this.CreateAlert("Session expired!", AlertEnum.Warning);
+                HtmlSessionExpired = new Alert(this, "Session expired!", AlertEnum.Warning);
                 IsScrollToTop = true;
             }
 

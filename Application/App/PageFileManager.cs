@@ -1,10 +1,8 @@
 ﻿namespace Application
 {
     using Database.Demo;
-    using Framework.DataAccessLayer;
     using Framework.Json;
     using Framework.Json.Bootstrap;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class PageFileManager : Page
