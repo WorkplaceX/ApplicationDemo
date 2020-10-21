@@ -26,7 +26,7 @@
     {
         public GridFile(ComponentJson owner) : base(owner) { }
 
-        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
+        protected override void CellAnnotation(AnnotationArgs args, AnnotationResult result)
         {
             if (args.FieldName == nameof(StorageFile.Data))
             {

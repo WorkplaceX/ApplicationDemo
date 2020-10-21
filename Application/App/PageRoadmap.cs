@@ -234,7 +234,7 @@
             }
         }
 
-        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
+        protected override void CellAnnotation(AnnotationArgs args, AnnotationResult result)
         {
             // Priority
             if (args.FieldName == nameof(args.Row.RoadmapPriorityText))

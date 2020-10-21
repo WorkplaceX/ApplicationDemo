@@ -49,7 +49,7 @@
             }
         }
 
-        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
+        protected override void CellAnnotation(AnnotationArgs args, AnnotationResult result)
         {
             var countryDisplay = args.Row as CountryDisplayCache;
             if (args.FieldName == nameof(CountryDisplayCache.Country) && countryDisplay?.ASFlagIcon != null)

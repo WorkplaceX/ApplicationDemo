@@ -28,16 +28,13 @@
 
         protected override void Truncate(TruncateArgs args)
         {
-            foreach (var item in args.RowList)
+            if (args.Row.Data != null && args.Row.Data.Length != 0)
             {
-                if (item.Data != null && item.Data.Length != 0)
-                {
-                    item.Data = new byte[0];
-                }
+                args.Row.Data = new byte[0];
             }
         }
 
-        protected override void CellAnnotationRow(AnnotationArgs args, AnnotationResult result)
+        protected override void CellAnnotation(AnnotationArgs args, AnnotationResult result)
         {
             if (args.FieldName == nameof(args.Row.FileName))
             {
@@ -52,7 +49,7 @@
             }
         }
 
-        protected override void CellAnnotation(AnnotationArgs args, AnnotationResult result)
+        protected override void CellAnnotationFilterNew(AnnotationFilterNewArgs args, AnnotationResult result)
         {
             if (args.FieldName == nameof(args.Row.FileName) && args.IsNew)
             {
