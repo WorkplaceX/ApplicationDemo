@@ -12,7 +12,7 @@ namespace DatabaseIntegrate.Demo
 
     public static class LanguageIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("English")]English = 1, [IdNameEnum("French")]French = 2, [IdNameEnum("German")]German = 3, [IdNameEnum("Italian")]Italian = 4 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("English")]English = -1, [IdNameEnum("French")]French = -2, [IdNameEnum("German")]German = -3, [IdNameEnum("Italian")]Italian = -4 }
 
         public static LanguageIntegrate Row(this IdNameEnum value)
         {
@@ -35,10 +35,10 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<LanguageIntegrate>
                 {
-                    new LanguageIntegrate {Id = 1, IdName = "English", Name = "English", TextHtml = "<span class=\"flag-icon flag-icon-gb\"></span> English" },
-                    new LanguageIntegrate {Id = 2, IdName = "French", Name = "French", TextHtml = "<span class=\"flag-icon flag-icon-fr\"></span> French" },
-                    new LanguageIntegrate {Id = 3, IdName = "German", Name = "German", TextHtml = "<span class=\"flag-icon flag-icon-de\"></span> German" },
-                    new LanguageIntegrate {Id = 4, IdName = "Italian", Name = "Italian", TextHtml = "<span class=\"flag-icon flag-icon-it\"></span> Italian" },
+                    new LanguageIntegrate { Id = 0, IdName = "English", Name = "English", TextHtml = "<span class=\"flag-icon flag-icon-gb\"></span> English" },
+                    new LanguageIntegrate { Id = 0, IdName = "French", Name = "French", TextHtml = "<span class=\"flag-icon flag-icon-fr\"></span> French" },
+                    new LanguageIntegrate { Id = 0, IdName = "German", Name = "German", TextHtml = "<span class=\"flag-icon flag-icon-de\"></span> German" },
+                    new LanguageIntegrate { Id = 0, IdName = "Italian", Name = "Italian", TextHtml = "<span class=\"flag-icon flag-icon-it\"></span> Italian" },
                 };
                 return result;
             }
@@ -47,7 +47,7 @@ namespace DatabaseIntegrate.Demo
 
     public static class LoginPermissionIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Administrator")]Administrator = 1, [IdNameEnum("Developer")]Developer = 2, [IdNameEnum("Guest")]Guest = 3 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Administrator")]Administrator = -1, [IdNameEnum("Developer")]Developer = -2, [IdNameEnum("Guest")]Guest = -3 }
 
         public static LoginPermissionIntegrate Row(this IdNameEnum value)
         {
@@ -70,9 +70,9 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<LoginPermissionIntegrate>
                 {
-                    new LoginPermissionIntegrate {Id = 1, IdName = "Administrator", Name = "Administrator", Description = "Administrator permission", IsIntegrate = true, IsExist = true },
-                    new LoginPermissionIntegrate {Id = 2, IdName = "Developer", Name = "Developer", Description = "Developer permission", IsIntegrate = true, IsExist = true },
-                    new LoginPermissionIntegrate {Id = 3, IdName = "Guest", Name = "Guest", Description = "Guest permission", IsIntegrate = true, IsExist = true },
+                    new LoginPermissionIntegrate { Id = 0, IdName = "Administrator", Name = "Administrator", Description = "Administrator permission", IsIntegrate = true, IsExist = true },
+                    new LoginPermissionIntegrate { Id = 0, IdName = "Developer", Name = "Developer", Description = "Developer permission", IsIntegrate = true, IsExist = true },
+                    new LoginPermissionIntegrate { Id = 0, IdName = "Guest", Name = "Guest", Description = "Guest permission", IsIntegrate = true, IsExist = true },
                 };
                 return result;
             }
@@ -81,7 +81,7 @@ namespace DatabaseIntegrate.Demo
 
     public static class RoadmapCategoryIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Analyze")]Analyze = 1, [IdNameEnum("Bug")]Bug = 2, [IdNameEnum("Feature")]Feature = 3 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Analyze")]Analyze = -1, [IdNameEnum("Bug")]Bug = -2, [IdNameEnum("Feature")]Feature = -3 }
 
         public static RoadmapCategoryIntegrate Row(this IdNameEnum value)
         {
@@ -104,9 +104,9 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapCategoryIntegrate>
                 {
-                    new RoadmapCategoryIntegrate {Id = 1, IdName = "Analyze", Name = "Analyze", Text = "Analyze", Description = "Analyze", IsIntegrate = true, IsExist = true },
-                    new RoadmapCategoryIntegrate {Id = 2, IdName = "Bug", Name = "Bug", Text = "Bug", Description = "Software Bug", IsIntegrate = true, IsExist = true },
-                    new RoadmapCategoryIntegrate {Id = 3, IdName = "Feature", Name = "Feature", Text = "Feature", Description = "Software Feature", IsIntegrate = true, IsExist = true },
+                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Analyze", Name = "Analyze", Text = "Analyze", Description = "Analyze", IsIntegrate = true, IsExist = true },
+                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Bug", Name = "Bug", Text = "Bug", Description = "Software Bug", IsIntegrate = true, IsExist = true },
+                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Feature", Name = "Feature", Text = "Feature", Description = "Software Feature", IsIntegrate = true, IsExist = true },
                 };
                 return result;
             }
@@ -115,7 +115,7 @@ namespace DatabaseIntegrate.Demo
 
     public static class RoadmapModuleIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Application")]Application = 1, [IdNameEnum("ApplicationCms")]ApplicationCms = 2, [IdNameEnum("ApplicationLogin")]ApplicationLogin = 3, [IdNameEnum("ApplicationRoadmap")]ApplicationRoadmap = 4, [IdNameEnum("Framework")]Framework = 5 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Application")]Application = -1, [IdNameEnum("ApplicationCms")]ApplicationCms = -2, [IdNameEnum("ApplicationLogin")]ApplicationLogin = -3, [IdNameEnum("ApplicationRoadmap")]ApplicationRoadmap = -4, [IdNameEnum("Framework")]Framework = -5 }
 
         public static RoadmapModuleIntegrate Row(this IdNameEnum value)
         {
@@ -138,11 +138,11 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapModuleIntegrate>
                 {
-                    new RoadmapModuleIntegrate {Id = 1, IdName = "Application", Name = "Application", Text = "Application", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate {Id = 2, IdName = "ApplicationCms", Name = "ApplicationCms", Text = "Application / Cms", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate {Id = 3, IdName = "ApplicationLogin", Name = "ApplicationLogin", Text = "Application / Login", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate {Id = 4, IdName = "ApplicationRoadmap", Name = "ApplicationRoadmap", Text = "Application / Roadmap", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate {Id = 5, IdName = "Framework", Name = "Framework", Text = "Framework", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "Application", Name = "Application", Text = "Application", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationCms", Name = "ApplicationCms", Text = "Application / Cms", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationLogin", Name = "ApplicationLogin", Text = "Application / Login", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationRoadmap", Name = "ApplicationRoadmap", Text = "Application / Roadmap", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "Framework", Name = "Framework", Text = "Framework", Description = null, IsIntegrate = true, IsExist = true },
                 };
                 return result;
             }
@@ -151,7 +151,7 @@ namespace DatabaseIntegrate.Demo
 
     public static class RoadmapPriorityIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Critical")]Critical = 1, [IdNameEnum("High")]High = 2, [IdNameEnum("Low")]Low = 3, [IdNameEnum("Medium")]Medium = 4 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Critical")]Critical = -1, [IdNameEnum("High")]High = -2, [IdNameEnum("Low")]Low = -3, [IdNameEnum("Medium")]Medium = -4 }
 
         public static RoadmapPriorityIntegrate Row(this IdNameEnum value)
         {
@@ -174,10 +174,10 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapPriorityIntegrate>
                 {
-                    new RoadmapPriorityIntegrate {Id = 1, IdName = "Critical", Name = "Critical", Text = "Critical (Red)", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapPriorityIntegrate {Id = 2, IdName = "High", Name = "High", Text = "High (Orange)", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapPriorityIntegrate {Id = 3, IdName = "Low", Name = "Low", Text = "Low (Green)", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapPriorityIntegrate {Id = 4, IdName = "Medium", Name = "Medium", Text = "Medium (Blue)", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Critical", Name = "Critical", Text = "Critical (Red)", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "High", Name = "High", Text = "High (Orange)", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Low", Name = "Low", Text = "Low (Green)", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Medium", Name = "Medium", Text = "Medium (Blue)", Description = null, IsIntegrate = true, IsExist = true },
                 };
                 return result;
             }
@@ -186,7 +186,7 @@ namespace DatabaseIntegrate.Demo
 
     public static class RoadmapStateIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Done")]Done = 1, [IdNameEnum("In Progress")]InProgress = 2, [IdNameEnum("New")]New = 3, [IdNameEnum("Open")]Open = 4 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Done")]Done = -1, [IdNameEnum("In Progress")]InProgress = -2, [IdNameEnum("New")]New = -3, [IdNameEnum("Open")]Open = -4 }
 
         public static RoadmapStateIntegrate Row(this IdNameEnum value)
         {
@@ -209,10 +209,10 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapStateIntegrate>
                 {
-                    new RoadmapStateIntegrate {Id = 1, IdName = "Done", Name = "Done", Text = "Done", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapStateIntegrate {Id = 2, IdName = "In Progress", Name = "In Progress", Text = "In Progress", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapStateIntegrate {Id = 3, IdName = "New", Name = "New", Text = "New", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapStateIntegrate {Id = 4, IdName = "Open", Name = "Open", Text = "Open", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "Done", Name = "Done", Text = "Done", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "In Progress", Name = "In Progress", Text = "In Progress", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "New", Name = "New", Text = "New", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "Open", Name = "Open", Text = "Open", Description = null, IsIntegrate = true, IsExist = true },
                 };
                 return result;
             }
@@ -221,7 +221,7 @@ namespace DatabaseIntegrate.Demo
 
     public static class CmsComponentTypeIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Page")]Page = 1, [IdNameEnum("Paragraph")]Paragraph = 2, [IdNameEnum("Bullet")]Bullet = 3, [IdNameEnum("Image")]Image = 4, [IdNameEnum("Youtube")]Youtube = 5, [IdNameEnum("CodeBlock")]CodeBlock = 6, [IdNameEnum("Glossary")]Glossary = 7 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Page")]Page = -1, [IdNameEnum("Paragraph")]Paragraph = -2, [IdNameEnum("Bullet")]Bullet = -3, [IdNameEnum("Image")]Image = -4, [IdNameEnum("Youtube")]Youtube = -5, [IdNameEnum("CodeBlock")]CodeBlock = -6, [IdNameEnum("Glossary")]Glossary = -7 }
 
         public static CmsComponentTypeIntegrate Row(this IdNameEnum value)
         {
@@ -244,13 +244,13 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<CmsComponentTypeIntegrate>
                 {
-                    new CmsComponentTypeIntegrate {Id = 1, Name = "Page", Sort = 1, IdName = "Page" },
-                    new CmsComponentTypeIntegrate {Id = 2, Name = "Paragraph", Sort = 2, IdName = "Paragraph" },
-                    new CmsComponentTypeIntegrate {Id = 3, Name = "Bullet", Sort = 3, IdName = "Bullet" },
-                    new CmsComponentTypeIntegrate {Id = 4, Name = "Image", Sort = 4, IdName = "Image" },
-                    new CmsComponentTypeIntegrate {Id = 5, Name = "Youtube", Sort = 5, IdName = "Youtube" },
-                    new CmsComponentTypeIntegrate {Id = 6, Name = "CodeBlock", Sort = 6, IdName = "CodeBlock" },
-                    new CmsComponentTypeIntegrate {Id = 7, Name = "Glossary", Sort = 7, IdName = "Glossary" },
+                    new CmsComponentTypeIntegrate { Id = 0, Name = "Page", Sort = 1, IdName = "Page" },
+                    new CmsComponentTypeIntegrate { Id = 0, Name = "Paragraph", Sort = 2, IdName = "Paragraph" },
+                    new CmsComponentTypeIntegrate { Id = 0, Name = "Bullet", Sort = 3, IdName = "Bullet" },
+                    new CmsComponentTypeIntegrate { Id = 0, Name = "Image", Sort = 4, IdName = "Image" },
+                    new CmsComponentTypeIntegrate { Id = 0, Name = "Youtube", Sort = 5, IdName = "Youtube" },
+                    new CmsComponentTypeIntegrate { Id = 0, Name = "CodeBlock", Sort = 6, IdName = "CodeBlock" },
+                    new CmsComponentTypeIntegrate { Id = 0, Name = "Glossary", Sort = 7, IdName = "Glossary" },
                 };
                 return result;
             }
