@@ -98,10 +98,10 @@
 
         private static void HtmlText(CmsComponentDisplay component, List<CmsComponentDisplay> componentList, ref bool isUl, StringBuilder result)
         {
-            var componentType = CmsComponentTypeIntegrateApplication.IdName(component.ComponentTypeIdName);
+            var componentType = CmsComponentTypeIntegrateApp.IdName(component.ComponentTypeIdName);
 
             // Ul close
-            if (componentType != CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet && isUl)
+            if (componentType != CmsComponentTypeIntegrateApp.IdNameEnum.Bullet && isUl)
             {
                 result.Append("</ul>");
                 isUl = false;
@@ -111,10 +111,10 @@
             switch (componentType)
             {
                 // Page
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Page:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Page:
                     foreach (var item in componentList.Where(item => item.ParentId == component.Id).OrderBy(item => item.Sort))
                     {
-                        if (item.ComponentTypeIdName == CmsComponentTypeIntegrateApplication.IdNameEnum.Page.IdName())
+                        if (item.ComponentTypeIdName == CmsComponentTypeIntegrateApp.IdNameEnum.Page.IdName())
                         {
                             // Render sub page as card.
                             result.Append($"<a class='navigatePost' href='{ UtilCms.PathCmsPage(item.PagePath) }'>");
@@ -135,7 +135,7 @@
                         }
                     }
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Paragraph:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Paragraph:
                     if (component.ParagraphTitle != null)
                     {
                         result.Append($"<h1>{ HtmlText(component.ParagraphTitle) }</h1>");
@@ -145,7 +145,7 @@
                         result.Append($"<p>{ HtmlText(component.ParagraphText) }</p>");
                     }
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Bullet:
                     if (!isUl)
                     {
                         result.Append("<ul>");
@@ -153,16 +153,16 @@
                     }
                     result.Append($"<li>{ HtmlText(component.BulletText) }</li>");
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Image:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Image:
                      result.Append($"<img src='{ UtilCms.PathCmsFile(component.ImageFileName) }'>");
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Youtube:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Youtube:
                     result.Append(string.Format("<iframe width='560' height='315' src='{0}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>", component.YoutubeLink));
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.CodeBlock:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.CodeBlock:
                     result.Append(string.Format("<pre><code class='{0}'>{1}</code></pre>", component.CodeBlockTypeText, component.CodeBlockText));
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Glossary:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Glossary:
                     break;
                 default:
                     break;
@@ -220,13 +220,13 @@
 
         private static void TextMd(TextMdArgs args)
         {
-            var componentType = CmsComponentTypeIntegrateApplication.IdName(args.Component.ComponentTypeIdName);
-            var componentPreviousType = CmsComponentTypeIntegrateApplication.IdName(args.ComponentPrevious?.ComponentTypeIdName);
+            var componentType = CmsComponentTypeIntegrateApp.IdName(args.Component.ComponentTypeIdName);
+            var componentPreviousType = CmsComponentTypeIntegrateApp.IdName(args.ComponentPrevious?.ComponentTypeIdName);
             switch (componentType)
             {
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.None:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.None:
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Page:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Page:
                     TextMdNewLine(args);
                     args.Result.Append("(Page");
                     TextMdParameter(args, "Path", args.Component.PagePath);
@@ -241,7 +241,7 @@
                         argsLocal.ComponentPrevious = item;
                     }
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Paragraph:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Paragraph:
                     TextMdNewLine(args);
                     if (args.Component.ParagraphTitle != null)
                     {
@@ -252,18 +252,18 @@
                         args.Result.AppendLine(args.Component.ParagraphText);
                     }
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet:
-                    if (componentPreviousType != CmsComponentTypeIntegrateApplication.IdNameEnum.Bullet)
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Bullet:
+                    if (componentPreviousType != CmsComponentTypeIntegrateApp.IdNameEnum.Bullet)
                     {
                         TextMdNewLine(args);
                     }
                     args.Result.AppendLine("* " + args.Component.BulletText);
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Image:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Image:
                     TextMdNewLine(args);
                     args.Result.AppendLine($"![{ args.Component.ImageText }]({ args.Component.ImageFileName })");
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Youtube:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Youtube:
                     TextMdNewLine(args);
                     args.Result.AppendLine("(Youtube)");
                     if (args.Component.YoutubeLink != null)
@@ -271,13 +271,13 @@
                         args.Result.AppendLine(args.Component.YoutubeLink);
                     }
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.CodeBlock:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.CodeBlock:
                     TextMdNewLine(args);
                     args.Result.AppendLine("```" + args.Component.CodeBlockTypeText);
                     args.Result.AppendLine(args.Component.CodeBlockText);
                     args.Result.AppendLine("```");
                     break;
-                case CmsComponentTypeIntegrateApplication.IdNameEnum.Glossary:
+                case CmsComponentTypeIntegrateApp.IdNameEnum.Glossary:
                     break;
                 default:
                     break;

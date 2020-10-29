@@ -7,7 +7,7 @@ namespace DatabaseIntegrate.dbo
     using System.Globalization;
     using Database.dbo;
 
-    public static class FrameworkConfigGridIntegrateApplicationCli
+    public static class FrameworkConfigGridIntegrateAppCli
     {
         public static List<FrameworkConfigGridIntegrate> RowList
         {
@@ -31,7 +31,7 @@ namespace DatabaseIntegrate.dbo
         }
     }
 
-    public static class FrameworkConfigFieldIntegrateApplicationCli
+    public static class FrameworkConfigFieldIntegrateAppCli
     {
         public static List<FrameworkConfigFieldIntegrate> RowList
         {
@@ -87,7 +87,7 @@ namespace DatabaseIntegrate.Demo
     using System.Globalization;
     using Database.Demo;
 
-    public static class NavigationIntegrateApplicationCli
+    public static class NavigationIntegrateAppCli
     {
         public static List<NavigationIntegrate> RowList
         {
@@ -118,7 +118,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class LoginPermissionIntegrateApplicationCli
+    public static class LoginPermissionIntegrateAppCli
     {
         public static List<LoginPermissionIntegrate> RowList
         {
@@ -136,7 +136,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class LoginRoleIntegrateApplicationCli
+    public static class LoginRoleIntegrateAppCli
     {
         public static List<LoginRoleIntegrate> RowList
         {
@@ -154,7 +154,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class LoginRolePermissionIntegrateApplicationCli
+    public static class LoginRolePermissionIntegrateAppCli
     {
         public static List<LoginRolePermissionIntegrate> RowList
         {
@@ -182,7 +182,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class LoginUserIntegrateApplicationCli
+    public static class LoginUserIntegrateAppCli
     {
         public static List<LoginUserIntegrate> RowList
         {
@@ -201,7 +201,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class LoginUserRoleIntegrateApplicationCli
+    public static class LoginUserRoleIntegrateAppCli
     {
         public static List<LoginUserRoleIntegrate> RowList
         {
@@ -225,7 +225,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class RoadmapIntegrateApplicationCli
+    public static class RoadmapIntegrateAppCli
     {
         public static List<RoadmapIntegrate> RowList
         {
@@ -285,7 +285,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class StorageFileApplicationCli
+    public static class StorageFileAppCli
     {
         public static List<StorageFile> RowList
         {
@@ -1686,7 +1686,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class CmsCodeBlockTypeIntegrateApplicationCli
+    public static class CmsCodeBlockTypeIntegrateAppCli
     {
         public static List<CmsCodeBlockTypeIntegrate> RowList
         {
@@ -1705,7 +1705,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class CmsFileApplicationCli
+    public static class CmsFileAppCli
     {
         public static List<CmsFile> RowList
         {
@@ -7800,7 +7800,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class CmsComponentIntegrateApplicationCli
+    public static class CmsComponentIntegrateAppCli
     {
         public static List<CmsComponentIntegrate> RowList
         {

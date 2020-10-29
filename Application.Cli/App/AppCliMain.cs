@@ -113,11 +113,12 @@
         }
 
         /// <summary>
-        /// Cli Generate command.
+        /// Command cli generate.
         /// </summary>
-        protected override MetaSqlSchema[] CommandGenerateFilter(MetaSqlSchema[] list)
+        protected override void CommandGenerateFilter(GenerateFilterArgs args, GenerateFilterResult result)
         {
-            return list.Where(item => item.SchemaName == "Demo").ToArray();
+            result.FieldSqlList = args.FieldSqlList.Where(item => item.SchemaName == "Demo").ToList();
+            result.TypeRowCalculatedList = new List<System.Type>();
         }
 
         /// <summary>
@@ -126,43 +127,43 @@
         protected override void CommandDeployDbIntegrate(DeployDbIntegrateResult result)
         {
             // Language
-            result.Add(LanguageIntegrateApplication.RowList);
+            result.Add(LanguageIntegrateApp.RowList);
 
             // Navigation
-            var rowList = NavigationIntegrateApplicationCli.RowList;
+            var rowList = NavigationIntegrateAppCli.RowList;
             result.Add(rowList, (item) => item.IdName, (item) => item.ParentIdName, (item) => item.Sort);
 
             // LoginPermission
-            result.Add(LoginPermissionIntegrateApplication.RowList);
-            result.Add(LoginPermissionIntegrateApplicationCli.RowList);
+            result.Add(LoginPermissionIntegrateApp.RowList);
+            result.Add(LoginPermissionIntegrateAppCli.RowList);
 
             // LoginRole
-            result.Add(LoginRoleIntegrateApplicationCli.RowList);
+            result.Add(LoginRoleIntegrateAppCli.RowList);
 
             // LoginRolePermission
-            result.Add(LoginRolePermissionIntegrateApplicationCli.RowList);
+            result.Add(LoginRolePermissionIntegrateAppCli.RowList);
 
             // LoginUser
-            result.Add(LoginUserIntegrateApplicationCli.RowList);
+            result.Add(LoginUserIntegrateAppCli.RowList);
 
             // LoginUserRole
-            result.Add(LoginUserRoleIntegrateApplicationCli.RowList);
+            result.Add(LoginUserRoleIntegrateAppCli.RowList);
 
             // Roadmap
-            result.Add(RoadmapCategoryIntegrateApplication.RowList); // Category
-            result.Add(RoadmapModuleIntegrateApplication.RowList); // Module
-            result.Add(RoadmapPriorityIntegrateApplication.RowList); // Priority
-            result.Add(RoadmapStateIntegrateApplication.RowList); // State
-            result.Add(RoadmapIntegrateApplicationCli.RowList); // Roadmap
+            result.Add(RoadmapCategoryIntegrateApp.RowList); // Category
+            result.Add(RoadmapModuleIntegrateApp.RowList); // Module
+            result.Add(RoadmapPriorityIntegrateApp.RowList); // Priority
+            result.Add(RoadmapStateIntegrateApp.RowList); // State
+            result.Add(RoadmapIntegrateAppCli.RowList); // Roadmap
 
             // FileManager
-            result.Add(StorageFileApplicationCli.RowList);
+            result.Add(StorageFileAppCli.RowList);
 
             // Cms
-            result.Add(CmsComponentTypeIntegrateApplication.RowList);
-            result.Add(CmsCodeBlockTypeIntegrateApplicationCli.RowList);
-            result.Add(CmsFileApplicationCli.RowList);
-            result.Add(CmsComponentIntegrateApplicationCli.RowList, (item) => item.IdName, (item) => item.ParentIdName, (item) => null);
+            result.Add(CmsComponentTypeIntegrateApp.RowList);
+            result.Add(CmsCodeBlockTypeIntegrateAppCli.RowList);
+            result.Add(CmsFileAppCli.RowList);
+            result.Add(CmsComponentIntegrateAppCli.RowList, (item) => item.IdName, (item) => item.ParentIdName, (item) => null);
         }
     }
 }

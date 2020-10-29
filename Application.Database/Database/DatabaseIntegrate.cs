@@ -6,11 +6,12 @@ namespace DatabaseIntegrate.Demo
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System.Threading.Tasks;
     using Framework.DataAccessLayer;
     using Framework.DataAccessLayer.Integrate;
     using Database.Demo;
 
-    public static class LanguageIntegrateApplication
+    public static class LanguageIntegrateApp
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("English")]English = -1, [IdNameEnum("French")]French = -2, [IdNameEnum("German")]German = -3, [IdNameEnum("Italian")]Italian = -4 }
 
@@ -29,6 +30,11 @@ namespace DatabaseIntegrate.Demo
             return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
+        public static async Task<int> Id(this IdNameEnum value)
+        {
+            return (await Data.Query<LanguageIntegrate>().Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
+        }
+
         public static List<LanguageIntegrate> RowList
         {
             get
@@ -45,7 +51,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class LoginPermissionIntegrateApplication
+    public static class LoginPermissionIntegrateApp
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Administrator")]Administrator = -1, [IdNameEnum("Developer")]Developer = -2, [IdNameEnum("Guest")]Guest = -3 }
 
@@ -64,6 +70,11 @@ namespace DatabaseIntegrate.Demo
             return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
+        public static async Task<int> Id(this IdNameEnum value)
+        {
+            return (await Data.Query<LoginPermissionIntegrate>().Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
+        }
+
         public static List<LoginPermissionIntegrate> RowList
         {
             get
@@ -79,7 +90,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class RoadmapCategoryIntegrateApplication
+    public static class RoadmapCategoryIntegrateApp
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Analyze")]Analyze = -1, [IdNameEnum("Bug")]Bug = -2, [IdNameEnum("Feature")]Feature = -3 }
 
@@ -98,6 +109,11 @@ namespace DatabaseIntegrate.Demo
             return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
+        public static async Task<int> Id(this IdNameEnum value)
+        {
+            return (await Data.Query<RoadmapCategoryIntegrate>().Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
+        }
+
         public static List<RoadmapCategoryIntegrate> RowList
         {
             get
@@ -113,7 +129,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class RoadmapModuleIntegrateApplication
+    public static class RoadmapModuleIntegrateApp
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Application")]Application = -1, [IdNameEnum("ApplicationCms")]ApplicationCms = -2, [IdNameEnum("ApplicationLogin")]ApplicationLogin = -3, [IdNameEnum("ApplicationRoadmap")]ApplicationRoadmap = -4, [IdNameEnum("Framework")]Framework = -5 }
 
@@ -130,6 +146,11 @@ namespace DatabaseIntegrate.Demo
         public static string IdName(this IdNameEnum value)
         {
             return IdNameEnumAttribute.IdNameFromEnum(value);
+        }
+
+        public static async Task<int> Id(this IdNameEnum value)
+        {
+            return (await Data.Query<RoadmapModuleIntegrate>().Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
         }
 
         public static List<RoadmapModuleIntegrate> RowList
@@ -149,7 +170,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class RoadmapPriorityIntegrateApplication
+    public static class RoadmapPriorityIntegrateApp
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Critical")]Critical = -1, [IdNameEnum("High")]High = -2, [IdNameEnum("Low")]Low = -3, [IdNameEnum("Medium")]Medium = -4 }
 
@@ -168,6 +189,11 @@ namespace DatabaseIntegrate.Demo
             return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
+        public static async Task<int> Id(this IdNameEnum value)
+        {
+            return (await Data.Query<RoadmapPriorityIntegrate>().Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
+        }
+
         public static List<RoadmapPriorityIntegrate> RowList
         {
             get
@@ -184,7 +210,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class RoadmapStateIntegrateApplication
+    public static class RoadmapStateIntegrateApp
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Done")]Done = -1, [IdNameEnum("In Progress")]InProgress = -2, [IdNameEnum("New")]New = -3, [IdNameEnum("Open")]Open = -4 }
 
@@ -203,6 +229,11 @@ namespace DatabaseIntegrate.Demo
             return IdNameEnumAttribute.IdNameFromEnum(value);
         }
 
+        public static async Task<int> Id(this IdNameEnum value)
+        {
+            return (await Data.Query<RoadmapStateIntegrate>().Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
+        }
+
         public static List<RoadmapStateIntegrate> RowList
         {
             get
@@ -219,7 +250,7 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
-    public static class CmsComponentTypeIntegrateApplication
+    public static class CmsComponentTypeIntegrateApp
     {
         public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Page")]Page = -1, [IdNameEnum("Paragraph")]Paragraph = -2, [IdNameEnum("Bullet")]Bullet = -3, [IdNameEnum("Image")]Image = -4, [IdNameEnum("Youtube")]Youtube = -5, [IdNameEnum("CodeBlock")]CodeBlock = -6, [IdNameEnum("Glossary")]Glossary = -7 }
 
@@ -236,6 +267,11 @@ namespace DatabaseIntegrate.Demo
         public static string IdName(this IdNameEnum value)
         {
             return IdNameEnumAttribute.IdNameFromEnum(value);
+        }
+
+        public static async Task<int> Id(this IdNameEnum value)
+        {
+            return (await Data.Query<CmsComponentTypeIntegrate>().Where(item => item.IdName == IdNameEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
         }
 
         public static List<CmsComponentTypeIntegrate> RowList
