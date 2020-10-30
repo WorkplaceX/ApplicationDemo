@@ -101,7 +101,7 @@
             var componentType = CmsComponentTypeIntegrateApp.IdName(component.ComponentTypeIdName);
 
             // Ul close
-            if (componentType != CmsComponentTypeIntegrateApp.IdNameEnum.Bullet && isUl)
+            if (componentType != CmsComponentTypeIntegrateApp.IdEnum.Bullet && isUl)
             {
                 result.Append("</ul>");
                 isUl = false;
@@ -111,10 +111,10 @@
             switch (componentType)
             {
                 // Page
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Page:
+                case CmsComponentTypeIntegrateApp.IdEnum.Page:
                     foreach (var item in componentList.Where(item => item.ParentId == component.Id).OrderBy(item => item.Sort))
                     {
-                        if (item.ComponentTypeIdName == CmsComponentTypeIntegrateApp.IdNameEnum.Page.IdName())
+                        if (item.ComponentTypeIdName == CmsComponentTypeIntegrateApp.IdEnum.Page.IdName())
                         {
                             // Render sub page as card.
                             result.Append($"<a class='navigatePost' href='{ UtilCms.PathCmsPage(item.PagePath) }'>");
@@ -135,7 +135,7 @@
                         }
                     }
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Paragraph:
+                case CmsComponentTypeIntegrateApp.IdEnum.Paragraph:
                     if (component.ParagraphTitle != null)
                     {
                         result.Append($"<h1>{ HtmlText(component.ParagraphTitle) }</h1>");
@@ -145,7 +145,7 @@
                         result.Append($"<p>{ HtmlText(component.ParagraphText) }</p>");
                     }
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Bullet:
+                case CmsComponentTypeIntegrateApp.IdEnum.Bullet:
                     if (!isUl)
                     {
                         result.Append("<ul>");
@@ -153,16 +153,16 @@
                     }
                     result.Append($"<li>{ HtmlText(component.BulletText) }</li>");
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Image:
+                case CmsComponentTypeIntegrateApp.IdEnum.Image:
                      result.Append($"<img src='{ UtilCms.PathCmsFile(component.ImageFileName) }'>");
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Youtube:
+                case CmsComponentTypeIntegrateApp.IdEnum.Youtube:
                     result.Append(string.Format("<iframe width='560' height='315' src='{0}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>", component.YoutubeLink));
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.CodeBlock:
+                case CmsComponentTypeIntegrateApp.IdEnum.CodeBlock:
                     result.Append(string.Format("<pre><code class='{0}'>{1}</code></pre>", component.CodeBlockTypeText, component.CodeBlockText));
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Glossary:
+                case CmsComponentTypeIntegrateApp.IdEnum.Glossary:
                     break;
                 default:
                     break;
@@ -224,9 +224,9 @@
             var componentPreviousType = CmsComponentTypeIntegrateApp.IdName(args.ComponentPrevious?.ComponentTypeIdName);
             switch (componentType)
             {
-                case CmsComponentTypeIntegrateApp.IdNameEnum.None:
+                case CmsComponentTypeIntegrateApp.IdEnum.None:
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Page:
+                case CmsComponentTypeIntegrateApp.IdEnum.Page:
                     TextMdNewLine(args);
                     args.Result.Append("(Page");
                     TextMdParameter(args, "Path", args.Component.PagePath);
@@ -241,7 +241,7 @@
                         argsLocal.ComponentPrevious = item;
                     }
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Paragraph:
+                case CmsComponentTypeIntegrateApp.IdEnum.Paragraph:
                     TextMdNewLine(args);
                     if (args.Component.ParagraphTitle != null)
                     {
@@ -252,18 +252,18 @@
                         args.Result.AppendLine(args.Component.ParagraphText);
                     }
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Bullet:
-                    if (componentPreviousType != CmsComponentTypeIntegrateApp.IdNameEnum.Bullet)
+                case CmsComponentTypeIntegrateApp.IdEnum.Bullet:
+                    if (componentPreviousType != CmsComponentTypeIntegrateApp.IdEnum.Bullet)
                     {
                         TextMdNewLine(args);
                     }
                     args.Result.AppendLine("* " + args.Component.BulletText);
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Image:
+                case CmsComponentTypeIntegrateApp.IdEnum.Image:
                     TextMdNewLine(args);
                     args.Result.AppendLine($"![{ args.Component.ImageText }]({ args.Component.ImageFileName })");
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Youtube:
+                case CmsComponentTypeIntegrateApp.IdEnum.Youtube:
                     TextMdNewLine(args);
                     args.Result.AppendLine("(Youtube)");
                     if (args.Component.YoutubeLink != null)
@@ -271,13 +271,13 @@
                         args.Result.AppendLine(args.Component.YoutubeLink);
                     }
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.CodeBlock:
+                case CmsComponentTypeIntegrateApp.IdEnum.CodeBlock:
                     TextMdNewLine(args);
                     args.Result.AppendLine("```" + args.Component.CodeBlockTypeText);
                     args.Result.AppendLine(args.Component.CodeBlockText);
                     args.Result.AppendLine("```");
                     break;
-                case CmsComponentTypeIntegrateApp.IdNameEnum.Glossary:
+                case CmsComponentTypeIntegrateApp.IdEnum.Glossary:
                     break;
                 default:
                     break;

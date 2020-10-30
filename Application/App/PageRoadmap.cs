@@ -243,16 +243,16 @@
                 string bootstrapColor = null;
                 switch (idEnum)
                 {
-                    case RoadmapPriorityIntegrateApp.IdNameEnum.Low:
+                    case RoadmapPriorityIntegrateApp.IdEnum.Low:
                         bootstrapColor = "text-success"; // Green
                         break;
-                    case RoadmapPriorityIntegrateApp.IdNameEnum.Medium:
+                    case RoadmapPriorityIntegrateApp.IdEnum.Medium:
                         bootstrapColor = "text-primary"; // Blue
                         break;
-                    case RoadmapPriorityIntegrateApp.IdNameEnum.High:
+                    case RoadmapPriorityIntegrateApp.IdEnum.High:
                         bootstrapColor = "text-warning"; // Orange
                         break;
-                    case RoadmapPriorityIntegrateApp.IdNameEnum.Critical:
+                    case RoadmapPriorityIntegrateApp.IdEnum.Critical:
                         bootstrapColor = "text-danger"; // Red
                         break;
                 }
@@ -265,13 +265,13 @@
                 var idEnum = RoadmapCategoryIntegrateApp.IdName(args.Row.RoadmapCategoryIdName);
                 switch (idEnum)
                 {
-                    case RoadmapCategoryIntegrateApp.IdNameEnum.Feature:
+                    case RoadmapCategoryIntegrateApp.IdEnum.Feature:
                         result.HtmlLeft = "<i class='fas fa-box-open text-primary'></i>"; // Blue
                         break;
-                    case RoadmapCategoryIntegrateApp.IdNameEnum.Bug:
+                    case RoadmapCategoryIntegrateApp.IdEnum.Bug:
                         result.HtmlLeft = "<i class='fas fa-bug text-danger'></i>"; // Red
                         break;
-                    case RoadmapCategoryIntegrateApp.IdNameEnum.Analyze:
+                    case RoadmapCategoryIntegrateApp.IdEnum.Analyze:
                         result.HtmlLeft = "<i class='fas fa-vial text-info'></i>"; // Green
                         break;
                 }
@@ -281,7 +281,7 @@
             if (args.FieldName == nameof(args.Row.RoadmapStateText))
             {
                 var idEnum = RoadmapStateIntegrateApp.IdName(args.Row.RoadmapStateIdName);
-                if (idEnum == RoadmapStateIntegrateApp.IdNameEnum.Done)
+                if (idEnum == RoadmapStateIntegrateApp.IdEnum.Done)
                 {
                     result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
                 }
@@ -289,7 +289,7 @@
             if (args.FieldName == nameof(args.Row.Description))
             {
                 var idEnum = RoadmapStateIntegrateApp.IdName(args.Row.RoadmapStateIdName);
-                if (idEnum == RoadmapStateIntegrateApp.IdNameEnum.Done)
+                if (idEnum == RoadmapStateIntegrateApp.IdEnum.Done)
                 {
                     result.HtmlRight = "<i class='fas fa-check' text-success></i>"; // Green
                 }
@@ -299,7 +299,7 @@
             if (args.FieldName == nameof(args.Row.RoadmapModuleText))
             {
                 var idEnum = RoadmapModuleIntegrateApp.IdName(args.Row.RoadmapModuleIdName);
-                if (idEnum == RoadmapModuleIntegrateApp.IdNameEnum.Framework)
+                if (idEnum == RoadmapModuleIntegrateApp.IdEnum.Framework)
                 {
                     result.HtmlLeft = "<i class='fas fa-microchip text-primary'></i>"; // Blue
                 }
