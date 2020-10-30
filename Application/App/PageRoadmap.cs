@@ -34,7 +34,7 @@
             await Data.InsertAsync(roadmap);
             args.Row.Id = roadmap.Id; // Get new id from db
             args.Row.Name = roadmap.Name;
-            args.Row.IsExist = true;
+            args.Row.IsDelete = false;
             args.Row.Date = DateTime.Today;
             result.IsHandled = true;
         }

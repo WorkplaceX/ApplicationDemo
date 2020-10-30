@@ -7,7 +7,7 @@ CREATE TABLE Demo.RoadmapCategory
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
 	IsIntegrate BIT NOT NULL,
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 
 GO
@@ -19,7 +19,7 @@ SELECT
 	RoadmapCategory.Text,
 	RoadmapCategory.Description,
 	RoadmapCategory.IsIntegrate,
-	RoadmapCategory.IsExist
+	RoadmapCategory.IsDelete
 FROM
 	Demo.RoadmapCategory RoadmapCategory
 
@@ -32,7 +32,7 @@ CREATE TABLE Demo.RoadmapState
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
 	IsIntegrate BIT NOT NULL,
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 
 GO
@@ -44,7 +44,7 @@ SELECT
 	RoadmapState.Text,
 	RoadmapState.Description,
 	RoadmapState.IsIntegrate,
-	RoadmapState.IsExist
+	RoadmapState.IsDelete
 FROM
 	Demo.RoadmapState RoadmapState
 
@@ -57,7 +57,7 @@ CREATE TABLE Demo.RoadmapModule
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
 	IsIntegrate BIT NOT NULL,
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 
 GO
@@ -69,7 +69,7 @@ SELECT
 	RoadmapModule.Text,
 	RoadmapModule.Description,
 	RoadmapModule.IsIntegrate,
-	RoadmapModule.IsExist
+	RoadmapModule.IsDelete
 FROM
 	Demo.RoadmapModule RoadmapModule
 
@@ -82,7 +82,7 @@ CREATE TABLE Demo.RoadmapPriority
 	Text NVARCHAR(256),
 	Description NVARCHAR(256),
 	IsIntegrate BIT NOT NULL,
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 
 GO
@@ -94,7 +94,7 @@ SELECT
 	RoadmapPriority.Text,
 	RoadmapPriority.Description,
 	RoadmapPriority.IsIntegrate,
-	RoadmapPriority.IsExist
+	RoadmapPriority.IsDelete
 FROM
 	Demo.RoadmapPriority RoadmapPriority
 
@@ -118,7 +118,7 @@ CREATE TABLE Demo.Roadmap
 	-- State
 	RoadmapStateId INT FOREIGN KEY REFERENCES Demo.RoadmapState(Id),
 	IsIntegrate BIT NOT NULL,
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 
 GO
@@ -140,13 +140,13 @@ SELECT
 	(SELECT RoadmapPriority.Name FROM Demo.RoadmapPriority RoadmapPriority WHERE RoadmapPriority.Id = Roadmap.RoadmapPriorityId) AS RoadmapPriorityIdName,
 	-- User
 	Roadmap.LoginUserId,
-	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId AND LoginUser.IsIntegrate = 1 AND LoginUser.IsExist = 1) AS LoginUserIdName,
+	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId AND LoginUser.IsIntegrate = 1 AND LoginUser.IsDelete = 1) AS LoginUserIdName,
 	-- State
 	Roadmap.RoadmapStateId,
 	(SELECT RoadmapState.Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateIdName,
 	-- Roadmap
 	Roadmap.IsIntegrate,
-	Roadmap.IsExist
+	Roadmap.IsDelete
 FROM
 	Demo.Roadmap Roadmap
 
@@ -181,7 +181,7 @@ SELECT
 	(SELECT RoadmapState.Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateIdName, -- Used for enum
 	-- Roadmap
 	Roadmap.IsIntegrate,
-	Roadmap.IsExist
+	Roadmap.IsDelete
 FROM
 	Demo.Roadmap Roadmap
 

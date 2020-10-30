@@ -6,7 +6,7 @@ CREATE TABLE Demo.LoginUser
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Password NVARCHAR(256),
 	IsIntegrate BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 
 GO
@@ -17,7 +17,7 @@ SELECT
 	LoginUser.Name,
 	LoginUser.Password,
 	LoginUser.IsIntegrate,
-	LoginUser.IsExist
+	LoginUser.IsDelete
 FROM
 	Demo.LoginUser LoginUser
 
@@ -48,7 +48,7 @@ CREATE TABLE Demo.LoginPermission
 	Name NVARCHAR(256) NOT NULL UNIQUE,
 	Description NVARCHAR(256),
 	IsIntegrate BIT NOT NULL, /* Built into CSharp code with IdNameEnum and deployed with cli deployDb command */
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 
 GO
@@ -59,7 +59,7 @@ SELECT
 	LoginPermission.Name,
 	LoginPermission.Description,
 	LoginPermission.IsIntegrate,
-	LoginPermission.IsExist
+	LoginPermission.IsDelete
 FROM
 	Demo.LoginPermission LoginPermission
 

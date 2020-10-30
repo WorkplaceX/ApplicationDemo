@@ -109,8 +109,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponentDisplay")]
@@ -215,8 +215,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "CmsComponentIntegrate")]
@@ -288,8 +288,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
 
         [SqlField("IdName", FrameworkTypeEnum.Uniqueidentifier)]
         public Guid IdName { get; set; }
@@ -363,8 +363,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "CmsFileIntegrate")]
@@ -391,8 +391,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
 
         [SqlField("IdName", FrameworkTypeEnum.Nvarcahr)]
         public string IdName { get; set; }
@@ -501,8 +501,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "LoginPermissionIntegrate")]
@@ -523,8 +523,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "LoginRole")]
@@ -634,8 +634,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "LoginUserIntegrate")]
@@ -656,8 +656,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "LoginUserPermissionDisplay")]
@@ -988,8 +988,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapCategory")]
@@ -1010,8 +1010,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapCategoryIntegrate")]
@@ -1035,8 +1035,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapDisplay")]
@@ -1102,8 +1102,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapIntegrate")]
@@ -1157,8 +1157,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapModule")]
@@ -1179,8 +1179,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapModuleIntegrate")]
@@ -1204,8 +1204,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapPriority")]
@@ -1226,8 +1226,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapPriorityIntegrate")]
@@ -1251,8 +1251,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapState")]
@@ -1273,8 +1273,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "RoadmapStateIntegrate")]
@@ -1298,8 +1298,8 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 
     [SqlTable("Demo", "ShopProductPhoto")]
@@ -1333,7 +1333,7 @@ namespace Database.Demo
         [SqlField("IsIntegrate", FrameworkTypeEnum.Bit)]
         public bool IsIntegrate { get; set; }
 
-        [SqlField("IsExist", FrameworkTypeEnum.Bit)]
-        public bool IsExist { get; set; }
+        [SqlField("IsDelete", FrameworkTypeEnum.Bit)]
+        public bool IsDelete { get; set; }
     }
 }

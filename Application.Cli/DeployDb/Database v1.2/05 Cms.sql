@@ -42,7 +42,7 @@ CREATE TABLE Demo.CmsFile
     SourceText NVARCHAR(512),
 	SourceLink NVARCHAR(512),
 	IsIntegrate BIT NOT NULL,
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )
 GO
 CREATE VIEW Demo.CmsFileIntegrate AS
@@ -88,7 +88,7 @@ CREATE TABLE Demo.CmsComponent
     Sort FLOAT,
     -- Integrate
     IsIntegrate BIT NOT NULL,
-    IsExist BIT NOT NULL,
+    IsDelete BIT NOT NULL,
 )
 GO
 CREATE VIEW Demo.CmsComponentIntegrate AS
@@ -162,6 +162,6 @@ SELECT
     Sort,
     -- Integrate
     IsIntegrate,
-    IsExist
+    IsDelete
 FROM
     Demo.CmsComponentIntegrate Data

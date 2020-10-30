@@ -6,5 +6,5 @@ CREATE TABLE Demo.StorageFile
 	Data VARBINARY(MAX),
 	Description NVARCHAR(256),
 	IsIntegrate BIT NOT NULL,
-	IsExist BIT NOT NULL,
+	IsDelete BIT NOT NULL,
 )

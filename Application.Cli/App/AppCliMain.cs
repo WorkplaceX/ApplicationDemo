@@ -51,8 +51,8 @@
             result.AddReference<Navigation, Navigation>(nameof(Navigation.ParentId));
 
             // LoginPermission
-            result.Add(Data.Query<LoginPermissionIntegrate>().Where(item => item.IsIntegrate == true && item.IsExist).OrderBy(item => item.IdName), isApplication: true);
-            result.Add(Data.Query<LoginPermissionIntegrate>().Where(item => item.IsIntegrate == false && item.IsExist).OrderBy(item => item.IdName), isApplication: false);
+            result.Add(Data.Query<LoginPermissionIntegrate>().Where(item => item.IsIntegrate == true && item.IsDelete).OrderBy(item => item.IdName), isApplication: true);
+            result.Add(Data.Query<LoginPermissionIntegrate>().Where(item => item.IsIntegrate == false && item.IsDelete).OrderBy(item => item.IdName), isApplication: false);
             result.AddKey<LoginPermission>(nameof(LoginPermission.Name));
 
             // LoginRole
@@ -76,11 +76,11 @@
             result.AddReference<LoginUserRole, LoginUser>(nameof(LoginUserRole.UserId));
 
             // Roadmap
-            result.Add(Data.Query<RoadmapCategoryIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Category
-            result.Add(Data.Query<RoadmapModuleIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Module
-            result.Add(Data.Query<RoadmapPriorityIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // Priority
-            result.Add(Data.Query<RoadmapStateIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.IdName), isApplication: true); // State
-            result.Add(Data.Query<RoadmapIntegrate>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.Number).ThenBy(item => item.Name)); // Roadmap
+            result.Add(Data.Query<RoadmapCategoryIntegrate>().Where(item => item.IsIntegrate && item.IsDelete).OrderBy(item => item.IdName), isApplication: true); // Category
+            result.Add(Data.Query<RoadmapModuleIntegrate>().Where(item => item.IsIntegrate && item.IsDelete).OrderBy(item => item.IdName), isApplication: true); // Module
+            result.Add(Data.Query<RoadmapPriorityIntegrate>().Where(item => item.IsIntegrate && item.IsDelete).OrderBy(item => item.IdName), isApplication: true); // Priority
+            result.Add(Data.Query<RoadmapStateIntegrate>().Where(item => item.IsIntegrate && item.IsDelete).OrderBy(item => item.IdName), isApplication: true); // State
+            result.Add(Data.Query<RoadmapIntegrate>().Where(item => item.IsIntegrate && item.IsDelete).OrderBy(item => item.Number).ThenBy(item => item.Name)); // Roadmap
             result.AddKey<RoadmapCategory>(nameof(RoadmapCategory.Name));
             result.AddKey<RoadmapModule>(nameof(RoadmapModule.Name));
             result.AddKey<RoadmapPriority>(nameof(RoadmapPriority.Name));
@@ -93,7 +93,7 @@
             result.AddReference<Roadmap, RoadmapState>(nameof(Roadmap.RoadmapStateId));
 
             // FileManager
-            result.Add(Data.Query<StorageFile>().Where(item => item.IsIntegrate && item.IsExist).OrderBy(item => item.FileName));
+            result.Add(Data.Query<StorageFile>().Where(item => item.IsIntegrate && item.IsDelete).OrderBy(item => item.FileName));
             result.AddKey<StorageFile>(nameof(StorageFile.FileName));
 
             // Cms

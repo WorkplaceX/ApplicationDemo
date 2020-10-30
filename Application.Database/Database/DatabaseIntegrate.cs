@@ -81,9 +81,9 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<LoginPermissionIntegrate>
                 {
-                    new LoginPermissionIntegrate { Id = 0, IdName = "Administrator", Name = "Administrator", Description = "Administrator permission", IsIntegrate = true, IsExist = true },
-                    new LoginPermissionIntegrate { Id = 0, IdName = "Developer", Name = "Developer", Description = "Developer permission", IsIntegrate = true, IsExist = true },
-                    new LoginPermissionIntegrate { Id = 0, IdName = "Guest", Name = "Guest", Description = "Guest permission", IsIntegrate = true, IsExist = true },
+                    new LoginPermissionIntegrate { Id = 0, IdName = "Administrator", Name = "Administrator", Description = "Administrator permission", IsIntegrate = true, IsDelete = false },
+                    new LoginPermissionIntegrate { Id = 0, IdName = "Developer", Name = "Developer", Description = "Developer permission", IsIntegrate = true, IsDelete = false },
+                    new LoginPermissionIntegrate { Id = 0, IdName = "Guest", Name = "Guest", Description = "Guest permission", IsIntegrate = true, IsDelete = false },
                 };
                 return result;
             }
@@ -120,9 +120,9 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapCategoryIntegrate>
                 {
-                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Analyze", Name = "Analyze", Text = "Analyze", Description = "Analyze", IsIntegrate = true, IsExist = true },
-                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Bug", Name = "Bug", Text = "Bug", Description = "Software Bug", IsIntegrate = true, IsExist = true },
-                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Feature", Name = "Feature", Text = "Feature", Description = "Software Feature", IsIntegrate = true, IsExist = true },
+                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Analyze", Name = "Analyze", Text = "Analyze", Description = "Analyze", IsIntegrate = true, IsDelete = false },
+                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Bug", Name = "Bug", Text = "Bug", Description = "Software Bug", IsIntegrate = true, IsDelete = false },
+                    new RoadmapCategoryIntegrate { Id = 0, IdName = "Feature", Name = "Feature", Text = "Feature", Description = "Software Feature", IsIntegrate = true, IsDelete = false },
                 };
                 return result;
             }
@@ -159,11 +159,11 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapModuleIntegrate>
                 {
-                    new RoadmapModuleIntegrate { Id = 0, IdName = "Application", Name = "Application", Text = "Application", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationCms", Name = "ApplicationCms", Text = "Application / Cms", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationLogin", Name = "ApplicationLogin", Text = "Application / Login", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationRoadmap", Name = "ApplicationRoadmap", Text = "Application / Roadmap", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapModuleIntegrate { Id = 0, IdName = "Framework", Name = "Framework", Text = "Framework", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "Application", Name = "Application", Text = "Application", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationCms", Name = "ApplicationCms", Text = "Application / Cms", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationLogin", Name = "ApplicationLogin", Text = "Application / Login", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "ApplicationRoadmap", Name = "ApplicationRoadmap", Text = "Application / Roadmap", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapModuleIntegrate { Id = 0, IdName = "Framework", Name = "Framework", Text = "Framework", Description = null, IsIntegrate = true, IsDelete = false },
                 };
                 return result;
             }
@@ -200,10 +200,10 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapPriorityIntegrate>
                 {
-                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Critical", Name = "Critical", Text = "Critical (Red)", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapPriorityIntegrate { Id = 0, IdName = "High", Name = "High", Text = "High (Orange)", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Low", Name = "Low", Text = "Low (Green)", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Medium", Name = "Medium", Text = "Medium (Blue)", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Critical", Name = "Critical", Text = "Critical (Red)", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "High", Name = "High", Text = "High (Orange)", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Low", Name = "Low", Text = "Low (Green)", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapPriorityIntegrate { Id = 0, IdName = "Medium", Name = "Medium", Text = "Medium (Blue)", Description = null, IsIntegrate = true, IsDelete = false },
                 };
                 return result;
             }
@@ -240,10 +240,10 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<RoadmapStateIntegrate>
                 {
-                    new RoadmapStateIntegrate { Id = 0, IdName = "Done", Name = "Done", Text = "Done", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapStateIntegrate { Id = 0, IdName = "In Progress", Name = "In Progress", Text = "In Progress", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapStateIntegrate { Id = 0, IdName = "New", Name = "New", Text = "New", Description = null, IsIntegrate = true, IsExist = true },
-                    new RoadmapStateIntegrate { Id = 0, IdName = "Open", Name = "Open", Text = "Open", Description = null, IsIntegrate = true, IsExist = true },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "Done", Name = "Done", Text = "Done", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "In Progress", Name = "In Progress", Text = "In Progress", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "New", Name = "New", Text = "New", Description = null, IsIntegrate = true, IsDelete = false },
+                    new RoadmapStateIntegrate { Id = 0, IdName = "Open", Name = "Open", Text = "Open", Description = null, IsIntegrate = true, IsDelete = false },
                 };
                 return result;
             }
