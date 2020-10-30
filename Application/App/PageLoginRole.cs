@@ -52,7 +52,7 @@
     {
         public GridLoginRole(ComponentJson owner) : base(owner) { }
 
-        protected override async Task RowSelectedAsync()
+        protected override async Task RowSelectAsync()
         {
             var page = this.ComponentOwner<PageLoginRole>();
 
@@ -73,7 +73,7 @@
         {
             var page = this.ComponentOwner<PageLoginRole>();
 
-            result.Query = args.Query.Where(item => item.RoleId == page.GridLoginRole.RowSelected.Id);
+            result.Query = args.Query.Where(item => item.RoleId == page.GridLoginRole.RowSelect.Id);
         }
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)

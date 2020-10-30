@@ -71,25 +71,25 @@
             }
         }
 
-        protected override void LookupRowSelected(LookupRowSelectedArgs args, LookupRowSelectedResult result)
+        protected override void LookupRowSelect(LookupRowSelectArgs args, LookupRowSelectResult result)
         {
-            if (args.RowSelected is RoadmapCategory roadmapCategory) // Category
+            if (args.RowSelect is RoadmapCategory roadmapCategory) // Category
             {
                 result.Text = roadmapCategory.Text;
             }
-            if (args.RowSelected is RoadmapModule roadmapModule) // Module
+            if (args.RowSelect is RoadmapModule roadmapModule) // Module
             {
                 result.Text = roadmapModule.Text;
             }
-            if (args.RowSelected is RoadmapPriority roadmapPriority) // Priority
+            if (args.RowSelect is RoadmapPriority roadmapPriority) // Priority
             {
                 result.Text = roadmapPriority.Text;
             }
-            if (args.RowSelected is RoadmapState roadmapState) // State
+            if (args.RowSelect is RoadmapState roadmapState) // State
             {
                 result.Text = roadmapState.Text;
             }
-            if (args.RowSelected is LoginUser loginUser) // User
+            if (args.RowSelect is LoginUser loginUser) // User
             {
                 result.Text = loginUser.Name;
             }

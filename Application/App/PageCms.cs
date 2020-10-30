@@ -69,17 +69,17 @@
             }
         }
 
-        protected override void LookupRowSelected(LookupRowSelectedArgs args, LookupRowSelectedResult result)
+        protected override void LookupRowSelect(LookupRowSelectArgs args, LookupRowSelectResult result)
         {
-            if (args.RowSelected is CmsComponentType componentType)
+            if (args.RowSelect is CmsComponentType componentType)
             {
                 result.Text = componentType.Name;
             }
-            if (args.RowSelected is CmsFile cmsFile)
+            if (args.RowSelect is CmsFile cmsFile)
             {
                 result.Text = cmsFile.FileName;
             }
-            if (args.RowSelected is CmsCodeBlockType codeBlockType)
+            if (args.RowSelect is CmsCodeBlockType codeBlockType)
             {
                 result.Text = codeBlockType.Name;
             }
@@ -150,13 +150,13 @@
 
         public Html Html;
 
-        protected override async Task RowSelectedAsync()
+        protected override async Task RowSelectAsync()
         {
             if (Html != null)
             {
-                var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.Id == RowSelected.Id || item.ParentId == RowSelected.Id).QueryExecuteAsync();
-                string text = UtilCms.TextHtml(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList);
-                // text = UtilCms.TextMd(componentList.SingleOrDefault(item => item.Id == RowSelected.Id), componentList).Replace("\r\n", "<br/>");
+                var componentList = await Data.Query<CmsComponentDisplay>().Where(item => item.Id == RowSelect.Id || item.ParentId == RowSelect.Id).QueryExecuteAsync();
+                string text = UtilCms.TextHtml(componentList.SingleOrDefault(item => item.Id == RowSelect.Id), componentList);
+                // text = UtilCms.TextMd(componentList.SingleOrDefault(item => item.Id == RowSelect.Id), componentList).Replace("\r\n", "<br/>");
                 Html.TextHtml = text;
                 Html.IsNoSanatize = true;
             }

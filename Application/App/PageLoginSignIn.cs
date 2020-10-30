@@ -31,7 +31,7 @@
             AlertError.ComponentRemove();
             if (Button.IsClick)
             {
-                var loginUserSession = (LoginUser)Grid.RowSelected;
+                var loginUserSession = (LoginUser)Grid.RowSelect;
                 var loginUser = (await Data.Query<LoginUser>().Where(item => item.Name == loginUserSession.Name).QueryExecuteAsync()).SingleOrDefault();
                 if (loginUser == null)
                 {
@@ -43,7 +43,7 @@
                     pageMain.LoginUser = loginUser;
                     pageMain.LoginUserPermissionDisplayList = await Data.Query<LoginUserPermissionDisplay>().Where(item => item.UserName == loginUser.Name).QueryExecuteAsync();
                 }
-                Button.TextHtml = string.Format("User={0};", ((LoginUser)Grid.RowSelected).Name);
+                Button.TextHtml = string.Format("User={0};", ((LoginUser)Grid.RowSelect).Name);
             }
         }
 

@@ -21,7 +21,7 @@
             await Task.WhenAll(GridNavigation.LoadAsync(), gridLanguage.LoadAsync());
 
             NavBar.GridAdd(GridNavigation);
-            NavBar.GridAdd(gridLanguage, isSelectedMode: true);
+            NavBar.GridAdd(gridLanguage, isSelectMode: true);
             NavBar.BrandTextHtml = "Demo<b>App</b>";
         }
 
@@ -51,97 +51,97 @@
             result.Query = args.Query.OrderBy(item => item.Sort);
         }
 
-        protected override async Task RowSelectedAsync()
+        protected override async Task RowSelectAsync()
         {
             var pageMain = this.ComponentOwner<PageMain>();
-            if (RowSelected.PageName == "Home")
+            if (RowSelect.PageName == "Home")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageAirplane(pageMain.Content).InitAsync();
                 await new PageCountry(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.PageName == "Airport")
+            if (RowSelect.PageName == "Airport")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageAirport(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.PageName == "About")
+            if (RowSelect.PageName == "About")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageAbout(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.PageName == "Roadmap")
+            if (RowSelect.PageName == "Roadmap")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageRoadmap(pageMain.Content).InitAsync();
                 this.ComponentOwner<AppJson>().Navigate("/roadmap/");
             }
 
-            if (RowSelected.PageName == "LoginUser")
+            if (RowSelect.PageName == "LoginUser")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageLoginUser(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.PageName == "LoginRole")
+            if (RowSelect.PageName == "LoginRole")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageLoginRole(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "LoginSignIn")
+            if (RowSelect.Name == "LoginSignIn")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageLoginSignIn(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "LoginSignOut")
+            if (RowSelect.Name == "LoginSignOut")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageLoginSignOut(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "LoginProfile")
+            if (RowSelect.Name == "LoginProfile")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageLoginProfile(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "FileManager")
+            if (RowSelect.Name == "FileManager")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageFileManager(pageMain.Content).InitAsync();
                 this.ComponentOwner<AppJson>().Navigate("/filemanager/");
             }
 
-            if (RowSelected.Name == "Shop")
+            if (RowSelect.Name == "Shop")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageShop(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "ShopCart")
+            if (RowSelect.Name == "ShopCart")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageShopCart(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "Cms")
+            if (RowSelect.Name == "Cms")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageCms(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "CmsDoc")
+            if (RowSelect.Name == "CmsDoc")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageCmsDoc(pageMain.Content).InitAsync();
             }
 
-            if (RowSelected.Name == "CmsFile")
+            if (RowSelect.Name == "CmsFile")
             {
                 pageMain.Content.ComponentListClear();
                 await new PageCmsFile(pageMain.Content).InitAsync();

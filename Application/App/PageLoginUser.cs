@@ -40,7 +40,7 @@
     {
         public GridLoginUser(ComponentJson owner) : base(owner) { }
 
-        protected override async Task RowSelectedAsync()
+        protected override async Task RowSelectAsync()
         {
             var page = this.ComponentOwner<PageLoginUser>();
 
@@ -65,7 +65,7 @@
         {
             var page = this.ComponentOwner<PageLoginUser>();
 
-            result.Query = args.Query.Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
+            result.Query = args.Query.Where(item => item.UserId == (page.GridLoginUser.RowSelect).Id);
         }
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
@@ -87,7 +87,7 @@
         {
             var page = this.ComponentOwner<PageLoginUser>();
 
-            result.Query = args.Query.Where(item => item.UserId == (page.GridLoginUser.RowSelected).Id);
+            result.Query = args.Query.Where(item => item.UserId == (page.GridLoginUser.RowSelect).Id);
         }
     }
 }

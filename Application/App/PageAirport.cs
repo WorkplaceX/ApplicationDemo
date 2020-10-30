@@ -35,15 +35,15 @@
     {
         public GridAirport(ComponentJson owner) : base(owner) { }
 
-        protected override Task RowSelectedAsync()
+        protected override Task RowSelectAsync()
         {
             var pageAirport = this.ComponentOwner<PageAirport>();
             if (pageAirport.IsBingMap)
             {
-                pageAirport.BingMap.Long = RowSelected.Longitude;
-                pageAirport.BingMap.Lat = RowSelected.Latitude;
+                pageAirport.BingMap.Long = RowSelect.Longitude;
+                pageAirport.BingMap.Lat = RowSelect.Latitude;
             }
-            return base.RowSelectedAsync();
+            return base.RowSelectAsync();
         }
     }
 }
