@@ -140,7 +140,7 @@ SELECT
 	(SELECT RoadmapPriority.Name FROM Demo.RoadmapPriority RoadmapPriority WHERE RoadmapPriority.Id = Roadmap.RoadmapPriorityId) AS RoadmapPriorityIdName,
 	-- User
 	Roadmap.LoginUserId,
-	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId AND LoginUser.IsIntegrate = 1 AND LoginUser.IsDelete = 1) AS LoginUserIdName,
+	(SELECT LoginUser.Name FROM Demo.LoginUser LoginUser WHERE LoginUser.Id = Roadmap.LoginUserId AND LoginUser.IsIntegrate = 1 AND LoginUser.IsDelete = 0) AS LoginUserIdName,
 	-- State
 	Roadmap.RoadmapStateId,
 	(SELECT RoadmapState.Name FROM Demo.RoadmapState RoadmapState WHERE RoadmapState.Id = Roadmap.RoadmapStateId) AS RoadmapStateIdName,
