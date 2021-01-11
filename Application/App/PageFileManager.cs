@@ -1,8 +1,10 @@
 ﻿namespace Application
 {
     using Database.Demo;
+    using Framework.DataAccessLayer;
     using Framework.Json;
     using Framework.Json.Bootstrap;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class PageFileManager : Page
@@ -35,6 +37,15 @@
             }
         }
 
+        protected override void CellAnnotationFilterNew(AnnotationFilterNewArgs args, AnnotationResult result)
+        {
+            if (args.IsNew && args.FieldName == nameof(args.Row.Data))
+            {
+                // Show upload icon for new record.
+                result.IsFileUpload = true;
+            }
+        }
+
         protected override void CellParseFileUpload(FileUploadArgs args, ParseResult result)
         {
             if (args.FieldName == nameof(StorageFile.Data))
@@ -43,6 +54,29 @@
                 args.Row.FileName = args.FileName;
                 result.IsHandled = true;
             }
+        }
+
+        protected override void Truncate(TruncateArgs args)
+        {
+            // Truncate big data from server session state.
+            args.Row.Data = null;
+        }
+
+        protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
+        {
+            if (args.Row.Data == null)
+            {
+                // Load truncated data back in before record update.
+                args.Row.Data = (await Data.Query<StorageFile>().Where(item => item.Id == args.Row.Id).QueryExecuteAsync()).Single().Data;
+            }
+            await Data.UpdateAsync(args.Row);
+            result.IsHandled = true;
+        }
+
+        protected override async Task InsertAsync(InsertArgs args, InsertResult result)
+        {
+            await Data.InsertAsync(args.Row);
+            result.IsHandled = true;
         }
     }
 }
