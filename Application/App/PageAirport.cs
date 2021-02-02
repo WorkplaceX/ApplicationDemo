@@ -16,12 +16,7 @@
             var grid = new GridAirport(this);
             if (IsBingMap)
             {
-                BingMap = new BingMap(this)
-                {
-                    Key = "AhMAiuDtXQ4130XXm2aJD9"
-                    + "MF0KkVTvn3NjY11v9dHBpeuBEkZ96tEGw_Oy9O5w"
-                    + "_I"
-                };
+                BingMap = new BingMap(this);
             }
             await grid.LoadAsync();
         }
