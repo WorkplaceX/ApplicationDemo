@@ -117,7 +117,7 @@
         /// </summary>
         protected override void CommandGenerateFilter(GenerateFilterArgs args, GenerateFilterResult result)
         {
-            result.FieldSqlList = args.FieldSqlList.Where(item => item.SchemaName == "Demo").ToList();
+            result.FieldSqlList = args.FieldSqlList.Where(item => item.SchemaName == "Demo" || item.SchemaName == "Doc").ToList();
             result.TypeRowCalculatedList = new List<System.Type>();
         }
 
