@@ -1,7 +1,7 @@
 ﻿namespace Application.Doc
 {
     using Database.Doc;
-    using DatabaseIntegrate.Pls;
+    using DatabaseIntegrate.Doc;
     using Framework.DataAccessLayer;
     using Framework.Json;
     using System;

@@ -380,7 +380,7 @@ namespace DatabaseIntegrate.Doc
 
     public static class LoginRoleIntegrateApp
     {
-        public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Guest")]Guest = -1 }
+        public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Admin")]Admin = -1, [IdEnum("Developer")]Developer = -2, [IdEnum("Guest")]Guest = -3 }
 
         public static LoginRoleIntegrate Row(this IdEnum value)
         {
@@ -408,6 +408,8 @@ namespace DatabaseIntegrate.Doc
             {
                 var result = new List<LoginRoleIntegrate>
                 {
+                    new LoginRoleIntegrate { Id = 0, Name = "Admin", Sort = null, IdName = "Admin" },
+                    new LoginRoleIntegrate { Id = 0, Name = "Developer", Sort = null, IdName = "Developer" },
                     new LoginRoleIntegrate { Id = 0, Name = "Guest", Sort = 3, IdName = "Guest" },
                 };
                 return result;
