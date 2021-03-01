@@ -1,5 +1,6 @@
 ﻿namespace Application.Cli
 {
+    using Application.Cli.Doc;
     using Database.Demo; // Framework and Application contain same namespace.
     using DatabaseIntegrate.Demo;
     using Framework.Cli;
@@ -110,6 +111,9 @@
             result.AddReference<CmsComponent, CmsFile>(nameof(CmsComponent.ImageFileId));
             result.AddReference<CmsComponent, CmsFile>(nameof(CmsComponent.PageImageFileId));
             result.AddReference<CmsComponent, CmsComponent>(nameof(CmsComponent.ParentId));
+
+            // AppDoc
+            AppDocCliMain.CommandGenerateIntegrate(result);
         }
 
         /// <summary>
@@ -164,6 +168,9 @@
             result.Add(CmsCodeBlockTypeIntegrateAppCli.RowList);
             result.Add(CmsFileAppCli.RowList);
             result.Add(CmsComponentIntegrateAppCli.RowList, (item) => item.IdName, (item) => item.ParentIdName, (item) => null);
+
+            // AppDoc
+            AppDocCliMain.CommandDeployDbIntegrate(result);
         }
     }
 }
