@@ -31,7 +31,7 @@
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
                 DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
-                FolderNameAngular ="Application.Angular/LayoutDefault/",
+                FolderNameAngular ="Application.Website/",
             });
         }
 
