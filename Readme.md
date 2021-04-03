@@ -6,9 +6,10 @@ An ASP.NET Core 5.0 application with Angular 11 and MS-SQL Server. See it live i
 [![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo) (ApplicationDemo; travis;)
 
 # Getting Started
-The following two components need to be installed on the machine as prerequisite:
+The following two components need to be installed on the machine as prerequisite (Windows or Linux):
 * [Node.js](https://nodejs.org/en/) (LTS Version)
 * [.NET Core](https://dotnet.microsoft.com/download) (Version 5.0)
+* [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
 # Install
 ```cmd
