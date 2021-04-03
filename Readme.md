@@ -6,12 +6,12 @@ An ASP.NET Core 5.0 application with Angular 11 and MS-SQL Server. See it live i
 [![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo) (ApplicationDemo; travis;)
 
 # Getting Started
-The following two components need to be installed on the machine as prerequisite (Windows or Linux):
+The following components need to be installed on the machine as a prerequisite (Windows or Linux):
 * [Node.js](https://nodejs.org/en/) (LTS Version)
 * [.NET Core](https://dotnet.microsoft.com/download) (Version 5.0)
 * [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (Free Express Edition)
 
-# Install
+## Install
 ```cmd
 ### Git clone (parameter recursive clones also required submodule Framework):
 git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
@@ -34,6 +34,9 @@ wpx deployDb
 
 ### Start
 wpx start # http://localhost:5000/
+
+### Stop
+killall -g -SIGKILL Application.Server # Linux Only
 ```
 
 ## Screenshot
