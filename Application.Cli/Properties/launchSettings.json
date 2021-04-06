@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Application.Cli": {
-      "commandName": "Project",
-      "commandLineArgs": "build"
+      "commandName": "Project"
     }
   }
 }
