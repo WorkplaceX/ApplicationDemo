@@ -56,19 +56,5 @@
                 result.IsFileUpload = true;
             }
         }
-
-        protected override void CellParseFileUpload(FileUploadArgs args, ParseResult result)
-        {
-            if (args.FieldName == nameof(args.Row.FileName))
-            {
-                result.Row.Data = args.Data;
-                if (args.Row.FileName == null)
-                {
-                    result.Row.FileName = args.FileName;
-                }
-
-                result.IsHandled = true;
-            }
-        }
     }
 }

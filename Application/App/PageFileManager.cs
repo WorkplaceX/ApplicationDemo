@@ -46,20 +46,19 @@
             }
         }
 
-        protected override void CellParseFileUpload(FileUploadArgs args, ParseResult result)
-        {
-            if (args.FieldName == nameof(StorageFile.Data))
-            {
-                args.Row.Data = args.Data;
-                args.Row.FileName = args.FileName;
-                result.IsHandled = true;
-            }
-        }
-
         protected override void Truncate(TruncateArgs args)
         {
             // Truncate big data from server session state.
             args.Row.Data = null;
+        }
+
+        private void FileUpload(StorageFile row, FileUploadArgs fileUpload)
+        {
+            if (fileUpload?.FieldName == nameof(StorageFile.Data))
+            {
+                row.Data = fileUpload.Data;
+                row.FileName = fileUpload.FileName;
+            }
         }
 
         protected override async Task UpdateAsync(UpdateArgs args, UpdateResult result)
@@ -69,12 +68,15 @@
                 // Load truncated data back in before record update.
                 args.Row.Data = (await Data.Query<StorageFile>().Where(item => item.Id == args.Row.Id).QueryExecuteAsync()).Single().Data;
             }
+
+            FileUpload(args.Row, args.FileUpload);
             await Data.UpdateAsync(args.Row);
             result.IsHandled = true;
         }
 
         protected override async Task InsertAsync(InsertArgs args, InsertResult result)
         {
+            FileUpload(args.Row, args.FileUpload);
             await Data.InsertAsync(args.Row);
             result.IsHandled = true;
         }
