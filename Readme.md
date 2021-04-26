@@ -1,9 +1,9 @@
 # Application Demo
 An ASP.NET Core 5.0 application with Angular 11 and MS-SQL Server. See it live in action: https://demo.workplacex.org/
 
-![Build Status](https://github.com/WorkplaceX/ApplicationDemo/workflows/CI/badge.svg) (ApplicationDemo; github actions;)
+![Build Status](https://github.com/WorkplaceX/ApplicationDoc/workflows/CI/badge.svg) (ApplicationDoc; github actions;)
 
-[![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo) (ApplicationDemo; travis;)
+[![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDoc.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDoc) (ApplicationDoc; travis;)
 
 # Getting Started
 The following components need to be installed on the machine as a prerequisite (Windows or Linux):
