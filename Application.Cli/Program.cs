@@ -1,8 +1,5 @@
-﻿namespace Application.Cli
+﻿namespace Application.Cli.Demo
 {
-    using Framework.Cli;
-    using System;
-
     class Program
     {
         static void Main(string[] args)

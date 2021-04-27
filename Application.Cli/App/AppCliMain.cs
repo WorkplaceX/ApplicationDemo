@@ -1,10 +1,11 @@
-﻿namespace Application.Cli
+﻿namespace Application.Cli.Demo
 {
+    using Application.Demo;
     using Database.Demo; // Framework and Application contain same namespace.
     using DatabaseIntegrate.Demo;
+    using Framework;
     using Framework.Cli;
     using Framework.Cli.Config;
-    using Framework.Cli.Generate;
     using Framework.DataAccessLayer;
     using System.Collections.Generic;
     using System.Linq;
@@ -28,10 +29,9 @@
         /// </summary>
         protected override void InitConfigCli(ConfigCli configCli)
         {
-            string appTypeName = typeof(AppMain).FullName + ", " + typeof(AppMain).Namespace;
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
-                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
+                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = UtilCli.AppTypeName(typeof(AppMain)) } }),
                 FolderNameAngular ="Application.Website/",
             });
 

@@ -1,4 +1,4 @@
-﻿namespace Application
+﻿namespace Application.Demo
 {
     using Framework.DataAccessLayer;
     using Framework.Json;

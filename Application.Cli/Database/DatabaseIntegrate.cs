@@ -293,10 +293,10 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<StorageFile>
                 {
-                    new StorageFile { Id = 0, FileName = "Game.png", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.StorageFile.Game.png"), Description = "Board image", IsIntegrate = true, IsDelete = false },
-                    new StorageFile { Id = 0, FileName = "Hello World.pdf", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.StorageFile.Hello World.pdf"), Description = null, IsIntegrate = true, IsDelete = false },
-                    new StorageFile { Id = 0, FileName = "Hello.txt", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.StorageFile.Hello.txt"), Description = "Some text", IsIntegrate = true, IsDelete = false },
-                    new StorageFile { Id = 0, FileName = "House.png", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.StorageFile.House.png"), Description = "Wood house", IsIntegrate = true, IsDelete = false },
+                    new StorageFile { Id = 0, FileName = "Game.png", Data = Framework.Cli.UtilCli.BlobReadData("Demo.StorageFile.Game.png"), Description = "Board image", IsIntegrate = true, IsDelete = false },
+                    new StorageFile { Id = 0, FileName = "Hello World.pdf", Data = Framework.Cli.UtilCli.BlobReadData("Demo.StorageFile.Hello World.pdf"), Description = null, IsIntegrate = true, IsDelete = false },
+                    new StorageFile { Id = 0, FileName = "Hello.txt", Data = Framework.Cli.UtilCli.BlobReadData("Demo.StorageFile.Hello.txt"), Description = "Some text", IsIntegrate = true, IsDelete = false },
+                    new StorageFile { Id = 0, FileName = "House.png", Data = Framework.Cli.UtilCli.BlobReadData("Demo.StorageFile.House.png"), Description = "Wood house", IsIntegrate = true, IsDelete = false },
                 };
                 return result;
             }
@@ -330,10 +330,10 @@ namespace DatabaseIntegrate.Demo
             {
                 var result = new List<CmsFile>
                 {
-                    new CmsFile { Id = 0, FileName = "Donky.png", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.CmsFile.Donky.png"), Text = "Two donkeys", SourceText = "Photo self", SourceLink = null, IsIntegrate = true, IsDelete = false },
-                    new CmsFile { Id = 0, FileName = "Forrest.png", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.CmsFile.Forrest.png"), Text = "Forrest with lake", SourceText = "Photo self", SourceLink = null, IsIntegrate = true, IsDelete = false },
-                    new CmsFile { Id = 0, FileName = "Install.gif", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.CmsFile.Install.gif"), Text = "Page Install", SourceText = null, SourceLink = "https://pixabay.com/vectors/box-carton-3d-software-package-149482/", IsIntegrate = true, IsDelete = false },
-                    new CmsFile { Id = 0, FileName = "VisualStudioPrerequisite.png", Data = Framework.Cli.UtilCliBlob.ReadData("Demo.CmsFile.VisualStudioPrerequisite.png"), Text = "Page Install - Prerequisite", SourceText = null, SourceLink = null, IsIntegrate = true, IsDelete = false },
+                    new CmsFile { Id = 0, FileName = "Donky.png", Data = Framework.Cli.UtilCli.BlobReadData("Demo.CmsFile.Donky.png"), Text = "Two donkeys", SourceText = "Photo self", SourceLink = null, IsIntegrate = true, IsDelete = false },
+                    new CmsFile { Id = 0, FileName = "Forrest.png", Data = Framework.Cli.UtilCli.BlobReadData("Demo.CmsFile.Forrest.png"), Text = "Forrest with lake", SourceText = "Photo self", SourceLink = null, IsIntegrate = true, IsDelete = false },
+                    new CmsFile { Id = 0, FileName = "Install.gif", Data = Framework.Cli.UtilCli.BlobReadData("Demo.CmsFile.Install.gif"), Text = "Page Install", SourceText = null, SourceLink = "https://pixabay.com/vectors/box-carton-3d-software-package-149482/", IsIntegrate = true, IsDelete = false },
+                    new CmsFile { Id = 0, FileName = "VisualStudioPrerequisite.png", Data = Framework.Cli.UtilCli.BlobReadData("Demo.CmsFile.VisualStudioPrerequisite.png"), Text = "Page Install - Prerequisite", SourceText = null, SourceLink = null, IsIntegrate = true, IsDelete = false },
                 };
                 return result;
             }
