@@ -8,6 +8,7 @@
     using Framework.DataAccessLayer;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Command line interface application.
@@ -33,6 +34,18 @@
                 DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
                 FolderNameAngular ="Application.Website/",
             });
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // Default ConnectionString (Windows)
+                configCli.EnvironmentGet().ConnectionStringSet("Data Source=localhost; Initial Catalog=ApplicationDemo; Integrated Security=True;");
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                // Default ConnectionString (Linux)
+                configCli.EnvironmentGet().ConnectionStringSet("Data Source=localhost; Initial Catalog=ApplicationDemo; User Id=SA; Password=MyPassword;");
+            }
         }
 
         /// <summary>
@@ -94,11 +107,13 @@
             // FileManager
             result.Add(Data.Query<StorageFile>().Where(item => item.IsIntegrate && item.IsDelete == false).OrderBy(item => item.FileName));
             result.AddKey<StorageFile>(nameof(StorageFile.FileName));
+            result.AddBlob<StorageFile>(nameof(StorageFile.Data), (row) => row.FileName);
 
             // Cms
             result.Add(Data.Query<CmsCodeBlockTypeIntegrate>().OrderBy(item => item.Sort));
             result.Add(Data.Query<CmsComponentTypeIntegrate>().OrderBy(item => item.Sort), isApplication: true);
             result.Add(Data.Query<CmsFile>().OrderBy(item => item.FileName));
+            result.AddBlob<CmsFile>(nameof(CmsFile.Data), (row) => row.FileName);
             result.Add(Data.Query<CmsComponentIntegrate>().OrderBy(item => item.PagePath).ThenBy(item => item.Sort).ThenBy(item => item.Name));
             result.AddKey<CmsCodeBlockType>(nameof(CmsCodeBlockType.Name));
             result.AddKey<CmsComponentType>(nameof(CmsComponentType.Name));
