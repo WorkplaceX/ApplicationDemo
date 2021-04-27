@@ -29,22 +29,23 @@
         /// </summary>
         protected override void InitConfigCli(ConfigCli configCli)
         {
+            var appTypeName = UtilCli.AppTypeName(typeof(AppMain));
             configCli.WebsiteList.Add(new ConfigCliWebsite()
             {
-                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = UtilCli.AppTypeName(typeof(AppMain)) } }),
+                DomainNameList = new List<ConfigCliWebsiteDomain>(new ConfigCliWebsiteDomain[] { new ConfigCliWebsiteDomain { EnvironmentName = "DEV", DomainName = "localhost", AppTypeName = appTypeName } }),
                 FolderNameAngular ="Application.Website/",
             });
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Default ConnectionString (Windows)
-                configCli.EnvironmentGet().ConnectionStringSet("Data Source=localhost; Initial Catalog=ApplicationDemo; Integrated Security=True;");
+                configCli.EnvironmentGet().ConnectionString = "Data Source=localhost; Initial Catalog=ApplicationDemo; Integrated Security=True;";
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 // Default ConnectionString (Linux)
-                configCli.EnvironmentGet().ConnectionStringSet("Data Source=localhost; Initial Catalog=ApplicationDemo; User Id=SA; Password=MyPassword;");
+                configCli.EnvironmentGet().ConnectionString = "Data Source=localhost; Initial Catalog=ApplicationDemo; User Id=SA; Password=MyPassword;";
             }
         }
 
