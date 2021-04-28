@@ -113,6 +113,8 @@ export class CommandJson {
   ResizeColumnIndex: number | undefined;
 
   ResizeColumnWidthValue: number | undefined;
+
+  DialpadText: string | undefined;
 }
 
 export class RequestJson {
@@ -328,7 +330,7 @@ export class DataService {
           }, 1000); // Wait one second then reload.
         }
         if (this.json.NavigatePathAddHistory != null) {
-          this.location.go(this.json.NavigatePathAddHistory, "", this.json.NavigatePathAddHistory); // Put path into state because Angular does not handle traling slash in location. // import { Location } from '@angular/common';
+          this.location.go(this.json.NavigatePathAddHistory, "", this.json.NavigatePathAddHistory); // Put path into state. Angular does not preserve traling slash in location. // import { Location } from '@angular/common';
         }
       });
     } else {
