@@ -15,7 +15,6 @@
             if (IsSessionExpired)
             {
                 HtmlSessionExpired = new Alert(this, "Session expired!", AlertEnum.Warning);
-                IsScrollToTop = true;
             }
 
             // new Custom01(this) { TextHtml = "Hello <b>World</b>" };
