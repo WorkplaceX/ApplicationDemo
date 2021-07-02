@@ -15,6 +15,7 @@ import { CommandJson, DataService, Json } from '../data.service';
     <div data-BingMap [ngClass]="json.CssClass!" *ngSwitchCase="'BingMap'" [json]=json></div>
     <div data-Dialpad *ngSwitchCase="'Dialpad'" [json]=json></div>
     <div data-BulmaNavbar [ngClass]="json.CssClass!" *ngSwitchCase="'BulmaNavbar'" [json]=json></div>
+    <div data-BulmaNavbarMenu [ngClass]="json.CssClass!" *ngSwitchCase="'BulmaNavbarMenu'" [json]=json></div>
     <div data-BootstrapNavbar [ngClass]="json.CssClass!" *ngSwitchCase="'BootstrapNavbar'" [json]=json></div>  
     <div data-Grid [ngClass]="json.CssClass!" *ngSwitchCase="'Grid'" [json]=json></div>
     <div data-Custom01 *ngSwitchCase="'Custom01'" [json]=json></div>
@@ -78,11 +79,13 @@ export class Html {
 
   textHtml: SafeHtml | undefined;
 
-  textHtmlPrevious: any = false; // Detect also first change if string is null!
+  textHtmlPrevious: any = false; // Detect TextHtml change. Also if text is null on first change (false)!
+
+  isNoSanatizePrevious: boolean | undefined; // Detect IsNoSanatize change.
 
   ngOnChanges() {
     if (this.json.IsNoSanatize) {
-      if (this.textHtmlPrevious != this.json.TextHtml) { // Change detection
+      if (this.textHtmlPrevious != this.json.TextHtml || this.isNoSanatizePrevious != this.json.IsNoSanatize) { // Change detection
         this.textHtmlPrevious = this.json.TextHtml;
         this.textHtml = this.sanitizer.bypassSecurityTrustHtml(this.json.TextHtml ? this.json.TextHtml : "");
         if (this.json.IsNoSanatizeScript != null) {
@@ -92,6 +95,7 @@ export class Html {
     } else {
       this.textHtml = this.json.TextHtml;
     }
+    this.isNoSanatizePrevious = this.json.IsNoSanatize;
   }
 
   @ViewChild('div')
