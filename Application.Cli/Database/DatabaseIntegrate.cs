@@ -7,6 +7,9 @@ namespace DatabaseIntegrate.dbo
     using System.Globalization;
     using Database.dbo;
 
+    /// <summary>
+    /// Integrate Sql=[dbo].[FrameworkConfigGridIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class FrameworkConfigGridIntegrateAppCli
     {
         public static List<FrameworkConfigGridIntegrate> RowList
@@ -31,6 +34,9 @@ namespace DatabaseIntegrate.dbo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[dbo].[FrameworkConfigFieldIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class FrameworkConfigFieldIntegrateAppCli
     {
         public static List<FrameworkConfigFieldIntegrate> RowList
@@ -78,34 +84,6 @@ namespace DatabaseIntegrate.dbo
             }
         }
     }
-
-    public static class FrameworkLanguageItemAppCli
-    {
-        public static List<FrameworkLanguageItem> RowList
-        {
-            get
-            {
-                var result = new List<FrameworkLanguageItem>
-                {
-                };
-                return result;
-            }
-        }
-    }
-
-    public static class FrameworkLanguageTextIntegrateAppCli
-    {
-        public static List<FrameworkLanguageTextIntegrate> RowList
-        {
-            get
-            {
-                var result = new List<FrameworkLanguageTextIntegrate>
-                {
-                };
-                return result;
-            }
-        }
-    }
 }
 
 namespace DatabaseIntegrate.Demo
@@ -115,6 +93,9 @@ namespace DatabaseIntegrate.Demo
     using System.Globalization;
     using Database.Demo;
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[NavigationIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class NavigationIntegrateAppCli
     {
         public static List<NavigationIntegrate> RowList
@@ -146,6 +127,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[LoginPermissionIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class LoginPermissionIntegrateAppCli
     {
         public static List<LoginPermissionIntegrate> RowList
@@ -164,6 +148,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[LoginRoleIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class LoginRoleIntegrateAppCli
     {
         public static List<LoginRoleIntegrate> RowList
@@ -182,6 +169,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[LoginRolePermissionIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class LoginRolePermissionIntegrateAppCli
     {
         public static List<LoginRolePermissionIntegrate> RowList
@@ -210,6 +200,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[LoginUserIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class LoginUserIntegrateAppCli
     {
         public static List<LoginUserIntegrate> RowList
@@ -229,6 +222,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[LoginUserRoleIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class LoginUserRoleIntegrateAppCli
     {
         public static List<LoginUserRoleIntegrate> RowList
@@ -253,6 +249,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[RoadmapIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class RoadmapIntegrateAppCli
     {
         public static List<RoadmapIntegrate> RowList
@@ -313,6 +312,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[StorageFile]; Assembly=Cli;
+    /// </summary>
     public static class StorageFileAppCli
     {
         public static List<StorageFile> RowList
@@ -331,6 +333,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[CmsCodeBlockTypeIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class CmsCodeBlockTypeIntegrateAppCli
     {
         public static List<CmsCodeBlockTypeIntegrate> RowList
@@ -350,6 +355,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[CmsFile]; Assembly=Cli;
+    /// </summary>
     public static class CmsFileAppCli
     {
         public static List<CmsFile> RowList
@@ -368,6 +376,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[CmsComponentIntegrate]; Assembly=Cli;
+    /// </summary>
     public static class CmsComponentIntegrateAppCli
     {
         public static List<CmsComponentIntegrate> RowList
