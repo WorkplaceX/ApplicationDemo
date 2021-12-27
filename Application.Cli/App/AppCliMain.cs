@@ -39,7 +39,7 @@
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Default ConnectionString (Windows)
-                configCli.EnvironmentGet().ConnectionString = "Data Source=localhost; Initial Catalog=ApplicationDemo; Integrated Security=True;";
+                configCli.EnvironmentGet().ConnectionString = "Data Source=localhost\\SQLEXPRESS; Initial Catalog=ApplicationDemo; Integrated Security=True;";
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))

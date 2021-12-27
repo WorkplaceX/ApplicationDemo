@@ -10,7 +10,49 @@ namespace DatabaseIntegrate.dbo
     using Framework.DataAccessLayer;
     using Database.dbo;
 
-    public static class FrameworkLanguageIntegrateApp
+    /// <summary>
+    /// Integrate Sql=[dbo].[FrameworkLanguageIntegrate]; AppTypeName=Application.Demo.AppMain; Assembly=App;
+    /// </summary>
+    public static class FrameworkLanguageIntegrateAppApplicationDemoAppMain
+    {
+        public enum IdEnum { [IdEnum(null)]None = 0 }
+
+        public static FrameworkLanguageIntegrate Row(this IdEnum value)
+        {
+            return RowList.Where(item => item.IdName == IdEnumAttribute.IdNameFromEnum(value)).SingleOrDefault();
+        }
+
+        public static IdEnum IdName(string value)
+        {
+            return IdEnumAttribute.IdNameToEnum<IdEnum>(value);
+        }
+
+        public static string IdName(this IdEnum value)
+        {
+            return IdEnumAttribute.IdNameFromEnum(value);
+        }
+
+        public static async Task<int> Id(this IdEnum value)
+        {
+            return (await Data.Query<FrameworkLanguageIntegrate>().Where(item => item.IdName == IdEnumAttribute.IdNameFromEnum(value)).QueryExecuteAsync()).Single().Id;
+        }
+
+        public static List<FrameworkLanguageIntegrate> RowList
+        {
+            get
+            {
+                var result = new List<FrameworkLanguageIntegrate>
+                {
+                };
+                return result;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Integrate Sql=[dbo].[FrameworkLanguageIntegrate]; AppTypeName=Application.Demo.AppX; Assembly=App;
+    /// </summary>
+    public static class FrameworkLanguageIntegrateAppApplicationDemoAppX
     {
         public enum IdEnum { [IdEnum(null)]None = 0 }
 
@@ -57,6 +99,9 @@ namespace DatabaseIntegrate.Demo
     using Framework.DataAccessLayer;
     using Database.Demo;
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[LanguageIntegrate]; Assembly=App;
+    /// </summary>
     public static class LanguageIntegrateApp
     {
         public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("English")]English = -1, [IdEnum("French")]French = -2, [IdEnum("German")]German = -3, [IdEnum("Italian")]Italian = -4 }
@@ -97,6 +142,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[LoginPermissionIntegrate]; Assembly=App;
+    /// </summary>
     public static class LoginPermissionIntegrateApp
     {
         public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Administrator")]Administrator = -1, [IdEnum("Developer")]Developer = -2, [IdEnum("Guest")]Guest = -3 }
@@ -136,6 +184,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[RoadmapCategoryIntegrate]; Assembly=App;
+    /// </summary>
     public static class RoadmapCategoryIntegrateApp
     {
         public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Analyze")]Analyze = -1, [IdEnum("Bug")]Bug = -2, [IdEnum("Feature")]Feature = -3 }
@@ -175,6 +226,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[RoadmapModuleIntegrate]; Assembly=App;
+    /// </summary>
     public static class RoadmapModuleIntegrateApp
     {
         public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Application")]Application = -1, [IdEnum("ApplicationCms")]ApplicationCms = -2, [IdEnum("ApplicationLogin")]ApplicationLogin = -3, [IdEnum("ApplicationRoadmap")]ApplicationRoadmap = -4, [IdEnum("Framework")]Framework = -5 }
@@ -216,6 +270,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[RoadmapPriorityIntegrate]; Assembly=App;
+    /// </summary>
     public static class RoadmapPriorityIntegrateApp
     {
         public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Critical")]Critical = -1, [IdEnum("High")]High = -2, [IdEnum("Low")]Low = -3, [IdEnum("Medium")]Medium = -4 }
@@ -256,6 +313,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[RoadmapStateIntegrate]; Assembly=App;
+    /// </summary>
     public static class RoadmapStateIntegrateApp
     {
         public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Done")]Done = -1, [IdEnum("In Progress")]InProgress = -2, [IdEnum("New")]New = -3, [IdEnum("Open")]Open = -4 }
@@ -296,6 +356,9 @@ namespace DatabaseIntegrate.Demo
         }
     }
 
+    /// <summary>
+    /// Integrate Sql=[Demo].[CmsComponentTypeIntegrate]; Assembly=App;
+    /// </summary>
     public static class CmsComponentTypeIntegrateApp
     {
         public enum IdEnum { [IdEnum(null)]None = 0, [IdEnum("Page")]Page = -1, [IdEnum("Paragraph")]Paragraph = -2, [IdEnum("Bullet")]Bullet = -3, [IdEnum("Image")]Image = -4, [IdEnum("Youtube")]Youtube = -5, [IdEnum("CodeBlock")]CodeBlock = -6, [IdEnum("Glossary")]Glossary = -7 }
